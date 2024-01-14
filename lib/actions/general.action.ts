@@ -1,11 +1,11 @@
 "use server"
 
-// import Question from "@/database/question.model";
+import Question from "@/database/question.model";
 import { connectToDatabase } from "../mongoose";
 import { SearchParams } from "./shared.types";
 import User from "@/database/user.model";
-// import Answer from "@/database/answer.model";
-// import Tag from "@/database/tag.model";
+import Answer from "@/database/answer.model";
+import Tag from "@/database/tag.model";
 
 const SearchableTypes = ["question", "answer", "user", "tag"];
 
@@ -19,10 +19,10 @@ export async function globalSearch(params: SearchParams) {
     let results = [];
 
     const modelsAndTypes = [
-      // { model: Question, searchField: 'title', type: 'question'},
+      { model: Question, searchField: 'title', type: 'question'},
       { model: User, searchField: 'name', type: 'user'},
-      // { model: Answer, searchField: 'content', type: 'answer'},
-      // { model: Tag, searchField: 'name', type: 'tag'},
+      { model: Answer, searchField: 'content', type: 'answer'},
+      { model: Tag, searchField: 'name', type: 'tag'},
     ]
 
     const typeLower = type?.toLowerCase();

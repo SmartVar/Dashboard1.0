@@ -29,7 +29,7 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
 
-    //@ts-ignore
+    // @ts-ignore
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),

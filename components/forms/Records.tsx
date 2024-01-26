@@ -18,7 +18,7 @@ import { Button } from "../ui/button"
 import { QuestionsSchema, TemplatesSchema } from "@/lib/validations";
 import { Badge } from '../ui/badge';
 import Image from 'next/image';
-import { createQuestion, editQuestion } from '@/lib/actions/question.action';
+
 import { createTemplate, editTemplate} from '@/lib/actions/template.action';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeProvider';

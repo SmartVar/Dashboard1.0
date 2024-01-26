@@ -27,11 +27,44 @@ export const AnswerFilters = [
   ];
   
   export const HomePageFilters = [
-    { name: "Newest", value: "newest" },
-    { name: "Recommended", value: "recommended" },
-    { name: "Frequent", value: "frequent" },
-    { name: "Unanswered", value: "unanswered" },
+    { name: "All Noting", value: "all" },
+    { name: "Funds", value: "funds" },
+    { name: "Reports", value: "reports" },
+    { name: "Forwardings", value: "forwardings" },
+    { name: "Office Note", value: "officenote" },
+    { name: "IR & Audits", value: "iraudits" },
   ];
+
+  export const TemplatePageFilters = [
+    { name: "Noting", value: "noting" },
+    { name: "Drafting", value: "drafting" },
+    { name: "Brief History", value: "briefhistory" },
+    ];
+  export const NotingPageFilters = [
+    { name: "All", value: "all" },
+    { name: "Funds", value: "funds" },
+    { name: "Reports", value: "reports" },
+    { name: "Forwardings", value: "forwardings" },
+    { name: "Office Note", value: "officenote" },
+    { name: "IR & Audits", value: "iraudits" },
+  ];
+  
+  export const DraftingPageFilters = [
+    { name: "All", value: "all" },
+    { name: "Funds Draft", value: "fundsdraft" },
+    { name: "Report Draft", value: "reportdraft" },
+      ];
+
+  export const BriefHistoryPageFilters = [
+    { name: "All", value: "all" },
+    { name: "Funds BH", value: "fundsbh" },
+    { name: "Report BH", value: "reportbh" },
+  ];
+  
+  export const NoFilters = [
+    // { name: "All", value: "all" },
+    // {},
+    ];
   
   export const GlobalSearchFilters = [
     { name: "Question", value: "question" },

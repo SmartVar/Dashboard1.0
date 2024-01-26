@@ -2,6 +2,67 @@ import { Schema } from "mongoose";
 
 import { IUser } from "@/mongodb";
 
+export interface SearchParams {
+  query: string;
+  type?: string | null;
+}
+
+export interface CreateUserParams {
+  clerkId: string;
+  name: string;
+  username: string;
+  email: string;
+  picture: string;
+  role: string;
+  section: string;
+}
+
+export interface GetUserByIdParams {
+  userId: string;
+}
+
+export interface GetAllUsersParams {
+  page?: number;
+  pageSize?: number;
+  filter?: string;
+  searchQuery?: string; // Add searchQuery parameter
+}
+
+export interface UpdateUserParams {
+  clerkId: string;
+  updateData: Partial<IUser>;
+  path: string;
+}
+
+export interface DeleteUserParams {
+  clerkId: string;
+}
+
+export interface CreateNotingsParams {
+  content: string;
+  author: string; // User ID
+  noting: string; // Noting ID
+  path: string;
+}
+
+export interface GetNotingsParams {
+  title: string;
+  sortBy?: string;
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+}
+
+
+
+
+
+
+
+
+// Others
+
 export interface CreateAnswerParams {
   content: string;
   author: string; // User ID
@@ -9,12 +70,8 @@ export interface CreateAnswerParams {
   path: string;
 }
 
-export interface GetAnswersParams {
-  questionId: string;
-  sortBy?: string;
-  page?: number;
-  pageSize?: number;
-}
+
+
 
 export interface AnswerVoteParams {
   answerId: string;
@@ -29,10 +86,7 @@ export interface DeleteAnswerParams {
   path: string;
 }
 
-export interface SearchParams {
-  query: string;
-  type?: string | null;
-}
+
 
 export interface RecommendedParams {
   userId: string;
@@ -57,6 +111,13 @@ export interface GetQuestionsParams {
   searchQuery?: string;
   filter?: string;
 }
+export interface GetTemplatesParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 
 export interface CreateQuestionParams {
   title: string;
@@ -66,8 +127,21 @@ export interface CreateQuestionParams {
   path: string;
 }
 
+export interface CreateTemplateParams {
+  title: string;
+  category: string;
+  subcategory: string;
+  description: string;
+  section: string;
+  path: string;
+}
+
 export interface GetQuestionByIdParams {
   questionId: string;
+}
+
+export interface GetTemplateByIdParams {
+  templateId: string;
 }
 
 export interface QuestionVoteParams {
@@ -82,11 +156,32 @@ export interface DeleteQuestionParams {
   questionId: string;
   path: string;
 }
+export interface DeleteTemplateParams {
+  templateId: string;
+  path: string;
+}
 
 export interface EditQuestionParams {
   questionId: string;
   title: string;
   content: string;
+  path: string;
+}
+export interface EditTemplateParams {
+  templateId: string;
+  title: string;
+  category: string;
+  subcategory: string;
+  description: string;
+  section: string;
+  path: string;
+}
+export interface EditNotingParams {
+  notingId: string;
+  title: string;
+  category: string;
+  description: string;
+  section: string;
   path: string;
 }
 
@@ -109,30 +204,9 @@ export interface GetTopInteractedTagsParams {
   limit?: number;
 }
 
-export interface CreateUserParams {
-  clerkId: string;
-  name: string;
-  username: string;
-  email: string;
-  picture: string;
-}
 
-export interface GetUserByIdParams {
-  userId: string;
-}
 
-export interface GetAllUsersParams {
-  page?: number;
-  pageSize?: number;
-  filter?: string;
-  searchQuery?: string; // Add searchQuery parameter
-}
 
-export interface UpdateUserParams {
-  clerkId: string;
-  updateData: Partial<IUser>;
-  path: string;
-}
 
 export interface ToggleSaveQuestionParams {
   userId: string;
@@ -154,7 +228,4 @@ export interface GetUserStatsParams {
   pageSize?: number;
 }
 
-export interface DeleteUserParams {
-  clerkId: string;
-}
 

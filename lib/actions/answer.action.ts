@@ -1,9 +1,9 @@
 "use server"
 
-import Answer from "@/database/answer.model";
+import Answer from "@/database/briefhistory.model";
 import { connectToDatabase } from "../mongoose";
 import { AnswerVoteParams, CreateAnswerParams, DeleteAnswerParams, GetAnswersParams } from "./shared.types";
-import Question from "@/database/question.model";
+import Question from "@/database/drafting.model";
 import { revalidatePath } from "next/cache";
 import Interaction from "@/database/interaction.model";
 import User from "@/database/user.model";

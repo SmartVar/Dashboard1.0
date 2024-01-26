@@ -1,12 +1,12 @@
 "use server"
 
-import Question from "@/database/question.model";
-import Tag from "@/database/tag.model";
+import Question from "@/database/drafting.model";
+import Tag from "@/database/noting.model";
 import { connectToDatabase } from "../mongoose"
 import { CreateQuestionParams, DeleteQuestionParams, EditQuestionParams, GetQuestionByIdParams, GetQuestionsParams, QuestionVoteParams,RecommendedParams } from "./shared.types";
 import User from "@/database/user.model";
 import { revalidatePath } from "next/cache";
-import Answer from "@/database/answer.model";
+import Answer from "@/database/briefhistory.model";
 import Interaction from "@/database/interaction.model";
 import { FilterQuery } from "mongoose";
 

@@ -18,6 +18,6 @@ const DraftingSchema = new Schema({
   createdOn: { type: Date, default: Date.now },
 });
 
-const Drafting = models.Drafting || model('Drafting', DraftingSchema);
+const Drafting = models.Noting || model('Drafting', DraftingSchema);
 
 export default Drafting;

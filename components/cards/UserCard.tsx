@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { getTopInteractedTags } from "@/lib/actions/tag.actions";
+import { getTopInteractedTags } from "@/lib/actions/noting.action";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "../ui/badge";

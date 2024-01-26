@@ -1,6 +1,6 @@
 import { Schema, model, models, Document } from 'mongoose';
 
-export interface IDrafting extends Document {
+export interface IBriefhistory extends Document {
   title: string;
   category: string;
   description: string;
@@ -9,7 +9,7 @@ export interface IDrafting extends Document {
   createdOn: Date;
 }
 
-const DraftingSchema = new Schema({
+const BriefhistorySchema = new Schema({
   title: { type: String, required: true, unique: true },
   category: { type: String, required: true, unique: true },
   description: { type: String, required: true, unique: true },
@@ -18,6 +18,6 @@ const DraftingSchema = new Schema({
   createdOn: { type: Date, default: Date.now },
 });
 
-const Drafting = models.Drafting || model('Drafting', DraftingSchema);
+const Briefhistory = models.Briefhistory || model('Briefhistory', BriefhistorySchema);
 
-export default Drafting;
+export default Briefhistory;

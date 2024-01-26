@@ -2,6 +2,7 @@
 
 import { deleteAnswer } from "@/lib/actions/answer.action";
 import { deleteQuestion } from "@/lib/actions/question.action";
+import { deleteTemplate} from "@/lib/actions/template.action";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -15,29 +16,26 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
   const router = useRouter();
 
   const handleEdit = () => {
-    router.push(`/question/edit/${JSON.parse(itemId)}`)
+    router.push(`/templates/edit/${JSON.parse(itemId)}`)
   };
 
   const handleDelete = async () => {
-    if(type === 'Question') {
-      // Delete question
-      await deleteQuestion({ 
-        questionId: JSON.parse(itemId), 
+    
+      // Delete template
+      await deleteTemplate({ 
+        templateId: JSON.parse(itemId), 
         path: pathname 
-      })
-    } else if(type === 'Answer') {
-      // Delete answer
-      await deleteAnswer({ 
-        answerId: JSON.parse(itemId), 
-        path: pathname 
-      })
-    }
+      }
+      )
   };
 
   return (
+    <>
     <div className="flex items-center justify-end gap-3 
     max-sm:w-full">
-      {type === 'Question' && (
+      
+     { type==='Edit' && 
+     
         <Image 
           src="/assets/icons/edit.svg"
           alt="Edit"
@@ -46,8 +44,8 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
           className="cursor-pointer object-contain"
           onClick={handleEdit}
         />
-      )}
-
+  }
+      {type==='Delete' &&
         <Image 
           src="/assets/icons/trash.svg"
           alt="Delete"
@@ -55,8 +53,11 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
           height={14}
           className="cursor-pointer object-contain"
           onClick={handleDelete}
-        />
-    </div>
+        /> 
+}
+  
+  </div>
+  </>
   )
 }
 

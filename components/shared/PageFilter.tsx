@@ -24,13 +24,13 @@ const Filter = ({ filters, otherClasses, containerClasses }: Props) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const paramFilter = searchParams.get('filter');
+  const paramFilter = searchParams.get('pagefilter');
   // console.log(paramFilter);
 
   const handleUpdateParams = (value: string) => {
     const newUrl = formUrlQuery({
       params: searchParams.toString(),
-      key: 'filter',
+      key: 'pagefilter',
       value
     })
 

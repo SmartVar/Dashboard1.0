@@ -4,7 +4,7 @@ import ParseHTML from '@/components/shared/ParseHTML';
 
 
 import { getTemplateById } from '@/lib/actions/template.action';
-import { getUserById } from '@/lib/actions/user.action';
+// import { getUserById } from '@/lib/actions/user.action';
 
 import { auth } from '@clerk/nextjs';
 
@@ -13,10 +13,10 @@ import React from 'react'
 const Page = async ({ params, searchParams }) => {
   const { userId: clerkId } = auth();
 
-  let mongoUser;
+//   let mongoUser;
 
   if(clerkId) {
-    mongoUser = await getUserById({ userId: clerkId })
+    // mongoUser = await getUserById({ userId: clerkId })
   }
 
   const result = await getTemplateById({ templateId: params.id });

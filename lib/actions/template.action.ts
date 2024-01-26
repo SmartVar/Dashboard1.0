@@ -2,7 +2,7 @@
 "use server"
 
 import Template from "@/database/template.model";import { connectToDatabase } from "../mongoose"
-import { CreateQuestionParams,DeleteTemplateParams,EditTemplateParams, GetTemplateByIdParams,GetTemplatesParams, CreateTemplateParams } from "./shared.types";
+import { DeleteTemplateParams,EditTemplateParams, GetTemplateByIdParams,GetTemplatesParams, CreateTemplateParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
 import { TemplateDef } from "@/app/(root)/templates/columns";
 import { FilterQuery } from "mongoose";
@@ -10,7 +10,7 @@ import { FilterQuery } from "mongoose";
 export async function getTemplates(params: GetTemplatesParams): Promise<TemplateDef[]> {
   try {
     connectToDatabase();
-    const { searchQuery, filter, pagefilter, page = 1, pageSize = 2 } = params;
+    const { searchQuery, filter, pagefilter} = params;
 
     // Calculcate the number of posts to skip based on the page number and page size
     // const skipAmount = (page - 1) * pageSize;
@@ -117,7 +117,7 @@ export async function createTemplate(params: CreateTemplateParams) {
     
     // Increment author's reputation by +5 for creating a question
 
-    //revalidate path inorder to display question wihtout reloading
+    // revalidate path inorder to display question wihtout reloading
        
     revalidatePath(path)
     return template ;

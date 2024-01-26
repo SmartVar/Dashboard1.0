@@ -1,25 +1,25 @@
 // @ts-ignore
 import React from 'react'
 import { URLProps } from '@/types'
-import { SignedIn, auth } from '@clerk/nextjs'
+// import { SignedIn, auth } from '@clerk/nextjs'
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
-import NoResult from "@/components/shared/NoResult";
-import Pagination from "@/components/shared/Pagination";
+// import NoResult from "@/components/shared/NoResult";
+// import Pagination from "@/components/shared/Pagination";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
-import { HomePageFilters, NoFilters, TemplatePageFilters, NotingPageFilters, DraftingPageFilters, BriefHistoryPageFilters } from "@/constants/filters";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {  NoFilters, TemplatePageFilters, NotingPageFilters, DraftingPageFilters, BriefHistoryPageFilters } from "@/constants/filters";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link";
 
-import { useRouter, useSearchParams } from "next/navigation";
+// import { useRouter, useSearchParams } from "next/navigation";
 import { DataTable }  from '@/components/shared/tables/data-table';
-import { TemplateDef, columns } from './columns'
+import {  columns } from './columns'
 import { getTemplates } from '@/lib/actions/template.action';
 
 
 const Page = async ({ params, searchParams}: URLProps) => {
-  const { userId: clerkId } = auth();
+  // const { userId: clerkId } = auth();
   // const searchParams = useSearchParams();
   // console.log(searchParams.filter)
   const typefilter = (searchParams.filter);

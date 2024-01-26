@@ -28,7 +28,7 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
-    // @ts-nocheck
+
     //@ts-ignore
     data,
     columns,

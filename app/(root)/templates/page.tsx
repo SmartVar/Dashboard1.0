@@ -1,6 +1,5 @@
 // @ts-ignore
 import React from 'react'
-import { getUserInfo } from '@/lib/actions/user.action'
 import { URLProps } from '@/types'
 import { SignedIn, auth } from '@clerk/nextjs'
 import HomeFilters from "@/components/home/HomeFilters";
@@ -12,9 +11,7 @@ import { Button } from "@/components/ui/button";
 import { HomePageFilters, NoFilters, TemplatePageFilters, NotingPageFilters, DraftingPageFilters, BriefHistoryPageFilters } from "@/constants/filters";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link";
-import NotingsTab from '@/components/shared/NotingsTab';
-import DraftingsTab from '@/components/shared/DraftingsTab';
-import BriefHistoryTab from '@/components/shared/BriefHistoryTab';
+
 import { useRouter, useSearchParams } from "next/navigation";
 import { DataTable }  from '@/components/shared/tables/data-table';
 import { TemplateDef, columns } from './columns'

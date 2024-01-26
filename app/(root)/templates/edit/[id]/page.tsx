@@ -1,6 +1,4 @@
-import Question from '@/components/forms/Question'
 import Records from '@/components/forms/Records'
-import { getQuestionById } from '@/lib/actions/question.action';
 import { getTemplateById } from '@/lib/actions/template.action';
 import { getUserById } from '@/lib/actions/user.action';
 import { ParamsProps } from '@/types';

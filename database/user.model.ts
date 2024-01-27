@@ -10,6 +10,7 @@ export interface IUser extends Document {
   role?: string;
   section?: string;
   reputation?: number;
+  templates: Schema.Types.ObjectId[];
   joinedAt: Date;
 }
 
@@ -23,6 +24,7 @@ const UserSchema = new Schema({
   role: { type: String, default: 'users' },
   reputation: { type: Number, default: 0 },
   section: { type: String, },
+  templates: [{ type: Schema.Types.ObjectId, ref: 'Template' }],
   joinedAt: { type: Date, default: Date.now },
 });
 

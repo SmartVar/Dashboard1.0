@@ -1,6 +1,6 @@
 // @ts-ignore
 "use server"
-
+import User from "@/database/user.model";
 import Template from "@/database/template.model";import { connectToDatabase } from "../mongoose"
 import { DeleteTemplateParams,EditTemplateParams, GetTemplateByIdParams,GetTemplatesParams, CreateTemplateParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
@@ -89,11 +89,12 @@ if (filter=== 'noting')
 
     const templates = await Template.find(query)
     .find(sortOptions)
+    .populate({ path: 'author', model: User });
     
 
-console.log(templates)
-
-    return templates ;
+console.log(templates);
+// @ts-ignore
+    return templates;
 
   } catch (error) {
     console.log(error)
@@ -151,7 +152,7 @@ export async function editTemplate(params: EditTemplateParams) {
 
     const { templateId, title, category, subcategory, description, section, path } = params;
 
-    const template = await Template.findById(templateId);
+    const template = await Template.findById(templateId).populate("author");
 
     if(!template) {
       throw new Error("Record not found");

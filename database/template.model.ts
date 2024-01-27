@@ -6,6 +6,7 @@ export interface ITemplate extends Document {
   subcategory: string;
   description: string;
   section: string;
+  author: Schema.Types.ObjectId;
   createdOn: Date;
 }
 
@@ -15,6 +16,7 @@ const TemplateSchema = new Schema({
   subcategory: { type: String, required: true},
   description: { type: String, required: true },
   section: { type: String, required: true },
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
   createdOn: { type: Date, default: Date.now },
 });
 

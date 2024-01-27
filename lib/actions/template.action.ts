@@ -21,6 +21,9 @@ export async function getTemplates(params: GetTemplatesParams): Promise<Template
       query.$or = [
         { title: { $regex: new RegExp(searchQuery, "i")}},
         { description: { $regex: new RegExp(searchQuery, "i")}},
+        { category: { $regex: new RegExp(searchQuery, "i")}},
+        { subcategory: { $regex: new RegExp(searchQuery, "i")}},
+        { section: { $regex: new RegExp(searchQuery, "i")}},
       ]
     }
     

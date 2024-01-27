@@ -165,7 +165,7 @@ const Records = ({ type, mongoUserId, templateDetails }: Props) => {
               }}
               onBlur={field.onBlur}
               onEditorChange={(content) => field.onChange(content)}
-              initialValue={parsedTemplateDetails?.content || ''}
+              initialValue={parsedTemplateDetails?.description || ''}
               init={{
                 height: 350,
                 menubar: false,

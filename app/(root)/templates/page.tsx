@@ -40,7 +40,7 @@ console.log(data)
   return (
     <>
     <div className="flex w-full flex-col-reverse 
-    justify-between gap-4 sm:flex-row sm:items-center">
+    justify-between gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
       
       <h1 className="h1-bold text-dark100_light900">
           Templates</h1> 
@@ -73,7 +73,7 @@ console.log(data)
     />
       
 
-    <div className="mt-10 flex w-full flex-col gap-6">
+    <div className="mt-10 flex w-full flex-col gap-6 overflow-auto shadow">
     <DataTable columns={columns} data={data} />
       </div>
       <div className="mt-10">
@@ -81,6 +81,7 @@ console.log(data)
       </div>
     </>
   )
+
 }
 
 export default Page

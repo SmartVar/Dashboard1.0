@@ -61,15 +61,17 @@ export const columns: ColumnDef<TemplateDef>[] = [
  
       return (
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger asChild className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
             <Button variant="ghost" className="h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="background-light850_dark100 relative z-10">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuContent align="end" className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
+            <DropdownMenuLabel className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400">
+              Actions</DropdownMenuLabel>
             <DropdownMenuItem
+            className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
               onClick={() => navigator.clipboard.writeText(template._id)}
             >
              <Link href={`/templates/${template._id}`}
@@ -80,10 +82,14 @@ export const columns: ColumnDef<TemplateDef>[] = [
             >
              <Link href={`/templates/edit/${template._id}`}
           className="flex items-center justify-start gap-1">Edit Row</Link></DropdownMenuItem> */}
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(template._id)}>
+            <DropdownMenuItem 
+            className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
+            onClick={() => navigator.clipboard.writeText(template._id)}>
             <EditDeleteAction type='Edit' itemId={JSON.stringify(template._id)} />
             Edit Row</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(template._id)}>
+            <DropdownMenuItem 
+            className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
+            onClick={() => navigator.clipboard.writeText(template._id)}>
             <EditDeleteAction type='Delete' itemId={JSON.stringify(template._id)} />
            Delete Row</DropdownMenuItem>
           </DropdownMenuContent>

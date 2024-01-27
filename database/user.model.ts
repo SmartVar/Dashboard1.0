@@ -7,7 +7,7 @@ export interface IUser extends Document {
   email: string;
   password?: string;
   picture: string;
-  role: string;
+  role?: string;
   section?: string;
   reputation?: number;
   joinedAt: Date;
@@ -20,9 +20,9 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String },
   picture: { type: String, required: true },
-  role: { type: String, required: true, default: 'users' },
+  role: { type: String, default: 'users' },
   reputation: { type: Number, default: 0 },
-  section: { type: String, required: true },
+  section: { type: String, },
   joinedAt: { type: Date, default: Date.now },
 });
 

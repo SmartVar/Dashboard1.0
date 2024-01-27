@@ -2,11 +2,11 @@ import Records from '@/components/forms/Records'
 import { getTemplateById } from '@/lib/actions/template.action';
 import { getUserById } from '@/lib/actions/user.action';
 import { ParamsProps } from '@/types';
-// import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs'
 
 const Page = async ({ params }: ParamsProps) => {
-//   const { userId } = auth();
-const userId = 'user_2bCX55zAAaS74JAT0pGe59OjuhVCL123';
+  const { userId } = auth();
+// const userId = 'user_2bCX55zAAaS74JAT0pGe59OjuhVCL123';
   if(!userId) return null;
 
   const mongoUser = await getUserById({ userId })

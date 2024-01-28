@@ -81,7 +81,7 @@ const Page = async ({ params, searchParams }) => {
           />
       </div> */}
 
-      <ParseHTML data={result.description} />
+      <ParseHTML data={result.link} />
 
       {/* <div className="mt-8 flex flex-wrap gap-2">
         {result.tags.map((tag: any) => (

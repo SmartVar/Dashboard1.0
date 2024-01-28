@@ -72,29 +72,30 @@ export const columns: ColumnDef<TemplateDef>[] = [
       )
     },
   },
-  {
-    accessorKey: "title",
-    header: "Title",
-  },
+ 
   {
     accessorKey: "category",
     header: "Category",
   },
   {
+    accessorKey: "title",
+    header: "Title",
+  },
+  {
     accessorKey: "subcategory",
     header: "Sub Category",
   },
-  {
-    accessorKey: "description",
-    header: "Description",
-  },
+  // {
+  //   accessorKey: "description",
+  //   header: "Description",
+  // },
   {
     accessorKey: "section",
     header: "Section",
   },
-  {
-    accessorKey: "createdOn",
-    header: "Date of Creation",
-  },
+  // {
+  //   accessorKey: "createdOn",
+  //   header: "Date of Creation",
+  // },
 
     ]

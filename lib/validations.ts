@@ -18,7 +18,7 @@ export const RulingsSchema = z.object({
   title: z.string().min(4).max(130),
   category: z.string().min(4).max(100),
   subcategory: z.string().min(4).max(100),
-  link: z.string().min(100),
+  link: z.string().min(10),
   section: z.string().min(4).max(100),
 })
 

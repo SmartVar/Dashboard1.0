@@ -33,6 +33,7 @@ export const columns: ColumnDef<RulingDef>[] = [
     id: "actions",
     cell: ({ row }) => {
       const ruling = row.original
+      // console.log(ruling);
  
       return (
         <DropdownMenu>
@@ -49,7 +50,7 @@ export const columns: ColumnDef<RulingDef>[] = [
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
               onClick={() => navigator.clipboard.writeText(ruling._id)}
             >
-             <Link href={`/rulings/${ruling._id}`}
+             <Link href={ruling.link}
           className="flex items-center justify-start gap-1"  >View Content</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
@@ -72,29 +73,31 @@ export const columns: ColumnDef<RulingDef>[] = [
       )
     },
   },
-  {
-    accessorKey: "title",
-    header: "Title",
-  },
+ 
   {
     accessorKey: "category",
     header: "Category",
   },
   {
+    accessorKey: "title",
+    header: "Title",
+  },
+  
+  {
     accessorKey: "subcategory",
     header: "Sub Category",
   },
-  {
-    accessorKey: "link",
-    header: "Link",
-  },
+  // {
+  //   accessorKey: "link",
+  //   header: "Link",
+  // },
   {
     accessorKey: "section",
     header: "Section",
   },
-  {
-    accessorKey: "createdOn",
-    header: "Date of Creation",
-  },
+  // {
+  //   accessorKey: "createdOn",
+  //   header: "Date of Creation",
+  // },
 
     ]

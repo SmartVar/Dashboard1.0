@@ -13,7 +13,7 @@ const Page = async ({ params }: ParamsProps) => {
   const mongoUser = await getUserById({ userId })
   const result = await getRulingById({ rulingId: params.id})
   
-  console.log(result);
+  // console.log(result);
 
   return (
     <>

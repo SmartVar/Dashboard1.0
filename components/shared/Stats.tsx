@@ -32,11 +32,12 @@ interface Props {
   totalReservedPlots: number
   totalPendingCorr: number
   totalUsCorr: number
-  badges: BadgeCounts
+  // badges: BadgeCounts
+  badges: number
   reputation: number
 }
 
-const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots, totalReservedPlots, totalPendingCorr, totalUsCorr, badges, reputation }: Props) => {
+const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots, totalReservedPlots, totalPendingCorr, totalUsCorr,  reputation }: Props) => {
   return (
     
     <div className="mt-10">

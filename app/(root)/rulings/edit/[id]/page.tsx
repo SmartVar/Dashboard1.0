@@ -1,4 +1,5 @@
-import Records from '@/components/forms/Records'
+// import Records from '@/components/forms/Records'
+import Rulings from '@/components/forms/Rulings'
 import { getRulingById } from '@/lib/actions/ruling.action';
 import { getUserById } from '@/lib/actions/user.action';
 import { ParamsProps } from '@/types';
@@ -20,7 +21,7 @@ const Page = async ({ params }: ParamsProps) => {
         Edit Record</h1>
 
       <div className="mt-9">
-        <Records
+        <Rulings
           type="Edit"
           mongoUserId={mongoUser._id}
           rulingDetails={JSON.stringify(result)}

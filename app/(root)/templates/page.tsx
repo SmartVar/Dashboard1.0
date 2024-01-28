@@ -13,7 +13,7 @@ import {  NoFilters, TemplatePageFilters, NotingPageFilters, DraftingPageFilters
 import Link from "next/link";
 
 // import { useRouter, useSearchParams } from "next/navigation";
-import { DataTable }  from '@/components/shared/tables/data-table';
+import { DataTable }  from '@/components/shared/tables/template/data-table';
 import {  columns } from './columns'
 import { getTemplates } from '@/lib/actions/template.action';
 

@@ -118,6 +118,13 @@ export interface GetTemplatesParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetRulingsParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 
 export interface CreateQuestionParams {
   title: string;
@@ -135,6 +142,14 @@ export interface CreateTemplateParams {
   section: string;
   path: string;
 }
+export interface CreateRulingParams {
+  title: string;
+  category: string;
+  subcategory: string;
+  link: string;
+  section: string;
+  path: string;
+}
 
 export interface GetQuestionByIdParams {
   questionId: string;
@@ -142,6 +157,9 @@ export interface GetQuestionByIdParams {
 
 export interface GetTemplateByIdParams {
   templateId: string;
+}
+export interface GetRulingByIdParams {
+  rulingId: string;
 }
 
 export interface QuestionVoteParams {
@@ -160,6 +178,10 @@ export interface DeleteTemplateParams {
   templateId: string;
   path: string;
 }
+export interface DeleteRulingParams {
+  rulingId: string;
+  path: string;
+}
 
 export interface EditQuestionParams {
   questionId: string;
@@ -173,6 +195,15 @@ export interface EditTemplateParams {
   category: string;
   subcategory: string;
   description: string;
+  section: string;
+  path: string;
+}
+export interface EditRulingParams {
+  rulingId: string;
+  title: string;
+  category: string;
+  subcategory: string;
+  link: string;
   section: string;
   path: string;
 }

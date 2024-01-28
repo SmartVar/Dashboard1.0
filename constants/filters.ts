@@ -60,6 +60,30 @@ export const AnswerFilters = [
     { name: "Funds BH", value: "fundsbh" },
     { name: "Report BH", value: "reportbh" },
   ];
+
+  export const RulingPageFilters = [
+    { name: "Ruling", value: "ruling" },
+    { name: "SOP", value: "sop" },
+    { name: "Manual", value: "manual" },
+    ];
+  export const RulesPageFilters = [
+    { name: "All", value: "all" },
+    { name: "Dop Bldg", value: "dopbldg" },
+    { name: "Rented Bldg", value: "rentedbldg" },
+    { name: "SQ", value: "sq" },
+  ];
+  
+  export const SopPageFilters = [
+    { name: "All", value: "all" },
+    { name: "Post Office", value: "po" },
+    { name: "SQ", value: "sq" },
+      ];
+
+  export const ManualPageFilters = [
+    { name: "All", value: "all" },
+    { name: "Postal Manual", value: "postal" },
+    { name: "Postal Handbook", value: "handbook" },
+  ];
   
   export const NoFilters = [
     // { name: "All", value: "all" },

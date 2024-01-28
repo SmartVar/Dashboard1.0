@@ -11,6 +11,7 @@ export interface ITemplate extends Document {
 }
 
 const TemplateSchema = new Schema({
+  
   title: { type: String, required: true },
   category: { type: String, required: true },
   subcategory: { type: String, required: true},

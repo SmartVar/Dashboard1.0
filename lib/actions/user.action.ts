@@ -3,13 +3,13 @@
 import { FilterQuery } from "mongoose";
 import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose"
-import { CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
+import { GetUserByIdParams, CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
 import Drafting from "@/database/drafting.model"
 import Noting from "@/database/noting.model";
 import Briefhistory from "@/database/briefhistory.model";
-// import { BadgeCriteriaType } from "@/types";
-// import { assignBadges } from "../utils";
+import { BadgeCriteriaType } from "@/types";
+import { assignBadges } from "../utils";
 
 export async function getUserById(params: any) {
   try {
@@ -137,6 +137,64 @@ export async function getAllUsers(params: GetAllUsersParams) {
     throw error;
   }
 }
+
+
+export async function getUserInfo(params: any) {
+  try {
+    connectToDatabase();
+
+    const { userId } = params;
+
+    const user = await User.findOne({ clerkId: userId });
+
+    console.log(user);
+
+    // if(!user) {
+    //   throw new Error('User not found');
+    // }
+
+    // const totalQuestions = await Question.countDocuments({ author: user._id })
+    // const totalAnswers = await Answer.countDocuments({ author: user._id });
+    const totalDopBldg = 46;
+    const totalRentBldg = 226;
+    const totalSQ = 146;
+    const totalIQ = 8;
+    const totalVacantPlots = 20;
+    const totalReservedPlots = 45;
+    const totalPendingCorr = 15;
+    const totalUsCorr = 22;
+    const reputation = 100;
+
+    //     const criteria = [
+    //   { type: 'DOPBLDG_COUNT' as BadgeCriteriaType, count: totalDopBldg },
+    //   { type: 'RENTBLDG_COUNT' as BadgeCriteriaType, count: totalRentBldg },
+
+    // ]
+    //   // @ts-ignore
+
+    // const badgeCounts = assignBadges({ criteria });
+    const badgeCounts = 2;
+
+    return {
+      user,
+      totalDopBldg,
+      totalRentBldg,
+      totalSQ,
+    totalIQ,
+    totalVacantPlots,
+    totalReservedPlots,
+    totalPendingCorr,
+    totalUsCorr,
+      badgeCounts,
+      // reputation: user.reputation,
+      reputation,
+    }    
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 
 // export async function toggleSaveQuestion(params: ToggleSaveQuestionParams) {
 //   try {

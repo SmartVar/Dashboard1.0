@@ -37,7 +37,7 @@ interface Props {
   reputation: number
 }
 
-const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots, totalReservedPlots, totalPendingCorr, totalUsCorr,  reputation }: Props) => {
+const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots, totalReservedPlots, totalPendingCorr, totalUsCorr, badges,  reputation }: Props) => {
   return (
     
     <div className="mt-10">
@@ -45,6 +45,11 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
           imgUrl="/assets/icons/gold-medal.svg"
           value={reputation}
           title="Reputation"
+        />
+        <StatsCard 
+          imgUrl="/assets/icons/silver-medal.svg"
+          value={badges.SILVER}
+          title="Silver Badges"
         />
       {/* <h4 className="h3-semibold text-dark200_light900">Stats - {reputation}</h4> */}
 
@@ -111,11 +116,7 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
 
        
 
-        {/* <StatsCard 
-          imgUrl="/assets/icons/silver-medal.svg"
-          value={badges.SILVER}
-          title="Silver Badges"
-        />
+        {/* 
 
         <StatsCard 
           imgUrl="/assets/icons/bronze-medal.svg"

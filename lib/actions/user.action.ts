@@ -3,13 +3,13 @@
 import { FilterQuery } from "mongoose";
 import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose"
-import { GetUserByIdParams, CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
+import { CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
 import Drafting from "@/database/drafting.model"
 import Noting from "@/database/noting.model";
 import Briefhistory from "@/database/briefhistory.model";
-import { BadgeCriteriaType } from "@/types";
-import { assignBadges } from "../utils";
+// import { BadgeCriteriaType } from "@/types";
+// import { assignBadges } from "../utils";
 
 export async function getUserById(params: any) {
   try {

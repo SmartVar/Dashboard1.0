@@ -13,6 +13,13 @@ export const TemplatesSchema = z.object({
   description: z.string().min(100),
   section: z.string().min(4).max(100),
 })
+export const PendencySchema = z.object({
+  title: z.string().min(4).max(130),
+  category: z.string().min(4).max(100),
+  subcategory: z.string().min(4).max(100),
+  description: z.string().min(100),
+  section: z.string().min(4).max(100),
+})
 
 export const RulingsSchema = z.object({
   title: z.string().min(4).max(130),

@@ -1,4 +1,23 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = nextConfig
+const nextConfig = {
+    experimental: {
+      serverActions: true,
+      mdxRs: true,
+      serverComponentsExternalPackages: ['mongoose']
+    },
+    images: {
+        remotePatterns: [
+          {
+            
+            protocol: 'https',
+            hostname: 'img.clerk.com',
+            port: '',
+            pathname: '/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yYXRvcktFUGlORVpjWnpjSkdVS1dUNEJRSTgiLCJyaWQiOiJ1c2VyXzJi**',
+          
+    },
+        ],
+      },
+  }
+  
+  module.exports = nextConfig
+  

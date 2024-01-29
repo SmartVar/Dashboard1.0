@@ -45,20 +45,25 @@ export const AnswerFilters = [
     { name: "Funds", value: "funds" },
     { name: "Reports", value: "reports" },
     { name: "Forwardings", value: "forwardings" },
+    { name: "Proposals", value: "proposals" },
     { name: "Office Note", value: "officenote" },
-    { name: "IR & Audits", value: "iraudits" },
-  ];
+    { name: "Others", value: "others" },
+    ];
   
   export const DraftingPageFilters = [
     { name: "All", value: "all" },
-    { name: "Funds Draft", value: "fundsdraft" },
-    { name: "Report Draft", value: "reportdraft" },
-      ];
+    { name: "Funds", value: "funds" },
+    { name: "FRACs", value: "fracs" },
+    { name: "RTI", value: "rti" },
+    { name: "Others", value: "others" },
+    ];
 
   export const BriefHistoryPageFilters = [
     { name: "All", value: "all" },
-    { name: "Funds BH", value: "fundsbh" },
-    { name: "Report BH", value: "reportbh" },
+    { name: "Dop Bldg", value: "dopbldg" },
+    { name: "Rented Bldg", value: "rentedbldg" },
+    { name: "Plots", value: "plots" },
+    { name: "Others", value: "others" },
   ];
 
   export const RulingPageFilters = [
@@ -70,7 +75,9 @@ export const AnswerFilters = [
     { name: "All", value: "all" },
     { name: "Dop Bldg", value: "dopbldg" },
     { name: "Rented Bldg", value: "rentedbldg" },
-    { name: "SQ", value: "sq" },
+    { name: "Plots", value: "plots" },
+    { name: "SQ/IQ", value: "sqiq" },
+    { name: "Others", value: "others" },
   ];
   
   export const SopPageFilters = [
@@ -83,6 +90,7 @@ export const AnswerFilters = [
     { name: "All", value: "all" },
     { name: "Postal Manual", value: "postal" },
     { name: "Postal Handbook", value: "handbook" },
+    { name: "Others", value: "others" },
   ];
   
   export const NoFilters = [
@@ -91,10 +99,10 @@ export const AnswerFilters = [
     ];
   
   export const GlobalSearchFilters = [
-    { name: "Question", value: "question" },
-    { name: "Answer", value: "answer" },
-    { name: "User", value: "user" },
-    { name: "Tag", value: "tag" },
+    { name: "Templates", value: "templates" },
+    { name: "Rulings", value: "rulings" },
+    { name: "Pendency", value: "pendency" },
+    
   ];
   
   export const DivisionFilters = [

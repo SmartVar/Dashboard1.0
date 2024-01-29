@@ -14,9 +14,9 @@ const GlobalResult = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState([
-    { type: 'question', id: 1, title: 'Next.js question'},
-    { type: 'tag', id: 1, title: 'Nextjs'},
-    { type: 'user', id: 1, title: 'jsm'},
+    { type: 'templates', id: 1, title: 'templates'},
+    { type: 'rulings', id: 1, title: 'rulings'},
+    { type: 'pendency', id: 1, title: 'pendency'},
   ]);
 
   const global = searchParams.get('global');
@@ -46,14 +46,14 @@ const GlobalResult = () => {
 
   const renderLink = (type: string, id: string) => {
     switch (type) {
-      case 'question':
-          return `/question/${id}`;
-      case 'answer':
-          return `/question/${id}`;
-      case 'user':
-          return `/profile/${id}`;
-      case 'tag':
-          return `/tags/${id}`;
+      case 'templates':
+          return `/templates/${id}`;
+      case 'rulings':
+          return `/rulings/${id}`;
+      case 'pendency':
+          return `/pendency/${id}`;
+      // case 'tag':
+      //     return `/tags/${id}`;
       default:
         return '/'
     }

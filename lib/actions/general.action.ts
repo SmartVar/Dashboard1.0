@@ -1,13 +1,14 @@
 "use server"
 
-import Question from "@/database/drafting.model";
+// @ts-nocheck
+import Template from "@/database/template.model";
 import { connectToDatabase } from "../mongoose";
 import { SearchParams } from "./shared.types";
 import User from "@/database/user.model";
-import Answer from "@/database/briefhistory.model";
-import Tag from "@/database/noting.model";
+import Ruling from "@/database/ruling.model";
+import Pendency from "@/database/pendency.model";
 
-const SearchableTypes = ["question", "answer", "user", "tag"];
+const SearchableTypes = ["template", "ruling", "pendency"];
 
 export async function globalSearch(params: SearchParams) {
   try {
@@ -19,10 +20,10 @@ export async function globalSearch(params: SearchParams) {
     let results = [];
 
     const modelsAndTypes = [
-      { model: Question, searchField: 'title', type: 'question'},
+      { model: Template, searchField: 'title', type: 'template'},
       { model: User, searchField: 'name', type: 'user'},
-      { model: Answer, searchField: 'content', type: 'answer'},
-      { model: Tag, searchField: 'name', type: 'tag'},
+      { model: Ruling, searchField: 'title', type: 'ruling'},
+      { model: Pendency, searchField: 'title', type: 'pendency'},
     ]
 
     const typeLower = type?.toLowerCase();
@@ -37,14 +38,14 @@ export async function globalSearch(params: SearchParams) {
 
           results.push(
             ...queryResults.map((item) => ({
-              title: type === 'answer' 
-              ? `Answers containing ${query}` 
+              title: type === 'template' 
+              ? `Template containing ${query}` 
               : item[searchField],
               type,
               id: type === 'user'
                 ? item.clerkId
-                : type==='answer'
-                  ? item.question 
+                : type==='ruling'
+                  ? item.template 
                   : item._id
               }))
           )
@@ -64,15 +65,15 @@ export async function globalSearch(params: SearchParams) {
 
       results = queryResults.map((item) => ({
         title:
-          type === "answer"
-            ? `Answers containing ${query}`
+          type === "template"
+            ? `Template containing ${query}`
             : item[modelInfo.searchField],
         type,
         id:
           type === "user"
             ? item.clerkId
-            : type === "answer"
-            ? item.question
+            : type === "template"
+            ? item.ruling
             : item._id,
       }));
     }

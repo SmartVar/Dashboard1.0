@@ -19,8 +19,8 @@ const Page = async ({ params, searchParams}: URLProps) => {
       <div className="flex flex-col-reverse items-start justify-between sm:flex-row">
         <div className="flex flex-col items-start gap-4 lg:flex-row">
           <Image 
-            // src={userInfo?.user.picture}
-            src="/assets/icons/avtar.svg"
+            src={userInfo?.user.picture}
+            // src="/assets/icons/avtar.svg"
             alt="profile picture"
             width={140}
             height={140}
@@ -32,7 +32,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
             <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p>
 
             <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
-              {userInfo.user.portfolioWebsite && (
+              {/* {userInfo.user.portfolioWebsite && (
                 <DashboardLink 
                   imgUrl="/assets/icons/link.svg"
                   href={userInfo.user.portfolioWebsite}
@@ -45,7 +45,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
                   imgUrl="/assets/icons/location.svg"
                   title={userInfo.user.location}
                 />
-              )}
+              )} */}
 
                 <DashboardLink 
                   imgUrl="/assets/icons/calendar.svg"
@@ -53,11 +53,11 @@ const Page = async ({ params, searchParams}: URLProps) => {
                 />
             </div>
 
-            {userInfo.user.bio && (
+            {/* {userInfo.user.bio && (
               <p className="paragraph-regular text-dark400_light800 mt-8">
                 {userInfo.user.bio}
               </p>
-            )}
+            )} */}
           </div>
         </div>
 

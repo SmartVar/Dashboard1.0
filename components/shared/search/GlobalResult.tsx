@@ -17,6 +17,7 @@ const GlobalResult = () => {
     { type: 'templates', id: 1, title: 'templates'},
     { type: 'rulings', id: 1, title: 'rulings'},
     { type: 'pendency', id: 1, title: 'pendency'},
+    { type: 'user', id: 1, title: 'user'},
   ]);
 
   const global = searchParams.get('global');
@@ -52,8 +53,8 @@ const GlobalResult = () => {
           return `/rulings/${id}`;
       case 'pendency':
           return `/pendency/${id}`;
-      // case 'tag':
-      //     return `/tags/${id}`;
+      case 'user':
+          return `/user/${id}`;
       default:
         return '/'
     }

@@ -108,7 +108,7 @@ const Records = ({ type, mongoUserId, templateDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Be specific and imagine you&apos;re asking a question to another person.
+              The title should be same as filter Name i.e. Funds/Proposals/Plots/Forwardings etc.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -126,7 +126,7 @@ const Records = ({ type, mongoUserId, templateDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Be specific and imagine you&apos;re asking a question to another person.
+              The category should be Noting/Drafting/Brief History.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -144,7 +144,7 @@ const Records = ({ type, mongoUserId, templateDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Be specific and imagine you&apos;re asking a question to another person.
+              The sub-category should be specific, unique and related to title.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -185,7 +185,7 @@ const Records = ({ type, mongoUserId, templateDetails }: Props) => {
             />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Introduce the problem and expand on what you put in the title. Minimum 20 characters.
+              The description should be your template main content i.e. Noting/Drafting/Brieh History.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -203,7 +203,7 @@ const Records = ({ type, mongoUserId, templateDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Be specific and imagine you&apos;re asking a question to another person.
+              The section should be your branch where you work i.e. Bldg/Staff/Inv/PG etc.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>

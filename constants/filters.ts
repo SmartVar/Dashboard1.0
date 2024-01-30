@@ -55,6 +55,8 @@ export const AnswerFilters = [
     { name: "Funds", value: "funds" },
     { name: "FRACs", value: "fracs" },
     { name: "RTI", value: "rti" },
+    { name: "Reports", value: "reports" },
+    { name: "DO", value: "do" },
     { name: "Others", value: "others" },
     ];
 

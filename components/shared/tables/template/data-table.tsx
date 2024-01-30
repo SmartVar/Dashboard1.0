@@ -89,7 +89,7 @@ export function DataTable<TData, TValue>({
     <div className="overflow-auto rounded-lg border shadow">
    
       <Table>
-        <TableHeader className='base-bold text-light400_light500'>
+        <TableHeader className='paragraph-semibold text-dark300_light700'>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
@@ -112,7 +112,7 @@ export function DataTable<TData, TValue>({
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
-                className="base-bold text-light400_light500"
+                className="paragraph-semibold text-dark300_light700"
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
@@ -124,8 +124,8 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))
           ) : (
-            <TableRow className="base-bold text-light400_light500">
-              <TableCell colSpan={columns.length} className="h-24 text-center">
+            <TableRow className="paragraph-semibold text-dark300_light700">
+              <TableCell colSpan={columns.length} className="h-12 text-center">
                 No results.
               </TableCell>
             </TableRow>

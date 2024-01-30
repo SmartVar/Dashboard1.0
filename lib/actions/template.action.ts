@@ -42,6 +42,15 @@ if (filter=== 'noting')
       case "forwardings":
         sortOptions = { title: 'Forwardings' }
         break;
+      case "Proposals":
+        sortOptions = { title: 'Proposals' }
+        break;
+      case "officenote":
+        sortOptions = { title: 'Office Note' }
+        break;
+      case "others":
+        sortOptions = { title: 'Others' }
+        break;
     
       default:
         break;
@@ -53,12 +62,24 @@ if (filter=== 'noting')
     {
       switch (pagefilter) 
       {
-      case "fundsdraft":
-        sortOptions = { title: 'Funds Draft' }
-        break;
-      case "reportdraft":
-        sortOptions = { title: 'Report Draft' }
-        break;
+        case "funds":
+          sortOptions = { title: 'Funds' }
+          break;
+        case "fracs":
+          sortOptions = { title: 'FRAC' }
+          break;
+        case "rti":
+          sortOptions = { title: 'RTI' }
+          break;
+        case "reports":
+          sortOptions = { title: 'Reports' }
+          break;
+        case "do":
+          sortOptions = { title: 'DO' }
+          break;
+        case "others":
+          sortOptions = { title: 'Others' }
+          break;
    
       default:
         break;
@@ -70,13 +91,19 @@ if (filter=== 'noting')
   {
     switch (pagefilter) 
     {
-    case "fundsbh":
-      sortOptions = { title: 'Funds BH' }
+    case "dopbldg":
+      sortOptions = { title: 'Dop Bldg' }
       break;
-    case "reportsbh":
-      sortOptions = { title: 'Reports BH' }
+    case "rentedbldg":
+      sortOptions = { title: 'Rented Bldg' }
       break;
-    
+    case "plots":
+      sortOptions = { title: 'Plots' }
+      break;
+    case "others":
+      sortOptions = { title: 'Others' }
+      break;
+        
     default:
       break;
   }

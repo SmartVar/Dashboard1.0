@@ -12,7 +12,7 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'img.clerk.com',
             port: '',
-            pathname: '/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yYXRvcktFUGlORVpjWnpjSkdVS1dUNEJRSTgiLCJyaWQiOiJ1c2VyXzJi**',
+            pathname: '/eyJ0eXBlIjoi**',
           
     },
         ],

@@ -8,7 +8,7 @@ import User from "@/database/user.model";
 import Ruling from "@/database/ruling.model";
 import Pendency from "@/database/pendency.model";
 
-const SearchableTypes = ["template", "ruling", "pendency"];
+const SearchableTypes = ["template", "ruling", "pendency", "user"];
 
 export async function globalSearch(params: SearchParams) {
   try {
@@ -44,8 +44,8 @@ export async function globalSearch(params: SearchParams) {
               type,
               id: type === 'user'
                 ? item.clerkId
-                : type==='ruling'
-                  ? item.template 
+                : type==='template'
+                  ? item.template
                   : item._id
               }))
           )
@@ -65,14 +65,14 @@ export async function globalSearch(params: SearchParams) {
 
       results = queryResults.map((item) => ({
         title:
-          type === "template"
-            ? `Template containing ${query}`
+          type === "ruling"
+            ? `Ruling containing ${query}`
             : item[modelInfo.searchField],
         type,
         id:
           type === "user"
             ? item.clerkId
-            : type === "template"
+            : type === "ruling"
             ? item.ruling
             : item._id,
       }));

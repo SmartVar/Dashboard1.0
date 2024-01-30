@@ -16,6 +16,7 @@ import Link from "next/link";
 import { DataTable }  from '@/components/shared/tables/template/data-table';
 import {  columns } from './columns'
 import { getTemplates } from '@/lib/actions/template.action';
+import { Pagination } from '@tanstack/react-table';
 
 
 const Page = async ({ params, searchParams}: URLProps) => {
@@ -58,14 +59,14 @@ console.log(data)
         route="/"
         iconPosition="left"
         imgSrc="/assets/icons/search.svg"
-        placeholder="Search for noting"
+        placeholder="Search for Title or Category"
         otherClasses="flex-1"
       />
 
       <Filter
         filters={TemplatePageFilters}
         otherClasses="min-h-[56px] sm:min-w-[170px]"
-        // containerClasses="hidden max-md:flex"
+        containerClasses="hidden max-md:flex"
       />
     </div>
     <HomeFilters 
@@ -76,9 +77,12 @@ console.log(data)
     <div className="mt-10 flex w-full flex-col gap-6 overflow-auto shadow">
     <DataTable columns={columns} data={data} />
       </div>
-      <div className="mt-10">
-        Pagination
-      </div>
+      {/* <div className="mt-10">
+        <Pagination 
+          pageNumber={searchParams?.page ? +searchParams.page : 1}
+          isNext={data.isNext}
+        />
+      </div> */}
     </>
   )
 

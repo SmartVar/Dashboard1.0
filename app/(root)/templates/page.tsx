@@ -16,7 +16,7 @@ import Link from "next/link";
 import { DataTable }  from '@/components/shared/tables/template/data-table';
 import {  columns } from './columns'
 import { getTemplates } from '@/lib/actions/template.action';
-import { Pagination } from '@tanstack/react-table';
+// import { Pagination } from '@tanstack/react-table';
 
 
 const Page = async ({ params, searchParams}: URLProps) => {

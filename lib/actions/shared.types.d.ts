@@ -118,6 +118,13 @@ export interface GetTemplatesParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetDopBldgParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 export interface GetRulingsParams {
   page?: number;
   pageSize?: number;
@@ -142,6 +149,23 @@ export interface CreateTemplateParams {
   section: string;
   path: string;
 }
+export interface CreateDopBldgParams {
+  division: string;
+  po: string;
+  classes: string;
+  location: string;
+  purchase_year: string;
+  soa: string;
+  paq: string;
+  area: string;
+  builtup_area: string;
+  open_space: string;
+  floors: string;
+  value: string;
+  year: string;
+  expenditure: string;
+  path: string;
+}
 export interface CreateRulingParams {
   title: string;
   category: string;
@@ -157,6 +181,9 @@ export interface GetQuestionByIdParams {
 
 export interface GetTemplateByIdParams {
   templateId: string;
+}
+export interface GetDopBldgByIdParams {
+  departmentalbldgId: string;
 }
 export interface GetRulingByIdParams {
   rulingId: string;
@@ -178,6 +205,10 @@ export interface DeleteTemplateParams {
   templateId: string;
   path: string;
 }
+export interface DeleteDopBldgParams {
+  departmentalbldgId: string;
+  path: string;
+}
 export interface DeleteRulingParams {
   rulingId: string;
   path: string;
@@ -196,6 +227,24 @@ export interface EditTemplateParams {
   subcategory: string;
   description: string;
   section: string;
+  path: string;
+}
+export interface EditDopBldgParams {
+  departmentalbldgId: string;
+  division: string;
+  po: string;
+  classes: string;
+  location: string;
+  purchase_year: string;
+  soa: string;
+  paq: string;
+  area: string;
+  builtup_area: string;
+  open_space: string;
+  floors: string;
+  value: string;
+  year: string;
+  expenditure: string;
   path: string;
 }
 export interface EditRulingParams {

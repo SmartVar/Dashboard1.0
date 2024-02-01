@@ -125,6 +125,13 @@ export interface GetDopBldgParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetRentBldgParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 export interface GetRulingsParams {
   page?: number;
   pageSize?: number;
@@ -166,6 +173,19 @@ export interface CreateDopBldgParams {
   expenditure: string;
   path: string;
 }
+export interface CreateRentBldgParams {
+  division: string;
+  po: string;
+  class_po: string;
+  date_po_function: string;
+  class_city: string;
+  soa: string;
+  area: string;
+  paq: string;
+  lease_period: string;
+  rent: string;
+  path: string;
+}
 export interface CreateRulingParams {
   title: string;
   category: string;
@@ -184,6 +204,9 @@ export interface GetTemplateByIdParams {
 }
 export interface GetDopBldgByIdParams {
   departmentalbldgId: string;
+}
+export interface GetRentBldgByIdParams {
+  rentbldgId: string;
 }
 export interface GetRulingByIdParams {
   rulingId: string;
@@ -207,6 +230,10 @@ export interface DeleteTemplateParams {
 }
 export interface DeleteDopBldgParams {
   departmentalbldgId: string;
+  path: string;
+}
+export interface DeleteRentBldgParams {
+  rentbldgId: string;
   path: string;
 }
 export interface DeleteRulingParams {
@@ -245,6 +272,20 @@ export interface EditDopBldgParams {
   value: string;
   year: string;
   expenditure: string;
+  path: string;
+}
+export interface EditRentBldgParams {
+  rentbldgId: string;
+  division: string;
+  po: string;
+  class_po: string;
+  date_po_function: string;
+  class_city: string;
+  soa: string;
+  area: string;
+  paq: string;
+  lease_period: string;
+  rent: string;
   path: string;
 }
 export interface EditRulingParams {

@@ -1,5 +1,5 @@
-import Dopform from '@/components/forms/Dopform'
-import { getDopBldgById } from '@/lib/actions/departmentalbldg.action';
+import Rentform from '@/components/forms/Rentform'
+import { getRentBldgById } from '@/lib/actions/rentedbldg.action';
 import { getUserById } from '@/lib/actions/user.action';
 import { ParamsProps } from '@/types';
 import { auth } from '@clerk/nextjs'
@@ -10,7 +10,7 @@ const Page = async ({ params }: ParamsProps) => {
   if(!userId) return null;
 
   const mongoUser = await getUserById({ userId })
-  const result = await getDopBldgById({ departmentalbldgId: params.id})
+  const result = await getRentBldgById({ rentbldgId: params.id})
   
   // console.log(result);
 
@@ -20,10 +20,10 @@ const Page = async ({ params }: ParamsProps) => {
         Edit Record</h1>
 
       <div className="mt-9">
-        <Dopform
+        <Rentform
           type="Edit"
           mongoUserId={mongoUser._id}
-          dopDetails={JSON.stringify(result)}
+          rentDetails={JSON.stringify(result)}
         />
       </div>
     </>

@@ -1,0 +1,229 @@
+/* eslint-disable camelcase */
+// @ts-ignore
+"use server"
+import User from "@/database/user.model";
+import Rentedbldg from "@/database/rentedbldg.model";
+import { connectToDatabase } from "../mongoose"
+import { DeleteRentBldgParams,EditRentBldgParams, GetRentBldgByIdParams,GetRentBldgParams, CreateRentBldgParams } from "./shared.types";
+import { revalidatePath } from "next/cache";
+import { RentBldgDef } from "@/app/(root)/rentbldg/columns";
+import { FilterQuery } from "mongoose";
+
+export async function getRentBldg(params: GetRentBldgParams): Promise<RentBldgDef[]> {
+  try {
+    connectToDatabase();
+    const { searchQuery } = params;
+
+    // Calculcate the number of posts to skip based on the page number and page size
+    // const skipAmount = (page - 1) * pageSize;
+
+    const query: FilterQuery<typeof Rentedbldg> = {};
+
+    if(searchQuery) {
+      query.$or = [
+        { division: { $regex: new RegExp(searchQuery, "i")}},
+        { po: { $regex: new RegExp(searchQuery, "i")}},
+        
+        
+      ]
+    }
+    
+//     let sortOptions = {};
+
+// if (filter=== 'division') 
+// {
+//   switch (pagefilter) 
+//   {
+//       case "navimumbai":
+//         sortOptions = { title: 'Funds' }
+//         break;
+//       case "reports":
+//         sortOptions = { title: 'Reports' }
+//         break;
+//       case "forwardings":
+//         sortOptions = { title: 'Forwardings' }
+//         break;
+//       case "Proposals":
+//         sortOptions = { title: 'Proposals' }
+//         break;
+//       case "officenote":
+//         sortOptions = { title: 'Office Note' }
+//         break;
+//       case "others":
+//         sortOptions = { title: 'Others' }
+//         break;
+    
+//       default:
+//         break;
+//     }
+//   }
+//    else 
+//    {
+//     if (filter==='drafting') 
+//     {
+//       switch (pagefilter) 
+//       {
+//         case "funds":
+//           sortOptions = { title: 'Funds' }
+//           break;
+//         case "fracs":
+//           sortOptions = { title: 'FRAC' }
+//           break;
+//         case "rti":
+//           sortOptions = { title: 'RTI' }
+//           break;
+//         case "reports":
+//           sortOptions = { title: 'Reports' }
+//           break;
+//         case "do":
+//           sortOptions = { title: 'DO' }
+//           break;
+//         case "others":
+//           sortOptions = { title: 'Others' }
+//           break;
+   
+//       default:
+//         break;
+//       }
+//     }
+//   else 
+// {
+//   if (filter==='briefhistory') 
+//   {
+//     switch (pagefilter) 
+//     {
+//     case "dopbldg":
+//       sortOptions = { title: 'Dop Bldg' }
+//       break;
+//     case "rentedbldg":
+//       sortOptions = { title: 'Rented Bldg' }
+//       break;
+//     case "plots":
+//       sortOptions = { title: 'Plots' }
+//       break;
+//     case "others":
+//       sortOptions = { title: 'Others' }
+//       break;
+        
+//     default:
+//       break;
+//   }
+//   }
+//   else {
+//     console.log('No selection of filter')
+//   }
+// }
+//    }
+
+    const rentbldg = await Rentedbldg.find(query)
+    // .find(sortOptions)
+    .populate({ path: 'author', model: User });
+    
+
+console.log(rentbldg);
+// @ts-ignore
+    return rentbldg;
+
+  } catch (error) {
+    console.log(error)
+    throw error;
+  }
+}
+  
+export async function createRentBldg(params: CreateRentBldgParams) {
+  try {
+    connectToDatabase();
+
+    // eslint-disable-next-line camelcase
+    const { division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, path } = params;
+
+    // Create the question
+    const rentbldg = await Rentedbldg.create({
+      division,
+      po,
+      class_po,
+      date_po_function,
+      // eslint-disable-next-line camelcase
+      class_city,
+      soa,
+      area,
+      paq,
+      lease_period,
+      rent
+    });
+
+       // Create an interaction record for the user's ask_question action
+    
+    // Increment author's reputation by +5 for creating a question
+
+    // revalidate path inorder to display question wihtout reloading
+       
+    revalidatePath(path)
+    return rentbldg ;
+
+  } catch (error) {
+    
+  }
+}
+
+export async function getRentBldgById(params: GetRentBldgByIdParams) {
+  try {
+    connectToDatabase();
+
+    const { rentbldgId } = params;
+
+    const rentbldg = await Rentedbldg.findById(rentbldgId)
+      // console.log(template)
+      return rentbldg;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function editRentBldg(params: EditRentBldgParams) {
+  try {
+    connectToDatabase();
+
+    const { rentbldgId, division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, path  } = params;
+
+    const rentbldg = await Rentedbldg.findById(rentbldgId).populate("author");
+
+    if(!rentbldg) {
+      throw new Error("Record not found");
+    }
+    
+      rentbldg.division = division;
+      rentbldg.po = po;
+      rentbldg.class_po = class_po;
+      rentbldg.date_po_function = date_po_function;
+      // eslint-disable-next-line camelcase
+      rentbldg.class_city = class_city;
+      rentbldg.soa = soa;
+      rentbldg.area = area;
+      rentbldg.paq = paq;
+      rentbldg.lease_period = lease_period;
+      rentbldg.rent = rent;
+
+    await rentbldg.save();
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteRentBldg(params: DeleteRentBldgParams) {
+  try {
+    connectToDatabase();
+
+    const { rentbldgId, path } = params;
+
+    await Rentedbldg.deleteOne({ _id: rentbldgId });
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+

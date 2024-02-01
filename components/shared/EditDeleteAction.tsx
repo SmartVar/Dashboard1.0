@@ -8,14 +8,17 @@ import { usePathname, useRouter } from "next/navigation";
 interface Props {
   type: string;
   itemId: string;
+  url: string;
 }
 
-const EditDeleteAction = ({ type, itemId }: Props) => {
+const EditDeleteAction = ({ type, itemId, url }: Props) => {
   const pathname = usePathname();
   const router = useRouter();
 
+  console.log(url);
   const handleEdit = () => {
-    router.push(`/templates/edit/${JSON.parse(itemId)}`)
+    // router.push(`/templates/edit/${JSON.parse(itemId)}`)
+    router.push(`${url}/edit/${JSON.parse(itemId)}`)
   };
 
   const handleDelete = async () => {

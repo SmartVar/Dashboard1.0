@@ -60,12 +60,12 @@ export const columns: ColumnDef<TemplateDef>[] = [
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
             onClick={() => navigator.clipboard.writeText(template._id)}>
-            <EditDeleteAction type='Edit' itemId={JSON.stringify(template._id)} />
+            <EditDeleteAction type='Edit' itemId={JSON.stringify(template._id)} url="/templates" />
             Edit Row</DropdownMenuItem>
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
             onClick={() => navigator.clipboard.writeText(template._id)}>
-            <EditDeleteAction type='Delete' itemId={JSON.stringify(template._id)} />
+            <EditDeleteAction type='Delete' itemId={JSON.stringify(template._id)} url="/templates"/>
            Delete Row</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

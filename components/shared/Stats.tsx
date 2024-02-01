@@ -43,6 +43,7 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
     
     <>
     <div className="mt-10">
+    <div className="mt-5 grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-4">
       <StatsCard
         imgUrl="/assets/icons/gold-medal.svg"
         value={reputation}
@@ -53,10 +54,11 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
         title="Silver Badges" /> */}
       {/* <h4 className="h3-semibold text-dark200_light900">Stats - {reputation}</h4> */}
 
-      <div className="mt-5 grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-4">
+     
 
-        <Link href="https://docs.google.com/spreadsheets/d/1Zriv-5X2Y5WW3zSa0BcNdG0dwuLb1sjZ/edit?usp=drive_link&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-end max-sm:w-full">
+        
           <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
+          <Link href="/dopbldg" className="flex justify-start max-sm:w-full">
             <div>
               <p className="paragraph-semibold text-dark200_light900">
 
@@ -65,26 +67,29 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
               </p>
               <p className="body-medium text-dark400_light700">Dop Bldg</p>
             </div>
+            </Link>
+            <Link href="/rentbldg" className="flex justify-start max-sm:w-full">
             <div>
               <p className="paragraph-semibold text-dark200_light900">
                 {formatAndDivideNumber(totalRentBldg)}
               </p>
               <p className="body-medium text-dark400_light700">Rented Bldg</p>
             </div>
+            </Link>
           </div>
-        </Link>
         
         
-        <Link href="https://docs.google.com/spreadsheets/d/1yu6KyEb5AKWT9dqwxngUgdYhFnWULncR/edit?usp=sharing&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-end max-sm:w-full">
+        
+        <Link href="https://docs.google.com/spreadsheets/d/1yu6KyEb5AKWT9dqwxngUgdYhFnWULncR/edit?usp=sharing&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-start max-sm:w-full">
         <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
           <div>
-            <p className="paragraph-semibold text-dark200_light900">
+            <p className="paragraph-semibold text-dark200_light900 flex justify-start">
               {formatAndDivideNumber(totalSQ)}
             </p>
             <p className="body-medium text-dark400_light700">Staff Quarters</p>
           </div>
           <div>
-            <p className="paragraph-semibold text-dark200_light900">
+            <p className="paragraph-semibold text-dark200_light900 flex justify-start">
               {formatAndDivideNumber(totalIQ)}
             </p>
             <p className="body-medium text-dark400_light700">Inspection Quarters</p>
@@ -95,16 +100,16 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
 
       
 
-      <Link href="https://docs.google.com/spreadsheets/d/1ggaOHN7W4SHPxB4O4f0WxOxFtOqGqvLy/edit?usp=drive_link&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-end max-sm:w-full">
+      <Link href="https://docs.google.com/spreadsheets/d/1ggaOHN7W4SHPxB4O4f0WxOxFtOqGqvLy/edit?usp=drive_link&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-start max-sm:w-full">
       <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
         <div>
-          <p className="paragraph-semibold text-dark200_light900">
+          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
             {formatAndDivideNumber(totalVacantPlots)}
           </p>
           <p className="body-medium text-dark400_light700">Vacant Plots</p>
         </div>
         <div>
-          <p className="paragraph-semibold text-dark200_light900">
+          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
             {formatAndDivideNumber(totalReservedPlots)}
           </p>
           <p className="body-medium text-dark400_light700">Reserved Plots</p>
@@ -115,13 +120,13 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
 
     <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
         <div>
-          <p className="paragraph-semibold text-dark200_light900">
+          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
             {formatAndDivideNumber(totalPendingCorr)}
           </p>
           <p className="body-medium text-dark400_light700">Pending Corr</p>
         </div>
         <div>
-          <p className="paragraph-semibold text-dark200_light900">
+          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
             {formatAndDivideNumber(totalUsCorr)}
           </p>
           <p className="body-medium text-dark400_light700">US Corr</p>

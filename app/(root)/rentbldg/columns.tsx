@@ -18,30 +18,26 @@ import EditDeleteAction from "../../../components/shared/EditDeleteAction";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type DopBldgDef = {
+export type RentBldgDef = {
     _id: string;
     division: string;
     po: string;
-    class: string;
-    location: string;
-    purchase_year: string;
-    soa: number;
+    class_po: string;
+    date_po_function: string;
+    class_city: string;
+    soa: string;
+    area: string;
     paq: string;
-    area: number;
-    builtup_area: number;
-    open_space: number;
-    floors: string;
-    value: number;
-    year: string;
-    expenditure: number;
+    lease_period: string;
+    rent: string;
     createdOn: Date;
 }
 
-export const columns: ColumnDef<DopBldgDef>[] = [
+export const columns: ColumnDef<RentBldgDef>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const departmentalbldg = row.original
+      const rentbldg = row.original
  
       return (
         <DropdownMenu>
@@ -56,9 +52,9 @@ export const columns: ColumnDef<DopBldgDef>[] = [
               Actions</DropdownMenuLabel>
             <DropdownMenuItem
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
-              onClick={() => navigator.clipboard.writeText(departmentalbldg._id)}
+              onClick={() => navigator.clipboard.writeText(rentbldg._id)}
             >
-             <Link href={`/dopbldg/${departmentalbldg._id}`}
+             <Link href={`/rentbldg/${rentbldg._id}`}
           className="flex items-center justify-start gap-1"  >View Content</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
@@ -68,13 +64,13 @@ export const columns: ColumnDef<DopBldgDef>[] = [
           className="flex items-center justify-start gap-1">Edit Row</Link></DropdownMenuItem> */}
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
-            onClick={() => navigator.clipboard.writeText(departmentalbldg._id)}>
-            <EditDeleteAction type='Edit' itemId={JSON.stringify(departmentalbldg._id)} url="/dopbldg" />
+            onClick={() => navigator.clipboard.writeText(rentbldg._id)}>
+            <EditDeleteAction type='Edit' itemId={JSON.stringify(rentbldg._id)} url="/rentbldg"/>
             Edit Row</DropdownMenuItem>
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
-            onClick={() => navigator.clipboard.writeText(departmentalbldg._id)}>
-            <EditDeleteAction type='Delete' itemId={JSON.stringify(departmentalbldg._id)} url="/dopbldg" />
+            onClick={() => navigator.clipboard.writeText(rentbldg._id)}>
+            <EditDeleteAction type='Delete' itemId={JSON.stringify(rentbldg._id)} url="/rentbldg"/>
            Delete Row</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -91,20 +87,20 @@ export const columns: ColumnDef<DopBldgDef>[] = [
     header: "Post Office",
   },
   {
-    accessorKey: "class",
-    header: "Class",
+    accessorKey: "class_po",
+    header: "Class of PO",
   },
   // {
   //   accessorKey: "description",
   //   header: "Description",
   // },
   {
-    accessorKey: "location",
-    header: "Rural/Urban",
+    accessorKey: "date_po_function",
+    header: "Date of PO Functioning",
   },
   {
-    accessorKey: "purchase_year",
-    header: "Purchase Year",
+    accessorKey: "class_city",
+    header: "Class of City",
   },
   {
     accessorKey: "soa",
@@ -119,32 +115,12 @@ export const columns: ColumnDef<DopBldgDef>[] = [
     header: "Area of PO (in Sq. mtr)",
   },
   {
-    accessorKey: "builtup_area",
-    header: "Builtup Area of PO (in Sq. mtr)",
+    accessorKey: "lease_period",
+    header: "Latest Lease Period",
   },
   {
-    accessorKey: "open_space",
-    header: "Open Space Area (in Sq. mtr)",
+    accessorKey: "rent",
+    header: "Monthly Rent (in Rs.)",
   },
-  {
-    accessorKey: "floors",
-    header: "Floors",
-  },
-  {
-    accessorKey: "value",
-    header: "Values of PO bldg (in Rs.)",
-  },
-  {
-    accessorKey: "year",
-    header: "Last year of expenditure",
-  },
-  {
-    accessorKey: "expenditure",
-    header: "Expenditure incurred (in Rs.)",
-  },
-  // {
-  //   accessorKey: "createdOn",
-  //   header: "Date of Creation",
-  // },
-
+  
     ]

@@ -15,7 +15,7 @@ import Link from "next/link";
 // import { useRouter, useSearchParams } from "next/navigation";
 import { DataTable }  from '@/components/shared/tables/template/data-table';
 import {  columns } from './columns'
-import { getDopBldg } from '@/lib/actions/departmentalbldg.action';
+import { getRentBldg } from '@/lib/actions/rentedbldg.action';
 // import { Pagination } from '@tanstack/react-table';
 
 
@@ -30,7 +30,7 @@ const Page = async ({ searchParams}: URLProps) => {
   // console.log (typeFilter);
   
 
-const data = await getDopBldg({
+const data = await getRentBldg({
   searchQuery: searchParams.q,
 //   filter: searchParams.filter,
 //   pagefilter : searchParams.pagefilter,
@@ -44,11 +44,11 @@ console.log(data)
     justify-between gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
       
       <h1 className="h1-bold text-dark100_light900">
-          Departmental Buildings</h1> 
-          <Link href="/add-dop" 
+          Rented Buildings</h1> 
+          <Link href="/add-rent" 
           className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-            New Records
+            New Entry
           </Button>
         </Link> 
       </div> 

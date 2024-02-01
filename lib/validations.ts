@@ -30,22 +30,36 @@ export const RulingsSchema = z.object({
 })
 
 export const DepartmentalbldgSchema = z.object({
-  division: z.string().min(4).max(130),
-  po: z.string().min(4).max(100),
-  class: z.string().min(4).max(100),
+  division: z.string().min(3).max(130),
+  po: z.string().min(3).max(100),
+  class: z.string().min(1).max(100),
   location: z.string().min(10),
   purchase_year: z.string().min(4).max(100),
-  soa: z.string().min(4).max(100),
-  paq: z.string().min(4).max(100),
-  area: z.string().min(4).max(100),
-  builtup_area: z.string().min(4).max(100),
-  open_space: z.string().min(4).max(100),
-  floors: z.string().min(4).max(100),
-  value: z.string().min(4).max(100),
+  soa: z.string().min(3).max(100),
+  paq: z.string().min(3).max(100),
+  area: z.string().min(3).max(100),
+  builtup_area: z.string().min(3).max(100),
+  open_space: z.string().min(3).max(100),
+  floors: z.string().min(3).max(100),
+  value: z.string().min(3).max(100),
   year: z.string().min(4).max(100),
-  expenditure: z.string().min(4).max(100),
-  
+  expenditure: z.string().min(3).max(100),
 })
+
+export const RentedbldgSchema = z.object({
+  division: z.string().min(3).max(130),
+  po: z.string().min(3).max(100),
+  class_po: z.string().min(1).max(100),
+  date_po_function: z.string().min(10),
+  class_city: z.string().min(4).max(100),
+  soa: z.string().min(3).max(100),
+  area: z.string().min(3).max(100),
+  paq: z.string().min(3).max(100),
+  lease_period: z.string().min(3).max(100),
+  rent: z.string().min(3).max(100),
+})
+
+
 
 export const AnswerSchema = z.object({
   answer: z.string().min(100)

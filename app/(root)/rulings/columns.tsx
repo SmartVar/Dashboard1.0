@@ -61,12 +61,12 @@ export const columns: ColumnDef<RulingDef>[] = [
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
             onClick={() => navigator.clipboard.writeText(ruling._id)}>
-            <EditDeleteAction type='Edit' itemId={JSON.stringify(ruling._id)} />
+            <EditDeleteAction type='Edit' itemId={JSON.stringify(ruling._id)} url="/rulings"/>
             Edit Row</DropdownMenuItem>
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
             onClick={() => navigator.clipboard.writeText(ruling._id)}>
-            <EditDeleteAction type='Delete' itemId={JSON.stringify(ruling._id)} />
+            <EditDeleteAction type='Delete' itemId={JSON.stringify(ruling._id)} url="/rulings"/>
            Delete Row</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

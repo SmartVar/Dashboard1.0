@@ -78,6 +78,27 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
             </Link>
           </div>
         
+          <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
+          <Link href="/plot" className="flex justify-start max-sm:w-full">
+            <div>
+              <p className="paragraph-semibold text-dark200_light900">
+
+              {formatAndDivideNumber(totalVacantPlots)}
+
+              </p>
+              <p className="body-medium text-dark400_light700">Vacant Plots</p>
+            </div>
+            </Link>
+            <Link href="/plot" className="flex justify-start max-sm:w-full">
+            <div>
+              <p className="paragraph-semibold text-dark200_light900">
+              {formatAndDivideNumber(totalReservedPlots)}
+              </p>
+              <p className="body-medium text-dark400_light700">Reserved Plots</p>
+            </div>
+            </Link>
+          </div>
+        
         
         
         <Link href="https://docs.google.com/spreadsheets/d/1yu6KyEb5AKWT9dqwxngUgdYhFnWULncR/edit?usp=sharing&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-start max-sm:w-full">
@@ -98,24 +119,6 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
       </Link>
       
 
-      
-
-      <Link href="https://docs.google.com/spreadsheets/d/1ggaOHN7W4SHPxB4O4f0WxOxFtOqGqvLy/edit?usp=drive_link&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-start max-sm:w-full">
-      <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
-        <div>
-          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
-            {formatAndDivideNumber(totalVacantPlots)}
-          </p>
-          <p className="body-medium text-dark400_light700">Vacant Plots</p>
-        </div>
-        <div>
-          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
-            {formatAndDivideNumber(totalReservedPlots)}
-          </p>
-          <p className="body-medium text-dark400_light700">Reserved Plots</p>
-        </div>
-      </div>
-    </Link>
    
 
     <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">

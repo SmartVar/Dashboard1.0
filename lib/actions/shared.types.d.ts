@@ -132,6 +132,13 @@ export interface GetRentBldgParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetPlotParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 export interface GetRulingsParams {
   page?: number;
   pageSize?: number;
@@ -186,6 +193,25 @@ export interface CreateRentBldgParams {
   rent: string;
   path: string;
 }
+export interface CreatePlotParams {
+  division: string;
+  name: string;
+  district: string;
+  location: string;
+  local_body: string;
+  area: string;
+  moa: string;
+  date_purchase: string;
+  purchase_from: string;
+  amount: string;
+  purpose: string;
+  lease_period: string;
+  enchroached: string;
+  enchroached_area: string;
+  boundary_wall: string;
+  po_constructed: string;
+  path: string;
+}
 export interface CreateRulingParams {
   title: string;
   category: string;
@@ -207,6 +233,9 @@ export interface GetDopBldgByIdParams {
 }
 export interface GetRentBldgByIdParams {
   rentbldgId: string;
+}
+export interface GetPlotByIdParams {
+  plotId: string;
 }
 export interface GetRulingByIdParams {
   rulingId: string;
@@ -234,6 +263,10 @@ export interface DeleteDopBldgParams {
 }
 export interface DeleteRentBldgParams {
   rentbldgId: string;
+  path: string;
+}
+export interface DeletePlotParams {
+  plotId: string;
   path: string;
 }
 export interface DeleteRulingParams {
@@ -286,6 +319,26 @@ export interface EditRentBldgParams {
   paq: string;
   lease_period: string;
   rent: string;
+  path: string;
+}
+export interface EditPlotParams {
+  plotId: string;
+  division: string;
+  name: string;
+  district: string;
+  location: string;
+  local_body: string;
+  area: string;
+  moa: string;
+  date_purchase: string;
+  purchase_from: string;
+  amount: string;
+  purpose: string;
+  lease_period: string;
+  enchroached: string;
+  enchroached_area: string;
+  boundary_wall: string;
+  po_constructed: string;
   path: string;
 }
 export interface EditRulingParams {

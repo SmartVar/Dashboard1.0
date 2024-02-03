@@ -95,7 +95,7 @@ if (filter=== 'ruling')
     .populate({ path: 'author', model: User });
     
 
-console.log(rulings);
+// console.log(rulings);
 // @ts-ignore
     return rulings;
 

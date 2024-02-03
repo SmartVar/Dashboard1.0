@@ -1,7 +1,12 @@
+/* eslint-disable no-lone-blocks */
 "use client";
+// @ts-ignore
 
-
+import { deletePlot } from "@/lib/actions/plot.action";
+import { deleteRentBldg } from "@/lib/actions/rentedbldg.action";
 import { deleteTemplate} from "@/lib/actions/template.action";
+import { deleteDopBldg} from "@/lib/actions/departmentalbldg.action";
+import { deletePendency} from "@/lib/actions/pendency.action";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -24,12 +29,38 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
   const handleDelete = async () => {
     
       // Delete template
-      await deleteTemplate({ 
-        templateId: JSON.parse(itemId), 
-        path: pathname 
-      }
-      )
-  };
+
+{url==='/templates/'
+? await deleteTemplate({ 
+      templateId: JSON.parse(itemId), 
+      path: pathname 
+    }
+    )
+  : url === '/rentbldg'
+  ? await deleteRentBldg({ 
+    rentbldgId: JSON.parse(itemId), 
+    path: pathname 
+  }
+  )
+  : url === '/dopbldg/'
+  ? await deleteDopBldg({ 
+    departmentalbldgId: JSON.parse(itemId), 
+    path: pathname 
+  }
+  )
+  : url === '/plot/'
+  ? await deletePlot({ 
+    plotId: JSON.parse(itemId), 
+    path: pathname 
+  }
+  )
+  : await deletePendency({ 
+   pendencyId: JSON.parse(itemId), 
+    path: pathname 
+  })
+        }
+    };
+  // };
 
   return (
     <>
@@ -64,3 +95,11 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
 }
 
 export default EditDeleteAction
+
+// function deleteDepartmentalBldg(arg0: { rentbldgId: any; path: string; }) {
+//   throw new Error("Function not implemented.");
+// }
+// function deletependency(arg0: { pendencyId: any; path: string; }) {
+//   throw new Error("Function not implemented.");
+// }
+

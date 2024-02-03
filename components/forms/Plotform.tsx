@@ -111,6 +111,7 @@ const Plotform = ({ type, mongoUserId, plotDetails }: Props) => {
             enchroached_area: values.enchroached_area,
             boundary_wall: values.boundary_wall,
             po_constructed: values.po_constructed,
+            // author: JSON.parse(mongoUserId),
           path: pathname,
         });
 

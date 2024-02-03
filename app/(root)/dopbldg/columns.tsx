@@ -2,7 +2,7 @@
 // @ts-ignore
 
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
+import {ArrowUpDown, MoreHorizontal } from "lucide-react"
  
 import { Button } from "@/components/ui/button"
 import {
@@ -84,15 +84,48 @@ export const columns: ColumnDef<DopBldgDef>[] = [
  
   {
     accessorKey: "division",
-    header: "Division",
+    // header: "Division",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Division
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "po",
-    header: "Post Office",
+    // header: "Post Office",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Post Office
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "class",
-    header: "Class",
+    // header: "Class",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Class
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   // {
   //   accessorKey: "description",
@@ -100,15 +133,48 @@ export const columns: ColumnDef<DopBldgDef>[] = [
   // },
   {
     accessorKey: "location",
-    header: "Rural/Urban",
+    // header: "Rural/Urban",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Rural/Urban
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "purchase_year",
-    header: "Purchase Year",
+    // header: "Purchase Year",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Purchase Year
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "soa",
-    header: "SOA (in Sq ft)",
+    // header: "SOA (in Sq ft)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          SOA (in Sq. ft)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "paq",
@@ -116,15 +182,48 @@ export const columns: ColumnDef<DopBldgDef>[] = [
   },
   {
     accessorKey: "area",
-    header: "Area of PO (in Sq. mtr)",
+    // header: "Area of PO (in Sq. mtr)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Area of PO (in Sq. mtr)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "builtup_area",
-    header: "Builtup Area of PO (in Sq. mtr)",
+    // header: "Builtup Area of PO (in Sq. mtr)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Builtup Area of PO (in Sq. mtr)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "open_space",
-    header: "Open Space Area (in Sq. mtr)",
+    // header: "Open Space Area (in Sq. mtr)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Open Space Area (in Sq. mtr)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "floors",
@@ -132,15 +231,48 @@ export const columns: ColumnDef<DopBldgDef>[] = [
   },
   {
     accessorKey: "value",
-    header: "Values of PO bldg (in Rs.)",
+    // header: "Values of PO bldg (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Values of PO bldg (in Rs.)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "year",
-    header: "Last year of expenditure",
+    // header: "Last year of expenditure",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Last year of expenditure
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "expenditure",
-    header: "Expenditure incurred (in Rs.)",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Expenditure incurred (in Rs.)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   // {
   //   accessorKey: "createdOn",

@@ -18,26 +18,26 @@ import EditDeleteAction from "../../../components/shared/EditDeleteAction";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type RentBldgDef = {
+export type PendencyDef = {
     _id: string;
+    dak_no: string;
+    doc: string;
     division: string;
-    po: string;
-    class_po: string;
-    date_po_function: string;
-    class_city: string;
-    soa: string;
-    area: string;
-    paq: string;
-    lease_period: string;
-    rent: string;
+    c_no: string;
+    subject: string;
+    f_no: string;
+    dos: string;
+    dor: string;
+    remarks: string;
+    status: string;
     createdOn: Date;
 }
 
-export const columns: ColumnDef<RentBldgDef>[] = [
+export const columns: ColumnDef<PendencyDef>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const rentbldg = row.original
+      const pendency = row.original
  
       return (
         <DropdownMenu>
@@ -52,9 +52,9 @@ export const columns: ColumnDef<RentBldgDef>[] = [
               Actions</DropdownMenuLabel>
             <DropdownMenuItem
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
-              onClick={() => navigator.clipboard.writeText(rentbldg._id)}
+              onClick={() => navigator.clipboard.writeText(pendency._id)}
             >
-             <Link href={`/rentbldg/${rentbldg._id}`}
+             <Link href={`/pendency/${pendency._id}`}
           className="flex items-center justify-start gap-1"  >View Content</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
@@ -64,13 +64,13 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           className="flex items-center justify-start gap-1">Edit Row</Link></DropdownMenuItem> */}
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
-            onClick={() => navigator.clipboard.writeText(rentbldg._id)}>
-            <EditDeleteAction type='Edit' itemId={JSON.stringify(rentbldg._id)} url="/rentbldg"/>
+            onClick={() => navigator.clipboard.writeText(pendency._id)}>
+            <EditDeleteAction type='Edit' itemId={JSON.stringify(pendency._id)} url="/pendency"/>
             Edit Row</DropdownMenuItem>
             <DropdownMenuItem 
             className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
-            onClick={() => navigator.clipboard.writeText(rentbldg._id)}>
-            <EditDeleteAction type='Delete' itemId={JSON.stringify(rentbldg._id)} url="/rentbldg"/>
+            onClick={() => navigator.clipboard.writeText(pendency._id)}>
+            <EditDeleteAction type='Delete' itemId={JSON.stringify(pendency._id)} url="/pendency"/>
            Delete Row</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -79,8 +79,38 @@ export const columns: ColumnDef<RentBldgDef>[] = [
   },
  
   {
-    accessorKey: "division",
+    accessorKey: "dak_no",
     // header: "Division",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Dak No
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "doc",
+    // header: "Post Office",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Post D.O. Corr
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "division",
+    // header: "Class of PO",
     header: ({ column }) => {
       return (
         <Button
@@ -93,42 +123,12 @@ export const columns: ColumnDef<RentBldgDef>[] = [
       )
     },
   },
-  {
-    accessorKey: "po",
-    // header: "Post Office",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Post Office
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "class_po",
-    // header: "Class of PO",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Class of PO
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-  },
   // {
   //   accessorKey: "description",
   //   header: "Description",
   // },
   {
-    accessorKey: "date_po_function",
+    accessorKey: "c_no",
     // header: "Date of PO Functioning",
     header: ({ column }) => {
       return (
@@ -136,14 +136,14 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Date of PO Functioning
+          Corr. No.
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "class_city",
+    accessorKey: "subject",
     // header: "Class of City",
     header: ({ column }) => {
       return (
@@ -151,14 +151,14 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Class of City
+          Subject
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "soa",
+    accessorKey: "f_no",
     // header: "SOA (in Sq ft)",
     header: ({ column }) => {
       return (
@@ -166,14 +166,14 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          SOA (in Sq. ft)
+          File No.
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "paq",
+    accessorKey: "dos",
     // header: "Post Attached Quarter",
     header: ({ column }) => {
       return (
@@ -181,14 +181,14 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Post Attached Quarter
+          D.O.Submit
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "area",
+    accessorKey: "dor",
     // header: "Area of PO (in Sq. mtr)",
     header: ({ column }) => {
       return (
@@ -196,14 +196,14 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Area of PO (in Sq. mtr)
+          D.O.Receipt
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "lease_period",
+    accessorKey: "remarks",
     // header: "Latest Lease Period",
     header: ({ column }) => {
       return (
@@ -211,14 +211,14 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Latest Lease Period
+          Remarks
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "rent",
+    accessorKey: "status",
     // header: "Monthly Rent (in Rs.)",
     header: ({ column }) => {
       return (
@@ -226,7 +226,7 @@ export const columns: ColumnDef<RentBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Monthly Rent (in Rs.)
+          Status
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )

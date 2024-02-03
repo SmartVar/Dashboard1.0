@@ -2,7 +2,7 @@
 // @ts-ignore
 
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
  
 import { Button } from "@/components/ui/button"
 import {
@@ -86,11 +86,177 @@ export const columns: ColumnDef<PlotDef>[] = [
  
   {
     accessorKey: "division",
-    header: "Division",
+    // header: "Division",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Division
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "name",
-    header: "Plot Name",
+    // header: "Plot Name",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Plot Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "date_purchase",
+    // header: "Date of Purchase",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date of Purchase
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "purchase_from",
+    header: "Plot purchased from",
+  },
+  {
+    accessorKey: "amount",
+    // header: "Amount of Plot (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Amount of Plot (in Rs.)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "lease_period",
+    // header: "Lease Period of Plot",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Lease Period of Plot
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "enchroached",
+    // header: "Whether Plot is enchorached?",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Whether Plot is enchroached
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "enchroached_area",
+    // header: "If enchroached than Area (in Sq. mtr)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          If enchroached, Area (in Sq. mtr)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "boundary_wall",
+    // header: "Boundary wall constructed",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Boundary wall constructed
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "po_constructed",
+    // header: "Is PO constructed",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Is PO Constructed
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "area",
+    // header: "Area of plot (Sq. mtr)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Area of plot (Sq. mtr)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "moa",
+    // header: "Mode of Acquisition",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Mode of Acquisition
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  
+  {
+    accessorKey: "purpose",
+    header: "Purpose of plot purchased",
   },
   {
     accessorKey: "district",
@@ -102,55 +268,34 @@ export const columns: ColumnDef<PlotDef>[] = [
   // },
   {
     accessorKey: "location",
-    header: "Location",
+    // header: "Location",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Location
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "local_body",
-    header: "Local Body",
+    // header: "Local Body",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Local Body
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
-  {
-    accessorKey: "area",
-    header: "Area of plot (Sq. mtr)",
-  },
-  {
-    accessorKey: "moa",
-    header: "Mode of Acquisition",
-  },
-  {
-    accessorKey: "date_purchase",
-    header: "Date of Purchase",
-  },
-  {
-    accessorKey: "purchase_from",
-    header: "PLot purchased from",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount of Plot (in Rs.)",
-  },
-  {
-    accessorKey: "purpose",
-    header: "Purpose of plot purchased",
-  },
-  {
-    accessorKey: "lease_period",
-    header: "Lease Period of Plot",
-  },
-  {
-    accessorKey: "enchroached",
-    header: "Whether Plot is enchorached?",
-  },
-  {
-    accessorKey: "enchroached_area",
-    header: "If enchroached than Area (in Sq. mtr)",
-  },
-  {
-    accessorKey: "boundary_wall",
-    header: "Boundary wall constructed",
-  },
-  {
-    accessorKey: "po_constructed",
-    header: "Is PO constructed",
-  },
+  
   
     ]

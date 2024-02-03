@@ -15,88 +15,88 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "../ui/button"
-import { RentedbldgSchema } from "@/lib/validations";
+import { PendencySchema } from "@/lib/validations";
 // import { Badge } from '../ui/badge';
 // import Image from 'next/image';
 
-import { createRentBldg, editRentBldg} from '@/lib/actions/rentedbldg.action';
+import { createPendency, editPendency} from '@/lib/actions/pendency.action';
 import { useRouter, usePathname } from 'next/navigation';
 // import { useTheme } from '@/context/ThemeProvider';
 
 interface Props {
     type?: string;
     mongoUserId: string;
-    rentDetails?: string;
+    pendencyDetails?: string;
   }
 
-const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
+const Pendency = ({ type, mongoUserId, pendencyDetails }: Props) => {
 //     const { mode } = useTheme();
 //   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
-  const parsedRentDetails =  rentDetails && JSON.parse(rentDetails || '');
+  const parsedPendencyDetails =  pendencyDetails && JSON.parse(pendencyDetails || '');
 
 
 
   // 1. Define your form.
-  const form = useForm<z.infer<typeof RentedbldgSchema>>({
-    resolver: zodResolver(RentedbldgSchema),
+  const form = useForm<z.infer<typeof PendencySchema>>({
+    resolver: zodResolver(PendencySchema),
     defaultValues: {
-      division: parsedRentDetails?.division || '',
-      po: parsedRentDetails?.po || '',
-      class_po: parsedRentDetails?.class_po || '',
-      date_po_function: parsedRentDetails?.date_po_function || '',
-      class_city: parsedRentDetails?.class_city || '',
-      soa: parsedRentDetails?.soa || '',
-      paq: parsedRentDetails?.paq || '',
-      area: parsedRentDetails?.area || '',
-      lease_period: parsedRentDetails?.lease_period || '',
-      rent: parsedRentDetails?.rent || '',
+      dak_no: parsedPendencyDetails?.dak_no || '',
+      doc: parsedPendencyDetails?.doc || '',
+      division: parsedPendencyDetails?.division || '',
+      c_no: parsedPendencyDetails?.c_no || '',
+      subject: parsedPendencyDetails?.subject || '',
+      f_no: parsedPendencyDetails?.f_no || '',
+      dos: parsedPendencyDetails?.dos || '',
+      dor: parsedPendencyDetails?.dor || '',
+      remarks: parsedPendencyDetails?.remarks || '',
+      status: parsedPendencyDetails?.status || '',
            
     },
   })
   
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof RentedbldgSchema>) {
+  async function onSubmit(values: z.infer<typeof PendencySchema>) {
     setIsSubmitting(true);
     
     try {
       if(type === 'Edit') {
-        await editRentBldg({
-          rentbldgId: parsedRentDetails._id,
+        await editPendency({
+          pendencyId: parsedPendencyDetails._id,
+          dak_no: values.dak_no,
+          doc: values.doc,
           division: values.division,
-          po: values.po,
-          class_po: values.class_po,
-          date_po_function: values.date_po_function,
-          class_city: values.class_city,
-          soa: values.soa,
-          paq: values.paq,
-          area: values.area,
-          lease_period: values.lease_period,
-          rent: values.rent,
+          c_no: values.c_no,
+          subject: values.subject,
+          f_no: values.f_no,
+          dos: values.dos,
+          dor: values.dor,
+          remarks: values.remarks,
+          status: values.status,
           path: pathname,
         })
 
-        // router.push(`/rentbldg/${parsedRentDetails._id}`);
-        router.push(`/rentbldg`);
+        router.push(`/pendency/${parsedPendencyDetails._id}`);
       } else {
-        await createRentBldg({
+        await createPendency({
+            dak_no: values.dak_no,
+            doc: values.doc,
             division: values.division,
-          po: values.po,
-          class_po: values.class_po,
-          date_po_function: values.date_po_function,
-          class_city: values.class_city,
-          soa: values.soa,
-          paq: values.paq,
-          area: values.area,
-          lease_period: values.lease_period,
-          rent: values.rent,
+            c_no: values.c_no,
+            subject: values.subject,
+            f_no: values.f_no,
+            dos: values.dos,
+            dor: values.dor,
+            remarks: values.remarks,
+            status: values.status,
+            // author: JSON.parse(mongoUserId),
           path: pathname,
         });
 
-        router.push('/rentbldg');
+        router.push('/pendency');
       }
 
     } catch (error) {
@@ -112,6 +112,42 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
   return (
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-10">
+      <FormField
+        control={form.control}
+        name="dak_no"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Dak No <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter correspondance Dak No.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="doc"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">D.O.Corr <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter Date of Correspondance
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
       <FormField
         control={form.control}
         name="division"
@@ -132,17 +168,17 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="po"
+        name="c_no"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Post Office <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">Corr.No. <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Post Office Name
+              Enter correspondance No.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -150,17 +186,17 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="class_po"
+        name="subject"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Class of Post Office <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">Subject <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Class of POs (HSG/LSG/HO etc)
+              Enter your Subject of Corr.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -168,17 +204,17 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="date_po_function"
+        name="f_no"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Date of PO Functioning <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">File No. <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Date of PO Functioning
+              Enter your file no.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -186,17 +222,17 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="class_city"
+        name="dos"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Class of City <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">D.O.Submit <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter class of city (X, Y or Z)
+              Enter date of submission of Corr
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -204,17 +240,17 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="soa"
+        name="dor"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">SOA <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">D.O.Receipt <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter SOA (Scheduled of Accomodation) of Post office
+              Enter Date of Receipt of file.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -222,17 +258,17 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="paq"
+        name="remarks"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Post Attached Quarter <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">Remarks <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter PAQ (Post Attached Quarter) Available (Yes/No)
+              Enter disposable remarks on Corr
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -240,53 +276,17 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="area"
+        name="status"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Area of PO (in Sq. mtr) <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">Status <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Post office Area in sq. mtr
-            </FormDescription>
-            <FormMessage className="text-red-500" />
-          </FormItem>
-        )}
-      />
-      <FormField
-        control={form.control}
-        name="lease_period"
-        render={({ field }) => (
-          <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Latest Lease Period <span className="text-primary-500">*</span></FormLabel>
-            <FormControl className="mt-3.5">
-              <Input 
-              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
-              {...field} />
-            </FormControl>
-            <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Latest Lease Period (date/year)
-            </FormDescription>
-            <FormMessage className="text-red-500" />
-          </FormItem>
-        )}
-      />
-      <FormField
-        control={form.control}
-        name="rent"
-        render={({ field }) => (
-          <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Monthly Rent (in Rs.) <span className="text-primary-500">*</span></FormLabel>
-            <FormControl className="mt-3.5">
-              <Input 
-              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
-              {...field} />
-            </FormControl>
-            <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter per month rent in Rs.
+              Enter status i.e. Closed/Under-Submission/Pending of Corr
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -309,4 +309,4 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
   )
 }
 
-export default Rentform
+export default Pendency

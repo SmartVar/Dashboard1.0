@@ -147,12 +147,13 @@ export async function getUserInfo(params: any) {
 
     const user = await User.findOne({ clerkId: userId });
 
-    console.log(user);
+    // console.log(user);
 
     // if(!user) {
     //   throw new Error('User not found');
     // }
 
+    // const totalDopBldg = await Departmentalbldg.countDocuments({ author: user._id })
     // const totalQuestions = await Question.countDocuments({ author: user._id })
     // const totalAnswers = await Answer.countDocuments({ author: user._id });
     const totalDopBldg = 46;
@@ -186,6 +187,7 @@ export async function getUserInfo(params: any) {
     totalPendingCorr,
     totalUsCorr,
       badgeCounts,
+      location : "Navi Mumbai Region",
       // reputation: user.reputation,
       reputation,
     }    

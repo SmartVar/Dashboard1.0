@@ -14,12 +14,17 @@ export const TemplatesSchema = z.object({
   section: z.string().min(4).max(100),
 })
 export const PendencySchema = z.object({
-  title: z.string().min(4).max(130),
-  category: z.string().min(4).max(100),
-  subcategory: z.string().min(4).max(100),
-  description: z.string().min(100),
-  section: z.string().min(4).max(100),
-})
+  division: z.string().min(2).max(130),
+  dak_no: z.string().min(2).max(130),
+  doc: z.string().min(2).max(130),
+  c_no: z.string().min(2).max(130),
+  subject: z.string().min(2).max(130),
+  f_no: z.string().min(2).max(130),
+  dos: z.string().min(2).max(130),
+  dor: z.string().min(2).max(130),
+  remarks: z.string().min(2).max(130),
+  status: z.string().min(2).max(130),
+  })
 
 export const RulingsSchema = z.object({
   title: z.string().min(4).max(130),
@@ -85,9 +90,9 @@ export const AnswerSchema = z.object({
 
 
 export const ProfileSchema = z.object({
-  name: z.string().min(5).max(50),
-  username: z.string().min(5).max(50),
-  bio: z.string().min(10).max(150),
-  portfolioWebsite: z.string().url(),
-  location: z.string().min(5).max(50),
+  name: z.string().min(2).max(50),
+  username: z.string().min(2).max(50),
+  section: z.string().min(2).max(150),
+  // portfolioWebsite: z.string().url(),
+  location: z.string().min(2).max(50),
 })

@@ -133,7 +133,7 @@ export async function createTemplate(params: CreateTemplateParams) {
   try {
     connectToDatabase();
 
-    const { title, category, subcategory, description, section, path } = params;
+    const { title, category, subcategory, description, section,  path } = params;
 
     // Create the question
     const template = await Template.create({
@@ -141,7 +141,8 @@ export async function createTemplate(params: CreateTemplateParams) {
       category,
       subcategory,
       description,
-      section
+      section,
+      // author
     });
 
        // Create an interaction record for the user's ask_question action

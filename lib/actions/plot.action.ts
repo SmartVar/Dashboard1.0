@@ -120,7 +120,7 @@ export async function getPlot(params: GetPlotParams): Promise<PlotDef[]> {
     .populate({ path: 'author', model: User });
     
 
-console.log(plot);
+// console.log(plot);
 // @ts-ignore
     return plot;
 
@@ -135,7 +135,7 @@ export async function createPlot(params: CreatePlotParams) {
     connectToDatabase();
 
     // eslint-disable-next-line camelcase
-    const { division, name, district, location, local_body, area, moa, date_purchase, purchase_from, amount, purpose, lease_period, enchroached, enchroached_area, boundary_wall, po_constructed, path } = params;
+    const { division, name, district, location, local_body, area, moa, date_purchase, purchase_from, amount, purpose, lease_period, enchroached, enchroached_area, boundary_wall,  po_constructed, path } = params;
 
     // Create the question
     const rentbldg = await Plot.create({
@@ -154,7 +154,8 @@ export async function createPlot(params: CreatePlotParams) {
         enchroached,
         enchroached_area,
         boundary_wall,
-        po_constructed
+        po_constructed,
+        // author
     });
 
        // Create an interaction record for the user's ask_question action

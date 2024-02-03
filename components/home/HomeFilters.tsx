@@ -18,7 +18,7 @@ const HomeFilters = ({filters} : Props) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-console.log(filters)
+// console.log(filters)
 
   const [active, setActive] = useState("");
 

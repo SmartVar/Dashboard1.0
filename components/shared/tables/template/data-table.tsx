@@ -4,10 +4,12 @@
 import * as React from "react"
 import {
   ColumnDef,
+  SortingState,
   VisibilityState,
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
 
@@ -40,6 +42,8 @@ export function DataTable<TData, TValue>({
   const [columnVisibility, setColumnVisibility] =
   React.useState<VisibilityState>({})
 
+  const [sorting, setSorting] = React.useState<SortingState>([])
+
   const table = useReactTable({
 
     // @ts-ignore
@@ -48,9 +52,13 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
     state: {
       columnVisibility,
+      sorting,
     },
+
   })
 
   return (

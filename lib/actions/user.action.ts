@@ -5,9 +5,9 @@ import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose"
 import { CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
-import Drafting from "@/database/drafting.model"
-import Noting from "@/database/noting.model";
-import Briefhistory from "@/database/briefhistory.model";
+// import Drafting from "@/database/drafting.model"
+
+// import Briefhistory from "@/database/briefhistory.model";
 // import { BadgeCriteriaType } from "@/types";
 // import { assignBadges } from "../utils";
 
@@ -75,9 +75,9 @@ export async function deleteUser(params: DeleteUserParams) {
     // const userQuestionIds = await Question.find({ author: user._id}).distinct('_id');
 
     // delete user questions
-    await Noting.deleteMany({ author: user._id });
-    await Drafting.deleteMany({ author: user._id });
-    await Briefhistory.deleteMany({ author: user._id });
+    // await Noting.deleteMany({ author: user._id });
+    // await Drafting.deleteMany({ author: user._id });
+    // await Briefhistory.deleteMany({ author: user._id });
 
     // TODO: delete user answers, comments, etc.
 

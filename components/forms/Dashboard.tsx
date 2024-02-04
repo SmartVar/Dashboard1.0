@@ -31,7 +31,7 @@ const Dashboard = ({ clerkId, user }: Props) => {
       username: parsedUser.username || '',
     //   role: parsedUser.role || '',
       location: parsedUser.location || '',
-      section: parsedUser.section || '',
+      // section: parsedUser.section || '',
     },
   })
 
@@ -101,7 +101,7 @@ const Dashboard = ({ clerkId, user }: Props) => {
           )}
         />
         
-
+{/* 
         <FormField
           control={form.control}
           name="section"
@@ -120,7 +120,7 @@ const Dashboard = ({ clerkId, user }: Props) => {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}

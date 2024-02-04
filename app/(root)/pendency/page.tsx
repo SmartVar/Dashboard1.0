@@ -75,7 +75,8 @@ const data = await getPendency({
       
 
     <div className="mt-10 flex w-full flex-col gap-6 overflow-auto shadow">
-    <DataTable columns={columns} data={data} />
+    {/* <DataTable columns={columns} data={data} /> */}
+    <DataTable columns={columns} data={JSON.parse(JSON.stringify(data))} />
       </div>
       {/* <div className="mt-10">
         <Pagination 

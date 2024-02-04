@@ -119,7 +119,7 @@ if (filter=== 'noting')
     .populate({ path: 'author', model: User });
     
 
-console.log(templates);
+// console.log(templates);
 // @ts-ignore
     return templates;
 

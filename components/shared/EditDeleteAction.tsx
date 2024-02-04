@@ -20,7 +20,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  console.log(url);
+  // console.log(url);
   const handleEdit = () => {
     // router.push(`/templates/edit/${JSON.parse(itemId)}`)
     router.push(`${url}/edit/${JSON.parse(itemId)}`)

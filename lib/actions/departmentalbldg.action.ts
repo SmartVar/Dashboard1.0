@@ -120,7 +120,7 @@ export async function getDopBldg(params: GetDopBldgParams): Promise<DopBldgDef[]
     .populate({ path: 'author', model: User });
     
 
-console.log(dopbldg);
+// console.log(dopbldg);
 // @ts-ignore
     return dopbldg;
 

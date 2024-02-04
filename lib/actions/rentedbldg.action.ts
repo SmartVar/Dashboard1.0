@@ -34,7 +34,7 @@ export async function getRentBldg(params: GetRentBldgParams): Promise<RentBldgDe
     .populate({ path: 'author', model: User });
     
 
-console.log(rentbldg);
+// console.log(rentbldg);
 // @ts-ignore
     return rentbldg;
 

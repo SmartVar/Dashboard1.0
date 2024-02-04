@@ -88,7 +88,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           path: pathname,
         })
 
-        router.push(`/dopbldg/${parsedDopDetails._id}`);
+        router.push(`/dopbldg`);
       } else {
         await createDopBldg({
             division: values.division,

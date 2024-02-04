@@ -1,33 +1,9 @@
-import Dopform from '@/components/forms/Dopform'
-import { getDopBldgById } from '@/lib/actions/departmentalbldg.action';
-import { getUserById } from '@/lib/actions/user.action';
-import { ParamsProps } from '@/types';
-import { auth } from '@clerk/nextjs'
+import React from 'react'
 
-const Page = async ({ params }: ParamsProps) => {
-  const { userId } = auth();
-// const userId = 'user_2bCX55zAAaS74JAT0pGe59OjuhVCL123';
-  if(!userId) return null;
-
-  const mongoUser = await getUserById({ userId })
-  const result = await getDopBldgById({ departmentalbldgId: params.id})
-  
-  // console.log(result);
-
+const page = () => {
   return (
-    <>
-      <h1 className="h1-bold text-dark100_light900">
-        Edit Record</h1>
-
-      <div className="mt-9">
-        <Dopform
-          type="Edit"
-          mongoUserId={mongoUser._id}
-          dopDetails={JSON.stringify(result)}
-        />
-      </div>
-    </>
+    <div>page</div>
   )
 }
 
-export default Page
+export default page

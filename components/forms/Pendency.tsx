@@ -79,7 +79,7 @@ const Pendency = ({ type, mongoUserId, pendencyDetails }: Props) => {
           path: pathname,
         })
 
-        router.push(`/pendency/${parsedPendencyDetails._id}`);
+        router.push(`/pendency`);
       } else {
         await createPendency({
             dak_no: values.dak_no,

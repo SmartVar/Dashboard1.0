@@ -2,7 +2,7 @@
 // @ts-ignore
 
 import { ColumnDef } from "@tanstack/react-table"
-import {ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { ArrowUpDown,MoreHorizontal } from "lucide-react"
  
 import { Button } from "@/components/ui/button"
 import {
@@ -170,7 +170,7 @@ export const columns: ColumnDef<DopBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          SOA (in Sq. ft)
+          SOA (in Sq ft)
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -178,7 +178,18 @@ export const columns: ColumnDef<DopBldgDef>[] = [
   },
   {
     accessorKey: "paq",
-    header: "Post Attached Quarter",
+    // header: "Post Attached Quarter",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Post Attached Quarter
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "area",
@@ -227,7 +238,18 @@ export const columns: ColumnDef<DopBldgDef>[] = [
   },
   {
     accessorKey: "floors",
-    header: "Floors",
+    // header: "Floors",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Floors
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "value",
@@ -238,7 +260,7 @@ export const columns: ColumnDef<DopBldgDef>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Values of PO bldg (in Rs.)
+          Value of PO bldg (in Rs.)
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )

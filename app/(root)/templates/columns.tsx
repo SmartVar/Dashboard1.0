@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import EditDeleteAction from "../../../components/shared/EditDeleteAction";
+import EditableCell from "@/components/shared/tables/EditableCell"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -87,6 +88,7 @@ export const columns: ColumnDef<TemplateDef>[] = [
         </Button>
       )
     },
+    cell: EditableCell,
   },
   {
     accessorKey: "title",

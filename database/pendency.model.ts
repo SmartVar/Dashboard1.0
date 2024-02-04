@@ -18,7 +18,7 @@ export interface IPendency extends Document {
 const PendencySchema = new Schema({
   
   dak_no: { type: String, required: true },
-  doc: { type: String, required: true },
+  doc: { type: String },
   division: { type: String, required: true},
   c_no: { type: String, required: true },
   subject: { type: String, required: true },

@@ -79,6 +79,36 @@ export const columns: ColumnDef<PendencyDef>[] = [
   },
  
   {
+    accessorKey: "status",
+    // header: "Monthly Rent (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "remarks",
+    // header: "Latest Lease Period",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Remarks
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+    {
     accessorKey: "dak_no",
     // header: "Division",
     header: ({ column }) => {
@@ -202,35 +232,6 @@ export const columns: ColumnDef<PendencyDef>[] = [
       )
     },
   },
-  {
-    accessorKey: "remarks",
-    // header: "Latest Lease Period",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Remarks
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "status",
-    // header: "Monthly Rent (in Rs.)",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-  },
+  
   
     ]

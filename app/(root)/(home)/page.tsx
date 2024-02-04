@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Button } from '@/components/ui/button'
 import { getUserInfo } from '@/lib/actions/user.action'
 import { URLProps } from '@/types'

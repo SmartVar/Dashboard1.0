@@ -79,7 +79,7 @@ const Rentform = ({ type, mongoUserId, rentDetails }: Props) => {
           path: pathname,
         })
 
-        router.push(`/rentbldg/${parsedRentDetails._id}`);
+        router.push(`/rentbldg`);
       } else {
         await createRentBldg({
             division: values.division,

@@ -69,7 +69,7 @@ const Records = ({ type, mongoUserId, rulingDetails }: Props) => {
           path: pathname,
         })
 
-        router.push(`/rulings/${parsedRulingDetails._id}`);
+        router.push(`/rulings`);
       } else {
         await createRuling({
           title: values.title,

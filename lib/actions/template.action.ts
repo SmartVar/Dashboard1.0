@@ -128,7 +128,6 @@ if (filter=== 'noting')
     throw error;
   }
 }
-  
 export async function createTemplate(params: CreateTemplateParams) {
   try {
     connectToDatabase();

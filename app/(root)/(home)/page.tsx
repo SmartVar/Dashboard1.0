@@ -30,7 +30,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
           <div className="mt-3">
             <h2 className="h2-bold text-dark100_light900">{userInfo.user.username}</h2>
             {/* <p className="paragraph-regular text-dark200_light800">@{userInfo.user.role}</p> */}
-            <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p>
+            {/* <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p> */}
             {/* <p className="paragraph-regular text-dark200_light800">@{userInfo.user.location}</p> */}
             {/* <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p> */}
 

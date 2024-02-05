@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button'
 import { getUserInfo } from '@/lib/actions/user.action'
 import { URLProps } from '@/types'
-import { SignedIn, auth } from '@clerk/nextjs'
+// import { SignedIn, auth } from '@clerk/nextjs'
 // import Image from 'next/image'
-import Link from 'next/link'
+// import Link from 'next/link'
 import React from 'react'
 import { getJoinedDate } from '@/lib/utils'
 import DashboardLink from '@/components/shared/DashboardLink'
@@ -54,7 +54,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
           </div>
         </div>
 
-        <div className="flex justify-end max-sm:mb-5 max-sm:w-full sm:mt-3">
+        {/* <div className="flex justify-end max-sm:mb-5 max-sm:w-full sm:mt-3">
           <SignedIn>
             {userId === userInfo.user.clerkId && (
               <Link href="/edit">
@@ -64,7 +64,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
               </Link>
             )}
           </SignedIn>
-        </div>
+        </div> */}
       </div>
       
       <Stats

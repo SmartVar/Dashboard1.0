@@ -98,44 +98,51 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
             </div>
             </Link>
           </div>
-        
-        
-        
-        <Link href="https://docs.google.com/spreadsheets/d/1yu6KyEb5AKWT9dqwxngUgdYhFnWULncR/edit?usp=sharing&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-start max-sm:w-full">
-        <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
-          <div>
-            <p className="paragraph-semibold text-dark200_light900 flex justify-start">
+          
+          <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
+          <Link href="/pendency" className="flex justify-start max-sm:w-full">
+            <div>
+              <p className="paragraph-semibold text-dark200_light900">
+
               {formatAndDivideNumber(totalSQ)}
-            </p>
-            <p className="body-medium text-dark400_light700">Staff Quarters</p>
-          </div>
-          <div>
-            <p className="paragraph-semibold text-dark200_light900 flex justify-start">
+
+              </p>
+              <p className="body-medium text-dark400_light700">Total Staff Quarters</p>
+            </div>
+            </Link>
+            <Link href="/pendency" className="flex justify-start max-sm:w-full">
+            <div>
+              <p className="paragraph-semibold text-dark200_light900">
               {formatAndDivideNumber(totalIQ)}
-            </p>
-            <p className="body-medium text-dark400_light700">Inspection Quarters</p>
+              </p>
+              <p className="body-medium text-dark400_light700">Total Inspection Quarters</p>
+            </div>
+            </Link>
           </div>
-        </div>
-      </Link>
-      
+          
+          <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
+          <Link href="/pendency" className="flex justify-start max-sm:w-full">
+            <div>
+              <p className="paragraph-semibold text-dark200_light900">
 
-   
+              {formatAndDivideNumber(totalPendingCorr)}
 
-    <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
-        <div>
-          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
-            {formatAndDivideNumber(totalPendingCorr)}
-          </p>
-          <p className="body-medium text-dark400_light700">Pending Corr</p>
-        </div>
-        <div>
-          <p className="paragraph-semibold text-dark200_light900 flex justify-start">
-            {formatAndDivideNumber(totalUsCorr)}
-          </p>
-          <p className="body-medium text-dark400_light700">US Corr</p>
-        </div>
-      </div>
-      
+              </p>
+              <p className="body-medium text-dark400_light700">Pending Corr</p>
+            </div>
+            </Link>
+            <Link href="/pendency" className="flex justify-start max-sm:w-full">
+            <div>
+              <p className="paragraph-semibold text-dark200_light900">
+              {formatAndDivideNumber(totalUsCorr)}
+              </p>
+              <p className="body-medium text-dark400_light700">Under Submission Corr</p>
+            </div>
+            </Link>
+          </div>
+        
+        
+        
     </div>    
   
 </div>

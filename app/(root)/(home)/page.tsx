@@ -1,6 +1,6 @@
-import Link from "next/link"
+// import Link from "next/link"
 
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 
 const page = () => {
@@ -36,6 +36,7 @@ const page = () => {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
           <Skeleton key={item} className="h-48 w-full rounded-xl" />
         ))}
+      </div>
       </div>
     </section>
   )

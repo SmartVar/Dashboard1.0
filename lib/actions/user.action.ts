@@ -6,11 +6,7 @@ import { connectToDatabase } from "../mongoose"
 import { CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
 // import Drafting from "@/database/drafting.model"
-<<<<<<< HEAD
-
-=======
 // import Noting from "@/database/noting.model";
->>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
 // import Briefhistory from "@/database/briefhistory.model";
 // import { BadgeCriteriaType } from "@/types";
 // import { assignBadges } from "../utils";
@@ -151,13 +147,12 @@ export async function getUserInfo(params: any) {
 
     const user = await User.findOne({ clerkId: userId });
 
-    // console.log(user);
+    console.log(user);
 
     // if(!user) {
     //   throw new Error('User not found');
     // }
 
-    // const totalDopBldg = await Departmentalbldg.countDocuments({ author: user._id })
     // const totalQuestions = await Question.countDocuments({ author: user._id })
     // const totalAnswers = await Answer.countDocuments({ author: user._id });
     const totalDopBldg = 46;
@@ -191,7 +186,6 @@ export async function getUserInfo(params: any) {
     totalPendingCorr,
     totalUsCorr,
       badgeCounts,
-      location : "Navi Mumbai Region",
       // reputation: user.reputation,
       reputation,
     }    

@@ -96,14 +96,3 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
 
 export default EditDeleteAction
 
-// function deleteDepartmentalBldg(arg0: { rentbldgId: any; path: string; }) {
-//   throw new Error("Function not implemented.");
-// }
-// function deletependency(arg0: { pendencyId: any; path: string; }) {
-//   throw new Error("Function not implemented.");
-<<<<<<< HEAD
-// }
-
-=======
-// }
->>>>>>> 8d78631469af59fe77409401ab1f023699c979f1

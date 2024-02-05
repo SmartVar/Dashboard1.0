@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { getUserInfo } from '@/lib/actions/user.action'
 import { URLProps } from '@/types'
 import { SignedIn, auth } from '@clerk/nextjs'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { getJoinedDate } from '@/lib/utils'
@@ -18,14 +18,14 @@ const Page = async ({ params, searchParams}: URLProps) => {
     <>
       <div className="flex flex-col-reverse items-start justify-between sm:flex-row">
         <div className="flex flex-col items-start gap-4 lg:flex-row">
-          <Image 
+          {/* <Image 
             // src={userInfo?.user.picture }
             src="/assets/icons/avtar.svg"
             alt="profile picture"
             width={140}
             height={140}
             className="rounded-full object-cover"
-          />
+          /> */}
 
           <div className="mt-3">
             <h2 className="h2-bold text-dark100_light900">{userInfo.user.username}</h2>

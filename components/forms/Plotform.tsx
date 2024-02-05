@@ -92,7 +92,7 @@ const Plotform = ({ type, mongoUserId, plotDetails }: Props) => {
           path: pathname,
         })
 
-        router.push(`/plot/${parsedPlotDetails._id}`);
+        router.push(`/plot`);
       } else {
         await createPlot({
             division: values.division,

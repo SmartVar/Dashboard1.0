@@ -216,6 +216,20 @@ export interface CreateRentBldgParams {
   rent: string;
   path: string;
 }
+export interface CreatePendencyParams {
+  dak_no: string;
+  doc: string;
+  division: string;
+  c_no: string;
+  subject: string;
+  f_no: string;
+  dos: string;
+  dor: string;
+  remarks: string;
+  status: string;
+  // author: Schema.Types.ObjectId | IUser;
+  path: string;
+}
 export interface CreatePlotParams {
   division: string;
   name: string;
@@ -261,6 +275,9 @@ export interface GetPendencyByIdParams {
 export interface GetRentBldgByIdParams {
   rentbldgId: string;
 }
+export interface GetPendencyByIdParams {
+  pendencyId: string;
+}
 export interface GetPlotByIdParams {
   plotId: string;
 }
@@ -294,6 +311,10 @@ export interface DeletePendencyParams {
 }
 export interface DeleteRentBldgParams {
   rentbldgId: string;
+  path: string;
+}
+export interface DeletePendencyParams {
+  pendencyId: string;
   path: string;
 }
 export interface DeletePlotParams {
@@ -364,6 +385,20 @@ export interface EditRentBldgParams {
   paq: string;
   lease_period: string;
   rent: string;
+  path: string;
+}
+export interface EditPendencyParams {
+  pendencyId: string;
+  dak_no: string;
+  division: string;
+  doc: string;
+  c_no: string;
+  subject: string;
+  f_no: string;
+  dos: string;
+  dor: string;
+  remarks: string;
+  status: string;
   path: string;
 }
 export interface EditPlotParams {

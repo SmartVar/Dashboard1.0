@@ -6,7 +6,11 @@ import { connectToDatabase } from "../mongoose"
 import { CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
 // import Drafting from "@/database/drafting.model"
+<<<<<<< HEAD
 
+=======
+// import Noting from "@/database/noting.model";
+>>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
 // import Briefhistory from "@/database/briefhistory.model";
 // import { BadgeCriteriaType } from "@/types";
 // import { assignBadges } from "../utils";

@@ -11,7 +11,11 @@ const Loading = () => {
 
         <Link href="/ask-question" className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+<<<<<<< HEAD:app/(root)/(home)/loading.tsx
             Edit Dashboard
+=======
+           Edit Dashboard
+>>>>>>> 8d78631469af59fe77409401ab1f023699c979f1:app/(root)/dashboard/loading.tsx
           </Button>
         </Link> 
       </div>

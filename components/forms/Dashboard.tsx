@@ -29,9 +29,15 @@ const Dashboard = ({ clerkId, user }: Props) => {
     defaultValues: {
       name: parsedUser.name || '',
       username: parsedUser.username || '',
+<<<<<<< HEAD
     //   role: parsedUser.role || '',
       location: parsedUser.location || '',
       // section: parsedUser.section || '',
+=======
+      // role: parsedUser.role || '',
+      location: parsedUser.location || '',
+      section: parsedUser.section || '',
+>>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
     },
   })
 
@@ -101,7 +107,11 @@ const Dashboard = ({ clerkId, user }: Props) => {
           )}
         />
         
+<<<<<<< HEAD
 {/* 
+=======
+
+>>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
         <FormField
           control={form.control}
           name="section"
@@ -120,7 +130,11 @@ const Dashboard = ({ clerkId, user }: Props) => {
               <FormMessage />
             </FormItem>
           )}
+<<<<<<< HEAD
         /> */}
+=======
+        />
+>>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
 
         <FormField
           control={form.control}

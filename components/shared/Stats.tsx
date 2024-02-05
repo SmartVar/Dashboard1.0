@@ -100,7 +100,11 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
           </div>
           
           <div className="light-border background-light900_dark300 flex flex-wrap items-center justify-evenly gap-4 rounded-md border p-6 shadow-light-300 dark:shadow-dark-200">
+<<<<<<< HEAD
           <Link href="https://docs.google.com/spreadsheets/d/1yu6KyEb5AKWT9dqwxngUgdYhFnWULncR/edit?usp=sharing&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-start max-sm:w-full">
+=======
+          <Link href="/pendency" className="flex justify-start max-sm:w-full">
+>>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
             <div>
               <p className="paragraph-semibold text-dark200_light900">
 
@@ -110,7 +114,11 @@ const Stats = ({ totalDopBldg, totalRentBldg, totalSQ, totalIQ, totalVacantPlots
               <p className="body-medium text-dark400_light700">Total Staff Quarters</p>
             </div>
             </Link>
+<<<<<<< HEAD
             <Link href="https://docs.google.com/spreadsheets/d/1yu6KyEb5AKWT9dqwxngUgdYhFnWULncR/edit?usp=sharing&ouid=111668525627032573578&rtpof=true&sd=true" className="flex justify-start max-sm:w-full">
+=======
+            <Link href="/pendency" className="flex justify-start max-sm:w-full">
+>>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
             <div>
               <p className="paragraph-semibold text-dark200_light900">
               {formatAndDivideNumber(totalIQ)}

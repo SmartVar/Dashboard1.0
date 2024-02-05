@@ -6,7 +6,7 @@ import { connectToDatabase } from "../mongoose";
 import { SearchParams } from "./shared.types";
 import User from "@/database/user.model";
 import Ruling from "@/database/ruling.model";
-import Pendency from "@/database/pendency.model";
+// import Pendency from "@/database/pendency.model";
 
 const SearchableTypes = ["template", "ruling", "pendency", "user"];
 
@@ -23,7 +23,7 @@ export async function globalSearch(params: SearchParams) {
       { model: Template, searchField: 'title', type: 'template'},
       { model: User, searchField: 'name', type: 'user'},
       { model: Ruling, searchField: 'title', type: 'ruling'},
-      { model: Pendency, searchField: 'title', type: 'pendency'},
+      // { model: Pendency, searchField: 'title', type: 'pendency'},
     ]
 
     const typeLower = type?.toLowerCase();

@@ -168,21 +168,6 @@ export interface CreateTemplateParams {
   subcategory: string;
   description: string;
   section: string;
-  // author: Schema.Types.ObjectId | IUser;
-  path: string;
-}
-export interface CreatePendencyParams {
-  dak_no: string;
-  doc: string;
-  division: string;
-  c_no: string;
-  subject: string;
-  f_no: string;
-  dos: string;
-  dor: string;
-  remarks: string;
-  status: string;
-  // author: Schema.Types.ObjectId | IUser;
   path: string;
 }
 export interface CreateDopBldgParams {
@@ -201,7 +186,6 @@ export interface CreateDopBldgParams {
   year: string;
   expenditure: string;
   path: string;
-  // author: Schema.Types.ObjectId | IUser;
 }
 export interface CreateRentBldgParams {
   division: string;
@@ -247,7 +231,6 @@ export interface CreatePlotParams {
   enchroached_area: string;
   boundary_wall: string;
   po_constructed: string;
-  // author: Schema.Types.ObjectId | IUser;
   path: string;
 }
 export interface CreateRulingParams {
@@ -268,9 +251,6 @@ export interface GetTemplateByIdParams {
 }
 export interface GetDopBldgByIdParams {
   departmentalbldgId: string;
-}
-export interface GetPendencyByIdParams {
-  pendencyId: string;
 }
 export interface GetRentBldgByIdParams {
   rentbldgId: string;
@@ -303,10 +283,6 @@ export interface DeleteTemplateParams {
 }
 export interface DeleteDopBldgParams {
   departmentalbldgId: string;
-  path: string;
-}
-export interface DeletePendencyParams {
-  pendencyId: string;
   path: string;
 }
 export interface DeleteRentBldgParams {
@@ -357,20 +333,6 @@ export interface EditDopBldgParams {
   value: string;
   year: string;
   expenditure: string;
-  path: string;
-}
-export interface EditPendencyParams {
-  pendencyId: string;
-  dak_no: string;
-  division: string;
-  doc: string;
-  c_no: string;
-  subject: string;
-  f_no: string;
-  dos: string;
-  dor: string;
-  remarks: string;
-  status: string;
   path: string;
 }
 export interface EditRentBldgParams {
@@ -481,5 +443,3 @@ export interface GetUserStatsParams {
   page?: number;
   pageSize?: number;
 }
-
-

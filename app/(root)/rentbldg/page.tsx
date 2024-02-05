@@ -36,7 +36,7 @@ const data = await getRentBldg({
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
-// console.log(data)
+console.log(data)
 
   return (
     <>
@@ -75,8 +75,7 @@ const data = await getRentBldg({
       
 
     <div className="mt-10 flex w-full flex-col gap-6 overflow-auto shadow">
-    {/* <DataTable columns={columns} data={data} /> */}
-    <DataTable columns={columns} data={JSON.parse(JSON.stringify(data))} />
+    <DataTable columns={columns} data={data} />
       </div>
       {/* <div className="mt-10">
         <Pagination 

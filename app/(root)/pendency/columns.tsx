@@ -234,8 +234,4 @@ export const columns: ColumnDef<PendencyDef>[] = [
   },
   
   
-<<<<<<< HEAD
     ]
-=======
-    ]
->>>>>>> 8d78631469af59fe77409401ab1f023699c979f1

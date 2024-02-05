@@ -77,7 +77,6 @@ const Records = ({ type, mongoUserId, templateDetails }: Props) => {
           subcategory: values.subcategory,
           description: values.description,
           section: values.section,
-          // author: JSON.parse(mongoUserId),
           path: pathname,
         });
 

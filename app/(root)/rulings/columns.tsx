@@ -2,7 +2,7 @@
 // @ts-ignore
 
 import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import {ArrowUpDown, MoreHorizontal } from "lucide-react"
  
 import { Button } from "@/components/ui/button"
 import {
@@ -134,3 +134,5 @@ export const columns: ColumnDef<RulingDef>[] = [
   // },
 
     ]
+
+    

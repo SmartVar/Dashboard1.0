@@ -13,22 +13,7 @@ export const TemplatesSchema = z.object({
   description: z.string().min(100),
   section: z.string().min(4).max(100),
 })
-<<<<<<< HEAD
-export const PendencySchema = z.object({
-  division: z.string().min(2).max(130),
-  dak_no: z.string().min(2).max(130),
-  doc: z.string().min(2).max(130),
-  c_no: z.string().min(2).max(130),
-  subject: z.string().min(2).max(130),
-  f_no: z.string().min(2).max(130),
-  dos: z.string().min(2).max(130),
-  dor: z.string().min(2).max(130),
-  remarks: z.string().min(2).max(130),
-  status: z.string().min(2).max(130),
-  })
-=======
 
->>>>>>> 8d78631469af59fe77409401ab1f023699c979f1
 
 export const RulingsSchema = z.object({
   title: z.string().min(4).max(130),
@@ -99,9 +84,6 @@ export const ProfileSchema = z.object({
   section: z.string().min(2).max(150),
   // portfolioWebsite: z.string().url(),
   location: z.string().min(2).max(50),
-<<<<<<< HEAD
-})
-=======
 })
 
 export const PendencySchema = z.object({
@@ -116,4 +98,3 @@ export const PendencySchema = z.object({
   remarks: z.string().min(2).max(130),
   status: z.string().min(2).max(130),
   })
->>>>>>> 8d78631469af59fe77409401ab1f023699c979f1

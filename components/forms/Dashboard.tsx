@@ -29,9 +29,9 @@ const Dashboard = ({ clerkId, user }: Props) => {
     defaultValues: {
       name: parsedUser.name || '',
       username: parsedUser.username || '',
-    //   role: parsedUser.role || '',
+      // role: parsedUser.role || '',
       location: parsedUser.location || '',
-      // section: parsedUser.section || '',
+      section: parsedUser.section || '',
     },
   })
 
@@ -44,7 +44,7 @@ const Dashboard = ({ clerkId, user }: Props) => {
         updateData: {
           name: values.name,
           username: values.username,
-          // section: values.section,
+          section: values.section,
           location: values.location,
         //   bio: values.bio,
         },
@@ -102,7 +102,7 @@ const Dashboard = ({ clerkId, user }: Props) => {
         />
         
 
-        {/* <FormField
+        <FormField
           control={form.control}
           name="section"
           render={({ field }) => (
@@ -120,7 +120,7 @@ const Dashboard = ({ clerkId, user }: Props) => {
               <FormMessage />
             </FormItem>
           )}
-        /> */}
+        />
 
         <FormField
           control={form.control}

@@ -10,13 +10,13 @@ export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/home.svg",
     route: "/",
+    label: "Home",
+  },
+  {
+    imgURL: "/assets/icons/home.svg",
+    route: "/dashboard",
     label: "Dashboard",
   },
-  // {
-  //   imgURL: "/assets/icons/home.svg",
-  //   route: "/dashboard",
-  //   label: "Dashboard",
-  // },
   {
     imgURL: "/assets/icons/users.svg",
     route: "/rulings",

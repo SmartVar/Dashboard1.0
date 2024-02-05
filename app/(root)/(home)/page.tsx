@@ -10,7 +10,7 @@ const page = () => {
         <h1 className="h1-bold text-dark100_light900">Office Zone</h1>
         <div className="mt-3">
             <h2 className="h2-bold text-dark100_light900">The ultimate Office Utility Website</h2>
-            <p className="paragraph-regular text-dark200_light800">Kindly check the Dashboard for more information.</p>
+            <p className="paragraph-regular text-dark200_light800">Kindly check the Dashboard for more information. Please use it for official purpose only</p>
         {/* <Link href="/ask-question" className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
            Edit Dashboard

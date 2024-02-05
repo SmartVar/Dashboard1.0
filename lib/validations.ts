@@ -81,7 +81,7 @@ export const AnswerSchema = z.object({
 export const ProfileSchema = z.object({
   name: z.string().min(2).max(50),
   username: z.string().min(2).max(50),
-  // section: z.string().min(2).max(150),
+  section: z.string().min(2).max(150),
   // portfolioWebsite: z.string().url(),
   location: z.string().min(2).max(50),
 })

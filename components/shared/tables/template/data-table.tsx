@@ -1,15 +1,20 @@
+/* eslint-disable no-redeclare */
 "use client"
-
+// @ts-ignore
 // @ts-nocheck
 import * as React from "react"
 import {
   ColumnDef,
+  SortingState,
   VisibilityState,
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
+  
 } from "@tanstack/react-table"
+// import EditableCell from "../EditableCell";
 
 import {
   Table,
@@ -26,6 +31,8 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { DataTablePagination } from "./DataTablePagination"
+// import { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -39,8 +46,15 @@ export function DataTable<TData, TValue>({
  
   const [columnVisibility, setColumnVisibility] =
   React.useState<VisibilityState>({})
-
+ 
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  
+  // const [data, setData] = useState(data);
   const table = useReactTable({
+    // @ts-ignore
+   
+    setData,
+    
 
     // @ts-ignore
     data,
@@ -48,9 +62,27 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
     state: {
       columnVisibility,
+      sorting,
     },
+    // meta: {
+    //   updateData: (rowIndex: string | number, columnId: any, value: any) =>
+    //     setData((prev: any[]) =>
+    //       prev.map((row: any, index: string | number) =>
+    //         index === rowIndex
+    //           ? {
+    //             // @ts-ignore
+    //               ...prev[rowIndex],
+    //               [columnId]: value,
+    //             }
+    //           : row
+    //       )
+    //     ),
+    // },
+
   })
 
   return (
@@ -133,8 +165,10 @@ export function DataTable<TData, TValue>({
         </TableBody>
       </Table>
     </div>
-    <div className="flex w-full items-center justify-center gap-2">
-        <Button
+    <div className="body-medium text-dark200_light800 flex w-full items-center justify-center gap-2" >
+    <DataTablePagination table={table} />
+
+        {/* <Button
           variant="outline"
           size="sm"
           onClick={() => table.previousPage()}
@@ -154,8 +188,11 @@ export function DataTable<TData, TValue>({
         items-center justify-center gap-2 border  bg-primary-500"
         >
           <p className="body-medium text-dark200_light800">Next</p>
-        </Button>
+        </Button> */}
       </div>
     </div>
   )
+}
+function setData(arg0: (prev: any) => any) {
+  throw new Error("Function not implemented.");
 }

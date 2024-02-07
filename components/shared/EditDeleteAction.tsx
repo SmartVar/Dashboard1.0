@@ -30,7 +30,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
     
       // Delete template
 
-{url==='/templates/'
+{url==='/templates'
 ? await deleteTemplate({ 
       templateId: JSON.parse(itemId), 
       path: pathname 
@@ -42,13 +42,13 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
     path: pathname 
   }
   )
-  : url === '/dopbldg/'
+  : url === '/dopbldg'
   ? await deleteDopBldg({ 
     departmentalbldgId: JSON.parse(itemId), 
     path: pathname 
   }
   )
-  : url === '/plot/'
+  : url === '/plot'
   ? await deletePlot({ 
     plotId: JSON.parse(itemId), 
     path: pathname 

@@ -95,6 +95,13 @@
     { name: "Pendency", value: "pendency" },
     
   ];
+
+  export const PendencyFilters = [
+    { name: "All", value: "all" },
+    { name: "US", value: "us" },
+    { name: "Pending", value: "pending" },
+    { name: "Closed", value: "closed" },
+  ];
   
  
   export const SectionFilters = [

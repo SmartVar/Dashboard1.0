@@ -12,7 +12,7 @@ import { FilterQuery } from "mongoose";
 export async function getPendency(params: GetPendencyParams): Promise<PendencyDef[]> {
   try {
     connectToDatabase();
-    const { searchQuery } = params;
+    const { searchQuery, filter } = params;
 
     // Calculcate the number of posts to skip based on the page number and page size
     // const skipAmount = (page - 1) * pageSize;
@@ -34,10 +34,30 @@ export async function getPendency(params: GetPendencyParams): Promise<PendencyDe
         
       ]
     }
+
+    let sortOptions = {};
+
+    switch (filter) {
+      case "closed":
+        sortOptions = { status: 'Closed' }
+        break;
+      case "us":
+        sortOptions = { status: 'US'}
+        break;
+      case "pending":
+        sortOptions = { status: 'Pending' }
+        break;
+      // case "old":
+      //   sortOptions = { createdAt: 1 }
+      //   break;
+    
+      default:
+        break;
+    }
     
 
     const pendency = await Pendency.find(query)
-    // .find(sortOptions)
+    .find(sortOptions)
     // .populate({ path: 'author', model: User });
     
 

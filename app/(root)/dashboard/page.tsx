@@ -94,7 +94,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
         badges={userInfo.badgeCounts}
       /> */}
 
-<Tabs defaultValue="overview" className="flex-1">
+<Tabs defaultValue="overview" className="flex-1 flex-wrap">
             <TabsList className="background-light800_dark400 min-h-[42px] p-1">
               <TabsTrigger value="overview" className="tab">Overview</TabsTrigger>
               <TabsTrigger value="navimumbai" className="tab">

@@ -7,7 +7,14 @@ import Link from 'next/link'
 import React from 'react'
 import { getJoinedDate } from '@/lib/utils'
 import DashboardLink from '@/components/shared/DashboardLink'
-import Stats from '@/components/shared/Stats'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../../components/ui/tabs"
+import Overviewdash from "../../../components/dashboard/Overviewdash"
+// import Stats from '@/components/shared/Stats'
 
 
 const Page = async ({ params, searchParams}: URLProps) => {
@@ -74,7 +81,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
         </div>
       </div>
       
-      <Stats
+      {/* <Stats
         reputation={userInfo.reputation}
         totalDopBldg={userInfo.totalDopBldg}
         totalRentBldg={userInfo.totalRentBldg}
@@ -85,9 +92,64 @@ const Page = async ({ params, searchParams}: URLProps) => {
         totalPendingCorr={userInfo.totalPendingCorr}
         totalUsCorr={userInfo.totalUsCorr}
         badges={userInfo.badgeCounts}
-      />
+      /> */}
 
-      
+<Tabs defaultValue="overview" className="flex-1">
+            <TabsList className="background-light800_dark400 min-h-[42px] p-1">
+              <TabsTrigger value="overview" className="tab">Overview</TabsTrigger>
+              <TabsTrigger value="navimumbai" className="tab">
+                Navi Mumbai
+              </TabsTrigger>
+              <TabsTrigger value="thane" className="tab">
+                Thane
+              </TabsTrigger>
+              <TabsTrigger value="nashik" className="tab">
+                Nashik
+              </TabsTrigger>
+              <TabsTrigger value="malegaon" className="tab">
+                Malegaon
+              </TabsTrigger>
+              <TabsTrigger value="raigad" className="tab">
+                Raigad
+              </TabsTrigger>
+              <TabsTrigger value="palghar" className="tab">
+                Palghar
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview" className="mt-5 flex w-full flex-col gap-6">
+              <Overviewdash />
+              </TabsContent>
+            <TabsContent value="navimumbai" className="mt-5 flex w-full flex-col gap-6">
+            {/* <Stats
+        reputation={userInfo.reputation}
+        totalDopBldg={userInfo.totalDopBldg}
+        totalRentBldg={userInfo.totalRentBldg}
+        totalSQ={userInfo.totalSQ}
+        totalIQ={userInfo.totalIQ}
+        totalVacantPlots={userInfo.totalVacantPlots}
+        totalReservedPlots={userInfo.totalReservedPlots}
+        totalPendingCorr={userInfo.totalPendingCorr}
+        totalUsCorr={userInfo.totalUsCorr}
+        badges={userInfo.badgeCounts}
+      /> */}
+      <Overviewdash />
+              </TabsContent>
+            <TabsContent value="thane" className="text-dark200_light900 space-y-4 text-sm font-medium">
+              <Overviewdash />
+              </TabsContent>
+            <TabsContent value="nashik" className="text-dark200_light900 space-y-4 text-sm font-medium">
+              <Overviewdash />
+              </TabsContent>
+            <TabsContent value="malegaon" className="text-dark200_light900 space-y-4 text-sm font-medium">
+              <Overviewdash />
+              </TabsContent>
+            <TabsContent value="raigad" className="text-dark200_light900 space-y-4 text-sm font-medium">
+              <Overviewdash />
+              </TabsContent>
+            <TabsContent value="palghar" className="text-dark200_light900 space-y-4 text-sm font-medium">
+              <Overviewdash />
+              </TabsContent>
+          </Tabs>
     </>
   )
 }

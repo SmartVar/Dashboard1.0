@@ -18,7 +18,7 @@ export function RecentSales() {
             To utilise vacant spaces and plots area
           </p>
         </div>
-        <div className="ml-auto font-medium">Due on 05.02.2024</div>
+        <div className="align-right ml-auto space-y-1 font-medium">Due on 05.02.2024</div>
       </div>
       <div className="flex items-center">
         <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
@@ -29,7 +29,7 @@ export function RecentSales() {
           <p className="text-sm font-medium leading-none">Heritage Bldg</p>
           <p className="text-sm text-muted-foreground">To submit the Heritage Bldg in Division</p>
         </div>
-        <div className="ml-auto font-medium">Due on 31.01.2024</div>
+        <div className="align-right ml-auto space-y-1 font-medium">Due on 31.01.2024</div>
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
@@ -42,7 +42,7 @@ export function RecentSales() {
             To submit funds utilization as on 15.02.2024
           </p>
         </div>
-        <div className="ml-auto font-medium">Due on 12.02.2024</div>
+        <div className="align-right ml-auto space-y-1 font-medium">Due on 12.02.2024</div>
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
@@ -53,7 +53,7 @@ export function RecentSales() {
           <p className="text-sm font-medium leading-none">C.O.</p>
           <p className="text-sm text-muted-foreground">Matheran Proposal</p>
         </div>
-        <div className="ml-auto font-medium">Due on 12.02.2024</div>
+        <div className="align-right ml-auto space-y-1 font-medium">Due on 12.02.2024</div>
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
@@ -62,9 +62,9 @@ export function RecentSales() {
         </Avatar>
         <div className="ml-4 space-y-1">
           <p className="text-sm font-medium leading-none">Funds</p>
-          <p className="text-sm text-muted-foreground">Fund Allotment additional</p>
+          <p className="text-muted-foreground text-sm">Fund Allotment additional</p>
         </div>
-        <div className="ml-auto font-medium">Due on 12.02.2024</div>
+        <div className="align-right ml-auto space-y-1 font-medium">Due on 12.02.2024</div>
       </div>
     </div>
   )

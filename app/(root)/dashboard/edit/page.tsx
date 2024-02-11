@@ -6,6 +6,8 @@ import { auth } from '@clerk/nextjs'
 const Page = async ({ params }: ParamsProps) => {
   const { userId } = auth();
 
+  if (userId !== 'user_2bYFxpFNNNEJclp29nFXHzrnJCh') return <h1 className="h1-bold text-dark100_light900">"You are not authorized to view the content"</h1>; 
+
   if(!userId) return null;
 
   const mongoUser = await getUserById({ userId })

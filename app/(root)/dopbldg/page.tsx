@@ -3,7 +3,7 @@ import React from 'react'
 import { URLProps } from '@/types'
 // import { SignedIn, auth } from '@clerk/nextjs'
 // import HomeFilters from "@/components/home/HomeFilters";
-// import Filter from "@/components/shared/Filter";
+import Filter from "@/components/shared/Filter";
 // import NoResult from "@/components/shared/NoResult";
 // import Pagination from "@/components/shared/Pagination";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
@@ -16,6 +16,7 @@ import Link from "next/link";
 import { DataTable }  from '@/components/shared/tables/template/data-table';
 import {  columns } from './columns'
 import { getDopBldg } from '@/lib/actions/departmentalbldg.action';
+import { DivisionFilters } from '@/constants/filters';
 // import { Pagination } from '@tanstack/react-table';
 
 
@@ -32,7 +33,7 @@ const Page = async ({ searchParams}: URLProps) => {
 
 const data = await getDopBldg({
   searchQuery: searchParams.q,
-//   filter: searchParams.filter,
+  filter: searchParams.filter,
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
@@ -63,11 +64,11 @@ console.log(data)
         otherClasses="flex-1"
       />
 
-      {/* <Filter
-        filters={TemplatePageFilters}
+      <Filter
+        filters={DivisionFilters}
         otherClasses="min-h-[56px] sm:min-w-[170px]"
         // containerClasses="hidden max-md:flex"
-      /> */}
+      />
     </div>
     {/* <HomeFilters 
     filters={typefilter ==='noting' ? NotingPageFilters : typefilter === 'drafting' ? DraftingPageFilters : typefilter === 'briefhistory' ? BriefHistoryPageFilters : NoFilters}

@@ -44,7 +44,7 @@ import {
         <Link href="/dopbldg" className="flex justify-start max-sm:w-full">
           <div className="text-dark200_light900 text-xl font-bold">Dop - {formatAndDivideNumber(userInfo.totalDopBldg)} </div>
           </Link>
-          <Link href="/dopbldg" className="flex justify-start max-sm:w-full">
+          <Link href="/rentbldg" className="flex justify-start max-sm:w-full">
           <div className="text-dark200_light900 text-xl font-bold">Rented - {formatAndDivideNumber(userInfo.totalRentBldg)} </div>
            </Link>
           {/* <p className="text-muted-foreground text-xs">
@@ -153,7 +153,7 @@ import {
         <CardHeader>
           <CardTitle>Upcomming Task</CardTitle>
           <CardDescription>
-            You made 265 sales this month.
+            Only Priority Task.
           </CardDescription>
         </CardHeader>
         <CardContent>

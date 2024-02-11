@@ -12,7 +12,7 @@ import { FilterQuery } from "mongoose";
 export async function getPlot(params: GetPlotParams): Promise<PlotDef[]> {
   try {
     connectToDatabase();
-    const { searchQuery } = params;
+    const { searchQuery, filter } = params;
 
     // Calculcate the number of posts to skip based on the page number and page size
     // const skipAmount = (page - 1) * pageSize;
@@ -28,95 +28,47 @@ export async function getPlot(params: GetPlotParams): Promise<PlotDef[]> {
       ]
     }
     
-//     let sortOptions = {};
-
-// if (filter=== 'division') 
-// {
-//   switch (pagefilter) 
-//   {
-//       case "navimumbai":
-//         sortOptions = { title: 'Funds' }
-//         break;
-//       case "reports":
-//         sortOptions = { title: 'Reports' }
-//         break;
-//       case "forwardings":
-//         sortOptions = { title: 'Forwardings' }
-//         break;
-//       case "Proposals":
-//         sortOptions = { title: 'Proposals' }
-//         break;
-//       case "officenote":
-//         sortOptions = { title: 'Office Note' }
-//         break;
-//       case "others":
-//         sortOptions = { title: 'Others' }
-//         break;
+    let sortOptions = {};
     
-//       default:
-//         break;
-//     }
-//   }
-//    else 
-//    {
-//     if (filter==='drafting') 
-//     {
-//       switch (pagefilter) 
-//       {
-//         case "funds":
-//           sortOptions = { title: 'Funds' }
-//           break;
-//         case "fracs":
-//           sortOptions = { title: 'FRAC' }
-//           break;
-//         case "rti":
-//           sortOptions = { title: 'RTI' }
-//           break;
-//         case "reports":
-//           sortOptions = { title: 'Reports' }
-//           break;
-//         case "do":
-//           sortOptions = { title: 'DO' }
-//           break;
-//         case "others":
-//           sortOptions = { title: 'Others' }
-//           break;
-   
-//       default:
-//         break;
-//       }
-//     }
-//   else 
-// {
-//   if (filter==='briefhistory') 
-//   {
-//     switch (pagefilter) 
-//     {
-//     case "dopbldg":
-//       sortOptions = { title: 'Dop Bldg' }
-//       break;
-//     case "rentedbldg":
-//       sortOptions = { title: 'Rented Bldg' }
-//       break;
-//     case "plots":
-//       sortOptions = { title: 'Plots' }
-//       break;
-//     case "others":
-//       sortOptions = { title: 'Others' }
-//       break;
-        
-//     default:
-//       break;
-//   }
-//   }
-//   else {
-//     console.log('No selection of filter')
-//   }
-// }
-//    }
+    switch (filter) 
+    {
+        case "ro":
+          sortOptions = { division: 'RO' }
+          break;
+        case "nmd":
+          sortOptions = { division: 'Navi Mumbai' }
+          break;
+        case "thn":
+          sortOptions = { division: 'Thane' }
+          break;
+        case "nsk":
+          sortOptions = { division: 'Nashik' }
+          break;
+        case "mld":
+          sortOptions = { division: 'Malegaon' }
+          break;
+        case "plg":
+          sortOptions = { division: 'Palgahar' }
+          break;
+        case "rgd":
+          sortOptions = { division: 'Raigad' }
+          break;
+        case "psd":
+          sortOptions = { division: 'PSD' }
+          break;
+        case "csd":
+          sortOptions = { division: 'CSD' }
+          break;
+        case "rtc":
+          sortOptions = { division: 'RTC' }
+          break;
+      
+        default:
+          break;
+      }
 
     const plot = await Plot.find(query)
-    // .find(sortOptions)
+    .find(sortOptions)
     .populate({ path: 'author', model: User });
     
 
@@ -138,7 +90,7 @@ export async function createPlot(params: CreatePlotParams) {
     const { division, name, district, location, local_body, area, moa, date_purchase, purchase_from, amount, purpose, lease_period, enchroached, enchroached_area, boundary_wall,  po_constructed, path } = params;
 
     // Create the question
-    const rentbldg = await Plot.create({
+    const plot = await Plot.create({
         division,
         name,
         district,
@@ -165,7 +117,7 @@ export async function createPlot(params: CreatePlotParams) {
     // revalidate path inorder to display question wihtout reloading
        
     revalidatePath(path)
-    return rentbldg ;
+    return plot ;
 
   } catch (error) {
     

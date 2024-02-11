@@ -25,6 +25,7 @@
   ];
 
   export const TemplatePageFilters = [
+    { name: "All", value: "noting" },
     { name: "Noting", value: "noting" },
     { name: "Drafting", value: "drafting" },
     { name: "Brief History", value: "briefhistory" },
@@ -58,6 +59,7 @@
   ];
 
   export const RulingPageFilters = [
+    { name: "All", value: "all" },
     { name: "Ruling", value: "ruling" },
     { name: "SOP", value: "sop" },
     { name: "Manual", value: "manual" },
@@ -101,6 +103,20 @@
     { name: "US", value: "us" },
     { name: "Pending", value: "pending" },
     { name: "Closed", value: "closed" },
+  ];
+
+  export const DivisionFilters = [
+    { name: "All", value: "all" },
+    { name: "RO", value: "ro" },
+    { name: "NMD", value: "nmd" },
+    { name: "THN", value: "thn" },
+    { name: "NSK", value: "nsk" },
+    { name: "MLD", value: "mld" },
+    { name: "RGD", value: "rgd" },
+    { name: "PLG", value: "plg" },
+    { name: "PSD", value: "psd" },
+    { name: "CSD", value: "csd" },
+    { name: "RTC", value: "rtc" },
   ];
   
  

@@ -1,6 +1,7 @@
 /* eslint-disable no-lone-blocks */
 "use client";
 // @ts-ignore
+// "use server";
 
 import { deletePlot } from "@/lib/actions/plot.action";
 import { deleteRentBldg } from "@/lib/actions/rentedbldg.action";
@@ -9,6 +10,7 @@ import { deleteDopBldg} from "@/lib/actions/departmentalbldg.action";
 import { deletePendency} from "@/lib/actions/pendency.action";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+// import { auth } from '@clerk/nextjs'
 
 interface Props {
   type: string;
@@ -22,12 +24,22 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
 
   // console.log(url);
   const handleEdit = () => {
+    // const { userId } = auth();
+
+  // if (userId !== 'user_2bYFxpFNNNEJclp29nFXHzrnJCh') return <h1 className="h1-bold text-dark100_light900">"You are not authorized to view the content"</h1>; 
+
+  // if(!userId) return null;
     // router.push(`/templates/edit/${JSON.parse(itemId)}`)
     router.push(`${url}/edit/${JSON.parse(itemId)}`)
   };
 
   const handleDelete = async () => {
-    
+  //   const { userId } = auth();
+
+  // if (userId !== 'user_2bYFxpFNNNEJclp29nFXHzrnJCh') return <h1 className="h1-bold text-dark100_light900">"You are not authorized to view the content"</h1>; 
+
+  // if(!userId) return null;
+
       // Delete template
 
 {url==='/templates'

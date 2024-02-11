@@ -22,7 +22,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "OfficaaaeSuite",
+  title: "Office Zone",
   description: "A website to help good be to administrative professionals in his daily work",
   icons: {
     icon: '/assets/images/site-logo.svg'

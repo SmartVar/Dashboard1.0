@@ -37,6 +37,12 @@ const Page = async ({ params, searchParams}: URLProps) => {
           <div className="mt-3">
             <h2 className="h2-bold text-dark100_light900">{userInfo.user.name}</h2>
             <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p>
+            <p className="paragraph-regular text-dark200_light800">Reputation-{userInfo.user.reputation}%</p>
+            <p className="paragraph-regular text-dark200_light800">
+              <DashboardLink 
+                  imgUrl="/assets/icons/gold-medal.svg"
+                  title="Gold Badge"
+                /></p>
 
             <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
               {/* {userInfo.user.portfolioWebsite && (
@@ -73,7 +79,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
             {userId === userInfo.user.clerkId && (
               <Link href="/dashboard/edit">
                 <Button className="paragraph-medium btn-secondary text-dark300_light900 min-h-[46px] min-w-[175px] px-4 py-3">
-                  Edit Profile
+                  Edit Dashboard
                 </Button>
               </Link>
             )}
@@ -97,7 +103,9 @@ const Page = async ({ params, searchParams}: URLProps) => {
 <Tabs defaultValue="overview" className="flex-1 flex-wrap">
 <div className="flex-row-reverse">
             <TabsList className="background-light800_dark400 min-h-[42px] p-1  ">
-              <TabsTrigger value="overview" className="tab">Overview</TabsTrigger>
+              <TabsTrigger value="overview" className="tab">
+                Overview
+                </TabsTrigger>
               <TabsTrigger value="navimumbai" className="tab">
                 Navi Mumbai
               </TabsTrigger>
@@ -118,6 +126,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
               </TabsTrigger>
             </TabsList>
             </div>
+
             <TabsContent value="overview" className="mt-5 flex w-full flex-col gap-6">
               <Overviewdash />
               </TabsContent>

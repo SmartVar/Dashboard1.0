@@ -32,11 +32,11 @@ export const sidebarLinks: SidebarLink[] = [
     route: "/pendency",
     label: "Pendency",
   },
-  // {
-  //   imgURL: "/assets/icons/tag.svg",
-  //   route: "/tags",
-  //   label: "Tags",
-  // },
+  {
+    imgURL: "/assets/icons/calendar.svg",
+    route: "/task",
+    label: "Task",
+  },
   // {
   //   imgURL: "/assets/icons/user.svg",
   //   route: "/profile",

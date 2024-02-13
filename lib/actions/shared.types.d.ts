@@ -118,6 +118,13 @@ export interface GetTemplatesParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetTaskParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 export interface GetDopBldgParams {
   page?: number;
   pageSize?: number;
@@ -168,6 +175,14 @@ export interface CreateTemplateParams {
   subcategory: string;
   description: string;
   section: string;
+  path: string;
+}
+export interface CreateTaskParams {
+  Id: string;
+  title: string;
+  status: string;
+  label: string;
+  priority: string;
   path: string;
 }
 export interface CreateDopBldgParams {
@@ -249,6 +264,9 @@ export interface GetQuestionByIdParams {
 export interface GetTemplateByIdParams {
   templateId: string;
 }
+export interface GetTaskByIdParams {
+  taskId: string;
+}
 export interface GetDopBldgByIdParams {
   departmentalbldgId: string;
 }
@@ -279,6 +297,10 @@ export interface DeleteQuestionParams {
 }
 export interface DeleteTemplateParams {
   templateId: string;
+  path: string;
+}
+export interface DeleteTaskParams {
+  taskId: string;
   path: string;
 }
 export interface DeleteDopBldgParams {
@@ -315,6 +337,15 @@ export interface EditTemplateParams {
   subcategory: string;
   description: string;
   section: string;
+  path: string;
+}
+export interface EditTaskParams {
+  taskId: string;
+  id: string;
+  title: string;
+  status: string;
+  label: string;
+  priority: string;
   path: string;
 }
 export interface EditDopBldgParams {

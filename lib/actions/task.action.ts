@@ -1,0 +1,173 @@
+/* eslint-disable camelcase */
+// @ts-ignore
+"use server"
+import User from "@/database/user.model";
+import Task from "@/database/task.model";
+import { connectToDatabase } from "../mongoose"
+import { DeleteTaskParams,EditTaskParams, GetTaskByIdParams,GetTaskParams, CreateTaskParams } from "./shared.types";
+import { revalidatePath } from "next/cache";
+import { TaskSchema } from "@/app/(root)/task/columns";
+// import { FilterQuery } from "mongoose";
+
+export async function getTask(params: GetTaskParams): Promise<typeof TaskSchema[]> {
+  try {
+    connectToDatabase();
+    // const { searchQuery, filter } = params;
+
+    // Calculcate the number of posts to skip based on the page number and page size
+    // const skipAmount = (page - 1) * pageSize;
+
+//     const query: FilterQuery<typeof Task> = {};
+
+//     if(searchQuery) {
+//       query.$or = [
+//         { title: { $regex: new RegExp(searchQuery, "i")}},
+//         { task: { $regex: new RegExp(searchQuery, "i")}},
+        
+        
+//       ]
+//     }
+    
+//     let sortOptions = {};
+    
+//   switch (filter) 
+//   {
+//       case "ro":
+//         sortOptions = { division: 'RO' }
+//         break;
+//       case "nmd":
+//         sortOptions = { division: 'Navi Mumbai' }
+//         break;
+//       case "thn":
+//         sortOptions = { division: 'Thane' }
+//         break;
+//       case "nsk":
+//         sortOptions = { division: 'Nashik' }
+//         break;
+//       case "mld":
+//         sortOptions = { division: 'Malegaon' }
+//         break;
+//       case "plg":
+//         sortOptions = { division: 'Palgahar' }
+//         break;
+//       case "rgd":
+//         sortOptions = { division: 'Raigad' }
+//         break;
+//       case "psd":
+//         sortOptions = { division: 'PSD' }
+//         break;
+//       case "csd":
+//         sortOptions = { division: 'CSD' }
+//         break;
+//       case "rtc":
+//         sortOptions = { division: 'RTC' }
+//         break;
+    
+//       default:
+//         break;
+//     }
+
+    // const task = await Task.find(query)
+    const task = await Task.find()
+    // .find(sortOptions)
+    .sort({createdAt: - 1})
+    .populate({ path: 'author', model: User });
+    
+
+// console.log(rentbldg);
+// @ts-ignore
+    return task;
+
+  } catch (error) {
+    console.log(error)
+    throw error;
+  }
+}
+  
+export async function createTask(params: CreateTaskParams) {
+  try {
+    connectToDatabase();
+
+    // eslint-disable-next-line camelcase
+    const { id, title, status, label, priority, path } = params;
+
+    // Create the question
+    const task = await Task.create({
+      id,
+      title,
+      status,
+      label,
+      // eslint-disable-next-line camelcase
+      priority,
+    });
+
+       // Create an interaction record for the user's ask_question action
+    
+    // Increment author's reputation by +5 for creating a question
+
+    // revalidate path inorder to display question wihtout reloading
+       
+    revalidatePath(path)
+    return task ;
+
+  } catch (error) {
+    
+  }
+}
+
+export async function getTaskById(params: GetTaskByIdParams) {
+  try {
+    connectToDatabase();
+
+    const { taskId } = params;
+
+    const task = await Task.findById(taskId)
+      // console.log(template)
+      return task;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function editTask(params: EditTaskParams) {
+  try {
+    connectToDatabase();
+
+    const { taskId, id, title, status, label, priority, path  } = params;
+
+    const task = await Task.findById(taskId).populate("author");
+
+    if(!task) {
+      throw new Error("Record not found");
+    }
+    
+      task.id = id;
+      task.title = title;
+      task.status = status;
+      task.label = label;
+      // eslint-disable-next-line camelcase
+      task.priority = priority;
+      
+    await task.save();
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteTask(params: DeleteTaskParams) {
+  try {
+    connectToDatabase();
+
+    const { taskId, path } = params;
+
+    await Task.deleteOne({ _id: taskId });
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+

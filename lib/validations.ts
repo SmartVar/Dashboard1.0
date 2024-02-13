@@ -14,6 +14,14 @@ export const TemplatesSchema = z.object({
   section: z.string().min(4).max(100),
 })
 
+export const TaskSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  status: z.string(),
+  label: z.string(),
+  priority: z.string(),
+  })
+
 
 export const RulingsSchema = z.object({
   title: z.string().min(4).max(130),

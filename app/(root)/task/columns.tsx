@@ -4,22 +4,34 @@ import { ColumnDef } from "@tanstack/react-table"
 
 import { Badge } from "../../../components/ui/badge"
 import { Checkbox } from "../../../components/ui/checkbox"
-
+import {  MoreHorizontal } from "lucide-react"
 import { labels, priorities, statuses } from "../../../components/task/data"
-import {TaskSchema } from "../../../lib/validations"
+// import {TaskSchema } from "../../../lib/validations"
 import { DataTableColumnHeader } from "../../../components/task/data-table-column-header"
-import { DataTableRowActions } from "../../../components/task/data-table-row-actions"
+// import { DataTableRowActions } from "../../../components/task/data-table-row-actions"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import Link from "next/link"
+import EditDeleteAction from "../../../components/shared/EditDeleteAction";
 
-// export type TaskSchema = {
-//   _id: string;
-//   title: string;
-//   status: string;
-//   label: string;
-//   priority: string;
-//   createdOn: Date;
-// }
 
-export const columns: ColumnDef<typeof TaskSchema>[] = [
+export type TaskDef = {
+  _id: string;
+  title: string;
+  status: string;
+  label: string;
+  priority: string;
+  createdOn: Date;
+}
+
+export const columns: ColumnDef<TaskDef>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -44,15 +56,15 @@ export const columns: ColumnDef<typeof TaskSchema>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  {
-    accessorKey: "id",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Task" />
-    ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
-    enableSorting: false,
-    enableHiding: false,
-  },
+  // {
+  //   accessorKey: "id",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Task" />
+  //   ),
+  //   cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // },
   {
     accessorKey: "title",
     header: ({ column }) => (
@@ -127,8 +139,48 @@ export const columns: ColumnDef<typeof TaskSchema>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    // cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => {
+      const task = row.original
+ 
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
+            <DropdownMenuLabel className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400">
+              Actions</DropdownMenuLabel>
+            <DropdownMenuItem
+            className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
+              onClick={() => navigator.clipboard.writeText(task._id)}
+            >
+             <Link href={`/task/${task._id}`}
+          className="flex items-center justify-start gap-1"  >View Content</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            {/* <DropdownMenuItem onClick={() => navigator.clipboard.writeText(template.id)}
+            >
+             <Link href={`/templates/edit/${template._id}`}
+          className="flex items-center justify-start gap-1">Edit Row</Link></DropdownMenuItem> */}
+            <DropdownMenuItem 
+            className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
+            onClick={() => navigator.clipboard.writeText(task._id)}>
+            <EditDeleteAction type='Edit' itemId={JSON.stringify(task._id)} url="/task"/>
+            Edit Row</DropdownMenuItem>
+            <DropdownMenuItem 
+            className="text-dark500_light700 small-regular border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400"
+            onClick={() => navigator.clipboard.writeText(task._id)}>
+            <EditDeleteAction type='Delete' itemId={JSON.stringify(task._id)} url="/task"/>
+           Delete Row</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    },
   },
 ]
 
-export { TaskSchema }
+// export { TaskSchema }

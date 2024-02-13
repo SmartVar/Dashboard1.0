@@ -33,36 +33,36 @@ import {
     }
   
     return (
-      <div className={cn("flex items-center space-x-2", className)}>
+      <div className={cn("flex items-center space-x-2 text-dark300_light700", className)}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant="ghost"
               size="sm"
-              className="-ml-3 h-8 data-[state=open]:bg-accent"
+              className="-ml-3 h-8 data-[state=open]:bg-accent text-dark300_light700"
             >
               <span>{title}</span>
               {column.getIsSorted() === "desc" ? (
-                <ArrowDownIcon className="ml-2 h-4 w-4" />
+                <ArrowDownIcon className="ml-2 h-4 w-4 text-dark300_light700" />
               ) : column.getIsSorted() === "asc" ? (
-                <ArrowUpIcon className="ml-2 h-4 w-4" />
+                <ArrowUpIcon className="ml-2 h-4 w-4 text-dark300_light700" />
               ) : (
-                <CaretSortIcon className="ml-2 h-4 w-4" />
+                <CaretSortIcon className="ml-2 h-4 w-4 text-dark300_light700" />
               )}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
             <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
-              <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+              <ArrowUpIcon className="text-dark300_light700 mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
               Asc
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-              <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+              <ArrowDownIcon className="text-dark300_light700 mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
               Desc
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-              <EyeNoneIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+              <EyeNoneIcon className="text-dark300_light700 mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
               Hide
             </DropdownMenuItem>
           </DropdownMenuContent>

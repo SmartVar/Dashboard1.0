@@ -1,7 +1,7 @@
 import { Schema, model, models, Document } from 'mongoose';
 
 export interface ITask extends Document {
-  id: string;
+  // id: string;
   title: string;
   status: string;
   label: string;
@@ -12,7 +12,7 @@ export interface ITask extends Document {
 
 const TaskSchema = new Schema({
   
-  id: { type: String, required: true },
+  // id: { type: String, required: true },
   title: { type: String, required: true },
   status: { type: String, required: true },
   label: { type: String, required: true},

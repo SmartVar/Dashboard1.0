@@ -6,70 +6,71 @@ import Task from "@/database/task.model";
 import { connectToDatabase } from "../mongoose"
 import { DeleteTaskParams,EditTaskParams, GetTaskByIdParams,GetTaskParams, CreateTaskParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
-import { TaskSchema } from "@/app/(root)/task/columns";
-// import { FilterQuery } from "mongoose";
+// import { TaskSchema } from "@/app/(root)/task/columns";
+import { TaskDef } from "@/app/(root)/task/columns";
+import { FilterQuery } from "mongoose";
 
-export async function getTask(params: GetTaskParams): Promise<typeof TaskSchema[]> {
+export async function getTask(params: GetTaskParams): Promise<TaskDef[]> {
   try {
     connectToDatabase();
-    // const { searchQuery, filter } = params;
+    const { searchQuery, filter } = params;
 
     // Calculcate the number of posts to skip based on the page number and page size
     // const skipAmount = (page - 1) * pageSize;
 
-//     const query: FilterQuery<typeof Task> = {};
+    const query: FilterQuery<typeof Task> = {};
 
-//     if(searchQuery) {
-//       query.$or = [
-//         { title: { $regex: new RegExp(searchQuery, "i")}},
-//         { task: { $regex: new RegExp(searchQuery, "i")}},
+    if(searchQuery) {
+      query.$or = [
+        { title: { $regex: new RegExp(searchQuery, "i")}},
+        { task: { $regex: new RegExp(searchQuery, "i")}},
         
         
-//       ]
-//     }
+      ]
+    }
     
-//     let sortOptions = {};
+    let sortOptions = {};
     
-//   switch (filter) 
-//   {
-//       case "ro":
-//         sortOptions = { division: 'RO' }
-//         break;
-//       case "nmd":
-//         sortOptions = { division: 'Navi Mumbai' }
-//         break;
-//       case "thn":
-//         sortOptions = { division: 'Thane' }
-//         break;
-//       case "nsk":
-//         sortOptions = { division: 'Nashik' }
-//         break;
-//       case "mld":
-//         sortOptions = { division: 'Malegaon' }
-//         break;
-//       case "plg":
-//         sortOptions = { division: 'Palgahar' }
-//         break;
-//       case "rgd":
-//         sortOptions = { division: 'Raigad' }
-//         break;
-//       case "psd":
-//         sortOptions = { division: 'PSD' }
-//         break;
-//       case "csd":
-//         sortOptions = { division: 'CSD' }
-//         break;
-//       case "rtc":
-//         sortOptions = { division: 'RTC' }
-//         break;
+  switch (filter) 
+  {
+      case "ro":
+        sortOptions = { division: 'RO' }
+        break;
+      case "nmd":
+        sortOptions = { division: 'Navi Mumbai' }
+        break;
+      case "thn":
+        sortOptions = { division: 'Thane' }
+        break;
+      case "nsk":
+        sortOptions = { division: 'Nashik' }
+        break;
+      case "mld":
+        sortOptions = { division: 'Malegaon' }
+        break;
+      case "plg":
+        sortOptions = { division: 'Palgahar' }
+        break;
+      case "rgd":
+        sortOptions = { division: 'Raigad' }
+        break;
+      case "psd":
+        sortOptions = { division: 'PSD' }
+        break;
+      case "csd":
+        sortOptions = { division: 'CSD' }
+        break;
+      case "rtc":
+        sortOptions = { division: 'RTC' }
+        break;
     
-//       default:
-//         break;
-//     }
+      default:
+        break;
+    }
 
     // const task = await Task.find(query)
-    const task = await Task.find()
-    // .find(sortOptions)
+    const task = await Task.find(query)
+    .find(sortOptions)
     .sort({createdAt: - 1})
     .populate({ path: 'author', model: User });
     
@@ -89,11 +90,11 @@ export async function createTask(params: CreateTaskParams) {
     connectToDatabase();
 
     // eslint-disable-next-line camelcase
-    const { id, title, status, label, priority, path } = params;
+    const { title, status, label, priority, path } = params;
 
     // Create the question
     const task = await Task.create({
-      id,
+      
       title,
       status,
       label,
@@ -134,7 +135,7 @@ export async function editTask(params: EditTaskParams) {
   try {
     connectToDatabase();
 
-    const { taskId, id, title, status, label, priority, path  } = params;
+    const { taskId, title, status, label, priority, path  } = params;
 
     const task = await Task.findById(taskId).populate("author");
 
@@ -142,7 +143,7 @@ export async function editTask(params: EditTaskParams) {
       throw new Error("Record not found");
     }
     
-      task.id = id;
+      
       task.title = title;
       task.status = status;
       task.label = label;
@@ -162,6 +163,7 @@ export async function deleteTask(params: DeleteTaskParams) {
     connectToDatabase();
 
     const { taskId, path } = params;
+    console.log(taskId)
 
     await Task.deleteOne({ _id: taskId });
 

@@ -178,7 +178,7 @@ export interface CreateTemplateParams {
   path: string;
 }
 export interface CreateTaskParams {
-  Id: string;
+  // id: string;
   title: string;
   status: string;
   label: string;
@@ -341,7 +341,7 @@ export interface EditTemplateParams {
 }
 export interface EditTaskParams {
   taskId: string;
-  id: string;
+  // id: string;
   title: string;
   status: string;
   label: string;

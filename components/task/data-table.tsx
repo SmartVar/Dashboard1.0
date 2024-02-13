@@ -72,9 +72,9 @@ export function DataTable<TData, TValue>({
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>
-          <TableHeader>
+          <TableHeader className='paragraph-semibold text-dark300_light700'>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="paragraph-semibold text-dark300_light700">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} colSpan={header.colSpan}>
@@ -119,8 +119,10 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-      </div>
+      </div >
+      <div className="body-medium text-dark200_light800 flex w-full items-center justify-center gap-2">
       <DataTablePagination table={table} />
+      </div>
     </div>
   )
 }

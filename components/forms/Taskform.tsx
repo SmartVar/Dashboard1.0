@@ -44,7 +44,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
   const form = useForm<z.infer<typeof TaskSchema>>({
     resolver: zodResolver(TaskSchema),
     defaultValues: {
-      id: parsedTaskDetails?.id || '',
+      // id: parsedTaskDetails?.id || '',
       title: parsedTaskDetails?.title || '',
       status: parsedTaskDetails?.status || '',
       label: parsedTaskDetails?.label || '',
@@ -60,7 +60,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
       if(type === 'Edit') {
         await editTask({
           taskId: parsedTaskDetails._id,
-          id: values.id,
+          // id: values.id,
           title: values.title,
           status: values.status,
           label: values.label,
@@ -71,7 +71,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
         router.push(`/task`);
       } else {
         await createTask({
-            id: values.id,
+            // id: values.id,
             title: values.title,
             status: values.status,
             label: values.label,
@@ -95,7 +95,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
   return (
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-10">
-      <FormField
+      {/* <FormField
         control={form.control}
         name="id"
         render={({ field }) => (
@@ -112,7 +112,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
-      />
+      /> */}
       <FormField
         control={form.control}
         name="title"

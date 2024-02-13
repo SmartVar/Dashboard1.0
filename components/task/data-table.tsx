@@ -46,7 +46,8 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = React.useState<SortingState>([])
 
   const table = useReactTable({
-    data,
+      // @ts-ignore
+  data,
     columns,
     state: {
       sorting,

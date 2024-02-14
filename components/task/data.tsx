@@ -15,13 +15,18 @@ import {
       label: "Report",
     },
     {
-      value: "feature",
-      label: "Feature",
+      value: "frac",
+      label: "FRAC",
     },
     {
-      value: "documentation",
-      label: "Documentation",
+      value: "proposal",
+      label: "Proposal",
     },
+      {
+value: "funds",
+          label: "Funds"
+      }   
+
   ]
   
   export const statuses = [

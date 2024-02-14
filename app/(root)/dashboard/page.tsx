@@ -104,25 +104,25 @@ const Page = async ({ params, searchParams}: URLProps) => {
 <div className="flex-row-reverse">
             <TabsList className="background-light800_dark400 min-h-[42px] p-1  ">
               <TabsTrigger value="overview" className="tab">
-                Overview
+                Bldg
                 </TabsTrigger>
               <TabsTrigger value="navimumbai" className="tab">
-                Navi Mumbai
+                Staff
               </TabsTrigger>
               <TabsTrigger value="thane" className="tab">
-                Thane
+                Estb
               </TabsTrigger>
               <TabsTrigger value="nashik" className="tab">
-                Nashik
+                Mails
               </TabsTrigger>
               <TabsTrigger value="malegaon" className="tab">
-                Malegaon
+                Tech
               </TabsTrigger>
               <TabsTrigger value="raigad" className="tab">
-                Raigad
+                SB/IPPB
               </TabsTrigger>
               <TabsTrigger value="palghar" className="tab">
-                Palghar
+                PG
               </TabsTrigger>
             </TabsList>
             </div>

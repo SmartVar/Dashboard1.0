@@ -11,8 +11,8 @@ import {
   
   export const labels = [
     {
-      value: "bug",
-      label: "Bug",
+      value: "report",
+      label: "Report",
     },
     {
       value: "feature",

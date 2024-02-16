@@ -26,6 +26,9 @@ import {
 value: "funds",
           label: "Funds"
       }   
+      {
+      value: "rti",
+          label: "RTI"}
 
   ]
   
@@ -37,7 +40,7 @@ value: "funds",
     },
     {
       value: "todo",
-      label: "Todo",
+      label: "To do",
       icon: CircleIcon,
     },
     {

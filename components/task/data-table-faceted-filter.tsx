@@ -41,7 +41,7 @@ export function DataTableFacetedFilter<TData, TValue>({
 
   return (
     <Popover >
-      <PopoverTrigger asChild className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
+      <PopoverTrigger asChild >
         <Button variant="outline" size="sm" className="h-8 border-dashed text-dark300_light700 focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200">
           <PlusCircledIcon className="mr-2 h-4 w-4" />
           {title}
@@ -80,7 +80,7 @@ export function DataTableFacetedFilter<TData, TValue>({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0 text-dark300_light700" align="start">
+      <PopoverContent className="w-[200px] p-0 text-dark300_light700 focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200" align="start">
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>

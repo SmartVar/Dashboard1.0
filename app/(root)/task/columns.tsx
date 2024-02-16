@@ -168,8 +168,8 @@ export const columns: ColumnDef<TaskDef>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
+          <DropdownMenuSubTrigger className="text-dark500_light700">Labels</DropdownMenuSubTrigger>
+          <DropdownMenuSubContent className="text-dark500_light700">
             <DropdownMenuRadioGroup value={task.label}>
               {labels.map((label) => (
                 <DropdownMenuRadioItem key={label.value} value={label.value}>

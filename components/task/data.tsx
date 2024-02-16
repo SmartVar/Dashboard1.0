@@ -25,7 +25,7 @@ import {
       {
 value: "funds",
           label: "Funds"
-      }   
+      } ,  
       {
       value: "rti",
           label: "RTI"}

@@ -1,4 +1,4 @@
-"use client"
+⁸"use client"
 
 import { ColumnDef } from "@tanstack/react-table"
 
@@ -16,7 +16,12 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import EditDeleteAction from "../../../components/shared/EditDeleteAction";
@@ -161,6 +166,19 @@ export const columns: ColumnDef<TaskDef>[] = [
              <Link href={`/task/${task._id}`}
           className="flex items-center justify-start gap-1"  >View Content</Link>
             </DropdownMenuItem>
+            <DropdownMenuSeparator />
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
+          <DropdownMenuSubContent>
+            <DropdownMenuRadioGroup value={task.label}>
+              {labels.map((label) => (
+                <DropdownMenuRadioItem key={label.value} value={label.value}>
+                  {label.label}
+                </DropdownMenuRadioItem>
+              ))}
+            </DropdownMenuRadioGroup>
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
             <DropdownMenuSeparator />
             {/* <DropdownMenuItem onClick={() => navigator.clipboard.writeText(template.id)}
             >

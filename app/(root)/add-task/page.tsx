@@ -15,11 +15,9 @@ const Page = async () => {
     const mongoUser = await getUserById({ userId });
   return (
     <div>
-<<<<<<< HEAD
-    <h1 className="h1-bold text-dark100_light900">Enter Task</h1>
-=======
+
     <h1 className="h1-bold text-dark100_light900">Enter New Task</h1>
->>>>>>> 861ca23a92d10eda8532bfdd04476a6e0447c20f
+
 
     <div className="mt-9">
       <Taskform mongoUserId={JSON.stringify(mongoUser._id)}/>

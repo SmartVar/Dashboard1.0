@@ -90,7 +90,7 @@ export async function createTask(params: CreateTaskParams) {
     connectToDatabase();
 
     // eslint-disable-next-line camelcase
-    const { title, status, label, priority, path } = params;
+    const { title, status, label, priority, remark, path } = params;
 
     // Create the question
     const task = await Task.create({
@@ -100,6 +100,7 @@ export async function createTask(params: CreateTaskParams) {
       label,
       // eslint-disable-next-line camelcase
       priority,
+      remark,
     });
 
        // Create an interaction record for the user's ask_question action
@@ -107,7 +108,7 @@ export async function createTask(params: CreateTaskParams) {
     // Increment author's reputation by +5 for creating a question
 
     // revalidate path inorder to display question wihtout reloading
-       
+       console.log (task);
     revalidatePath(path)
     return task ;
 
@@ -135,7 +136,7 @@ export async function editTask(params: EditTaskParams) {
   try {
     connectToDatabase();
 
-    const { taskId, title, status, label, priority, path  } = params;
+    const { taskId, title, status, label, priority, remark, path  } = params;
 
     const task = await Task.findById(taskId).populate("author");
 
@@ -149,6 +150,7 @@ export async function editTask(params: EditTaskParams) {
       task.label = label;
       // eslint-disable-next-line camelcase
       task.priority = priority;
+      task.remark = remark;
       
     await task.save();
 

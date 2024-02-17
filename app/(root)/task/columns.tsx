@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
@@ -16,7 +17,12 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import EditDeleteAction from "../../../components/shared/EditDeleteAction";
@@ -28,6 +34,7 @@ export type TaskDef = {
   status: string;
   label: string;
   priority: string;
+  remark: string;
   createdOn: Date;
 }
 
@@ -138,6 +145,64 @@ export const columns: ColumnDef<TaskDef>[] = [
     },
   },
   {
+    accessorKey: "remark",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Remark" />
+    ),
+    // cell: ({ row }) => {
+    //   const  remarks = remarks.find((label: any) => label.value === row.original.label )
+
+    // // cell: ({ row }) => {
+    //   // @ts-ignore
+    //   // const remarks = remarks.find(
+    //   //   (remarks: { value: unknown }) => remarks.value === row.getValue("remarks")
+    //   // )
+
+    //   // if (!remarks) {
+    //   //   return null
+    //   // }
+
+  //     return (
+  //       <div className="flex items-center">
+  //         {remarks.icon && (
+  //           <remarks.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+  //         )}
+  //         <span>{remarks.label}</span>
+  //       </div>
+  //     )
+  //   },
+  //   filterFn: (row, id, value) => {
+  //     return value.includes(row.getValue(id))
+  //   },
+  },
+  // {
+  //   accessorKey: "label",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Label" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     const label = labels.find(
+  //       (label) => label.value === row.getValue("label")
+  //     )
+
+  //     if (!label) {
+  //       return null
+  //     }
+
+  //     return (
+  //       <div className="flex items-center">
+  //         {label.icon && (
+  //           <label.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+  //         )}
+  //         <span>{label.label}</span>
+  //       </div>
+  //     )
+  //   },
+  //   filterFn: (row, id, value) => {
+  //     return value.includes(row.getValue(id))
+  //   },
+  // },
+  {
     id: "actions",
     // cell: ({ row }) => <DataTableRowActions row={row} />,
     cell: ({ row }) => {
@@ -161,6 +226,19 @@ export const columns: ColumnDef<TaskDef>[] = [
              <Link href={`/task/${task._id}`}
           className="flex items-center justify-start gap-1"  >View Content</Link>
             </DropdownMenuItem>
+            <DropdownMenuSeparator />
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger className="text-dark500_light700">Labels</DropdownMenuSubTrigger>
+          <DropdownMenuSubContent className="text-dark500_light700">
+            <DropdownMenuRadioGroup value={task.label}>
+              {labels.map((label) => (
+                <DropdownMenuRadioItem key={label.value} value={label.value}>
+                  {label.label}
+                </DropdownMenuRadioItem>
+              ))}
+            </DropdownMenuRadioGroup>
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
             <DropdownMenuSeparator />
             {/* <DropdownMenuItem onClick={() => navigator.clipboard.writeText(template.id)}
             >

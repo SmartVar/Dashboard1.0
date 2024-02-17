@@ -44,11 +44,18 @@ export function DataTableToolbar<TData>({
             options={priorities}
           />
         )}
+        {/* {table.getColumn("label") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("lable")}
+            title="Label"
+            options={labels}
+          />
+        )} */}
         {isFiltered && (
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3"
+            className="h-8 px-2 lg:px-3 text-dark300_light700"
           >
             Reset
             <Cross2Icon className="ml-2 h-4 w-4" />

@@ -183,6 +183,7 @@ export interface CreateTaskParams {
   status: string;
   label: string;
   priority: string;
+  remark: string;
   path: string;
 }
 export interface CreateDopBldgParams {
@@ -346,6 +347,7 @@ export interface EditTaskParams {
   status: string;
   label: string;
   priority: string;
+  remark: string;
   path: string;
 }
 export interface EditDopBldgParams {

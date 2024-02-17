@@ -29,7 +29,7 @@ interface Props {
     taskDetails?: string;
   }
 
-const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
+const Taskform = ({ type, mongoUserId, taskDetails }: Props) => {
 //     const { mode } = useTheme();
 //   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,7 +38,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
 
   const parsedTaskDetails =  taskDetails && JSON.parse(taskDetails || '');
 
-
+console.log (parsedTaskDetails);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof TaskSchema>>({
@@ -49,6 +49,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
       status: parsedTaskDetails?.status || '',
       label: parsedTaskDetails?.label || '',
       priority: parsedTaskDetails?.priority || '',
+      remark: parsedTaskDetails?.remark || '',
     },
   })
   
@@ -65,6 +66,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
           status: values.status,
           label: values.label,
           priority: values.priority,
+          remark: values.remark,
           path: pathname,
         })
 
@@ -76,6 +78,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
             status: values.status,
             label: values.label,
             priority: values.priority,
+            remark: values.remark,
           path: pathname,
         });
 
@@ -131,6 +134,24 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
           </FormItem>
         )}
       />
+        <FormField
+        control={form.control}
+        name="remark"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Remark <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter Task Remarks
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
       <FormField
         control={form.control}
         name="status"
@@ -143,7 +164,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Task Status
+              Enter Task Status (backlog, done, in progress, cancelled, todo)
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -161,7 +182,7 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Task Label
+              Enter Task Label (i.e.rti, reports, frac, funds etc )
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -179,12 +200,13 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter Task Priority
+              Enter Task Priority (i.e.  high, medium, low)
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
       />
+    
       
             <Button type="submit" className="primary-gradient w-fit !text-light-900" disabled={isSubmitting}>
         {isSubmitting ? (
@@ -202,4 +224,4 @@ const Rentform = ({ type, mongoUserId, taskDetails }: Props) => {
   )
 }
 
-export default Rentform
+export default Taskform

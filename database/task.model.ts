@@ -6,6 +6,7 @@ export interface ITask extends Document {
   status: string;
   label: string;
   priority: string;
+  remark: string;
   author: Schema.Types.ObjectId;
   createdOn: Date;
 }
@@ -17,6 +18,7 @@ const TaskSchema = new Schema({
   status: { type: String, required: true },
   label: { type: String, required: true},
   priority: { type: String, required: true },
+  remark: { type: String, required: true },
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   createdOn: { type: Date, default: Date.now },
 });

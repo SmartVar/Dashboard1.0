@@ -20,6 +20,7 @@ export const TaskSchema = z.object({
   status: z.string(),
   label: z.string(),
   priority: z.string(),
+  remark: z.string(),
   })
 
 

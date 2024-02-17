@@ -35,6 +35,7 @@ export function DataTableToolbar<TData>({
             column={table.getColumn("status")}
             title="Status"
             options={statuses}
+             
           />
         )}
         {table.getColumn("priority") && (

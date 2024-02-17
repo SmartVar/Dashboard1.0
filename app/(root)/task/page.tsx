@@ -4,7 +4,7 @@ import { Metadata } from "next"
 // import Image from "next/image"
 // import { z } from "zod"
 import { URLProps } from '@/types'
-// import Filter from "@/components/shared/Filter";
+import Filter from "@/components/shared/Filter";
 import { columns } from "./columns"
 // import { DataTable } from "../../..//data-table"
 import { DataTable } from "../../../components/task/data-table"
@@ -12,7 +12,7 @@ import { DataTable } from "../../../components/task/data-table"
 // import { TaskSchema } from "@/lib/validations"
 import { getTask } from "@/lib/actions/task.action"
 // import LocalSearchbar from "@/components/shared/search/LocalSearchbar"
-// import { DivisionFilters } from "@/constants/filters";
+import { DivisionFilters } from "@/constants/filters";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 // import { taskSchema } from "./data/schema"
@@ -76,8 +76,23 @@ export default async function TaskPage({ searchParams}: URLProps) {
               Here&apos;s a list of your tasks for this month!
             </p>
           </div>
-          <div className="flex w-full flex-col-reverse 
-    justify-between gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
+          <div className="mt-11 flex justify-evenly w-full gap-5 max-sm:flex-col sm:items-center">
+      {/* <LocalSearchbar 
+        route="/task"
+        iconPosition="left"
+        imgSrc="/assets/icons/search.svg"
+        placeholder="Search for Divisions or Post office"
+        otherClasses="flex-1"
+      /> */}
+
+      <Filter
+        filters={DivisionFilters}
+        otherClasses="min-h-[56px] sm:min-w-[170px]"
+        // containerClasses="hidden max-md:flex"
+      />
+    </div>
+
+          <div className="flex-end flex w-full flex-col-reverse justify-end gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
       
             <Link href="/add-task" 
           className="flex justify-end max-sm:w-full">
@@ -86,22 +101,7 @@ export default async function TaskPage({ searchParams}: URLProps) {
           </Button>
         </Link> 
       </div> 
-          {/* <div className="mt-11 flex justify-between gap-5 
-      max-sm:flex-col sm:items-center">
-      <LocalSearchbar 
-        route="/"
-        iconPosition="left"
-        imgSrc="/assets/icons/search.svg"
-        placeholder="Search for Divisions or Post office"
-        otherClasses="flex-1"
-      />
-
-      <Filter
-        filters={DivisionFilters}
-        otherClasses="min-h-[56px] sm:min-w-[170px]"
-        // containerClasses="hidden max-md:flex"
-      />
-    </div> */}
+         
           {/* <div className="flex items-center space-x-2">
             <UserNav />
           </div> */}

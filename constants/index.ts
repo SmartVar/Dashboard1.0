@@ -27,13 +27,13 @@ export const sidebarLinks: SidebarLink[] = [
     route: "/templates",
     label: "Templates",
   },
+  // {
+  //   imgURL: "/assets/icons/suitcase.svg",
+  //   route: "/pendency",
+  //   label: "Pendency",
+  // },
   {
     imgURL: "/assets/icons/suitcase.svg",
-    route: "/pendency",
-    label: "Pendency",
-  },
-  {
-    imgURL: "/assets/icons/calendar.svg",
     route: "/task",
     label: "Task",
   },

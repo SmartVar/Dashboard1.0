@@ -17,6 +17,11 @@ export const TemplatesSchema = z.object({
 export const TaskSchema = z.object({
   // id: z.string(),
   title: z.string(),
+  division: z.string(),
+  doc: z.string(),
+  c_no: z.string(),
+  f_no: z.string(),
+  dod: z.string(),
   status: z.string(),
   label: z.string(),
   priority: z.string(),

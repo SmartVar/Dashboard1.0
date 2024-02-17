@@ -35,6 +35,11 @@ value: "funds",
     value: "rti",
         label: "RTI",
         icon: QuestionMarkCircledIcon,
+      },
+    {
+    value: "other",
+        label: "Other",
+        icon: QuestionMarkCircledIcon,
       }
 
 ]

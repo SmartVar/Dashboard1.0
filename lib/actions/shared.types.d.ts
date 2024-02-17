@@ -180,6 +180,11 @@ export interface CreateTemplateParams {
 export interface CreateTaskParams {
   // id: string;
   title: string;
+  doc: string;
+  division: string;
+  c_no: string;
+  f_no: string;
+  dod: string;
   status: string;
   label: string;
   priority: string;
@@ -344,6 +349,11 @@ export interface EditTaskParams {
   taskId: string;
   // id: string;
   title: string;
+  doc: string;
+  division: string;
+  c_no: string;
+  f_no: string;
+  dod: string;
   status: string;
   label: string;
   priority: string;

@@ -24,6 +24,12 @@ export async function getTask(params: GetTaskParams): Promise<TaskDef[]> {
       query.$or = [
         { title: { $regex: new RegExp(searchQuery, "i")}},
         { task: { $regex: new RegExp(searchQuery, "i")}},
+        { label: { $regex: new RegExp(searchQuery, "i")}},
+        { remark: { $regex: new RegExp(searchQuery, "i")}},
+        { division: { $regex: new RegExp(searchQuery, "i")}},
+        { c_no: { $regex: new RegExp(searchQuery, "i")}},
+        { subject: { $regex: new RegExp(searchQuery, "i")}},
+        { f_no: { $regex: new RegExp(searchQuery, "i")}},
         
         
       ]
@@ -37,22 +43,22 @@ export async function getTask(params: GetTaskParams): Promise<TaskDef[]> {
         sortOptions = { division: 'RO' }
         break;
       case "nmd":
-        sortOptions = { division: 'Navi Mumbai' }
+        sortOptions = { division: 'NMD' }
         break;
       case "thn":
-        sortOptions = { division: 'Thane' }
+        sortOptions = { division: 'THN' }
         break;
       case "nsk":
-        sortOptions = { division: 'Nashik' }
+        sortOptions = { division: 'NSK' }
         break;
       case "mld":
-        sortOptions = { division: 'Malegaon' }
+        sortOptions = { division: 'MLD' }
         break;
       case "plg":
-        sortOptions = { division: 'Palgahar' }
+        sortOptions = { division: 'PLG' }
         break;
       case "rgd":
-        sortOptions = { division: 'Raigad' }
+        sortOptions = { division: 'RGD' }
         break;
       case "psd":
         sortOptions = { division: 'PSD' }
@@ -90,12 +96,17 @@ export async function createTask(params: CreateTaskParams) {
     connectToDatabase();
 
     // eslint-disable-next-line camelcase
-    const { title, status, label, priority, remark, path } = params;
+    const { title, doc, division, c_no, f_no, dod, status, label, priority, remark, path } = params;
 
     // Create the question
     const task = await Task.create({
       
       title,
+      doc,
+      division,
+      c_no,
+      f_no,
+      dod,
       status,
       label,
       // eslint-disable-next-line camelcase
@@ -136,7 +147,7 @@ export async function editTask(params: EditTaskParams) {
   try {
     connectToDatabase();
 
-    const { taskId, title, status, label, priority, remark, path  } = params;
+    const { taskId, title, doc, division, c_no, f_no, dod, status, label, priority, remark, path  } = params;
 
     const task = await Task.findById(taskId).populate("author");
 
@@ -146,6 +157,11 @@ export async function editTask(params: EditTaskParams) {
     
       
       task.title = title;
+      task.doc = doc;
+      task.division = division;
+      task.c_no = c_no;
+      task.f_no = f_no;
+      task.dod = dod;
       task.status = status;
       task.label = label;
       // eslint-disable-next-line camelcase

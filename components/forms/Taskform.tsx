@@ -46,6 +46,11 @@ console.log (parsedTaskDetails);
     defaultValues: {
       // id: parsedTaskDetails?.id || '',
       title: parsedTaskDetails?.title || '',
+      doc: parsedTaskDetails?.doc || '',
+      division: parsedTaskDetails?.division || '',
+      c_no: parsedTaskDetails?.c_no || '',
+      f_no: parsedTaskDetails?.f_no || '',
+      dod: parsedTaskDetails?.dod || '',
       status: parsedTaskDetails?.status || '',
       label: parsedTaskDetails?.label || '',
       priority: parsedTaskDetails?.priority || '',
@@ -63,6 +68,11 @@ console.log (parsedTaskDetails);
           taskId: parsedTaskDetails._id,
           // id: values.id,
           title: values.title,
+          doc: values.doc,
+          division: values.division,
+          c_no: values.c_no,
+          f_no: values.f_no,
+          dod: values.dod,
           status: values.status,
           label: values.label,
           priority: values.priority,
@@ -75,6 +85,11 @@ console.log (parsedTaskDetails);
         await createTask({
             // id: values.id,
             title: values.title,
+            doc: values.doc,
+            division: values.division,
+            c_no: values.c_no,
+            f_no: values.f_no,
+            dod: values.dod,
             status: values.status,
             label: values.label,
             priority: values.priority,
@@ -147,6 +162,96 @@ console.log (parsedTaskDetails);
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
               Enter Task Remarks
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="doc"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">D.O.Corr <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter Date of Correspondance
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="division"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Division <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter Division Name
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="c_no"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Corr.No. <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter correspondance No.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="f_no"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">File No. <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter your file no.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="dod"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">D.O.Disposal <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter date of disposal
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>

@@ -91,6 +91,37 @@ export const columns: ColumnDef<TaskDef>[] = [
     },
   },
   {
+    accessorKey: "remark",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Remark" />
+    ),
+    // cell: ({ row }) => {
+    //   const  remarks = remarks.find((label: any) => label.value === row.original.label )
+
+    // // cell: ({ row }) => {
+    //   // @ts-ignore
+    //   // const remarks = remarks.find(
+    //   //   (remarks: { value: unknown }) => remarks.value === row.getValue("remarks")
+    //   // )
+
+    //   // if (!remarks) {
+    //   //   return null
+    //   // }
+
+  //     return (
+  //       <div className="flex items-center">
+  //         {remarks.icon && (
+  //           <remarks.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+  //         )}
+  //         <span>{remarks.label}</span>
+  //       </div>
+  //     )
+  //   },
+  //   filterFn: (row, id, value) => {
+  //     return value.includes(row.getValue(id))
+  //   },
+  },
+  {
     accessorKey: "status",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
@@ -144,37 +175,7 @@ export const columns: ColumnDef<TaskDef>[] = [
       return value.includes(row.getValue(id))
     },
   },
-  {
-    accessorKey: "remark",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Remark" />
-    ),
-    // cell: ({ row }) => {
-    //   const  remarks = remarks.find((label: any) => label.value === row.original.label )
-
-    // // cell: ({ row }) => {
-    //   // @ts-ignore
-    //   // const remarks = remarks.find(
-    //   //   (remarks: { value: unknown }) => remarks.value === row.getValue("remarks")
-    //   // )
-
-    //   // if (!remarks) {
-    //   //   return null
-    //   // }
-
-  //     return (
-  //       <div className="flex items-center">
-  //         {remarks.icon && (
-  //           <remarks.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-  //         )}
-  //         <span>{remarks.label}</span>
-  //       </div>
-  //     )
-  //   },
-  //   filterFn: (row, id, value) => {
-  //     return value.includes(row.getValue(id))
-  //   },
-  },
+ 
   // {
   //   accessorKey: "label",
   //   header: ({ column }) => (

@@ -1,62 +1,67 @@
 "use client"
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import React from 'react';
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
   {
-    name: "Jan",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "NMD",
+    total: 8,
   },
   {
-    name: "Feb",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "THN",
+    total: 10,
   },
   {
-    name: "Mar",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "NSK",
+    total: 4,
   },
   {
-    name: "Apr",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "RGD",
+    total: 3,
   },
   {
-    name: "May",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "MLD",
+    total: 4,
   },
   {
-    name: "Jun",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "PLG",
+    total: 3,
   },
   {
-    name: "Jul",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "PSD",
+    total: 1,
   },
   {
-    name: "Aug",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "CSD",
+    total: 0,
   },
   {
-    name: "Sep",
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: "Oct",
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: "Nov",
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: "Dec",
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: "RTC",
+    total: 1,
   },
 ]
 
-export function Overview() {
+
+
+export  function Overview (){
+  
+ 
   return (
     <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data}>
+      <BarChart 
+      width={500}
+      height={300}
+      data={data}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5,
+      }}
+      
+      >
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="name"
           stroke="#888888"
@@ -69,15 +74,22 @@ export function Overview() {
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value: any) => `$${value}`}
+          tickFormatter={(value: any) => `${value}`}
         />
+        
+        <Tooltip />
+          <Legend className="text-dark100_light900"/>
+          
         <Bar
           dataKey="total"
           fill="currentColor"
           radius={[4, 4, 0, 0]}
           className="fill-primary"
+          activeBar={<Rectangle fill="crimson" stroke="yellow" />} 
         />
       </BarChart>
     </ResponsiveContainer>
-  )
+  );
 }
+
+

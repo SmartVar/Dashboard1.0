@@ -95,12 +95,33 @@ export async function getTask(params: GetTaskParams): Promise<TaskDef[]> {
 export async function getDashTask(params: any) {
   try {
     connectToDatabase();
-    
-    const dashtasklow = await Task.countDocuments({priority: 'low', division: 'RGD'});
-    const dashtaskmed = await Task.countDocuments({priority: 'medium', division: 'RGD'});
-    const dashtaskhigh = await Task.countDocuments({priority: 'high', division: 'RGD'});
+    const task = await Task.find({label: 'task'});
+ 
+ 
 
-    return {dashtasklow, dashtaskmed, dashtaskhigh};
+    return task;
+
+  } catch (error) {
+    console.log(error)
+    throw error;
+  }
+}
+export async function getDashTaskChart(params: any) {
+  try {
+    connectToDatabase();
+   
+    const nmdtask = await Task.countDocuments({division: 'NMD'}, {status: 'todo'});
+    const thntask = await Task.countDocuments({division: 'THN'}, {status: 'todo'});
+    const nsktask = await Task.countDocuments({division: 'NSK'}, {status: 'todo'});
+    const rgdtask = await Task.countDocuments({division: 'RGD'}, {status: 'todo'});
+    const mldtask = await Task.countDocuments({division: 'MLD'}, {status: 'todo'});
+    const plgtask = await Task.countDocuments({division: 'PLG'}, {status: 'todo'});
+    const psdtask = await Task.countDocuments({division: 'PSD'}, {status: 'todo'});
+    const csdtask = await Task.countDocuments({division: 'CSD'}, {status: 'todo'});
+    const rtctask = await Task.countDocuments({division: 'RTC'}, {status: 'todo'});
+ 
+
+    return {nmdtask, thntask, nsktask, rgdtask, mldtask, plgtask, psdtask, csdtask, rtctask};
 
   } catch (error) {
     console.log(error)

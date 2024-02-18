@@ -40,6 +40,11 @@ value: "funds",
     value: "other",
         label: "Other",
         icon: QuestionMarkCircledIcon,
+      },
+    {
+    value: "task",
+        label: "Task",
+        icon: QuestionMarkCircledIcon,
       }
 
 ]

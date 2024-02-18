@@ -143,7 +143,7 @@ import {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
       <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
         <CardHeader>
-          <CardTitle>Overview</CardTitle>
+          <CardTitle>Pending Corr</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <Overview />
@@ -151,7 +151,7 @@ import {
       </Card>
       <Card className="text-dark200_light900 col-span-3">
         <CardHeader>
-          <CardTitle>Upcomming Task</CardTitle>
+          <CardTitle>Today&apos;s IMP Task</CardTitle>
           <CardDescription>
             Only Priority Task.
           </CardDescription>

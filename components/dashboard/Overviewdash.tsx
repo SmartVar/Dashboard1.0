@@ -14,6 +14,7 @@ import {
   import React from 'react'
   import { formatAndDivideNumber } from "@/lib/utils"
   import Link from "next/link"
+import {Piechartdata} from "./Piechartdata"
   
   const Overviewdash = async () => {
       const { userId } = auth();
@@ -154,6 +155,28 @@ import {
           <CardTitle>Today&apos;s IMP Task</CardTitle>
           <CardDescription>
             Only Priority Task.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <RecentSales />
+        </CardContent>
+      </Card>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+      <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
+        <CardHeader>
+          <CardTitle>Bldgs Info</CardTitle>
+        </CardHeader>
+        <CardContent className="pl-2">
+        
+          <Piechartdata />
+        </CardContent>
+      </Card>
+      <Card className="text-dark200_light900 col-span-3">
+        <CardHeader>
+          <CardTitle>IMP Reminders</CardTitle>
+          <CardDescription>
+            Reminder to be forwarded to Divisions.
           </CardDescription>
         </CardHeader>
         <CardContent>

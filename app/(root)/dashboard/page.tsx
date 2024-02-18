@@ -39,10 +39,26 @@ const Page = async ({ params, searchParams}: URLProps) => {
             <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p>
             <p className="paragraph-regular text-dark200_light800">Reputation-{userInfo.user.reputation}%</p>
             <p className="paragraph-regular text-dark200_light800">
-              <DashboardLink 
+              {userInfo.user.reputation <= '50' ?               
+                <DashboardLink 
+                  imgUrl="/assets/icons/bronze-medal.svg"
+                  title="Bronze Badge"
+                />
+                
+                : userInfo.user.reputation === '75' ?
+                  <DashboardLink 
+                  imgUrl="/assets/icons/silver-medal.svg"
+                  title="Silver Badge"
+                />
+                  : userInfo.user.reputation === '100' ?
+                  <DashboardLink 
                   imgUrl="/assets/icons/gold-medal.svg"
                   title="Gold Badge"
-                /></p>
+                />
+                :'no selection'
+                }
+                
+                </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
               {/* {userInfo.user.portfolioWebsite && (

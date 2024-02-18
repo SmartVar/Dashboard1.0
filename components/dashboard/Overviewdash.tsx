@@ -130,10 +130,10 @@ import {
           </svg> */}
         </CardHeader>
         <CardContent>
-        <Link href="/pendency" className="flex justify-start max-sm:w-full">
+        <Link href="/task" className="flex justify-start max-sm:w-full">
           <div className="text-dark200_light900 text-xl font-bold">Corr - {formatAndDivideNumber(userInfo.totalPendingCorr)} </div>
           </Link>
-          <Link href="/pendency" className="flex justify-start max-sm:w-full">
+          <Link href="/task" className="flex justify-start max-sm:w-full">
           <div className="text-dark200_light900 text-xl font-bold">Reports- {formatAndDivideNumber(userInfo.totalUsCorr)} </div>
            </Link>
         </CardContent>

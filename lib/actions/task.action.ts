@@ -80,10 +80,27 @@ export async function getTask(params: GetTaskParams): Promise<TaskDef[]> {
     .sort({createdAt: - 1})
     .populate({ path: 'author', model: User });
     
+    
 
 // console.log(rentbldg);
 // @ts-ignore
+    // eslint-disable-next-line no-sequences
     return task;
+
+  } catch (error) {
+    console.log(error)
+    throw error;
+  }
+}
+export async function getDashTask(params: any) {
+  try {
+    connectToDatabase();
+    
+    const dashtasklow = await Task.countDocuments({priority: 'low', division: 'RGD'});
+    const dashtaskmed = await Task.countDocuments({priority: 'medium', division: 'RGD'});
+    const dashtaskhigh = await Task.countDocuments({priority: 'high', division: 'RGD'});
+
+    return {dashtasklow, dashtaskmed, dashtaskhigh};
 
   } catch (error) {
     console.log(error)

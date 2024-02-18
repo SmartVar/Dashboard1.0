@@ -66,8 +66,18 @@ export default async function TaskPage({ searchParams}: URLProps) {
           height={998}
           alt="Playground"
           className="hidden dark:block"
-        />
+        
+      
       </div> */}
+                <div className="flex-end flex w-full flex-col-reverse justify-end gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
+      
+      <Link href="/add-task" 
+    className="flex justify-end max-sm:w-full">
+    <Button className="primary-gradient flex-end min-h-[46px] px-4 py-3 !text-light-900">
+      New Task
+    </Button>
+  </Link> 
+</div> 
       <div className=" h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
@@ -92,15 +102,7 @@ export default async function TaskPage({ searchParams}: URLProps) {
       />
     </div>
 
-          <div className="flex-end flex w-full flex-col-reverse justify-end gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
-      
-            <Link href="/add-task" 
-          className="flex justify-end max-sm:w-full">
-          <Button className="primary-gradient flex-end min-h-[46px] px-4 py-3 !text-light-900">
-            New Task
-          </Button>
-        </Link> 
-      </div> 
+
          
           {/* <div className="flex items-center space-x-2">
             <UserNav />

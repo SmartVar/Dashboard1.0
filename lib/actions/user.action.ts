@@ -5,6 +5,10 @@ import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose"
 import { CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
+import Departmentalbldg from "@/database/departmentalbldg.model";
+import Rentedbldg from "@/database/rentedbldg.model";
+import Plot from "@/database/plot.model";
+import Task from "@/database/task.model";
 // import Drafting from "@/database/drafting.model"
 // import Noting from "@/database/noting.model";
 // import Briefhistory from "@/database/briefhistory.model";
@@ -155,13 +159,14 @@ export async function getUserInfo(params: any) {
 
     // const totalQuestions = await Question.countDocuments({ author: user._id })
     // const totalAnswers = await Answer.countDocuments({ author: user._id });
-    const totalDopBldg = 46;
-    const totalRentBldg = 226;
+    const totalDopBldg = await Departmentalbldg.countDocuments({ section: 'Bldg' });
+    // const totalDopBldg = 46;
+    const totalRentBldg = await Rentedbldg.countDocuments({ section: 'Bldg' });
     const totalSQ = 146;
     const totalIQ = 8;
-    const totalVacantPlots = 20;
+    const totalVacantPlots = await Plot.countDocuments({ section: 'Bldg' });
     const totalReservedPlots = 45;
-    const totalPendingCorr = 15;
+    const totalPendingCorr = await Task.countDocuments({ status: 'todo' });
     const totalUsCorr = 22;
     const reputation = 100;
 

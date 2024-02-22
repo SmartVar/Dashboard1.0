@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-duplicates
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import qs from "query-string"
@@ -6,9 +7,11 @@ import { BadgeCounts } from "@/types";
 // import { getTemplateById } from '@/lib/actions/template.action';
 // import {React, useState} from 'react'
 // import { auth } from '@clerk/nextjs';
- 
+// import { type ClassValue, clsx } from "clsx"
 
 
+
+// eslint-disable-next-line import/export
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -196,4 +199,9 @@ export const assignBadges = (params: BadgeParam) => {
 //         </svg>
 //       )}
 //       )
+// }
+
+// // eslint-disable-next-line no-redeclare
+// export function cn(...inputs: ClassValue[]) {
+//   return twMerge(clsx(inputs))
 // }

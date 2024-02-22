@@ -42,11 +42,11 @@ export const sidebarLinks: SidebarLink[] = [
   //   route: "/profile",
   //   label: "Profile",
   // },
-  // {
-  //   imgURL: "/assets/icons/question.svg",
-  //   route: "/ask-question",
-  //   label: "Ask a question",
-  // },
+  {
+    imgURL: "/assets/icons/user.svg",
+    route: "/kanban",
+    label: "Kanban",
+  },
   // {
   //   imgURL: "/assets/icons/suitcase.svg",
   //   route: "/dashboard",

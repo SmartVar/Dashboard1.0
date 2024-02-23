@@ -10,7 +10,8 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = (props) => {
   return (
     <div className={styles.modal} onClick={() => (props.onClose ? props.onClose() : "")}>
-      <div className={`${styles.modalContent} custom-scroll background-light900_dark300 light-border-2 text-dark300_light700`} onClick={(event) => event.stopPropagation()}>
+      <div className={`${styles.modalContent} custom-scroll background-light900_dark300 light-border-2 text-dark300_light700 
+    flex w-full flex-col-reverse justify-between gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center`} onClick={(event) => event.stopPropagation()}>
         {props.children}
       </div>
     </div>

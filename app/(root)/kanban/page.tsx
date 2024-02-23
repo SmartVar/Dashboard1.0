@@ -150,7 +150,7 @@ const Page: React.FC = () => {
         <h1>Kanban Board</h1>
       </div>
       <div className={styles.app_boards_container}>
-        <div className={styles.app_boards}>
+        <div className={`${styles.app_boards}text-dark600_light800`}>
           {boards.map((item) => (
             <Board
               key={item.id}
@@ -165,7 +165,7 @@ const Page: React.FC = () => {
               updateCard={updateCard}
             />
           ))}
-          <div className={styles.app_boards_last}>
+          <div className={`${styles.app_boards_last} text-dark600_light800`}>
             <Editable
               displayClass={styles.app_boards_addBoard}
               editClass={styles.app_boards_addBoard_edit}

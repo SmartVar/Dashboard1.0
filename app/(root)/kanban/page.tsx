@@ -144,13 +144,15 @@ const Page: React.FC = () => {
   }, [boards]);
 
   return (
-    <div className = "text-dark700_light700  border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400">
+    // eslint-disable-next-line tailwindcss/no-custom-classname
+    // <div className = "text-dark700_light700  border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400">
+    <div>
     <div className={styles.app}>
       <div className={styles.app_nav}>
-        <h1>Kanban Board</h1>
+        <h1 className="h1-bold text-dark500_light900">Kanban Board</h1>
       </div>
       <div className={styles.app_boards_container}>
-        <div className={`${styles.app_boards}text-dark600_light800`}>
+        <div className={`${styles.app_boards}text-dark500_light500`}>
           {boards.map((item) => (
             <Board
               key={item.id}

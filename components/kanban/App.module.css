@@ -25,7 +25,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    background-color: #fff;
+    background: #555;
+    /* color:linear-gradient(129deg, #ff7000 0%, #e2995f 100%) ; */
+    /* background-color: #fff; */
   }
   
   .app_boards_container {
@@ -34,6 +36,8 @@
     height: 100%;
     overflow-x: auto;
     padding-top: 20px;
+    /* background: #555; */
+   
   }
   
   .app_boards {
@@ -42,16 +46,21 @@
     padding: 10px 30px;
     display: flex;
     gap: 30px;
+    background: #555
+    
   }
   
   .app_boards_last {
     flex-basis: 290px;
     min-width: 290px;
+    cursor: pointer;
+    
   }
   
   .app_boards_add-board {
-    background-color: #fff;
+    background-color: #3a3838;
     color: #000;
+    background: #555;
     border-radius: 10px;
     box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.12);
     width: 100%;

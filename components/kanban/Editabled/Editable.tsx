@@ -28,7 +28,7 @@ const Editable: React.FC<EditableProps> = (props) => {
   };
 
   return (
-    <div className={styles.editable}>
+    <div className={`${styles.editable} text-dark100_light900`}>
       {isEditable ? (
         <form
           className={`${styles.editableEdit} ${

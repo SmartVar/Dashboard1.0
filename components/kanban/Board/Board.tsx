@@ -24,8 +24,8 @@ const Board: React.FC<BoardProps> = (props) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <div className={styles.board}>
-      <div className={styles.board_header}>
+    <div className={`${styles.board} paragraph-semibold text-dark400_light800`}>
+      <div className={`${styles.board_header} text-dark100_light900`}>
         <p className={styles.board_header_title}>
           {props.board?.title}
           <span>{props.board?.cards?.length || 0}</span>
@@ -46,7 +46,7 @@ const Board: React.FC<BoardProps> = (props) => {
           )}
         </div>
       </div>
-      <div className={`${styles.board_cards} custom-scroll text-dark700_light700`}>
+      <div className={`${styles.board_cards} custom-scroll paragraph-semibold text-dark400_light800`}>
         {props.board?.cards?.map((item) => (
           <Card
             key={item.id}
@@ -62,7 +62,7 @@ const Board: React.FC<BoardProps> = (props) => {
           text="+ Add Card"
           placeholder="Enter Card Title"
           displayClass={styles.board_addCard}
-          editClass={styles.board_addCard_edit}
+          editClass={`{styles.board_addCard_edit}text-dark100_light900`} 
           // @ts-ignore
           onSubmit={(value) => props.addCard(props.board?.id, value)}
         />

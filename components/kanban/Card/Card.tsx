@@ -74,7 +74,7 @@ const Card: React.FC<CardProps> = (props) => {
         />
       )}
       <div
-        className={styles.card}
+        className={`${styles.card} background-light700_dark400 text-dark100_light900`}
         draggable
         onDragEnd={() => props.dragEnded(props.boardId, id)}
         onDragEnter={() => props.dragEntered(props.boardId, id)}

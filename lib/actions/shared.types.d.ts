@@ -132,6 +132,13 @@ export interface GetDopBldgParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetBoardParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 export interface GetRentBldgParams {
   page?: number;
   pageSize?: number;
@@ -175,6 +182,11 @@ export interface CreateTemplateParams {
   subcategory: string;
   description: string;
   section: string;
+  path: string;
+}
+export interface CreateBoardParams {
+  title: string;
+  cards: string[];
   path: string;
 }
 export interface CreateTaskParams {
@@ -266,6 +278,9 @@ export interface CreateRulingParams {
 export interface GetQuestionByIdParams {
   questionId: string;
 }
+export interface GetBoardByIdParams {
+  boardId: string;
+}
 
 export interface GetTemplateByIdParams {
   templateId: string;
@@ -303,6 +318,10 @@ export interface DeleteQuestionParams {
 }
 export interface DeleteTemplateParams {
   templateId: string;
+  path: string;
+}
+export interface DeleteBoardParams {
+  boardId: string;
   path: string;
 }
 export interface DeleteTaskParams {
@@ -343,6 +362,12 @@ export interface EditTemplateParams {
   subcategory: string;
   description: string;
   section: string;
+  path: string;
+}
+export interface EditBoardParams {
+ boardId: string;
+  title: string;
+  cards: string[];
   path: string;
 }
 export interface EditTaskParams {

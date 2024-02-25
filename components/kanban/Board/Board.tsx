@@ -46,7 +46,7 @@ const Board: React.FC<BoardProps> = (props) => {
           )}
         </div>
       </div>
-      <div className={`${styles.board_cards} custom-scroll paragraph-semibold text-dark400_light800`}>
+      <div className={`${styles.board_cards} custom-scroll`}>
         {props.board?.cards?.map((item) => (
           <Card
             key={item.id}
@@ -58,6 +58,7 @@ const Board: React.FC<BoardProps> = (props) => {
             updateCard={props.updateCard}
           />
         ))}
+      
         <Editable
           text="+ Add Card"
           placeholder="Enter Card Title"
@@ -66,6 +67,7 @@ const Board: React.FC<BoardProps> = (props) => {
           // @ts-ignore
           onSubmit={(value) => props.addCard(props.board?.id, value)}
         />
+        
       </div>
     </div>
   );

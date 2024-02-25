@@ -19,6 +19,8 @@ interface Card {
 }
 
 // eslint-disable-next-line no-redeclare
+
+// eslint-disable-next-line no-redeclare
 interface Board {
   id: string;
   title: string;
@@ -146,15 +148,17 @@ const Page: React.FC = () => {
   return (
     // eslint-disable-next-line tailwindcss/no-custom-classname
     // <div className = "text-dark700_light700  border-none bg-light-900  focus:bg-light-800 dark:bg-dark-300  dark:focus:bg-dark-400">
-    <div>
+    
     <div className={styles.app}>
-      <div className={styles.app_nav}>
-        <h1 className="h1-bold text-dark500_light900">Kanban Board</h1>
+      <div className="h1-bold text-dark100_light900">
+        <h1>Kanban Board</h1>
       </div>
       <div className={styles.app_boards_container}>
-        <div className={`${styles.app_boards}text-dark500_light500`}>
+        <div className={styles.app_boards}>
           {boards.map((item) => (
-            <Board
+           
+           
+           <Board
               key={item.id}
               board={item}
               addCard={addCardHandler}
@@ -165,9 +169,11 @@ const Page: React.FC = () => {
               // @ts-ignore
              dragEntered={dragEntered}
               updateCard={updateCard}
+              
             />
+            
           ))}
-          <div className={`${styles.app_boards_last} text-dark600_light800`}>
+          <div className={styles.app_boards_last}>
             <Editable
               displayClass={styles.app_boards_addBoard}
               editClass={styles.app_boards_addBoard_edit}
@@ -180,7 +186,7 @@ const Page: React.FC = () => {
         </div>
       </div>
     </div>
-    </div>
+    
   );
 };
 

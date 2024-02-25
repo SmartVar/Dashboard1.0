@@ -28,6 +28,18 @@ export const TaskSchema = z.object({
   remark: z.string(),
   })
 
+export const CardSchema = z.object({
+  // id: z.string(),
+  title: z.string(),
+  labels: z.string(),
+  date: z.string(),
+  tasks: z.string(),
+  })
+export const BoardSchema = z.object({
+  // id: z.string(),
+  title: z.string(),
+   })
+
 
 export const RulingsSchema = z.object({
   title: z.string().min(4).max(130),

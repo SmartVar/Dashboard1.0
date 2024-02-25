@@ -1,4 +1,4 @@
-"use-client"
+'use-client'
 // @ts-ignore
 import React, { useState } from 'react';
 import {ExcelRenderer, OutTable} from 'react-excel-renderer';

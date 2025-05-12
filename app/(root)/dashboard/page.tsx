@@ -1,12 +1,13 @@
-import { Button } from '@/components/ui/button'
-import { getUserInfo } from '@/lib/actions/user.action'
+// import { Button } from '@/components/ui/button'
+// import { getUserInfo } from '@/lib/actions/user.action'
 import { URLProps } from '@/types'
-import { SignedIn, auth } from '@clerk/nextjs'
-import Image from 'next/image'
-import Link from 'next/link'
+// import { SignedIn, auth } from '@clerk/nextjs'
+import { SignedIn } from '@clerk/nextjs'
+// import Image from 'next/image'
+// import Link from 'next/link'
 import React from 'react'
-import { getJoinedDate } from '@/lib/utils'
-import DashboardLink from '@/components/shared/DashboardLink'
+// import { getJoinedDate } from '@/lib/utils'
+// import DashboardLink from '@/components/shared/DashboardLink'
 import {
   Tabs,
   TabsContent,
@@ -18,28 +19,30 @@ import Overviewdash from "../../../components/dashboard/Overviewdash"
 
 
 const Page = async ({ params, searchParams}: URLProps) => {
-  const { userId } = auth();
-  const userInfo = await getUserInfo({ userId});
+  // const { userId } = auth();
+  // const userInfo = await getUserInfo({ userId});
 // console.log(userInfo);
   return (
     <>
       <div className="flex flex-col-reverse items-start justify-between sm:flex-row">
         <div className="flex flex-col items-start gap-4 lg:flex-row">
-          <Image 
-            src={userInfo?.user.picture}
-            // src="/assets/icons/avtar.svg"
+          {/* <Image 
+            // src={userInfo?.user.picture}
+            src="/assets/icons/avtar.svg"
             alt="profile picture"
             width={140}
             height={140}
             className="rounded-full object-cover"
-          />
+          /> */}
 
           <div className="mt-3">
-            <h2 className="h2-bold text-dark100_light900">{userInfo.user.name}</h2>
-            <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p>
-            <p className="paragraph-regular text-dark200_light800">Reputation-{userInfo.user.reputation}%</p>
+            {/* <h2 className="h2-bold text-dark100_light900">{userInfo.user.name}</h2> */}
+            <h2 className="h2-bold text-dark100_light900">Dealing Assistant</h2>
+            {/* <p className="paragraph-regular text-dark200_light800">@{userInfo.user.section}</p> */}
+            <p className="paragraph-regular text-dark200_light800">Bldg</p>
+            <p className="paragraph-regular text-dark200_light800">Reputation-50%</p>
             <p className="paragraph-regular text-dark200_light800">
-              {userInfo.user.reputation <= '50' ?               
+              {/* {userInfo.user.reputation <= '50' ?               
                 <DashboardLink 
                   imgUrl="/assets/icons/bronze-medal.svg"
                   title="Bronze Badge"
@@ -56,7 +59,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
                   title="Gold Badge"
                 />
                 :'no selection'
-                }
+                } */}
                 
                 </p>
 
@@ -76,10 +79,10 @@ const Page = async ({ params, searchParams}: URLProps) => {
                 />
               )} */}
 
-                <DashboardLink 
+                {/* <DashboardLink 
                   imgUrl="/assets/icons/calendar.svg"
                   title={getJoinedDate(userInfo.user.joinedAt)}
-                />
+                /> */}
             </div>
 
             {/* {userInfo.user.bio && (
@@ -92,13 +95,13 @@ const Page = async ({ params, searchParams}: URLProps) => {
 
         <div className="flex justify-end max-sm:mb-5 max-sm:w-full sm:mt-3">
           <SignedIn>
-            {userId === userInfo.user.clerkId && (
+            {/* {userId === userInfo.user.clerkId && (
               <Link href="/dashboard/edit">
                 <Button className="paragraph-medium btn-secondary text-dark300_light900 min-h-[46px] min-w-[175px] px-4 py-3">
                   Edit Dashboard
                 </Button>
               </Link>
-            )}
+            )} */}
           </SignedIn>
         </div>
       </div>

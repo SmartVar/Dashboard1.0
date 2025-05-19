@@ -1,14 +1,14 @@
 "use server"
 
 // @ts-nocheck
-import Template from "@/database/template.model";
+// import Template from "@/database/template.model";
 import { connectToDatabase } from "../mongoose";
 import { SearchParams } from "./shared.types";
 import User from "@/database/user.model";
-import Ruling from "@/database/ruling.model";
+// import Ruling from "@/database/ruling.model";
 // import Pendency from "@/database/pendency.model";
 
-const SearchableTypes = ["template", "ruling", "pendency", "user"];
+const SearchableTypes = [ "pendency", "user"];
 
 export async function globalSearch(params: SearchParams) {
   try {
@@ -20,9 +20,9 @@ export async function globalSearch(params: SearchParams) {
     let results = [];
 
     const modelsAndTypes = [
-      { model: Template, searchField: 'title', type: 'template'},
+      // { model: Template, searchField: 'title', type: 'template'},
       { model: User, searchField: 'name', type: 'user'},
-      { model: Ruling, searchField: 'title', type: 'ruling'},
+      // { model: Ruling, searchField: 'title', type: 'ruling'},
       // { model: Pendency, searchField: 'title', type: 'pendency'},
     ]
 

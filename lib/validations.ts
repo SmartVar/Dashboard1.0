@@ -6,13 +6,6 @@ export const QuestionsSchema = z.object({
   tags: z.array(z.string().min(1).max(15)).min(1).max(3),
 })
 
-export const TemplatesSchema = z.object({
-  title: z.string().min(4).max(130),
-  category: z.string().min(4).max(100),
-  subcategory: z.string().min(4).max(100),
-  description: z.string().min(100),
-  section: z.string().min(4).max(100),
-})
 
 export const TaskSchema = z.object({
   // id: z.string(),
@@ -41,13 +34,6 @@ export const BoardSchema = z.object({
    })
 
 
-export const RulingsSchema = z.object({
-  title: z.string().min(4).max(130),
-  category: z.string().min(4).max(100),
-  subcategory: z.string().min(4).max(100),
-  link: z.string().min(10),
-  section: z.string().min(4).max(100),
-})
 
 export const DepartmentalbldgSchema = z.object({
   division: z.string().min(2).max(130),
@@ -64,6 +50,15 @@ export const DepartmentalbldgSchema = z.object({
   value: z.string().min(2).max(100),
   year: z.string().min(2).max(100),
   expenditure: z.string().min(2).max(100),
+  mut_doc: z.string().min(2).max(100),
+  mut_state: z.string().min(2).max(100),
+  fund_type: z.string().min(2).max(100),
+  fund_amount: z.string().min(2).max(100),
+  cases: z.string().min(2).max(100),
+  case_description: z.string().min(2).max(130),
+  brief_history: z.string().min(2).max(500),
+  tags: z.array(z.string().min(1).max(15)).min(1).max(3),
+
 })
 
 export const RentedbldgSchema = z.object({
@@ -98,12 +93,6 @@ export const PlotSchema = z.object({
 })
 
 
-
-export const AnswerSchema = z.object({
-  answer: z.string().min(100)
-})
-
-
 export const ProfileSchema = z.object({
   name: z.string().min(2).max(50),
   username: z.string().min(2).max(50),
@@ -112,15 +101,3 @@ export const ProfileSchema = z.object({
   location: z.string().min(2).max(50),
 })
 
-export const PendencySchema = z.object({
-  division: z.string().min(2).max(130),
-  dak_no: z.string().min(2).max(130),
-  doc: z.string().min(2).max(130),
-  c_no: z.string().min(2).max(130),
-  subject: z.string().min(2).max(130),
-  f_no: z.string().min(2).max(130),
-  dos: z.string().min(2).max(130),
-  dor: z.string().min(2).max(130),
-  remarks: z.string().min(2).max(130),
-  status: z.string().min(2).max(130),
-  })

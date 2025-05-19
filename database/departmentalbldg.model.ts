@@ -15,6 +15,14 @@ export interface IDepartmentalbldg extends Document {
   value: string;
   year: string;
   expenditure: string;
+  mut_doc: string;
+  mut_state: string;
+  fund_type: string;
+  fund_amount: string;
+  cases: string;
+  case_description: string;
+  brief_history: string;
+  tags: Schema.Types.ObjectId[];
   author: Schema.Types.ObjectId;
   createdOn: Date;
 }
@@ -35,6 +43,14 @@ const DepartmentalbldgSchema = new Schema({
   year: { type: String},
   expenditure: { type: String},
   value: { type: String},
+      mut_doc: { type: String },
+    mut_state: { type: String },
+    fund_type: { type: String },
+    fund_amount: { type: String },
+    cases: { type: String },
+    case_description: { type: String },
+    brief_history: { type: String },
+    tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }],
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   createdOn: { type: Date, default: Date.now },
 });

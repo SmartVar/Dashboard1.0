@@ -5,9 +5,9 @@
 
 import { deletePlot } from "@/lib/actions/plot.action";
 import { deleteRentBldg } from "@/lib/actions/rentedbldg.action";
-import { deleteTemplate} from "@/lib/actions/template.action";
+// import { deleteTemplate} from "@/lib/actions/template.action";
 import { deleteDopBldg} from "@/lib/actions/departmentalbldg.action";
-import { deletePendency} from "@/lib/actions/pendency.action";
+// import { deletePendency} from "@/lib/actions/pendency.action";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { deleteTask } from "@/lib/actions/task.action";
@@ -43,13 +43,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
 
       // Delete template
 
-{url==='/templates'
-? await deleteTemplate({ 
-      templateId: JSON.parse(itemId), 
-      path: pathname 
-    }
-    )
-  : url === '/rentbldg'
+{ url === '/rentbldg'
   ? await deleteRentBldg({ 
     rentbldgId: JSON.parse(itemId), 
     path: pathname 
@@ -67,13 +61,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
     path: pathname 
   }
   )
-  : url === '/pendency'
-  ? await deletePendency({ 
-   pendencyId: JSON.parse(itemId), 
-    path: pathname 
-  }
-  )
-  : await deleteTask({ 
+    : await deleteTask({ 
     taskId: JSON.parse(itemId), 
      path: pathname 
   })

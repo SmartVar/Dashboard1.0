@@ -34,7 +34,14 @@ export type DopBldgDef = {
     value: number;
     year: string;
     expenditure: number;
-    createdOn: Date;
+      mut_doc: string;
+      mut_state: string;
+      fund_type: string;
+      fund_amount: string;
+      cases: string;
+      case_description: string;
+      brief_history: string;
+      createdOn: Date;
 }
 
 export const columns: ColumnDef<DopBldgDef>[] = [
@@ -291,6 +298,111 @@ export const columns: ColumnDef<DopBldgDef>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Expenditure incurred (in Rs.)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "mut_doc",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Mutation Doc Type
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "mut_state",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Mutation State
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "fund_type",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Fund Type
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "fund_amount",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Fund Amount (in Rs.)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "cases",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Case
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "case_description",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Case Description
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    accessorKey: "brief_history",
+    // header: "Expenditure incurred (in Rs.)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Brief History
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )

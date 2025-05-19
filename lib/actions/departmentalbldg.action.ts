@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 // @ts-ignore
 "use server"
+import Tag from "@/database/tag.model";
 import User from "@/database/user.model";
 import Departmentalbldg from "@/database/departmentalbldg.model";
 import { connectToDatabase } from "../mongoose"
@@ -71,8 +72,9 @@ export async function getDopBldg(params: GetDopBldgParams): Promise<DopBldgDef[]
     const dopbldg = await Departmentalbldg.find(query)
     .find(sortOptions)
     .sort({createdAt: - 1})
-    .populate({ path: 'author', model: User });
-    
+    .populate({ path: 'author', model: User })
+    .populate({ path: 'tags', model: Tag });
+    // .populate({ path: 'tags', model: Tag });    
 
 // console.log(dopbldg);
 // @ts-ignore
@@ -89,7 +91,7 @@ export async function createDopBldg(params: CreateDopBldgParams) {
     connectToDatabase();
 
     // eslint-disable-next-line camelcase
-    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, path } = params;
+    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
 
     // Create the question
     const dopbldg = await Departmentalbldg.create({
@@ -107,7 +109,14 @@ export async function createDopBldg(params: CreateDopBldgParams) {
       floors,
       value,
       year,
-      expenditure
+      expenditure,
+      mut_doc,
+      mut_state,
+      fund_type,
+      fund_amount,
+      cases,
+      case_description,
+      brief_history,
     });
 
        // Create an interaction record for the user's ask_question action
@@ -131,6 +140,8 @@ export async function getDopBldgById(params: GetDopBldgByIdParams) {
     const { departmentalbldgId } = params;
 
     const dopbldg = await Departmentalbldg.findById(departmentalbldgId)
+      .populate({ path: 'tags', model: Tag, select: '_id name'})
+      .populate({ path: 'author', model: User, select: '_id clerkId name picture'})
       // console.log(template)
       return dopbldg;
   } catch (error) {
@@ -143,9 +154,9 @@ export async function editDopBldg(params: EditDopBldgParams) {
   try {
     connectToDatabase();
 
-    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, path } = params;
+    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
 
-    const dopbldg = await Departmentalbldg.findById(departmentalbldgId).populate("author");
+    const dopbldg = await Departmentalbldg.findById(departmentalbldgId).populate("tags");
 
     if(!dopbldg) {
       throw new Error("Record not found");
@@ -164,6 +175,13 @@ export async function editDopBldg(params: EditDopBldgParams) {
     dopbldg.value = value;
     dopbldg.year =year;
     dopbldg.expenditure =expenditure;
+    dopbldg.mut_doc =mut_doc;
+    dopbldg.mut_state =mut_state;
+    dopbldg.fund_type =fund_type;
+    dopbldg.fund_amount =fund_amount;
+    dopbldg.cases =cases;
+    dopbldg.case_description =case_description;
+    dopbldg.brief_history =brief_history;
     
 
     await dopbldg.save();
@@ -181,9 +199,12 @@ export async function deleteDopBldg(params: DeleteDopBldgParams) {
     const { departmentalbldgId, path } = params;
 
     await Departmentalbldg.deleteOne({ _id: departmentalbldgId });
+    await Tag.updateMany({ departmentalbldgs: departmentalbldgId }, { $pull: { departmentalbldgs: departmentalbldgId }});
 
     revalidatePath(path);
   } catch (error) {
     console.log(error);
   }
 }
+
+

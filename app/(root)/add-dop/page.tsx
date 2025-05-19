@@ -10,9 +10,13 @@ const Page = async () => {
 
     // console.log(userId);
     // const userId = 'user_2bCX55zAAaS74JAT0pGe59OjuhVCL123'
+    // eslint-disable-next-line no-redeclare
+    // const userId = '68288c6e5749c2b0ee884b08';
+    
     if (!userId) redirect('/sign-in');
   
     const mongoUser = await getUserById({ userId });
+
   return (
     <div>
     <h1 className="h1-bold text-dark100_light900">Enter Dop Records</h1>

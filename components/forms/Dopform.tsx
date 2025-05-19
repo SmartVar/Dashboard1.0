@@ -50,25 +50,25 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
     defaultValues: {
       division: parsedDopDetails?.division || '',
       po: parsedDopDetails?.po || '',
-      class: parsedDopDetails?.class || '',
-      location: parsedDopDetails?.location || '',
-      purchase_year: parsedDopDetails?.purchase_year || '',
-      soa: parsedDopDetails?.soa || '',
-      paq: parsedDopDetails?.paq || '',
-      area: parsedDopDetails?.area || '',
-      builtup_area: parsedDopDetails?.builtup_area || '',
-      open_space: parsedDopDetails?.open_space || '',
-      floors: parsedDopDetails?.floors || '',
-      value: parsedDopDetails?.value || '',
-      year: parsedDopDetails?.year || '',
-      expenditure: parsedDopDetails?.expenditure || '',
-      mut_doc: parsedDopDetails?.mut_doc || '',
-      mut_state: parsedDopDetails?.mut_state || '',
-      fund_type: parsedDopDetails?.fund_type || '',
-      fund_amount: parsedDopDetails?.fund_amount || '',
-      cases: parsedDopDetails?.cases || '',
-      case_description: parsedDopDetails?.case_description || '',
-      brief_history: parsedDopDetails?.brief_history || '',
+      // class: parsedDopDetails?.class || '',
+      // location: parsedDopDetails?.location || '',
+      // purchase_year: parsedDopDetails?.purchase_year || '',
+      // soa: parsedDopDetails?.soa || '',
+      // paq: parsedDopDetails?.paq || '',
+      // area: parsedDopDetails?.area || '',
+      // builtup_area: parsedDopDetails?.builtup_area || '',
+      // open_space: parsedDopDetails?.open_space || '',
+      // floors: parsedDopDetails?.floors || '',
+      // value: parsedDopDetails?.value || '',
+      // year: parsedDopDetails?.year || '',
+      // expenditure: parsedDopDetails?.expenditure || '',
+      // mut_doc: parsedDopDetails?.mut_doc || '',
+      // mut_state: parsedDopDetails?.mut_state || '',
+      // fund_type: parsedDopDetails?.fund_type || '',
+      // fund_amount: parsedDopDetails?.fund_amount || '',
+      // cases: parsedDopDetails?.cases || '',
+      // case_description: parsedDopDetails?.case_description || '',
+      // brief_history: parsedDopDetails?.brief_history || '',
        tags: groupedTags || []
       
     },
@@ -84,59 +84,60 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           departmentalbldgId: parsedDopDetails._id,
           division: values.division,
           po: values.po,
-          classes: values.class,
-          location: values.location,
-          purchase_year: values.purchase_year,
-          soa: values.soa,
-          paq: values.paq,
-          area: values.area,
-          builtup_area: values.builtup_area,
-          open_space: values.open_space,
-          floors: values.floors,
-          value: values.value,
-          year: values.year,
-          expenditure: values.expenditure,
-          mut_doc: values.mut_doc,
-          mut_state: values.mut_state,
-          fund_type: values.fund_type,
-          fund_amount: values.fund_amount,
-          cases: values.cases,
-          case_description: values.case_description,
-          brief_history: values.brief_history,
+          // classes: values.class,
+          // location: values.location,
+          // purchase_year: values.purchase_year,
+          // soa: values.soa,
+          // paq: values.paq,
+          // area: values.area,
+          // builtup_area: values.builtup_area,
+          // open_space: values.open_space,
+          // floors: values.floors,
+          // value: values.value,
+          // year: values.year,
+          // expenditure: values.expenditure,
+          // mut_doc: values.mut_doc,
+          // mut_state: values.mut_state,
+          // fund_type: values.fund_type,
+          // fund_amount: values.fund_amount,
+          // cases: values.cases,
+          // case_description: values.case_description,
+          // brief_history: values.brief_history,
           path: pathname,
         })
 
-        router.push(`/dopbldg/${parsedDopDetails._id}`);
+        router.push(`/dopbldg`);
 
       } else {
         await createDopBldg({
           division: values.division,
           po: values.po,
-          classes: values.class,
-          location: values.location,
-          purchase_year: values.purchase_year,
-          soa: values.soa,
-          paq: values.paq,
-          area: values.area,
-          builtup_area: values.builtup_area,
-          open_space: values.open_space,
-          floors: values.floors,
-          value: values.value,
-          year: values.year,
-          expenditure: values.expenditure,
-          mut_doc: values.mut_doc,
-          mut_state: values.mut_state,
-          fund_type: values.fund_type,
-          fund_amount: values.fund_amount,
-          cases: values.cases,
-          case_description: values.case_description,
-          brief_history: values.brief_history,
+          // classes: values.class,
+          // location: values.location,
+          // purchase_year: values.purchase_year,
+          // soa: values.soa,
+          // paq: values.paq,
+          // area: values.area,
+          // builtup_area: values.builtup_area,
+          // open_space: values.open_space,
+          // floors: values.floors,
+          // value: values.value,
+          // year: values.year,
+          // expenditure: values.expenditure,
+          // mut_doc: values.mut_doc,
+          // mut_state: values.mut_state,
+          // fund_type: values.fund_type,
+          // fund_amount: values.fund_amount,
+          // cases: values.cases,
+          // case_description: values.case_description,
+          // brief_history: values.brief_history,
           path: pathname,
           tags: values.tags,
           author: JSON.parse(mongoUserId),
+          
         });
 
-        router.push('/');
+        router.push('/dopbldg');
       }
 
     } catch (error) {
@@ -219,7 +220,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      <FormField
+      {/* <FormField
         control={form.control}
         name="class"
         render={({ field }) => (
@@ -542,7 +543,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
-      />
+      /> */}
        <FormField
           control={form.control}
           name="tags"

@@ -9,7 +9,7 @@ const page = () => {
       <div className="flex w-full flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">Postal Dashboard</h1>
         <div className="mt-3">
-            <h2 className="h2-bold text-dark100_light900">The Ultimate Office Utility Website</h2>
+            <h2 className="h2-bold text-dark100_light900">The Ultimate Office Utility Website for you</h2>
             <p className="paragraph-regular text-dark200_light800">Kindly check the Dashboard for more information. Please use it for official purpose only</p>
         {/* <Link href="/ask-question" className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">

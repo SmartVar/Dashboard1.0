@@ -54,7 +54,7 @@ export interface GetTaskParams {
   filter?: string;
   pagefilter?: string;
 }
-export interface GetDopBldgParams {
+export interface GetDopBldgsParams {
   page?: number;
   pageSize?: number;
   searchQuery?: string;

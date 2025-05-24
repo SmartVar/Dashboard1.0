@@ -15,7 +15,7 @@ import Link from "next/link";
 // import { useRouter, useSearchParams } from "next/navigation";
 import { DataTable }  from '@/components/shared/tables/template/data-table';
 import {  columns } from './columns'
-import { getDopBldg } from '@/lib/actions/departmentalbldg.action';
+import { getDopBldgs } from '@/lib/actions/departmentalbldg.action';
 import { DivisionFilters } from '@/constants/filters';
 // import { Pagination } from '@tanstack/react-table';
 
@@ -31,7 +31,7 @@ const Page = async ({ searchParams}: URLProps) => {
   // console.log (typeFilter);
   
 
-const data = await getDopBldg({
+const data = await getDopBldgs({
   searchQuery: searchParams.q,
   filter: searchParams.filter,
 //   pagefilter : searchParams.pagefilter,

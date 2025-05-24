@@ -5,12 +5,12 @@ import Tag from "@/database/tag.model";
 import User from "@/database/user.model";
 import Departmentalbldg from "@/database/departmentalbldg.model";
 import { connectToDatabase } from "../mongoose"
-import { DeleteDopBldgParams,EditDopBldgParams, GetDopBldgByIdParams,GetDopBldgParams, CreateDopBldgParams } from "./shared.types";
+import { DeleteDopBldgParams,EditDopBldgParams, GetDopBldgByIdParams,GetDopBldgsParams, CreateDopBldgParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
 import { DopBldgDef } from "@/app/(root)/dopbldg/columns";
 import { FilterQuery } from "mongoose";
 
-export async function getDopBldg(params: GetDopBldgParams): Promise<DopBldgDef[]> {
+export async function getDopBldgs(params: GetDopBldgsParams): Promise<DopBldgDef[]> {
   try {
     connectToDatabase();
     const { searchQuery, filter } = params;
@@ -76,6 +76,8 @@ export async function getDopBldg(params: GetDopBldgParams): Promise<DopBldgDef[]
     .populate({ path: 'tags', model: Tag });
     // .populate({ path: 'tags', model: Tag });    
 
+    // const totalDepartmentalbldgs = await dopbldg.countDocuments(query);
+
 // console.log(dopbldg);
 // @ts-ignore
     return dopbldg;
@@ -92,7 +94,7 @@ export async function createDopBldg(params: CreateDopBldgParams) {
 
     // eslint-disable-next-line camelcase
     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, po, path } = params;
+    const { division, po, tags, path } = params;
 
     // Create the question
     const dopbldg = await Departmentalbldg.create({
@@ -119,7 +121,22 @@ export async function createDopBldg(params: CreateDopBldgParams) {
       // case_description,
       // brief_history,
     });
+ const tagDocuments = [];
 
+ // Create the tags or get them if they already exist
+    for (const tag of tags) {
+      const existingTag = await Tag.findOneAndUpdate(
+        { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+        { $setOnInsert: { name: tag }, $push: { departmentalbldgs: dopbldg._id } },
+        { upsert: true, new: true }
+      )
+
+      tagDocuments.push(existingTag._id);
+    }
+
+    await Departmentalbldg.findByIdAndUpdate(dopbldg._id, {
+      $push: { tags: { $each: tagDocuments }}
+    });
        // Create an interaction record for the user's ask_question action
     
     // Increment author's reputation by +5 for creating a question

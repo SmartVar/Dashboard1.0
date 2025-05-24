@@ -101,3 +101,11 @@ export const ProfileSchema = z.object({
   location: z.string().min(2).max(50),
 })
 
+export const TicketSchema = z.object({
+  division: z.string().min(2).max(130),
+  po: z.string().min(2).max(100),
+  tkttitle: z.string().min(2).max(100),
+  tktdescription: z.string().min(2).max(150),
+  tktstatus: z.string().min(2).max(100),
+  tktpriority: z.string().min(2).max(100),
+ })

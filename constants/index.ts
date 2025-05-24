@@ -24,8 +24,8 @@ export const sidebarLinks: SidebarLink[] = [
   },
   {
     imgURL: "/assets/icons/star.svg",
-    route: "/templates",
-    label: "Templates",
+    route: "/tags",
+    label: "Tags",
   },
   // {
   //   imgURL: "/assets/icons/suitcase.svg",
@@ -34,8 +34,8 @@ export const sidebarLinks: SidebarLink[] = [
   // },
   {
     imgURL: "/assets/icons/suitcase.svg",
-    route: "/task",
-    label: "Task",
+    route: "/ticket",
+    label: "Tickets",
   },
   // {
   //   imgURL: "/assets/icons/user.svg",

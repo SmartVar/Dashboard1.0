@@ -61,6 +61,14 @@ export interface GetDopBldgsParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetTicketsParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
+
 export interface GetBoardParams {
   page?: number;
   pageSize?: number;
@@ -137,6 +145,16 @@ export interface CreateDopBldgParams {
   author: Schema.Types.ObjectId | IUser;
   path: string;
 }
+export interface CreateTicketParams {
+  division: string;
+  po: string;
+tkttitle: string;
+  tktdescription: string;
+  tktstatus: string;
+  tktpriority: string;
+ author: Schema.Types.ObjectId | IUser;
+  path: string;
+}
 export interface CreateRentBldgParams {
   division: string;
   po: string;
@@ -201,6 +219,9 @@ export interface GetTaskByIdParams {
 export interface GetDopBldgByIdParams {
   departmentalbldgId: string;
 }
+export interface GetTicketByIdParams {
+  ticketId: string;
+}
 export interface GetRentBldgByIdParams {
   rentbldgId: string;
 }
@@ -230,6 +251,10 @@ export interface DeleteTaskParams {
 }
 export interface DeleteDopBldgParams {
   departmentalbldgId: string;
+  path: string;
+}
+export interface DeleteTicketParams {
+  ticketId: string;
   path: string;
 }
 export interface DeleteRentBldgParams {
@@ -299,6 +324,17 @@ export interface EditDopBldgParams {
   // brief_history: string;
   path: string;
 }
+export interface EditTicketParams {
+  ticketId: string;
+  division: string;
+  po: string;
+tkttitle: string;
+  tktdescription: string;
+  tktstatus: string;
+  tktpriority: string;
+  path: string;
+}
+
 export interface EditRentBldgParams {
   rentbldgId: string;
   division: string;

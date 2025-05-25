@@ -124,26 +124,26 @@ const Page = async ({ params, searchParams}: URLProps) => {
 <div className="flex-row-reverse">
             <TabsList className="background-light800_dark400 min-h-[42px] p-1  ">
               <TabsTrigger value="overview" className="tab">
-                Bldg
+                Stats
                 </TabsTrigger>
-              <TabsTrigger value="navimumbai" className="tab">
-                Staff
+              <TabsTrigger value="funds" className="tab">
+                Funds
               </TabsTrigger>
-              <TabsTrigger value="thane" className="tab">
-                Estb
+              <TabsTrigger value="reports" className="tab">
+                Reports
               </TabsTrigger>
-              <TabsTrigger value="nashik" className="tab">
+              {/* <TabsTrigger value="nashik" className="tab">
                 Mails
               </TabsTrigger>
               <TabsTrigger value="malegaon" className="tab">
                 Tech
-              </TabsTrigger>
-              <TabsTrigger value="raigad" className="tab">
+              </TabsTrigger> */}
+              {/* <TabsTrigger value="raigad" className="tab">
                 SB/IPPB
               </TabsTrigger>
               <TabsTrigger value="palghar" className="tab">
                 PG
-              </TabsTrigger>
+              </TabsTrigger> */}
             </TabsList>
             </div>
 
@@ -151,7 +151,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
               <Overviewdash />
               {/* <BarChartsActive /> */}
               </TabsContent>
-            <TabsContent value="navimumbai" className="mt-5 flex w-full flex-col gap-6">
+            <TabsContent value="funds" className="mt-5 flex w-full flex-col gap-6">
             {/* <Stats
         reputation={userInfo.reputation}
         totalDopBldg={userInfo.totalDopBldg}
@@ -166,10 +166,10 @@ const Page = async ({ params, searchParams}: URLProps) => {
       /> */}
       <Overviewdash />
               </TabsContent>
-            <TabsContent value="thane" className="text-dark200_light900 space-y-4 text-sm font-medium">
+            <TabsContent value="reports" className="text-dark200_light900 space-y-4 text-sm font-medium">
               <Overviewdash />
               </TabsContent>
-            <TabsContent value="nashik" className="text-dark200_light900 space-y-4 text-sm font-medium">
+            {/* <TabsContent value="nashik" className="text-dark200_light900 space-y-4 text-sm font-medium">
               <Overviewdash />
               </TabsContent>
             <TabsContent value="malegaon" className="text-dark200_light900 space-y-4 text-sm font-medium">
@@ -180,7 +180,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
               </TabsContent>
             <TabsContent value="palghar" className="text-dark200_light900 space-y-4 text-sm font-medium">
               <Overviewdash />
-              </TabsContent>
+              </TabsContent> */}
           </Tabs>
     </>
   )

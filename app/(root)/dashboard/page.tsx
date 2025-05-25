@@ -15,6 +15,7 @@ import {
   TabsTrigger,
 } from "../../../components/ui/tabs"
 import Overviewdash from "../../../components/dashboard/Overviewdash"
+// import BarChartsActive from "../../../components/charts/BarChartsActive"
 // import Stats from '@/components/shared/Stats'
 
 
@@ -148,6 +149,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
 
             <TabsContent value="overview" className="mt-5 flex w-full flex-col gap-6">
               <Overviewdash />
+              {/* <BarChartsActive /> */}
               </TabsContent>
             <TabsContent value="navimumbai" className="mt-5 flex w-full flex-col gap-6">
             {/* <Stats

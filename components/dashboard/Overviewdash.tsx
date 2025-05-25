@@ -14,7 +14,10 @@ import {
   import React from 'react'
   import { formatAndDivideNumber } from "@/lib/utils"
   import Link from "next/link"
-import {Piechartdata} from "./Piechartdata"
+// import {Piechartdata} from "./Piechartdata"
+// import BarChartsActive from "../charts/BarChartsActive"
+import BarChartsMultiple from "../charts/BarChartsMultiple"
+import PieChartsActive from "../charts/PieChartsActive"
   
   const Overviewdash = async () => {
       const { userId } = auth();
@@ -152,13 +155,13 @@ import {Piechartdata} from "./Piechartdata"
       </Card>
       <Card className="text-dark200_light900 col-span-3">
         <CardHeader>
-          <CardTitle>Today&apos;s IMP Task</CardTitle>
+          <CardTitle>Funds</CardTitle>
           <CardDescription>
-            Only Priority Task.
-          </CardDescription>
+                      </CardDescription>
         </CardHeader>
         <CardContent>
-          <RecentSales />
+          {/* <RecentSales /> */}
+          <PieChartsActive />
         </CardContent>
       </Card>
       </div>
@@ -168,8 +171,9 @@ import {Piechartdata} from "./Piechartdata"
           <CardTitle>Bldgs Info</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-        
-          <Piechartdata />
+          <BarChartsMultiple />
+        {/* <BarChartsActive /> */}
+          {/* <Piechartdata /> */}
         </CardContent>
       </Card>
       <Card className="text-dark200_light900 col-span-3">

@@ -84,8 +84,8 @@ export  function Overview (){
           dataKey="total"
           fill="currentColor"
           radius={[4, 4, 0, 0]}
-          className="fill-primary"
-          activeBar={<Rectangle fill="crimson" stroke="yellow" />} 
+          className="fill-primary text-dark100_light900"
+          activeBar={<Rectangle fill="orange" stroke="yellow" />} 
         />
       </BarChart>
     </ResponsiveContainer>

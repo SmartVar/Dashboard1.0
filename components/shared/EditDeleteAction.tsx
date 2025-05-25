@@ -10,7 +10,8 @@ import { deleteDopBldg} from "@/lib/actions/departmentalbldg.action";
 // import { deletePendency} from "@/lib/actions/pendency.action";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { deleteTask } from "@/lib/actions/task.action";
+// import { deleteTask } from "@/lib/actions/task.action";
+import { deleteTicket } from "@/lib/actions/ticket.action";
 // import { auth } from '@clerk/nextjs'
 
 interface Props {
@@ -61,8 +62,8 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
     path: pathname 
   }
   )
-    : await deleteTask({ 
-    taskId: JSON.parse(itemId), 
+    : await deleteTicket({ 
+    ticketId: JSON.parse(itemId), 
      path: pathname 
   })
         }

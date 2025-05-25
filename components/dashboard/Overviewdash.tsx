@@ -7,7 +7,7 @@ import {
     CardTitle,
   } from "../ui/card"
   
-  import { Overview } from "./overview"
+  // import { Overview } from "./overview"
   // import { RecentSales } from "./recent-sales"
   import { auth } from '@clerk/nextjs'
   import { getUserInfo } from '@/lib/actions/user.action'

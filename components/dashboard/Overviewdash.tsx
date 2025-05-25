@@ -8,7 +8,7 @@ import {
   } from "../ui/card"
   
   import { Overview } from "./overview"
-  import { RecentSales } from "./recent-sales"
+  // import { RecentSales } from "./recent-sales"
   import { auth } from '@clerk/nextjs'
   import { getUserInfo } from '@/lib/actions/user.action'
   import React from 'react'
@@ -18,6 +18,7 @@ import {
 // import BarChartsActive from "../charts/BarChartsActive"
 import BarChartsMultiple from "../charts/BarChartsMultiple"
 import PieChartsActive from "../charts/PieChartsActive"
+import BarChartsCases from "../charts/BarChartsCases"
   
   const Overviewdash = async () => {
       const { userId } = auth();
@@ -135,7 +136,7 @@ import PieChartsActive from "../charts/PieChartsActive"
         </CardHeader>
         <CardContent>
         <Link href="/task" className="flex justify-start max-sm:w-full">
-          <div className="text-dark200_light900 text-xl font-bold">Corr - {formatAndDivideNumber(userInfo.totalPendingCorr)} </div>
+          {/* <div className="text-dark200_light900 text-xl font-bold">Corr - {formatAndDivideNumber(userInfo.totalPendingCorr)} </div> */}
           </Link>
           <Link href="/task" className="flex justify-start max-sm:w-full">
           <div className="text-dark200_light900 text-xl font-bold">Reports- {formatAndDivideNumber(userInfo.totalUsCorr)} </div>
@@ -145,14 +146,24 @@ import PieChartsActive from "../charts/PieChartsActive"
       </div>
   
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-      <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
+        <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
+        <CardHeader>
+          <CardTitle>Bldgs Info</CardTitle>
+        </CardHeader>
+        <CardContent className="pl-2">
+          <BarChartsMultiple />
+        {/* <BarChartsActive /> */}
+          {/* <Piechartdata /> */}
+        </CardContent>
+      </Card>
+      {/* <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
         <CardHeader>
           <CardTitle>Pending Corr</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <Overview />
         </CardContent>
-      </Card>
+      </Card> */}
       <Card className="text-dark200_light900 col-span-3">
         <CardHeader>
           <CardTitle>Funds</CardTitle>
@@ -168,15 +179,15 @@ import PieChartsActive from "../charts/PieChartsActive"
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
       <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
         <CardHeader>
-          <CardTitle>Bldgs Info</CardTitle>
+          <CardTitle>Cases Info</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <BarChartsMultiple />
+          <BarChartsCases />
         {/* <BarChartsActive /> */}
           {/* <Piechartdata /> */}
         </CardContent>
       </Card>
-      <Card className="text-dark200_light900 col-span-3">
+      {/* <Card className="text-dark200_light900 col-span-3">
         <CardHeader>
           <CardTitle>IMP Reminders</CardTitle>
           <CardDescription>
@@ -186,7 +197,7 @@ import PieChartsActive from "../charts/PieChartsActive"
         <CardContent>
           <RecentSales />
         </CardContent>
-      </Card>
+      </Card> */}
       </div>
       </>
     )

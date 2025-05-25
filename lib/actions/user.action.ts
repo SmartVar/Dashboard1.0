@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 import Departmentalbldg from "@/database/departmentalbldg.model";
 import Rentedbldg from "@/database/rentedbldg.model";
 import Plot from "@/database/plot.model";
-import Task from "@/database/task.model";
+// import Task from "@/database/task.model";
 // import Drafting from "@/database/drafting.model"
 // import Noting from "@/database/noting.model";
 // import Briefhistory from "@/database/briefhistory.model";
@@ -166,7 +166,7 @@ export async function getUserInfo(params: any) {
     const totalIQ = 8;
     const totalVacantPlots = await Plot.countDocuments({ section: 'Bldg' });
     const totalReservedPlots = 45;
-    const totalPendingCorr = await Task.countDocuments({ status: 'todo' });
+    // const totalPendingCorr = await Task.countDocuments({ status: 'todo' });
     const totalUsCorr = 22;
     const reputation = 100;
 
@@ -188,7 +188,7 @@ export async function getUserInfo(params: any) {
     totalIQ,
     totalVacantPlots,
     totalReservedPlots,
-    totalPendingCorr,
+    // totalPendingCorr,
     totalUsCorr,
       badgeCounts,
       // reputation: user.reputation,

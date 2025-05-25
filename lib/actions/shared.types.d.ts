@@ -237,14 +237,14 @@ export interface DeleteQuestionParams {
   questionId: string;
   path: string;
 }
-export interface DeleteTemplateParams {
-  templateId: string;
-  path: string;
-}
-export interface DeleteBoardParams {
-  boardId: string;
-  path: string;
-}
+// export interface DeleteTemplateParams {
+//   templateId: string;
+//   path: string;
+// }
+// export interface DeleteBoardParams {
+//   boardId: string;
+//   path: string;
+// }
 export interface DeleteTaskParams {
   taskId: string;
   path: string;
@@ -278,27 +278,27 @@ export interface EditQuestionParams {
   path: string;
 }
 
-export interface EditBoardParams {
- boardId: string;
-  title: string;
-  cards: string[];
-  path: string;
-}
-export interface EditTaskParams {
-  taskId: string;
-  // id: string;
-  title: string;
-  doc: string;
-  division: string;
-  c_no: string;
-  f_no: string;
-  dod: string;
-  status: string;
-  label: string;
-  priority: string;
-  remark: string;
-  path: string;
-}
+// export interface EditBoardParams {
+//  boardId: string;
+//   title: string;
+//   cards: string[];
+//   path: string;
+// }
+// export interface EditTaskParams {
+//   taskId: string;
+//   // id: string;
+//   title: string;
+//   doc: string;
+//   division: string;
+//   c_no: string;
+//   f_no: string;
+//   dod: string;
+//   status: string;
+//   label: string;
+//   priority: string;
+//   remark: string;
+//   path: string;
+// }
 export interface EditDopBldgParams {
   departmentalbldgId: string;
   division: string;

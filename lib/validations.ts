@@ -7,31 +7,31 @@ export const QuestionsSchema = z.object({
 })
 
 
-export const TaskSchema = z.object({
-  // id: z.string(),
-  title: z.string(),
-  division: z.string(),
-  doc: z.string(),
-  c_no: z.string(),
-  f_no: z.string(),
-  dod: z.string(),
-  status: z.string(),
-  label: z.string(),
-  priority: z.string(),
-  remark: z.string(),
-  })
+// export const TaskSchema = z.object({
+//   // id: z.string(),
+//   title: z.string(),
+//   division: z.string(),
+//   doc: z.string(),
+//   c_no: z.string(),
+//   f_no: z.string(),
+//   dod: z.string(),
+//   status: z.string(),
+//   label: z.string(),
+//   priority: z.string(),
+//   remark: z.string(),
+//   })
 
-export const CardSchema = z.object({
-  // id: z.string(),
-  title: z.string(),
-  labels: z.string(),
-  date: z.string(),
-  tasks: z.string(),
-  })
-export const BoardSchema = z.object({
-  // id: z.string(),
-  title: z.string(),
-   })
+// export const CardSchema = z.object({
+//   // id: z.string(),
+//   title: z.string(),
+//   labels: z.string(),
+//   date: z.string(),
+//   tasks: z.string(),
+//   })
+// export const BoardSchema = z.object({
+//   // id: z.string(),
+//   title: z.string(),
+//    })
 
 
 

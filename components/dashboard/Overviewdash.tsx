@@ -19,6 +19,7 @@ import {
 import BarChartsMultiple from "../charts/BarChartsMultiple"
 import PieChartsActive from "../charts/PieChartsActive"
 import BarChartsCases from "../charts/BarChartsCases"
+import DonutCharts from "../charts/DonutCharts"
   
   const Overviewdash = async () => {
       const { userId } = auth();
@@ -187,17 +188,17 @@ import BarChartsCases from "../charts/BarChartsCases"
           {/* <Piechartdata /> */}
         </CardContent>
       </Card>
-      {/* <Card className="text-dark200_light900 col-span-3">
+      <Card className="text-dark200_light900 col-span-3">
         <CardHeader>
-          <CardTitle>IMP Reminders</CardTitle>
+          <CardTitle>Non Plan Funds</CardTitle>
           <CardDescription>
-            Reminder to be forwarded to Divisions.
+            Non Plan Allotment
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <RecentSales />
+          <DonutCharts />
         </CardContent>
-      </Card> */}
+      </Card>
       </div>
       </>
     )

@@ -112,7 +112,7 @@ const DopbldgCard = ({
             <Metric 
               imgUrl="/assets/icons/like.svg"
               alt="soa"
-              value=`SOA {soa}`
+              value={soa}
               title=" Sq.ft"
               textStyles="small-medium text-dark400_light800"
             />

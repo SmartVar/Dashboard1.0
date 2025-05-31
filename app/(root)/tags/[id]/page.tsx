@@ -39,6 +39,9 @@ const Page = async ({ params, searchParams }: URLProps) => {
               tags={departmentalbldg.tags}
               author={departmentalbldg.author}
               po={departmentalbldg.po}
+              soa={departmentalbldg.soa}
+              area={departmentalbldg.area}
+              classes={departmentalbldg.classes}
             //   views={question.views}
             //   answers={question.answers}
               createdAt={departmentalbldg.createdAt}

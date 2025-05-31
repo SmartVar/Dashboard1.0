@@ -122,12 +122,12 @@ export interface CreateTaskParams {
 export interface CreateDopBldgParams {
   division: string;
   po: string;
-  // classes: string;
+  classes: string;
   // location: string;
   // purchase_year: string;
-  // soa: string;
+  soa: string;
   // paq: string;
-  // area: string;
+  area: string;
   // builtup_area: string;
   // open_space: string;
   // floors: string;
@@ -303,12 +303,12 @@ export interface EditDopBldgParams {
   departmentalbldgId: string;
   division: string;
   po: string;
-  // classes: string;
+  classes: string;
   // location: string;
   // purchase_year: string;
-  // soa: string;
+  soa: string;
   // paq: string;
-  // area: string;
+  area: string;
   // builtup_area: string;
   // open_space: string;
   // floors: string;

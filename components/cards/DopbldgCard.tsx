@@ -11,6 +11,9 @@ import { getTimestamp } from '@/lib/utils';
 interface DepartmentalbldgProps {
   _id: string;
   division: string;
+  soa: string;
+  classes: string;
+  area: string;
   tags: {
     _id: string;
     name: string;
@@ -32,6 +35,9 @@ const DopbldgCard = ({
   clerkId,
   _id,
   division,
+  classes,
+  soa,
+  area,
   tags,
   author,
   po,
@@ -97,33 +103,33 @@ const DopbldgCard = ({
             
             <Metric 
               imgUrl="/assets/icons/eye.svg"
-              alt="post office"
-              value={po}
-              title=" Post office"
+              alt="Class"
+              value={classes}
+              title=" Class"
               textStyles="small-medium text-dark400_light800"
             />
             <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
             <Metric 
               imgUrl="/assets/icons/like.svg"
-              alt="Upvotes"
-              value={po}
-              title=" Votes"
+              alt="soa"
+              value={soa}
+              title=" SOA"
               textStyles="small-medium text-dark400_light800"
             />
             <Metric 
               imgUrl="/assets/icons/message.svg"
-              alt="message"
-              value={division}
-              title=" Answers"
+              alt="area"
+              value={area}
+              title=" Sq. ft"
               textStyles="small-medium text-dark400_light800"
             />
-            <Metric 
+            {/* <Metric 
               imgUrl="/assets/icons/eye.svg"
               alt="eye"
               value={po}
               title=" Views"
               textStyles="small-medium text-dark400_light800"
-            />
+            /> */}
           </div>
           </div>
       </div>

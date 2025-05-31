@@ -22,12 +22,12 @@ export type DopBldgDef = {
     _id: string;
     division: string;
     po: string;
-    // class: string;
+    class: string;
     // location: string;
     // purchase_year: string;
-    // soa: number;
+    soa: number;
     // paq: string;
-    // area: number;
+    area: number;
     // builtup_area: number;
     // open_space: number;
     // floors: string;
@@ -119,25 +119,25 @@ export const columns: ColumnDef<DopBldgDef>[] = [
       )
     },
   },
+  {
+    accessorKey: "class",
+    // header: "Class",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Class
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
   // {
-  //   accessorKey: "class",
-  //   // header: "Class",
-  //   header: ({ column }) => {
-  //     return (
-  //       <Button
-  //         variant="ghost"
-  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //       >
-  //         Class
-  //         <ArrowUpDown className="ml-2 h-4 w-4" />
-  //       </Button>
-  //     )
-  //   },
+  //   accessorKey: "description",
+  //   header: "Description",
   // },
-  // // {
-  // //   accessorKey: "description",
-  // //   header: "Description",
-  // // },
   // {
   //   accessorKey: "location",
   //   // header: "Rural/Urban",
@@ -168,21 +168,21 @@ export const columns: ColumnDef<DopBldgDef>[] = [
   //     )
   //   },
   // },
-  // {
-  //   accessorKey: "soa",
-  //   // header: "SOA (in Sq ft)",
-  //   header: ({ column }) => {
-  //     return (
-  //       <Button
-  //         variant="ghost"
-  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //       >
-  //         SOA (in Sq ft)
-  //         <ArrowUpDown className="ml-2 h-4 w-4" />
-  //       </Button>
-  //     )
-  //   },
-  // },
+  {
+    accessorKey: "soa",
+    // header: "SOA (in Sq ft)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          SOA (in Sq ft)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
   // {
   //   accessorKey: "paq",
   //   // header: "Post Attached Quarter",
@@ -198,21 +198,21 @@ export const columns: ColumnDef<DopBldgDef>[] = [
   //     )
   //   },
   // },
-  // {
-  //   accessorKey: "area",
-  //   // header: "Area of PO (in Sq. mtr)",
-  //   header: ({ column }) => {
-  //     return (
-  //       <Button
-  //         variant="ghost"
-  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //       >
-  //         Area of PO (in Sq. mtr)
-  //         <ArrowUpDown className="ml-2 h-4 w-4" />
-  //       </Button>
-  //     )
-  //   },
-  // },
+  {
+    accessorKey: "area",
+    // header: "Area of PO (in Sq. mtr)",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Area of PO (in Sq. mtr)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
   // {
   //   accessorKey: "builtup_area",
   //   // header: "Builtup Area of PO (in Sq. mtr)",

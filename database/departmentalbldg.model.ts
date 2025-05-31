@@ -3,12 +3,12 @@ import { Schema, model, models, Document } from 'mongoose';
 export interface IDepartmentalbldg extends Document {
   division: string;
   po: string;
-  // class: string;
+  class: string;
   // location: string;
   // purchase_year: string;
-  // soa: string;
+  soa: string;
   // paq: string;
-  // area: string;
+  area: string;
   // builtup_area: string;
   // open_space: string;
   // floors: string;
@@ -31,12 +31,12 @@ const DepartmentalbldgSchema = new Schema({
   
   division: { type: String, required: true },
   po: { type: String, required: true },
-  // class: { type: String, required: true},
+  class: { type: String, required: true},
   // location: { type: String, required: true },
   // purchase_year: { type: String},
-  // soa: { type: String},
+  soa: { type: String},
   // paq: { type: String},
-  // area: { type: String},
+  area: { type: String},
   // builtup_area: { type: String},
   // open_space: { type: String},
   // floors: { type: String},

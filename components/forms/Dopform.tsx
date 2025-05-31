@@ -50,12 +50,12 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
     defaultValues: {
       division: parsedDopDetails?.division || '',
       po: parsedDopDetails?.po || '',
-      // class: parsedDopDetails?.class || '',
+      class: parsedDopDetails?.class || '',
       // location: parsedDopDetails?.location || '',
       // purchase_year: parsedDopDetails?.purchase_year || '',
-      // soa: parsedDopDetails?.soa || '',
+      soa: parsedDopDetails?.soa || '',
       // paq: parsedDopDetails?.paq || '',
-      // area: parsedDopDetails?.area || '',
+      area: parsedDopDetails?.area || '',
       // builtup_area: parsedDopDetails?.builtup_area || '',
       // open_space: parsedDopDetails?.open_space || '',
       // floors: parsedDopDetails?.floors || '',
@@ -84,12 +84,12 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           departmentalbldgId: parsedDopDetails._id,
           division: values.division,
           po: values.po,
-          // classes: values.class,
+          classes: values.class,
           // location: values.location,
           // purchase_year: values.purchase_year,
-          // soa: values.soa,
+          soa: values.soa,
           // paq: values.paq,
-          // area: values.area,
+          area: values.area,
           // builtup_area: values.builtup_area,
           // open_space: values.open_space,
           // floors: values.floors,
@@ -112,12 +112,12 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
         await createDopBldg({
           division: values.division,
           po: values.po,
-          // classes: values.class,
+          classes: values.class,
           // location: values.location,
           // purchase_year: values.purchase_year,
-          // soa: values.soa,
+          soa: values.soa,
           // paq: values.paq,
-          // area: values.area,
+          area: values.area,
           // builtup_area: values.builtup_area,
           // open_space: values.open_space,
           // floors: values.floors,
@@ -218,7 +218,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      {/* <FormField
+      <FormField
         control={form.control}
         name="class"
         render={({ field }) => (
@@ -236,7 +236,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      <FormField
+      {/* <FormField
         control={form.control}
         name="location"
         render={({ field }) => (
@@ -271,7 +271,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
-      />
+      /> */}
       <FormField
         control={form.control}
         name="soa"
@@ -290,7 +290,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      <FormField
+      {/* <FormField
         control={form.control}
         name="paq"
         render={({ field }) => (
@@ -307,7 +307,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
-      />
+      /> */}
       <FormField
         control={form.control}
         name="area"
@@ -326,7 +326,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      <FormField
+      {/* <FormField
         control={form.control}
         name="builtup_area"
         render={({ field }) => (

@@ -89,6 +89,9 @@ console.log(dopbldg)
           // clerkId={clerkId}
           division={dopbldg.division}
           tags={dopbldg.tags}
+          classes={dopbldg.classes}
+          soa={dopbldg.soa}
+          area={dopbldg.area}
           author={dopbldg.author}
           po={dopbldg.po} 
           createdAt={dopbldg.createdAt} />

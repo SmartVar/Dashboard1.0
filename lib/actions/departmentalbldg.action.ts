@@ -87,6 +87,84 @@ export async function getDopBldgs(params: GetDopBldgsParams): Promise<DopBldgDef
     throw error;
   }
 }
+export async function getAllDopBldgs(params: GetDopBldgsParams) {
+  try {
+    connectToDatabase();
+    const { searchQuery, filter, page = 1, pageSize = 10 } = params;
+
+    // Calculcate the number of posts to skip based on the page number and page size
+    const skipAmount = (page - 1) * pageSize;
+
+    const query: FilterQuery<typeof Departmentalbldg> = {};
+
+    if(searchQuery) {
+      query.$or = [
+        { division: { $regex: new RegExp(searchQuery, "i")}},
+        { po: { $regex: new RegExp(searchQuery, "i")}},
+        { location: { $regex: new RegExp(searchQuery, "i")}},
+        
+      ]
+    }
+    
+    let sortOptions = {};
+    
+    switch (filter) 
+    {
+        case "ro":
+          sortOptions = { division: 'RO' }
+          break;
+        case "nmd":
+          sortOptions = { division: 'Navi Mumbai' }
+          break;
+        case "thn":
+          sortOptions = { division: 'Thane' }
+          break;
+        case "nsk":
+          sortOptions = { division: 'Nashik' }
+          break;
+        case "mld":
+          sortOptions = { division: 'Malegaon' }
+          break;
+        case "plg":
+          sortOptions = { division: 'Palgahar' }
+          break;
+        case "rgd":
+          sortOptions = { division: 'Raigad' }
+          break;
+        case "psd":
+          sortOptions = { division: 'PSD' }
+          break;
+        case "csd":
+          sortOptions = { division: 'CSD' }
+          break;
+        case "rtc":
+          sortOptions = { division: 'RTC' }
+          break;
+      
+        default:
+          break;
+      }
+  
+
+    const dopbldg = await Departmentalbldg.find(query)
+    .sort(sortOptions)
+    .populate({ path: 'author', model: User })
+    .populate({ path: 'tags', model: Tag })
+    // eslint-disable-next-line no-undef
+    .skip(skipAmount)
+    // eslint-disable-next-line no-unused-vars
+    const totalDepartmentalbldgs = await Departmentalbldg.countDocuments(query);
+const isNext = totalDepartmentalbldgs > skipAmount + dopbldg.length;
+
+// console.log(dopbldg);
+// @ts-ignore
+    return {dopbldg,isNext};
+
+  } catch (error) {
+    console.log(error)
+    throw error;
+  }
+}
   
 export async function createDopBldg(params: CreateDopBldgParams) {
   try {

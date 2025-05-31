@@ -178,8 +178,6 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
 
     form.setValue('tags', newTags);
   }
-
-
   
   return (
     <Form {...form}>

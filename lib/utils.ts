@@ -17,16 +17,24 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getTimestamp = (createdAt: Date): string => {
+  if (!(createdAt instanceof Date) || isNaN(createdAt.getTime())) {
+    return 'Invalid date';
+  }
+
   const now = new Date();
   const timeDifference = now.getTime() - createdAt.getTime();
 
-  // Define time intervals in milliseconds
+  // If the date is in the future
+  if (timeDifference < 0) {
+    return 'Just now';
+  }
+
   const minute = 60 * 1000;
   const hour = 60 * minute;
   const day = 24 * hour;
   const week = 7 * day;
-  const month = 30 * day;
-  const year = 365 * day;
+  const month = 30.44 * day; // More accurate average month length
+  const year = 365.25 * day; // Account for leap years
 
   if (timeDifference < minute) {
     const seconds = Math.floor(timeDifference / 1000);

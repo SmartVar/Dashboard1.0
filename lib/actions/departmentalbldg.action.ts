@@ -172,7 +172,7 @@ export async function createDopBldg(params: CreateDopBldgParams) {
 
     // eslint-disable-next-line camelcase
     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
+    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, tags, path } = params;
     // const { division, po, tags, classes, soa, area, path } = params;
 
     // Create the question
@@ -203,6 +203,7 @@ export async function createDopBldg(params: CreateDopBldgParams) {
  const tagDocuments = [];
 
  // Create the tags or get them if they already exist
+    // eslint-disable-next-line no-undef
     for (const tag of tags) {
       const existingTag = await Tag.findOneAndUpdate(
         { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 

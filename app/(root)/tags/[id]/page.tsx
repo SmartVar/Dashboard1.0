@@ -58,9 +58,19 @@ const Page = async ({ params, searchParams }: URLProps) => {
               tags={departmentalbldg.tags}
               author={departmentalbldg.author}
               po={departmentalbldg.po}
+<<<<<<< HEAD
               //   views={question.views}
               //   answers={question.answers}
               createdAt={departmentalbldg.createdAt}  />
+=======
+              soa={departmentalbldg.soa}
+              area={departmentalbldg.area}
+              classes={departmentalbldg.classes}
+            //   views={question.views}
+            //   answers={question.answers}
+              createdAt={departmentalbldg.createdAt}
+            />
+>>>>>>> 68d69d49b3bd0df070b52425a678e30bdc63092e
           ))
           : <NoResult 
             title="There’s no tag saved to show"

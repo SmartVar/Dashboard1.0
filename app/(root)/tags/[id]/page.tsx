@@ -36,13 +36,31 @@ const Page = async ({ params, searchParams }: URLProps) => {
               key={departmentalbldg._id}
               _id={departmentalbldg._id}
               division={departmentalbldg.division}
+              classes={departmentalbldg.classes}
+              // location={departmentalbldg.location}
+              // purchase_year={departmentalbldg.purchase_year}
+              soa={departmentalbldg.soa}
+              // paq={departmentalbldg.paq}
+              area={departmentalbldg.area}
+              // builtup_area={departmentalbldg.builtup_area}
+              // open_space={departmentalbldg.open_space}
+              // floors={departmentalbldg.floors}
+              // year={departmentalbldg.year}
+              // expenditure={departmentalbldg.expenditure}
+              // value={departmentalbldg.value}
+              // mut_doc={departmentalbldg.mut_doc}
+              // mut_state={departmentalbldg.mut_state}
+              // fund_type={departmentalbldg.fund_type}
+              // fund_amount={departmentalbldg.fund_amount}
+              // cases={departmentalbldg.cases}
+              // case_description={departmentalbldg.case_description}
+              // brief_history={departmentalbldg.brief_history}
               tags={departmentalbldg.tags}
               author={departmentalbldg.author}
               po={departmentalbldg.po}
-            //   views={question.views}
-            //   answers={question.answers}
-              createdAt={departmentalbldg.createdAt}
-            />
+              //   views={question.views}
+              //   answers={question.answers}
+              createdAt={departmentalbldg.createdAt}  />
           ))
           : <NoResult 
             title="There’s no tag saved to show"

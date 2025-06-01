@@ -50,25 +50,25 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
     defaultValues: {
       division: parsedDopDetails?.division || '',
       po: parsedDopDetails?.po || '',
-      class: parsedDopDetails?.class || '',
-      // location: parsedDopDetails?.location || '',
-      // purchase_year: parsedDopDetails?.purchase_year || '',
+      classes: parsedDopDetails?.classes || '',
+      location: parsedDopDetails?.location || '',
+      purchase_year: parsedDopDetails?.purchase_year || '',
       soa: parsedDopDetails?.soa || '',
-      // paq: parsedDopDetails?.paq || '',
+      paq: parsedDopDetails?.paq || '',
       area: parsedDopDetails?.area || '',
-      // builtup_area: parsedDopDetails?.builtup_area || '',
-      // open_space: parsedDopDetails?.open_space || '',
-      // floors: parsedDopDetails?.floors || '',
-      // value: parsedDopDetails?.value || '',
-      // year: parsedDopDetails?.year || '',
-      // expenditure: parsedDopDetails?.expenditure || '',
-      // mut_doc: parsedDopDetails?.mut_doc || '',
-      // mut_state: parsedDopDetails?.mut_state || '',
-      // fund_type: parsedDopDetails?.fund_type || '',
-      // fund_amount: parsedDopDetails?.fund_amount || '',
-      // cases: parsedDopDetails?.cases || '',
-      // case_description: parsedDopDetails?.case_description || '',
-      // brief_history: parsedDopDetails?.brief_history || '',
+      builtup_area: parsedDopDetails?.builtup_area || '',
+      open_space: parsedDopDetails?.open_space || '',
+      floors: parsedDopDetails?.floors || '',
+      value: parsedDopDetails?.value || '',
+      year: parsedDopDetails?.year || '',
+      expenditure: parsedDopDetails?.expenditure || '',
+      mut_doc: parsedDopDetails?.mut_doc || '',
+      mut_state: parsedDopDetails?.mut_state || '',
+      fund_type: parsedDopDetails?.fund_type || '',
+      fund_amount: parsedDopDetails?.fund_amount || '',
+      cases: parsedDopDetails?.cases || '',
+      case_description: parsedDopDetails?.case_description || '',
+      brief_history: parsedDopDetails?.brief_history || '',
        tags: groupedTags || []
       
     },
@@ -84,25 +84,25 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           departmentalbldgId: parsedDopDetails._id,
           division: values.division,
           po: values.po,
-          classes: values.class,
-          // location: values.location,
-          // purchase_year: values.purchase_year,
+          classes: values.classes,
+          location: values.location,
+          purchase_year: values.purchase_year,
           soa: values.soa,
-          // paq: values.paq,
+          paq: values.paq,
           area: values.area,
-          // builtup_area: values.builtup_area,
-          // open_space: values.open_space,
-          // floors: values.floors,
-          // value: values.value,
-          // year: values.year,
-          // expenditure: values.expenditure,
-          // mut_doc: values.mut_doc,
-          // mut_state: values.mut_state,
-          // fund_type: values.fund_type,
-          // fund_amount: values.fund_amount,
-          // cases: values.cases,
-          // case_description: values.case_description,
-          // brief_history: values.brief_history,
+          builtup_area: values.builtup_area,
+          open_space: values.open_space,
+          floors: values.floors,
+          value: values.value,
+          year: values.year,
+          expenditure: values.expenditure,
+          mut_doc: values.mut_doc,
+          mut_state: values.mut_state,
+          fund_type: values.fund_type,
+          fund_amount: values.fund_amount,
+          cases: values.cases,
+          case_description: values.case_description,
+          brief_history: values.brief_history,
           path: pathname,
         })
 
@@ -112,25 +112,25 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
         await createDopBldg({
           division: values.division,
           po: values.po,
-          classes: values.class,
-          // location: values.location,
-          // purchase_year: values.purchase_year,
+          classes: values.classes,
+          location: values.location,
+          purchase_year: values.purchase_year,
           soa: values.soa,
-          // paq: values.paq,
+          paq: values.paq,
           area: values.area,
-          // builtup_area: values.builtup_area,
-          // open_space: values.open_space,
-          // floors: values.floors,
-          // value: values.value,
-          // year: values.year,
-          // expenditure: values.expenditure,
-          // mut_doc: values.mut_doc,
-          // mut_state: values.mut_state,
-          // fund_type: values.fund_type,
-          // fund_amount: values.fund_amount,
-          // cases: values.cases,
-          // case_description: values.case_description,
-          // brief_history: values.brief_history,
+          builtup_area: values.builtup_area,
+          open_space: values.open_space,
+          floors: values.floors,
+          value: values.value,
+          year: values.year,
+          expenditure: values.expenditure,
+          mut_doc: values.mut_doc,
+          mut_state: values.mut_state,
+          fund_type: values.fund_type,
+          fund_amount: values.fund_amount,
+          cases: values.cases,
+          case_description: values.case_description,
+          brief_history: values.brief_history,
           path: pathname,
           tags: values.tags,
           author: JSON.parse(mongoUserId),
@@ -220,7 +220,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="class"
+        name="classes"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
             <FormLabel className="paragraph-semibold text-dark400_light800">Class of Office <span className="text-primary-500">*</span></FormLabel>
@@ -236,7 +236,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      {/* <FormField
+      <FormField
         control={form.control}
         name="location"
         render={({ field }) => (
@@ -271,7 +271,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
-      /> */}
+      />
       <FormField
         control={form.control}
         name="soa"
@@ -290,7 +290,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      {/* <FormField
+      <FormField
         control={form.control}
         name="paq"
         render={({ field }) => (
@@ -307,7 +307,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
-      /> */}
+      />
       <FormField
         control={form.control}
         name="area"
@@ -326,7 +326,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           </FormItem>
         )}
       />
-      {/* <FormField
+      <FormField
         control={form.control}
         name="builtup_area"
         render={({ field }) => (
@@ -526,6 +526,24 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
       />
       <FormField
         control={form.control}
+        name="case_description"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Case Description <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Case Description
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
         name="brief_history"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
@@ -541,7 +559,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             <FormMessage className="text-red-500" />
           </FormItem>
         )}
-      /> */}
+      />
        <FormField
           control={form.control}
           name="tags"

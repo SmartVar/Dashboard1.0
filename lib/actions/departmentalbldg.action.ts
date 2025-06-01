@@ -172,32 +172,33 @@ export async function createDopBldg(params: CreateDopBldgParams) {
 
     // eslint-disable-next-line camelcase
     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, po, tags, classes, soa, area, path } = params;
+    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
+    // const { division, po, tags, classes, soa, area, path } = params;
 
     // Create the question
     const dopbldg = await Departmentalbldg.create({
       division,
       po,
-      class : classes,
-      // location,
+      classes : classes,
+      location,
       // // eslint-disable-next-line camelcase
-      // purchase_year,
+      purchase_year,
       soa,
-      // paq,
+      paq,
       area,
-      // builtup_area,
-      // open_space,
-      // floors,
-      // value,
-      // year,
-      // expenditure,
-      // mut_doc,
-      // mut_state,
-      // fund_type,
-      // fund_amount,
-      // cases,
-      // case_description,
-      // brief_history,
+      builtup_area,
+      open_space,
+      floors,
+      value,
+      year,
+      expenditure,
+      mut_doc,
+      mut_state,
+      fund_type,
+      fund_amount,
+      cases,
+      case_description,
+      brief_history,
     });
  const tagDocuments = [];
 
@@ -251,7 +252,8 @@ export async function editDopBldg(params: EditDopBldgParams) {
     connectToDatabase();
 
     // const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { departmentalbldgId, division, po, classes, soa, area, path } = params;
+    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
+    // const { departmentalbldgId, division, po, classes, soa, area, path } = params;
 
     const dopbldg = await Departmentalbldg.findById(departmentalbldgId).populate("tags");
 
@@ -260,25 +262,25 @@ export async function editDopBldg(params: EditDopBldgParams) {
     }
     dopbldg.division = division;
     dopbldg.po = po;
-    dopbldg.class = classes;
-  //   dopbldg.location = location;
-  //   dopbldg.purchase_year = purchase_year;
+    dopbldg.classes = classes;
+    dopbldg.location = location;
+    dopbldg.purchase_year = purchase_year;
     dopbldg.soa = soa;
-  //   dopbldg.paq = paq;
+    dopbldg.paq = paq;
     dopbldg.area = area;
-  //  dopbldg.builtup_area = builtup_area;
-  //   dopbldg.open_space = open_space;
-  //   dopbldg.floors = floors;
-  //   dopbldg.value = value;
-  //   dopbldg.year =year;
-  //   dopbldg.expenditure =expenditure;
-  //   dopbldg.mut_doc =mut_doc;
-  //   dopbldg.mut_state =mut_state;
-  //   dopbldg.fund_type =fund_type;
-  //   dopbldg.fund_amount =fund_amount;
-  //   dopbldg.cases =cases;
-  //   dopbldg.case_description =case_description;
-  //   dopbldg.brief_history =brief_history;
+   dopbldg.builtup_area = builtup_area;
+    dopbldg.open_space = open_space;
+    dopbldg.floors = floors;
+    dopbldg.value = value;
+    dopbldg.year =year;
+    dopbldg.expenditure =expenditure;
+    dopbldg.mut_doc =mut_doc;
+    dopbldg.mut_state =mut_state;
+    dopbldg.fund_type =fund_type;
+    dopbldg.fund_amount =fund_amount;
+    dopbldg.cases =cases;
+    dopbldg.case_description =case_description;
+    dopbldg.brief_history =brief_history;
     
 
     await dopbldg.save();

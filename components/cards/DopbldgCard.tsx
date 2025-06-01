@@ -13,6 +13,7 @@ interface DepartmentalbldgProps {
   division: string;
   soa: string;
   classes: string;
+ purchase_year: string;
   area: string;
   tags: {
     _id: string;
@@ -37,6 +38,7 @@ const DopbldgCard = ({
   division,
   classes,
   soa,
+  purchase_year,
   area,
   tags,
   author,
@@ -52,7 +54,7 @@ const DopbldgCard = ({
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
         <div>
           <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
-            {getTimestamp(createdAt)}
+            YoP - {purchase_year}
           </span>
           <Link href={`/dopbldg/${_id}`}>
             <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">

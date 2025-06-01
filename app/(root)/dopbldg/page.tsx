@@ -88,6 +88,7 @@ console.log(dopbldg)
           _id={dopbldg._id}
           // clerkId={clerkId}
           division={dopbldg.division}
+          purchase_year={dopbldg.purchase_year}
           tags={dopbldg.tags}
           classes={dopbldg.classes}
           soa={dopbldg.soa}

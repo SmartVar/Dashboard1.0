@@ -54,8 +54,8 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
           <NoResult 
             title="No Tags Found"
             description="It looks like there are no tags found."
-            link="/ask-question"
-            linkTitle="Ask a question"
+            link="/add-dop"
+            linkTitle="No Records"
           />
         )}
       </section>

@@ -106,7 +106,7 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           path: pathname,
         })
 
-        router.push(`/dopbldg`);
+        router.push(`/dopbldg/${parsedDopDetails._id}`);
 
       } else {
         await createDopBldg({
@@ -578,8 +578,12 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
                 {field.value.length > 0 && (
                   <div className="flex-start mt-2.5 gap-2.5">
                     {field.value.map((tag: any) => (
-                      <Badge key={tag} className="subtle-medium background-light800_dark300 text-light400_light500 flex items-center justify-center gap-2 rounded-md border-none px-4 py-2 capitalize" 
-                      onClick={() => type !== 'Edit' ? handleTagRemove(tag, field) : () => {}}>
+                      <Badge 
+                      key={tag} 
+                      className="subtle-medium background-light800_dark300 text-light400_light500 flex items-center justify-center gap-2 rounded-md border-none px-4 py-2 capitalize" 
+                      onClick={() => type !== 'Edit' ? handleTagRemove(tag, field) : () => {}}
+                      >
+                      
                         {tag}
                         {type !== 'Edit' && (<Image 
                           src="/assets/icons/close.svg"
@@ -601,6 +605,8 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             </FormItem>
           )}
         />
+
+
       
             <Button type="submit" className="primary-gradient w-fit !text-light-900" disabled={isSubmitting}>
         {isSubmitting ? (

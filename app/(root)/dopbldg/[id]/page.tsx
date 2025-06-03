@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 
 import {
     Card,
@@ -22,6 +23,8 @@ import {
 // import DonutCharts from "../charts/DonutCharts"
   import { ParamsProps } from '@/types';
 import { getDopBldgById } from "@/lib/actions/departmentalbldg.action"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 
   const Page = async ({ params }: ParamsProps) => {
@@ -35,9 +38,21 @@ import { getDopBldgById } from "@/lib/actions/departmentalbldg.action"
     // const mongoUser = await getUserById({ userId })
     const result = await getDopBldgById({ departmentalbldgId: params.id})
       
-    // const userInfo = await getUserInfo({ userId});
+    console.log(result)
+
     return (
       <>
+      <div className="flex w-full flex-col-reverse justify-between gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
+        <h1 className="h1-bold text-dark100_light900">
+                {result.po}</h1> 
+                <Link href={`/dopbldg/edit/${result._id}`}
+                className="flex justify-end max-sm:w-full">
+                <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+                  Edit Records
+                </Button>
+              </Link> 
+              </div>
+              
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
         <CardHeader>

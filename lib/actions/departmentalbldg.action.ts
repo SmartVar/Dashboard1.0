@@ -114,22 +114,22 @@ export async function getAllDopBldgs(params: GetDopBldgsParams) {
           sortOptions = { division: 'RO' }
           break;
         case "nmd":
-          sortOptions = { division: 'Navi Mumbai' }
+          sortOptions = { division: 'Navi Mumbai Dn' }
           break;
         case "thn":
-          sortOptions = { division: 'Thane' }
+          sortOptions = { division: 'Thane Dn' }
           break;
         case "nsk":
-          sortOptions = { division: 'Nashik' }
+          sortOptions = { division: 'Nashik Dn' }
           break;
         case "mld":
-          sortOptions = { division: 'Malegaon' }
+          sortOptions = { division: 'Malegaon Dn' }
           break;
         case "plg":
-          sortOptions = { division: 'Palgahar' }
+          sortOptions = { division: 'Palgahar Dn' }
           break;
         case "rgd":
-          sortOptions = { division: 'Raigad' }
+          sortOptions = { division: 'Raigad Dn' }
           break;
         case "psd":
           sortOptions = { division: 'PSD' }
@@ -172,7 +172,7 @@ export async function createDopBldg(params: CreateDopBldgParams) {
 
     // eslint-disable-next-line camelcase
     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, tags, path } = params;
+    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, tags, path } = params;
     // const { division, po, tags, classes, soa, area, path } = params;
 
     // Create the question
@@ -198,7 +198,11 @@ export async function createDopBldg(params: CreateDopBldgParams) {
       fund_amount,
       cases,
       case_description,
+      case_action,
+      case_divisionaction,
       brief_history,
+      corr_ro,
+      corr_division,
     });
  const tagDocuments = [];
 
@@ -253,7 +257,7 @@ export async function editDopBldg(params: EditDopBldgParams) {
     connectToDatabase();
 
     // const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
+    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, path } = params;
     // const { departmentalbldgId, division, po, classes, soa, area, path } = params;
 
     const dopbldg = await Departmentalbldg.findById(departmentalbldgId).populate("tags");
@@ -281,7 +285,11 @@ export async function editDopBldg(params: EditDopBldgParams) {
     dopbldg.fund_amount =fund_amount;
     dopbldg.cases =cases;
     dopbldg.case_description =case_description;
+    dopbldg.case_action =case_action;
+    dopbldg.case_divisionaction =case_divisionaction;
     dopbldg.brief_history =brief_history;
+    dopbldg.corr_ro =corr_ro;
+    dopbldg.corr_division =corr_division;
     
 
     await dopbldg.save();

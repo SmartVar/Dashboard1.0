@@ -21,7 +21,11 @@ export interface IDepartmentalbldg extends Document {
   fund_amount: string;
   cases: string;
   case_description: string;
+  case_action: string;
+  case_divisionaction: string;
   brief_history: string;
+  corr_ro: string;
+  corr_division: string;
   tags: Schema.Types.ObjectId[];
   author: Schema.Types.ObjectId;
   createdOn: Date;
@@ -49,7 +53,11 @@ const DepartmentalbldgSchema = new Schema({
     fund_amount: { type: String },
     cases: { type: String },
     case_description: { type: String },
+    case_action: { type: String },
+    case_divisionaction: { type: String },
     brief_history: { type: String },
+    corr_ro: { type: String },
+    corr_division: { type: String },
     tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }],
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   createdOn: { type: Date, default: Date.now },

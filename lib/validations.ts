@@ -56,7 +56,11 @@ export const DepartmentalbldgSchema = z.object({
   fund_amount: z.string().min(2).max(100),
   cases: z.string().min(2).max(100),
   case_description: z.string().min(2).max(130),
+  case_action: z.string().min(2).max(130),
+  case_divisionaction: z.string().min(2).max(130),
   brief_history: z.string().min(2).max(500),
+  corr_ro: z.string().min(2).max(500),
+  corr_division: z.string().min(2).max(500),
   tags: z.array(z.string().min(1).max(15)).min(1).max(3),
 
 })

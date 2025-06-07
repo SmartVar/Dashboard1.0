@@ -68,7 +68,11 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
       fund_amount: parsedDopDetails?.fund_amount || '',
       cases: parsedDopDetails?.cases || '',
       case_description: parsedDopDetails?.case_description || '',
+      case_action: parsedDopDetails?.case_action || '',
+      case_divisionaction: parsedDopDetails?.case_divisionaction || '',
       brief_history: parsedDopDetails?.brief_history || '',
+      corr_ro: parsedDopDetails?.corr_ro || '',
+      corr_division: parsedDopDetails?.corr_division || '',
        tags: groupedTags || []
       
     },
@@ -102,7 +106,11 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           fund_amount: values.fund_amount,
           cases: values.cases,
           case_description: values.case_description,
+          case_action: values.case_action,
+          case_divisionaction: values.case_divisionaction,
           brief_history: values.brief_history,
+          corr_ro: values.corr_ro,
+          corr_division: values.corr_division,
           path: pathname,
         })
 
@@ -130,7 +138,11 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
           fund_amount: values.fund_amount,
           cases: values.cases,
           case_description: values.case_description,
+         case_action: values.case_action,
+          case_divisionaction: values.case_divisionaction,
           brief_history: values.brief_history,
+          corr_ro: values.corr_ro,
+          corr_division: values.corr_division,
           path: pathname,
           tags: values.tags,
           author: JSON.parse(mongoUserId),
@@ -544,6 +556,42 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
       />
       <FormField
         control={form.control}
+        name="case_action"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Case Action Proposed <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Give the details of the proposed actions for the case.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="case_divisionaction"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Division Action <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Give details of Action taken by Divisions.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
         name="brief_history"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
@@ -555,6 +603,42 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
               Enter Brief History of the Post office since inspection till date.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="corr_ro"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Last RO Corr <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Last Correspondance by RO NMR
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="corr_division"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Last Division Corr <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Last Correspondance from Division.
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>

@@ -140,7 +140,11 @@ export interface CreateDopBldgParams {
   fund_amount: string;
   cases: string;
   case_description: string;
+  case_action: string;
+  case_divisionaction: string;
   brief_history: string;
+  corr_ro: string;
+  corr_division: string;
   tags: string[];
   author: Schema.Types.ObjectId | IUser;
   path: string;
@@ -321,7 +325,11 @@ export interface EditDopBldgParams {
   fund_amount: string;
   cases: string;
   case_description: string;
+  case_action: string;
+  case_divisionaction: string;
   brief_history: string;
+  corr_ro: string;
+  corr_division: string;
   path: string;
 }
 export interface EditTicketParams {

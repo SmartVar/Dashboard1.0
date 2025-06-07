@@ -54,67 +54,80 @@ import { Button } from "@/components/ui/button";
               </div>
               
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
+      <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
-          <CardTitle>Bldgs Info</CardTitle>
+          <CardTitle>At a Glance</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <div className="flex flex-row flex-between">
+          <div className="flex-between flex flex-row text-base">
             <div className="flex flex-col">
-          <p>Division - {result.division}</p>
-          <p>Post Office - {result.po}</p>
-          <p>Purchase Year - {result.purchase_year}</p>
-          <p>SOA (Sq. ft) - {result.soa}</p>
-          <p>Class - {result.classes}</p>
-          <p>PAQ - {result.paq}</p>
+          <p>➔ Division : {result.division}</p>
+          <p>➔ Post Office : {result.po}</p>
+          <p>➔ Purchase Year : {result.purchase_year}</p>
+          <p>➔ SOA (Sq. ft) : {result.soa}</p>
+          <p>➔ Class : {result.classes}</p>
+          <p>➔ PAQ : {result.paq}</p>
           </div>
-          <div className=" flex flex-col">
-            <p>Area (Sq. mtr) - {result.area}</p>
-          <p>Floors - {result.floors}</p>
-          <p>Purchase Value - {result.value}</p>
-          <p>Mutation Doc- {result.mut_doc}</p>
-          <p>Fund - {result.fund_type}</p>
-          <p>Cases - {result.cases}</p>
+          <div className=" flex flex-col sm:flex-col">
+            <p>➔ Area (Sq. mtr) : {result.area}</p>
+          <p>➔ Floors : {result.floors}</p>
+          <p>➔ Purchase Value : {result.value}</p>
+          <p>➔ Mutation Doc : {result.mut_doc}</p>
+          <p>➔ Fund : {result.fund_type}</p>
+          <p>➔ Cases : {result.cases}</p>
           </div>
           </div>
           </CardContent>
       </Card>
-            <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
+            <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
           <CardTitle>Mutation Details</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p>Mutation - {result.mut_state}</p>
-          <p>Mutation Doc - {result.mut_doc}</p>
+          <p>➔ Mutation : {result.mut_state}</p>
+          <p>➔ Mutation Doc : {result.mut_doc}</p>
           </div>
           </CardContent>
           </Card>
-            <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
+            <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
           <CardTitle>Funds Details</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p>Last Expenditure (in Rs.)- {result.expenditure}</p>
-          <p>Year of Last Expenditure - {result.year}</p>
-          <p>Fund Type- {result.fund_type}</p>
-          <p>Fund Allotted (in Rs.) - {result.fund_amount}</p>
+          <p>➔ Last Expenditure (in Rs.) : {result.expenditure}</p>
+          <p>➔ Year of Last Expenditure : {result.year}</p>
+          <p>➔ Fund Type : {result.fund_type}</p>
+          <p>➔ Fund Allotted (in Rs.) : {result.fund_amount}</p>
           </div>
           </CardContent>
           </Card>
-            <Card className="text-dark200_light900 col-span-4 text-xl font-bold">
+            <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
           <CardTitle>Cases Details</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p>Case Type - {result.cases}</p>
-          <p>Case Description - {result.case_description}</p>
+          <p>➔ Case Type : {result.cases}</p>
+          <p>➔ Case Description : {result.case_description}</p>
+          <p>➔ Action Proposed : {result.case_action}</p>
+          <p>➔ Current Progress : {result.case_divisionaction}</p>
           </div>
           </CardContent>
           </Card>
-          <Card>
+          <Card className="text-dark200_light900 col-span-4 text-base font-bold">
+        <CardHeader>
+          <CardTitle>Correspondance</CardTitle>
+        </CardHeader>
+        <CardContent className="pl-2">
+          <div className="flex flex-col">
+          <p>➔ Last RO Corr : {result.corr_ro}</p>
+          <p>➔ Last Division Corr : {result.corr_division}</p>
+          </div>
+          </CardContent>
+          </Card>
+          <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
           <CardTitle>Brief History</CardTitle>
         </CardHeader>

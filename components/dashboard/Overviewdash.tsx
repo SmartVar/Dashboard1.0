@@ -20,6 +20,7 @@ import BarChartsMultiple from "../charts/BarChartsMultiple"
 import PieChartsActive from "../charts/PieChartsActive"
 import BarChartsCases from "../charts/BarChartsCases"
 import DonutCharts from "../charts/DonutCharts"
+// import EventCalendarContainer from "../events/EventCalendarContainer"
   
   const Overviewdash = async () => {
       const { userId } = auth();
@@ -199,6 +200,17 @@ import DonutCharts from "../charts/DonutCharts"
           <DonutCharts />
         </CardContent>
       </Card>
+      {/* <Card className="text-dark200_light900 col-span-3">
+        <CardHeader>
+          <CardTitle>Event Managment</CardTitle>
+          <CardDescription>
+            Manage Your Reminders
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <EventCalendarContainer searchParams={searchParams}/>
+        </CardContent>
+      </Card> */}
       </div>
       </>
     )

@@ -54,6 +54,15 @@ export interface GetTaskParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetEventsParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+  // eslint-disable-next-line no-undef
+  event_date?: date;
+}
 export interface GetDopBldgsParams {
   page?: number;
   pageSize?: number;
@@ -149,6 +158,15 @@ export interface CreateDopBldgParams {
   author: Schema.Types.ObjectId | IUser;
   path: string;
 }
+export interface CreateEventParams {
+  division: string;
+  title: string;
+  description: string;
+  section: string;
+  event_date: Date;
+  path: string;
+}
+
 export interface CreateTicketParams {
   division: string;
   po: string;
@@ -223,6 +241,9 @@ export interface GetTaskByIdParams {
 export interface GetDopBldgByIdParams {
   departmentalbldgId: string;
 }
+export interface GetEventByIdParams {
+  eventId: string;
+}
 export interface GetTicketByIdParams {
   ticketId: string;
 }
@@ -255,6 +276,10 @@ export interface DeleteTaskParams {
 }
 export interface DeleteDopBldgParams {
   departmentalbldgId: string;
+  path: string;
+}
+export interface DeleteEventParams {
+  eventId: string;
   path: string;
 }
 export interface DeleteTicketParams {
@@ -330,6 +355,15 @@ export interface EditDopBldgParams {
   brief_history: string;
   corr_ro: string;
   corr_division: string;
+  path: string;
+}
+export interface EditEventParams {
+  eventId: string;
+  division: string;
+  title: string;
+  description: string;
+  section: string;
+  event_date: Date;
   path: string;
 }
 export interface EditTicketParams {

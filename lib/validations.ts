@@ -64,6 +64,14 @@ export const DepartmentalbldgSchema = z.object({
   tags: z.array(z.string().min(1).max(15)).min(1).max(3),
 
 })
+export const EventSchema = z.object({
+  division: z.string().min(2).max(130),
+  title: z.string().min(2).max(130),
+  description: z.string().min(2).max(130),
+  section: z.string().min(2).max(130),
+  event_date: z.date(),
+
+})
 
 export const RentedbldgSchema = z.object({
   division: z.string().min(2).max(130),

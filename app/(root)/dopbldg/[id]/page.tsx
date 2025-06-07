@@ -97,16 +97,18 @@ import { Button } from "@/components/ui/button";
         <p><span className="primary-text-gradient">➔ SOA (Sq. ft) : </span>{result.soa}</p>
         <p><span className="primary-text-gradient">➔ Class : </span>{result.classes}</p>
         <p><span className="primary-text-gradient">➔ PAQ : </span>{result.paq}</p>
+        <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
       </div>
 
       {/* Right Column */}
       <div className="flex flex-col sm:w-1/2">
-        <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
         <p><span className="primary-text-gradient">➔ Floors : </span>{result.floors}</p>
         <p><span className="primary-text-gradient">➔ Purchase Value : </span>{result.value}</p>
         <p><span className="primary-text-gradient">➔ Mutation Doc : </span>{result.mut_doc}</p>
         <p><span className="primary-text-gradient">➔ Fund : </span>{result.fund_type}</p>
         <p><span className="primary-text-gradient">➔ Cases : </span>{result.cases}</p>
+        <p><span className="primary-text-gradient">➔ Last RO Corr : </span>{result.corr_ro}</p>
+        <p><span className="primary-text-gradient">➔ Last Division Corr : </span>{result.corr_division}</p>
       </div>
     </div>
   </CardContent>
@@ -146,17 +148,6 @@ import { Button } from "@/components/ui/button";
           <p><span className="primary-text-gradient">➔ Case Description : </span>{result.case_description}</p>
           <p><span className="primary-text-gradient">➔ Action Proposed : </span>{result.case_action}</p>
           <p><span className="primary-text-gradient">➔ Current Progress : </span>{result.case_divisionaction}</p>
-          </div>
-          </CardContent>
-          </Card>
-          <Card className="text-dark200_light900 col-span-4 text-base font-bold">
-        <CardHeader>
-          <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Correspondance</CardTitle>
-        </CardHeader>
-        <CardContent className="pl-2">
-          <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Last RO Corr : </span>{result.corr_ro}</p>
-          <p><span className="primary-text-gradient">➔ Last Division Corr : </span>{result.corr_division}</p>
           </div>
           </CardContent>
           </Card>

@@ -59,7 +59,7 @@ import { Button } from "@/components/ui/button";
           <CardTitle>At a Glance</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <div className="flex-between flex flex-row text-base">
+          <div className="flex-between flex flex-col text-base sm:flex-row">
             <div className="flex flex-col">
           <p>➔ Division : {result.division}</p>
           <p>➔ Post Office : {result.po}</p>
@@ -68,7 +68,7 @@ import { Button } from "@/components/ui/button";
           <p>➔ Class : {result.classes}</p>
           <p>➔ PAQ : {result.paq}</p>
           </div>
-          <div className=" flex flex-col sm:flex-col">
+          <div className=" flex flex-col">
             <p>➔ Area (Sq. mtr) : {result.area}</p>
           <p>➔ Floors : {result.floors}</p>
           <p>➔ Purchase Value : {result.value}</p>

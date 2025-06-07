@@ -54,11 +54,12 @@ import { Button } from "@/components/ui/button";
               </div>
               
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card className="text-dark200_light900 col-span-4 text-base font-bold">
+        {/* <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-4"> */}
+      {/* <Card className="text-dark200_light900 col-span-4 flex-wrap text-base font-bold">
         <CardHeader>
           <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">At a Glance</CardTitle>
         </CardHeader>
-        <CardContent className="pl-2">
+        <CardContent className="pl-2 sm:flex-col">
           <div className="flex-between flex flex-row text-base">
             <div className="flex flex-col">
           <p><span className="primary-text-gradient">➔ Division : </span>{result.division}</p>
@@ -78,7 +79,39 @@ import { Button } from "@/components/ui/button";
           </div>
           </div>
           </CardContent>
-      </Card>
+      </Card> */}
+      <Card className="text-dark200_light900 col-span-4 text-base font-bold">
+  <CardHeader>
+    <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">
+      At a Glance
+    </CardTitle>
+  </CardHeader>
+
+  <CardContent className="pl-2">
+    <div className="flex flex-col sm:flex-row gap-4">
+      {/* Left Column */}
+      <div className="flex flex-col sm:w-1/2">
+        <p><span className="primary-text-gradient">➔ Division : </span>{result.division}</p>
+        <p><span className="primary-text-gradient">➔ Post Office : </span>{result.po}</p>
+        <p><span className="primary-text-gradient">➔ Purchase Year : </span>{result.purchase_year}</p>
+        <p><span className="primary-text-gradient">➔ SOA (Sq. ft) : </span>{result.soa}</p>
+        <p><span className="primary-text-gradient">➔ Class : </span>{result.classes}</p>
+        <p><span className="primary-text-gradient">➔ PAQ : </span>{result.paq}</p>
+      </div>
+
+      {/* Right Column */}
+      <div className="flex flex-col sm:w-1/2">
+        <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
+        <p><span className="primary-text-gradient">➔ Floors : </span>{result.floors}</p>
+        <p><span className="primary-text-gradient">➔ Purchase Value : </span>{result.value}</p>
+        <p><span className="primary-text-gradient">➔ Mutation Doc : </span>{result.mut_doc}</p>
+        <p><span className="primary-text-gradient">➔ Fund : </span>{result.fund_type}</p>
+        <p><span className="primary-text-gradient">➔ Cases : </span>{result.cases}</p>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
             <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
           <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Mutation Details</CardTitle>

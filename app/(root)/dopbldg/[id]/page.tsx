@@ -61,12 +61,12 @@ import { Button } from "@/components/ui/button";
         <CardContent className="pl-2">
           <div className="flex-between flex flex-row text-base">
             <div className="flex flex-col">
-          <p><span className="text-primary-500">➔ Division : </span>{result.division}</p>
-          <p><span className="text-primary-500">➔ Post Office : </span>{result.po}</p>
-          <p><span className="text-primary-500">➔ Purchase Year : </span>{result.purchase_year}</p>
-          <p><span className="text-primary-500">➔ SOA (Sq. ft) : </span>{result.soa}</p>
-          <p><span className="text-primary-500">➔ Class : </span>{result.classes}</p>
-          <p><span className="text-primary-500">➔ PAQ : </span>{result.paq}</p>
+          <p><span className="primary-text-gradient">➔ Division : </span>{result.division}</p>
+          <p><span className="primary-text-gradient">➔ Post Office : </span>{result.po}</p>
+          <p><span className="primary-text-gradient">➔ Purchase Year : </span>{result.purchase_year}</p>
+          <p><span className="primary-text-gradient">➔ SOA (Sq. ft) : </span>{result.soa}</p>
+          <p><span className="primary-text-gradient">➔ Class : </span>{result.classes}</p>
+          <p><span className="primary-text-gradient">➔ PAQ : </span>{result.paq}</p>
           </div>
           <div className=" flex flex-col">
             <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
@@ -85,8 +85,8 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="text-primary-500">➔ Mutation : </span>{result.mut_state}</p>
-          <p><span className="text-primary-500">➔ Mutation Doc : </span>{result.mut_doc}</p>
+          <p><span className="primary-text-gradient">➔ Mutation : </span>{result.mut_state}</p>
+          <p><span className="primary-text-gradient">➔ Mutation Doc : </span>{result.mut_doc}</p>
           </div>
           </CardContent>
           </Card>
@@ -96,10 +96,10 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="text-primary-500">➔ Last Expenditure (in Rs.) : </span>{result.expenditure}</p>
-          <p><span className="text-primary-500">➔ Year of Last Expenditure : </span>{result.year}</p>
-          <p><span className="text-primary-500">➔ Fund Type : </span>{result.fund_type}</p>
-          <p><span className="text-primary-500">➔ Fund Allotted (in Rs.) : </span>{result.fund_amount}</p>
+          <p><span className="primary-text-gradient">➔ Last Expenditure (in Rs.) : </span>{result.expenditure}</p>
+          <p><span className="primary-text-gradient">➔ Year of Last Expenditure : </span>{result.year}</p>
+          <p><span className="primary-text-gradient">➔ Fund Type : </span>{result.fund_type}</p>
+          <p><span className="primary-text-gradient">➔ Fund Allotted (in Rs.) : </span>{result.fund_amount}</p>
           </div>
           </CardContent>
           </Card>
@@ -109,10 +109,10 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="text-primary-500">➔ Case Type : </span>{result.cases}</p>
-          <p><span className="text-primary-500">➔ Case Description : </span>{result.case_description}</p>
-          <p><span className="text-primary-500">➔ Action Proposed : </span>{result.case_action}</p>
-          <p><span className="text-primary-500">➔ Current Progress : </span>{result.case_divisionaction}</p>
+          <p><span className="primary-text-gradient">➔ Case Type : </span>{result.cases}</p>
+          <p><span className="primary-text-gradient">➔ Case Description : </span>{result.case_description}</p>
+          <p><span className="primary-text-gradient">➔ Action Proposed : </span>{result.case_action}</p>
+          <p><span className="primary-text-gradient">➔ Current Progress : </span>{result.case_divisionaction}</p>
           </div>
           </CardContent>
           </Card>
@@ -122,8 +122,8 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="text-primary-500">➔ Last RO Corr : </span>{result.corr_ro}</p>
-          <p><span className="text-primary-500">➔ Last Division Corr : </span>{result.corr_division}</p>
+          <p><span className="primary-text-gradient">➔ Last RO Corr : </span>{result.corr_ro}</p>
+          <p><span className="primary-text-gradient">➔ Last Division Corr : </span>{result.corr_division}</p>
           </div>
           </CardContent>
           </Card>

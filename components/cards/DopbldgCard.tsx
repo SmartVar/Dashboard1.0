@@ -59,7 +59,7 @@ const DopbldgCard = ({
             YoP - {purchase_year}
           </span>
           <Link href={`/dopbldg/${_id}`}>
-            <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
+            <h3 className="sm:h3-semibold base-semibold line-clamp-1 flex-1 text-primary-500">
               {po} 
             </h3>
           </Link>

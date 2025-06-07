@@ -56,80 +56,80 @@ import { Button } from "@/components/ui/button";
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
-          <CardTitle>At a Glance</CardTitle>
+          <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">At a Glance</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <div className="flex-between flex flex-col text-base sm:flex-row">
+          <div className="flex-between flex flex-row text-base">
             <div className="flex flex-col">
-          <p>➔ Division : {result.division}</p>
-          <p>➔ Post Office : {result.po}</p>
-          <p>➔ Purchase Year : {result.purchase_year}</p>
-          <p>➔ SOA (Sq. ft) : {result.soa}</p>
-          <p>➔ Class : {result.classes}</p>
-          <p>➔ PAQ : {result.paq}</p>
+          <p><span className="text-primary-500">➔ Division : </span>{result.division}</p>
+          <p><span className="text-primary-500">➔ Post Office : </span>{result.po}</p>
+          <p><span className="text-primary-500">➔ Purchase Year : </span>{result.purchase_year}</p>
+          <p><span className="text-primary-500">➔ SOA (Sq. ft) : </span>{result.soa}</p>
+          <p><span className="text-primary-500">➔ Class : </span>{result.classes}</p>
+          <p><span className="text-primary-500">➔ PAQ : </span>{result.paq}</p>
           </div>
           <div className=" flex flex-col">
-            <p>➔ Area (Sq. mtr) : {result.area}</p>
-          <p>➔ Floors : {result.floors}</p>
-          <p>➔ Purchase Value : {result.value}</p>
-          <p>➔ Mutation Doc : {result.mut_doc}</p>
-          <p>➔ Fund : {result.fund_type}</p>
-          <p>➔ Cases : {result.cases}</p>
+            <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
+          <p><span className="primary-text-gradient">➔ Floors : </span>{result.floors}</p>
+          <p><span className="primary-text-gradient">➔ Purchase Value : </span>{result.value}</p>
+          <p><span className="primary-text-gradient">➔ Mutation Doc : </span>{result.mut_doc}</p>
+          <p><span className="primary-text-gradient">➔ Fund : </span>{result.fund_type}</p>
+          <p><span className="primary-text-gradient">➔ Cases : </span>{result.cases}</p>
           </div>
           </div>
           </CardContent>
       </Card>
             <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
-          <CardTitle>Mutation Details</CardTitle>
+          <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Mutation Details</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p>➔ Mutation : {result.mut_state}</p>
-          <p>➔ Mutation Doc : {result.mut_doc}</p>
+          <p><span className="text-primary-500">➔ Mutation : </span>{result.mut_state}</p>
+          <p><span className="text-primary-500">➔ Mutation Doc : </span>{result.mut_doc}</p>
           </div>
           </CardContent>
           </Card>
             <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
-          <CardTitle>Funds Details</CardTitle>
+          <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Funds Details</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p>➔ Last Expenditure (in Rs.) : {result.expenditure}</p>
-          <p>➔ Year of Last Expenditure : {result.year}</p>
-          <p>➔ Fund Type : {result.fund_type}</p>
-          <p>➔ Fund Allotted (in Rs.) : {result.fund_amount}</p>
+          <p><span className="text-primary-500">➔ Last Expenditure (in Rs.) : </span>{result.expenditure}</p>
+          <p><span className="text-primary-500">➔ Year of Last Expenditure : </span>{result.year}</p>
+          <p><span className="text-primary-500">➔ Fund Type : </span>{result.fund_type}</p>
+          <p><span className="text-primary-500">➔ Fund Allotted (in Rs.) : </span>{result.fund_amount}</p>
           </div>
           </CardContent>
           </Card>
             <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
-          <CardTitle>Cases Details</CardTitle>
+          <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Cases Details</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p>➔ Case Type : {result.cases}</p>
-          <p>➔ Case Description : {result.case_description}</p>
-          <p>➔ Action Proposed : {result.case_action}</p>
-          <p>➔ Current Progress : {result.case_divisionaction}</p>
+          <p><span className="text-primary-500">➔ Case Type : </span>{result.cases}</p>
+          <p><span className="text-primary-500">➔ Case Description : </span>{result.case_description}</p>
+          <p><span className="text-primary-500">➔ Action Proposed : </span>{result.case_action}</p>
+          <p><span className="text-primary-500">➔ Current Progress : </span>{result.case_divisionaction}</p>
           </div>
           </CardContent>
           </Card>
           <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
-          <CardTitle>Correspondance</CardTitle>
+          <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Correspondance</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p>➔ Last RO Corr : {result.corr_ro}</p>
-          <p>➔ Last Division Corr : {result.corr_division}</p>
+          <p><span className="text-primary-500">➔ Last RO Corr : </span>{result.corr_ro}</p>
+          <p><span className="text-primary-500">➔ Last Division Corr : </span>{result.corr_division}</p>
           </div>
           </CardContent>
           </Card>
           <Card className="text-dark200_light900 col-span-4 text-base font-bold">
         <CardHeader>
-          <CardTitle>Brief History</CardTitle>
+          <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Brief History</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">

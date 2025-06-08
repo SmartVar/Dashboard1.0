@@ -1,15 +1,21 @@
 // import QuestionCard from '@/components/cards/QuestionCard'
 import DopbldgCard from '@/components/cards/DopbldgCard'
+import RentbldgCard from '@/components/cards/RentbldgCard'
 // import QuestionCard from '@/components/cards/QuestionCard'
 // import DopbldgCard from '@/components/cards/DopbldgCard'
 import NoResult from '@/components/shared/NoResult'
 import Pagination from '@/components/shared/Pagination'
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
-import { getDopBldgByTagId } from '@/lib/actions/tag.action'
+import { getDopBldgByTagId, getRentBldgByTagId } from '@/lib/actions/tag.action'
 import { URLProps } from '@/types'
 
 const Page = async ({ params, searchParams }: URLProps) => {
   const result = await getDopBldgByTagId({
+    tagId: params.id,
+    page: searchParams.page ? +searchParams.page : 1,
+    searchQuery: searchParams.q
+  })
+  const rent = await getRentBldgByTagId({
     tagId: params.id,
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
@@ -62,6 +68,32 @@ const Page = async ({ params, searchParams }: URLProps) => {
               //   answers={question.answers}
               createdAt={departmentalbldg.createdAt}  />
           ))
+          : <NoResult 
+            title="There’s no tag saved to show"
+            description="Enter Record"
+            link="/add-dop"
+            linkTitle="Create Dop Record"
+          />}
+      </div>
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {rent.rentedbldgs.length > 0 ?
+          rent.rentedbldgs.map((rentedbldg: any) => (
+            
+             <RentbldgCard
+                          key={rentedbldg._id}
+                          _id={rentedbldg._id}
+                          // clerkId={clerkId}
+                          division={rentedbldg.division}
+                          rent={rentedbldg.rent}
+                          tags={rentedbldg.tags}
+                          class_po={rentedbldg.class_po}
+                          lease_period={rentedbldg.lease_period}
+                          soa={rentedbldg.soa}
+                          area={rentedbldg.area}
+                          author={rentedbldg.author}
+                          po={rentedbldg.po} 
+                          createdAt={rentedbldg.createdAt} />
+                     ))
           : <NoResult 
             title="There’s no tag saved to show"
             description="Enter Record"

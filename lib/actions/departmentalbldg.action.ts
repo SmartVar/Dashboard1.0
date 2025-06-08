@@ -151,7 +151,7 @@ export async function getAllDopBldgs(params: GetDopBldgsParams) {
     .populate({ path: 'author', model: User })
     .populate({ path: 'tags', model: Tag })
     // eslint-disable-next-line no-undef
-    .skip(skipAmount)
+    .skip(skipAmount);
     // eslint-disable-next-line no-unused-vars
     const totalDepartmentalbldgs = await Departmentalbldg.countDocuments(query);
 const isNext = totalDepartmentalbldgs > skipAmount + dopbldg.length;

@@ -84,6 +84,18 @@ export const RentedbldgSchema = z.object({
   paq: z.string().min(2).max(100),
   lease_period: z.string().min(2).max(100),
   rent: z.string().min(2).max(100),
+  frac_status: z.string().min(2).max(100),
+  frac_level: z.string().min(2).max(100),
+    fund_type: z.string().min(2).max(100),
+  fund_amount: z.string().min(2).max(100),
+  cases: z.string().min(2).max(100),
+  case_description: z.string().min(2).max(130),
+  case_action: z.string().min(2).max(130),
+  case_divisionaction: z.string().min(2).max(130),
+  brief_history: z.string().min(2).max(500),
+  corr_ro: z.string().min(2).max(500),
+  corr_division: z.string().min(2).max(500),
+  tags: z.array(z.string().min(1).max(15)).min(1).max(3),
 })
 export const PlotSchema = z.object({
   division: z.string().min(2).max(130),

@@ -188,6 +188,19 @@ export interface CreateRentBldgParams {
   paq: string;
   lease_period: string;
   rent: string;
+  frac_status: string;
+  frac_level: string;
+  fund_type: string;
+  fund_amount: string;
+  cases: string;
+  case_description: string;
+  case_action: string;
+  case_divisionaction: string;
+  brief_history: string;
+  corr_ro: string;
+  corr_division: string;
+  tags: string[];
+  author: Schema.Types.ObjectId | IUser;
   path: string;
 }
 export interface CreatePendencyParams {
@@ -389,6 +402,17 @@ export interface EditRentBldgParams {
   paq: string;
   lease_period: string;
   rent: string;
+  frac_status : string;
+  frac_level : string;
+    fund_type: string;
+  fund_amount: string;
+  cases: string;
+  case_description: string;
+  case_action: string;
+  case_divisionaction: string;
+  brief_history: string;
+  corr_ro: string;
+  corr_division: string;
   path: string;
 }
 export interface EditPendencyParams {
@@ -441,6 +465,12 @@ export interface GetQuestionsByTagIdParams {
   searchQuery?: string;
 }
 export interface GetDepartmentalbldgsByTagIdParams {
+  tagId: string;
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+}
+export interface GetRentedbldgsByTagIdParams {
   tagId: string;
   page?: number;
   pageSize?: number;

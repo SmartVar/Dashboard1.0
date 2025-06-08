@@ -81,8 +81,8 @@ console.log(inputDate)
       className="odd:border-t-lamaSky even:border-t-lamaPurple rounded-md border-2 border-t-4 border-gray-100 p-5"
       key={event._id?.toString()}
     >
-      <div className="flex items-center justify-between">
-        <h1 className="font-semibold text-gray-600">{event.title}</h1>
+      <div className="text-dark400_light700 flex items-center justify-between">
+        <h1 className="font-semibold text-primary-500">{event.title}</h1>
         <span className="text-xs text-gray-300">
           {new Date(event.event_date).toLocaleTimeString("en-UK", {
             hour: "2-digit",

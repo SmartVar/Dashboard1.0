@@ -114,6 +114,18 @@ export const PlotSchema = z.object({
   enchroached_area: z.string().min(2).max(100),
   boundary_wall: z.string().min(2).max(100),
   po_constructed: z.string().min(2).max(100),
+    mut_doc: z.string().min(2).max(100),
+  mut_state: z.string().min(2).max(100),
+  fund_type: z.string().min(2).max(100),
+  fund_amount: z.string().min(2).max(100),
+  cases: z.string().min(2).max(100),
+  case_description: z.string().min(2).max(130),
+  case_action: z.string().min(2).max(130),
+  case_divisionaction: z.string().min(2).max(130),
+  brief_history: z.string().min(2).max(500),
+  corr_ro: z.string().min(2).max(500),
+  corr_division: z.string().min(2).max(500),
+  tags: z.array(z.string().min(1).max(15)).min(1).max(3),
 })
 
 

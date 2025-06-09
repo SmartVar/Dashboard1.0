@@ -234,6 +234,19 @@ export interface CreatePlotParams {
   enchroached_area: string;
   boundary_wall: string;
   po_constructed: string;
+    mut_doc: string;
+  mut_state: string;
+  fund_type: string;
+  fund_amount: string;
+  cases: string;
+  case_description: string;
+  case_action: string;
+  case_divisionaction: string;
+  brief_history: string;
+  corr_ro: string;
+  corr_division: string;
+  tags: string[];
+  author: Schema.Types.ObjectId | IUser;
   path: string;
 }
 
@@ -447,6 +460,17 @@ export interface EditPlotParams {
   enchroached_area: string;
   boundary_wall: string;
   po_constructed: string;
+      mut_doc: string;
+  mut_state: string;
+  fund_type: string;
+  fund_amount: string;
+  cases: string;
+  case_description: string;
+  case_action: string;
+  case_divisionaction: string;
+  brief_history: string;
+  corr_ro: string;
+  corr_division: string;
   path: string;
 }
 
@@ -471,6 +495,12 @@ export interface GetDepartmentalbldgsByTagIdParams {
   searchQuery?: string;
 }
 export interface GetRentedbldgsByTagIdParams {
+  tagId: string;
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+}
+export interface GetPlotsByTagIdParams {
   tagId: string;
   page?: number;
   pageSize?: number;

@@ -33,20 +33,20 @@ const EventCalendarContainer = async ({
                   placeholder="Search for Divisions or Post office"
                   otherClasses="flex-1"
                 />
-          
-                <Filter
-                  filters={DivisionFilters}
-                  otherClasses="min-h-[56px] sm:min-w-[170px]"
-                  // containerClasses="hidden max-md:flex"
-                />
+                         
               </div>
-    <div className="text-dark200_light900 col-span-4 flex flex-col gap-4 rounded-md bg-white p-4 text-base font-bold sm:flex-row">
+    <div className="text-dark200_light900 col-span-4 flex flex-col gap-4 rounded-md p-4 text-base font-bold sm:flex-row">
       <EventCalendar />
-      <div className="flex items-center justify-between flex-col gap-4 sm:w-1/2">
+      <div className="flex flex-col items-center justify-between gap-4 sm:w-1/2">
         <h1 className="my-4 text-xl font-semibold">Events</h1>
         {/* <Image src="moreDark" alt="" width={20} height={20} /> */}
       </div>
       <div className="flex flex-col gap-4 sm:w-1/2">
+      <Filter
+                  filters={DivisionFilters}
+                  otherClasses="min-h-[56px] sm:min-w-[170px]"
+                  // containerClasses="hidden max-md:flex"
+                />
         <EventList dateParam={date} />
       </div>
     </div>

@@ -196,6 +196,29 @@
     background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
   }
 
+  /* Dark mode styles for react-calendar */
+.dark .react-calendar {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: none;
+}
+
+.dark .react-calendar__tile {
+  background: transparent;
+  color: #ffffff;
+}
+
+.dark .react-calendar__tile--active {
+  background: #333333;
+  color: #e10b0b;
+}
+
+.dark .react-calendar__navigation button {
+  background: none;
+  color: #da0ce5;
+}
+
+
   .dark-gradient {
     background: linear-gradient(
       232deg,

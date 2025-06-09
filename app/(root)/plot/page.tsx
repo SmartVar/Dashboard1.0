@@ -13,10 +13,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 // import { useRouter, useSearchParams } from "next/navigation";
-import { DataTable }  from '@/components/shared/tables/template/data-table';
-import {  columns } from './columns'
-import { getPlot } from '@/lib/actions/plot.action';
+// import { DataTable }  from '@/components/shared/tables/template/data-table';
+// import {  columns } from './columns'
+import { getAllPlot } from '@/lib/actions/plot.action';
 import { DivisionFilters } from '@/constants/filters';
+import PlotCard from '@/components/cards/PlotCard';
 // import { Pagination } from '@tanstack/react-table';
 
 
@@ -31,13 +32,13 @@ const Page = async ({ searchParams}: URLProps) => {
   // console.log (typeFilter);
   
 
-const data = await getPlot({
+const plot = await getAllPlot({
   searchQuery: searchParams.q,
   filter: searchParams.filter,
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
-console.log(data)
+console.log(plot)
 
   return (
     <>
@@ -46,7 +47,7 @@ console.log(data)
       
       <h1 className="h1-bold text-dark100_light900">
           Plots</h1> 
-          <Link href="/add-rent" 
+          <Link href="/add-plot" 
           className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
             New Entry
@@ -76,7 +77,25 @@ console.log(data)
       
 
     <div className="mt-10 flex w-full flex-col gap-6 overflow-auto shadow">
-    <DataTable columns={columns} data={data} />
+    {/* <DataTable columns={columns} data={data} /> */}
+
+{plot.plot.map((plot)=>(
+    <PlotCard
+          key={plot._id}
+          _id={plot._id}
+          // clerkId={clerkId}
+          division={plot.division}
+          date_purchase={plot.date_purchase}
+          tags={plot.tags}
+          name={plot.name}
+          purchase_from={plot.purchase_from}
+          area={plot.area}
+          author={plot.author}
+          lease_period={plot.lease_period} 
+          createdAt={plot.createdAt} />
+
+   ))}
+
       </div>
       {/* <div className="mt-10">
         <Pagination 

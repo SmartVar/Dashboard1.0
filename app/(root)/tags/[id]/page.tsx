@@ -1,16 +1,17 @@
 // import QuestionCard from '@/components/cards/QuestionCard'
 import DopbldgCard from '@/components/cards/DopbldgCard'
+import PlotCard from '@/components/cards/PlotCard'
 import RentbldgCard from '@/components/cards/RentbldgCard'
 // import QuestionCard from '@/components/cards/QuestionCard'
 // import DopbldgCard from '@/components/cards/DopbldgCard'
 import NoResult from '@/components/shared/NoResult'
 import Pagination from '@/components/shared/Pagination'
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
-import { getDopBldgByTagId, getRentBldgByTagId } from '@/lib/actions/tag.action'
+import { getDopBldgByTagId, getRentBldgByTagId, getPlotByTagId } from '@/lib/actions/tag.action'
 import { URLProps } from '@/types'
 
 const Page = async ({ params, searchParams }: URLProps) => {
-  const result = await getDopBldgByTagId({
+  const dop = await getDopBldgByTagId({
     tagId: params.id,
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
@@ -20,10 +21,16 @@ const Page = async ({ params, searchParams }: URLProps) => {
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
   })
+  const plot = await getPlotByTagId({
+    tagId: params.id,
+    page: searchParams.page ? +searchParams.page : 1,
+    searchQuery: searchParams.q
+  })
 
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">{result.tagTitle}</h1> 
+    <div>
+      <h1 className="h1-bold text-dark100_light900">{dop.tagTitle}</h1> 
 
       <div className="mt-11 w-full">
         <LocalSearchbar 
@@ -36,8 +43,8 @@ const Page = async ({ params, searchParams }: URLProps) => {
       </div>
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {result.departmentalbldgs.length > 0 ?
-          result.departmentalbldgs.map((departmentalbldg: any) => (
+        {dop.departmentalbldgs.length > 0 ?
+          dop.departmentalbldgs.map((departmentalbldg: any) => (
             <DopbldgCard 
               key={departmentalbldg._id}
               _id={departmentalbldg._id}
@@ -75,6 +82,9 @@ const Page = async ({ params, searchParams }: URLProps) => {
             linkTitle="Create Dop Record"
           />}
       </div>
+      </div>
+      <div>
+            <h1 className="h1-bold text-dark100_light900">{rent.tagTitle}</h1> 
       <div className="mt-10 flex w-full flex-col gap-6">
         {rent.rentedbldgs.length > 0 ?
           rent.rentedbldgs.map((rentedbldg: any) => (
@@ -101,12 +111,41 @@ const Page = async ({ params, searchParams }: URLProps) => {
             linkTitle="Create Dop Record"
           />}
       </div>
+      </div>
+      <div>
+            <h1 className="h1-bold text-dark100_light900">{plot.tagTitle}</h1> 
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {plot.plots.length > 0 ?
+          plot.plots.map((plot: any) => (
+            
+      <PlotCard
+          key={plot._id}
+          _id={plot._id}
+          // clerkId={clerkId}
+          division={plot.division}
+          date_purchase={plot.date_purchase}
+          tags={plot.tags}
+          name={plot.name}
+          purchase_from={plot.purchase_from}
+          area={plot.area}
+          author={plot.author}
+          lease_period={plot.lease_period} 
+          createdAt={plot.createdAt} />
+                     ))
+          : <NoResult 
+            title="There’s no tag saved to show"
+            description="Enter Record"
+            link="/add-dop"
+            linkTitle="Create Dop Record"
+          />}
+      </div>
 
       <div className="mt-10">
         <Pagination 
           pageNumber={searchParams?.page ? +searchParams.page : 1}
-          isNext={result.isNext}
+          isNext={dop.isNext}
         />
+      </div>
       </div>
     </>
   )

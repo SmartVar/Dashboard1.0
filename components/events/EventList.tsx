@@ -93,6 +93,10 @@ console.log(inputDate)
         </span>
       </div>
       <p className="mt-2 text-sm text-gray-400">{event.description}</p>
+      <div className="text-dark400_light700 flex items-center justify-between">
+      <p style={{ color: '#da0ce5' }} className="mt-2 text-sm">{event.division}</p>
+      <p className="mt-2 text-sm text-gray-400">{event.section}</p>
+      </div>
     </div>
   ));
 };

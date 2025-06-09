@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "../ui/button"
 import { PlotSchema } from "@/lib/validations";
 // import { Badge } from '../ui/badge';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 import { createPlot, editPlot} from '@/lib/actions/plot.action';
 import { useRouter, usePathname } from 'next/navigation';

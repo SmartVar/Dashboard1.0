@@ -6,6 +6,10 @@ export interface IEvent extends Document {
   description: string;
   section: string;
   event_date: string;
+  ro_corr: string;
+  division_corr: string;
+  status: string;
+  tot_reminder: string;
 
   createdOn: Date;
 }
@@ -17,6 +21,10 @@ const EventSchema = new Schema({
   description: { type: String, required: true },
   section: { type: String, required: true },
   event_date: { type: String, required: true },
+  ro_corr: { type: String, required: true },
+  division_corr: { type: String, required: true },
+  status: { type: String, required: true },
+  tot_reminder: { type: String, required: true },
   createdOn: { type: Date, default: Date.now },
 });
 

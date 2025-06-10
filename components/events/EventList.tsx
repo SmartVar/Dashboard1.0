@@ -45,6 +45,7 @@
 
 import React from 'react';
 import { getAllEvents } from '@/lib/actions/event.action';
+import Link from 'next/link';
 
 const EventList = async ({ dateParam }: { dateParam: string | undefined }) => {
   const inputDate = dateParam ? new Date(dateParam) : new Date();
@@ -82,7 +83,9 @@ console.log(inputDate)
       className="odd:border-t-lamaSky even:border-t-lamaPurple rounded-md border-2 border-t-4 border-gray-100 p-5"
       key={event._id?.toString()}
     >
+      <Link href={`/event/${event._id}`}>
       <div className="text-dark400_light700 flex items-center justify-between">
+        
         <h1 className="font-semibold text-primary-500">{event.title}</h1>
         <span className="text-xs text-gray-300">
           {new Date(event.event_date).toLocaleTimeString("en-UK", {
@@ -92,12 +95,14 @@ console.log(inputDate)
             timeZone: "Asia/Kolkata",
           })}
         </span>
+        
       </div>
       <p className="mt-2 text-sm text-gray-400">{event.description}</p>
       <div className="text-dark400_light700 flex items-center justify-between">
       <p style={{ color: '#da0ce5' }} className="mt-2 text-sm">{event.division}</p>
       <p className="mt-2 text-sm text-gray-400">{event.section}</p>
       </div>
+      </Link>
     </div>
   ));
 };

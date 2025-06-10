@@ -81,7 +81,7 @@ export async function createEvent(params: CreateEventParams) {
 
     // eslint-disable-next-line camelcase
     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, title, description, section, event_date, path } = params;
+    const { division, title, description, section, event_date, ro_corr, division_corr, status, tot_reminder, path } = params;
     // const { division, po, tags, classes, soa, area, path } = params;
 
     // Create the question
@@ -91,6 +91,10 @@ export async function createEvent(params: CreateEventParams) {
       description,
       section,
       event_date,
+      ro_corr,
+      division_corr,
+      status,
+      tot_reminder,
     });
 
     revalidatePath(path)
@@ -120,7 +124,7 @@ export async function editEvent(params: EditEventParams) {
     connectToDatabase();
 
     // const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { eventId, division, title, description, section, event_date, path } = params;
+    const { eventId, division, title, description, section, event_date, ro_corr, division_corr, status, tot_reminder, path } = params;
     // const { departmentalbldgId, division, po, classes, soa, area, path } = params;
 
     const event = await Event.findById(eventId);
@@ -133,7 +137,10 @@ export async function editEvent(params: EditEventParams) {
     event.description = description;
     event.section = section;
     event.event_date = event_date;
-    
+    event.ro_corr = ro_corr;
+    event.division_corr = division_corr;
+    event.status = status;
+    event.tot_reminder = tot_reminder;
     await event.save();
 
     revalidatePath(path);

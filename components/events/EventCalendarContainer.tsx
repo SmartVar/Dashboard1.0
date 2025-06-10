@@ -7,6 +7,7 @@ import { DivisionFilters } from "@/constants/filters";
 // import {moreDark} from "../../public/assets/images"
 import Filter from "@/components/shared/Filter";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
+
 const EventCalendarContainer = async ({
   searchParams,
 }: {
@@ -14,6 +15,9 @@ const EventCalendarContainer = async ({
 }) => {
   // eslint-disable-next-line no-empty-pattern
   const {date} = searchParams;
+
+  
+
   return (
     <>
     <div>
@@ -47,7 +51,8 @@ const EventCalendarContainer = async ({
                   otherClasses="min-h-[56px] sm:min-w-[170px]"
                   // containerClasses="hidden max-md:flex"
                 />
-        <EventList dateParam={date} />
+                        <EventList dateParam={date} />
+              
       </div>
     </div>
     </>

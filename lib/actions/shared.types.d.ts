@@ -164,6 +164,10 @@ export interface CreateEventParams {
   description: string;
   section: string;
   event_date: Date;
+  ro_corr: string;
+  division_corr: string;
+  status: string;
+  tot_reminder: string;
   path: string;
 }
 
@@ -390,6 +394,10 @@ export interface EditEventParams {
   description: string;
   section: string;
   event_date: Date;
+    ro_corr: string;
+  division_corr: string;
+  status: string;
+  tot_reminder: string;
   path: string;
 }
 export interface EditTicketParams {

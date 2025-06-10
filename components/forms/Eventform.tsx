@@ -65,6 +65,10 @@ const Dopform = ({ type, eventDetails }: Props) => {
       description: parsedEventDetails?.description || '',
       section: parsedEventDetails?.section || '',
       event_date: parsedEventDetails?.event_date || '',
+      ro_corr: parsedEventDetails?.ro_corr || '',
+      division_corr: parsedEventDetails?.division_corr || '',
+      status: parsedEventDetails?.status || '',
+      tot_reminder: parsedEventDetails?.tot_reminder || '',
       
     },
   })
@@ -82,10 +86,14 @@ const Dopform = ({ type, eventDetails }: Props) => {
           description: values.description,
           section: values.section,
           event_date: values.event_date,
+          ro_corr: values.ro_corr,
+          division_corr: values.division_corr,
+          status: values.status,
+          tot_reminder: values.tot_reminder,
           path: pathname,
         })
 
-        router.push('/dashboard');
+        router.push('/event');
 
       } else {
         await createEvent({
@@ -94,11 +102,15 @@ const Dopform = ({ type, eventDetails }: Props) => {
           description: values.description,
           section: values.section,
           event_date: values.event_date,
+          ro_corr: values.ro_corr,
+          division_corr: values.division_corr,
+          status: values.status,
+          tot_reminder: values.tot_reminder,
           path: pathname,
           
         });
 
-        router.push('/dashboard');
+        router.push('/event');
       }
 
     } catch (error) {
@@ -183,6 +195,78 @@ const Dopform = ({ type, eventDetails }: Props) => {
           </FormItem>
         )}
       />
+      <FormField
+        control={form.control}
+        name="ro_corr"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">RO Corr <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter RO Corr.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="division_corr"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Division Corr <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter Division Corr.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="status"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Section <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter Status (Pending, Completed).
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="tot_reminder"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Reminder Issued Date <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter All Reminder Issued date (Bldg-1/Bldg-2/Bldg-3/Other).
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
 <FormField
           control={form.control}
           name="event_date"
@@ -214,14 +298,14 @@ const Dopform = ({ type, eventDetails }: Props) => {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01")
+                      date < new Date("1900-01-01")
                     }
                     captionLayout="dropdown"
                   />
                 </PopoverContent>
               </Popover>
               <FormDescription>
-                Your date of birth is used to calculate your age.
+                Enter Your Event Date.
               </FormDescription>
               <FormMessage />
             </FormItem>

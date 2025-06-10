@@ -12,7 +12,7 @@ import { SignedOut } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { sidebarLinks } from '@/constants'
 import { usePathname} from 'next/navigation'
-import GlobalSearch from "../search/GlobalSearch"
+// import GlobalSearch from "../search/GlobalSearch"
 
 const NavContent = () => {
   const pathname = usePathname();
@@ -23,9 +23,7 @@ const NavContent = () => {
         const isActive = (pathname.includes(item.route) 
         && item.route.length > 1) || pathname === item.route;
 
-        // TODO
-
-        return (
+      return (
           <SheetClose asChild key={item.route}>
             <Link
               href={item.route}
@@ -34,6 +32,7 @@ const NavContent = () => {
                 : 'text-dark300_light900'
               } flex items-center justify-start gap-4 bg-transparent p-4`}
             >
+              
               <Image 
                 src={item.imgURL}
                 alt={item.label}
@@ -45,8 +44,11 @@ const NavContent = () => {
                 {item.label}</p>
             </Link>
           </SheetClose>
+          
         )
+        
       })}
+     
     </section>
   )
 }
@@ -75,11 +77,13 @@ const MobileNav = () => {
 
         <p className="h2-bold text-dark100_light900 font-spaceGrotesk">Postal <span className="text-primary-500">Dashboard</span></p>
       </Link>
-        <GlobalSearch />
+
+        
       <div>
+        
         <SheetClose asChild>
           <NavContent />
-        </SheetClose>
+          </SheetClose>
 
         <SignedOut>
           <div className="flex flex-col gap-3">

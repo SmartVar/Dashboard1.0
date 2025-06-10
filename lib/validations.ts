@@ -70,6 +70,10 @@ export const EventSchema = z.object({
   description: z.string().min(2).max(130),
   section: z.string().min(2).max(130),
   event_date: z.date(),
+  ro_corr: z.string().min(2).max(130),
+  division_corr: z.string().min(2).max(130),
+  status: z.string().min(2).max(130),
+  tot_reminder: z.string().min(2).max(130),
 
 })
 

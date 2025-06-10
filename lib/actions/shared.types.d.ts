@@ -471,6 +471,7 @@ export interface EditPlotParams {
   brief_history: string;
   corr_ro: string;
   corr_division: string;
+  tags: string[];
   path: string;
 }
 

@@ -142,7 +142,7 @@ export async function getAllPlot(params: GetPlotParams) {
       }
 
     const plot = await Plot.find(query)
-    .find(sortOptions)
+    .sort(sortOptions)
     .populate({ path: 'author', model: User })
     .populate({ path: 'tags', model: Tag })
         // eslint-disable-next-line no-undef

@@ -14,10 +14,12 @@ const GlobalResult = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState([
-    { type: 'templates', id: 1, title: 'templates'},
-    { type: 'rulings', id: 1, title: 'rulings'},
-    { type: 'pendency', id: 1, title: 'pendency'},
-    { type: 'user', id: 1, title: 'user'},
+    { type: 'dopbldgs', id: 1, title: 'dopbldgs'},
+    { type: 'rentedbldgs', id: 1, title: 'rentedbldgs'},
+    { type: 'plots', id: 1, title: 'plots'},
+    { type: 'tags', id: 1, title: 'tags'},
+    { type: 'events', id: 1, title: 'events'},
+    { type: 'tkts', id: 1, title: 'tkts'},
   ]);
 
   const global = searchParams.get('global');
@@ -47,14 +49,18 @@ const GlobalResult = () => {
 
   const renderLink = (type: string, id: string) => {
     switch (type) {
-      case 'templates':
-          return `/templates/${id}`;
-      case 'rulings':
-          return `/rulings/${id}`;
-      case 'pendency':
-          return `/pendency/${id}`;
-      case 'user':
-          return `/user/${id}`;
+      case 'dopbldgs':
+          return `/dopbldg/${id}`;
+      case 'rentedbldgs':
+          return `/rentbldg/${id}`;
+      case 'plots':
+          return `/plot/${id}`;
+      case 'tags':
+          return `/tag/${id}`;
+      case 'events':
+          return `/event/${id}`;
+      case 'tkts':
+          return `/ticket/${id}`;
       default:
         return '/'
     }

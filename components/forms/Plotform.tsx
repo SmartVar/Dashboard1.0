@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "../ui/button"
 import { PlotSchema } from "@/lib/validations";
 // import { Badge } from '../ui/badge';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 import { createPlot, editPlot} from '@/lib/actions/plot.action';
 import { useRouter, usePathname } from 'next/navigation';
@@ -40,7 +40,7 @@ const Plotform = ({ type, mongoUserId, plotDetails }: Props) => {
   const pathname = usePathname();
 
   const parsedPlotDetails =  plotDetails && JSON.parse(plotDetails || '');
-const groupedTags = parsedPlotDetails?.tags.map((tag: { name: any; }) => tag.name)
+const groupedTags = parsedPlotDetails?.tags.map((tag: any) => tag.name)
 
 
 
@@ -115,6 +115,7 @@ const groupedTags = parsedPlotDetails?.tags.map((tag: { name: any; }) => tag.nam
           brief_history: values.brief_history,
           corr_ro: values.corr_ro,
           corr_division: values.corr_division,
+          tags: values.tags,
           path: pathname,
         })
 
@@ -694,7 +695,7 @@ const groupedTags = parsedPlotDetails?.tags.map((tag: { name: any; }) => tag.nam
                   <FormControl className="mt-3.5">
                     <>
                     <Input 
-                    disabled={type === 'Edit'}
+                    // disabled={type === 'Edit'}
                     className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                     placeholder="Add tags..."
                     onKeyDown={(e) => handleInputKeyDown(e, field)}
@@ -706,16 +707,25 @@ const groupedTags = parsedPlotDetails?.tags.map((tag: { name: any; }) => tag.nam
                           <Badge 
                           key={tag} 
                           className="subtle-medium background-light800_dark300 text-light400_light500 flex items-center justify-center gap-2 rounded-md border-none px-4 py-2 capitalize" 
-                          onClick={() => type !== 'Edit' ? handleTagRemove(tag, field) : () => {}}
+                          // onClick={() => type !== 'Edit' ? handleTagRemove(tag, field) : () => {}}
+                          // onClick={() => type === 'Edit' ? handleTagRemove(tag, field) : () => {}}
+                          onClick={() => handleTagRemove(tag, field)}
                           >
                            {tag}
-                          {type !== 'Edit' && (<Image 
+                          {/* {type !== 'Edit' && (<Image 
                           src="/assets/icons/close.svg"
                           alt="Close icon"
                           width={12}
                           height={12}
                           className="cursor-pointer object-contain invert-0 dark:invert"
-                          />)}
+                          />)} */}
+                          <Image 
+                          src="/assets/icons/close.svg"
+                          alt="Close icon"
+                          width={12}
+                          height={12}
+                          className="cursor-pointer object-contain invert-0 dark:invert"
+                          />
                           </Badge>
                         ))}
                       </div>

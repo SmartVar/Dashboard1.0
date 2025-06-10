@@ -92,9 +92,12 @@
     ];
   
   export const GlobalSearchFilters = [
-    { name: "Templates", value: "templates" },
-    { name: "Rulings", value: "rulings" },
-    { name: "Pendency", value: "pendency" },
+    { name: "DopBldg", value: "dopbldgs" },
+    { name: "RentedBldg", value: "rentedbldgs" },
+    { name: "Plot", value: "plots" },
+    { name: "Tag", value: "tags" },
+    { name: "Event", value: "events" },
+    { name: "Tkt", value: "tkts" },
     
   ];
 

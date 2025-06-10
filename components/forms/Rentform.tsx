@@ -565,7 +565,7 @@ const groupedTags = parsedRentDetails?.tags.map((tag: { name: any; }) => tag.nam
                           <FormControl className="mt-3.5">
                             <>
                             <Input 
-                            disabled={type === 'Edit'}
+                            // disabled={type === 'Edit'}
                             className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                             placeholder="Add tags..."
                             onKeyDown={(e) => handleInputKeyDown(e, field)}
@@ -577,7 +577,8 @@ const groupedTags = parsedRentDetails?.tags.map((tag: { name: any; }) => tag.nam
                                   <Badge 
                                   key={tag} 
                                   className="subtle-medium background-light800_dark300 text-light400_light500 flex items-center justify-center gap-2 rounded-md border-none px-4 py-2 capitalize" 
-                                  onClick={() => type !== 'Edit' ? handleTagRemove(tag, field) : () => {}}
+                                  // onClick={() => type !== 'Edit' ? handleTagRemove(tag, field) : () => {}}
+                                  onClick={() => handleTagRemove(tag, field)}
                                   >
                                   
                                     {tag}

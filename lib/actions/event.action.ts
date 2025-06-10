@@ -36,7 +36,7 @@ export async function getAllEvents(params: GetEventsParams) {
     switch (filter) 
     {
         case "all":
-          sortOptions = { section: 'all' }
+          sortOptions = { section: 'All' }
           break;
         case "bldg-1":
           sortOptions = { section: 'Bldg-1' }
@@ -48,7 +48,7 @@ export async function getAllEvents(params: GetEventsParams) {
           sortOptions = { section: 'Bldg-3' }
           break;
         case "other":
-          sortOptions = { section: 'other' }
+          sortOptions = { section: 'Other' }
           break;
          default:
           break;
@@ -81,7 +81,7 @@ export async function createEvent(params: CreateEventParams) {
 
     // eslint-disable-next-line camelcase
     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, title, description, section, event_date, ro_corr, division_corr, status, tot_reminder, path } = params;
+    const { division, title, description, section, event_date, ro_corr, division_corr, status, reminders, tot_reminder, path } = params;
     // const { division, po, tags, classes, soa, area, path } = params;
 
     // Create the question
@@ -94,6 +94,7 @@ export async function createEvent(params: CreateEventParams) {
       ro_corr,
       division_corr,
       status,
+      reminders,
       tot_reminder,
     });
 
@@ -124,7 +125,7 @@ export async function editEvent(params: EditEventParams) {
     connectToDatabase();
 
     // const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { eventId, division, title, description, section, event_date, ro_corr, division_corr, status, tot_reminder, path } = params;
+    const { eventId, division, title, description, section, event_date, ro_corr, division_corr, status, reminders, tot_reminder, path } = params;
     // const { departmentalbldgId, division, po, classes, soa, area, path } = params;
 
     const event = await Event.findById(eventId);
@@ -140,6 +141,7 @@ export async function editEvent(params: EditEventParams) {
     event.ro_corr = ro_corr;
     event.division_corr = division_corr;
     event.status = status;
+    event.reminders = reminders;
     event.tot_reminder = tot_reminder;
     await event.save();
 

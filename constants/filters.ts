@@ -108,13 +108,21 @@
     { name: "Closed", value: "closed" },
   ];
 
+  export const EventFilters = [
+    { name: "All", value: "all" },
+    { name: "Bldg-1", value: "bldg-1" },
+    { name: "Bldg-2", value: "bldg-2" },
+    { name: "Bldg-3", value: "bldg-3" },
+    { name: "Other", value: "other" },
+  ];
+
   export const DivisionFilters = [
     { name: "All", value: "all" },
     { name: "RO", value: "ro" },
-    { name: "NMD", value: "Navi Mumbai Dn" },
+    { name: "NMD", value: "Navi Mumbai" },
     { name: "THN", value: "Thane Dn" },
     { name: "NSK", value: "Nashik Dn" },
-    { name: "MLD", value: "Malegaon Dn" },
+    { name: "MLD", value: "Malegaon" },
     { name: "RGD", value: "Raigad Dn" },
     { name: "PLG", value: "Palghar Dn" },
     { name: "PSD", value: "psd" },

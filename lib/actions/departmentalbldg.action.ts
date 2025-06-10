@@ -110,11 +110,11 @@ export async function getAllDopBldgs(params: GetDopBldgsParams) {
     
     switch (filter) 
     {
-        case "ro":
+        case "RO":
           sortOptions = { division: 'RO' }
           break;
         case "nmd":
-          sortOptions = { division: 'Navi Mumbai Dn' }
+          sortOptions = { division: 'Navi Mumbai' }
           break;
         case "thn":
           sortOptions = { division: 'Thane Dn' }
@@ -123,7 +123,7 @@ export async function getAllDopBldgs(params: GetDopBldgsParams) {
           sortOptions = { division: 'Nashik Dn' }
           break;
         case "mld":
-          sortOptions = { division: 'Malegaon Dn' }
+          sortOptions = { division: 'Malegaon' }
           break;
         case "plg":
           sortOptions = { division: 'Palgahar Dn' }

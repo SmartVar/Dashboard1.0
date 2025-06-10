@@ -3,7 +3,7 @@ import EventCalendar from "./EventCalendar";
 import EventList from "./EventList";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { DivisionFilters } from "@/constants/filters";
+import { EventFilters } from "@/constants/filters";
 // import {moreDark} from "../../public/assets/images"
 import Filter from "@/components/shared/Filter";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
@@ -39,7 +39,7 @@ const EventCalendarContainer = async ({
                 />
                          
               </div>
-    <div className="text-dark200_light900 col-span-4 flex flex-col gap-4 rounded-md p-4 text-base font-bold sm:flex-row">
+    <div className="text-dark200_light900 col-span-4 flex flex-col gap-4 overflow-hidden rounded-md p-4 text-base font-bold sm:flex-row">
       <EventCalendar />
       <div className="flex flex-col items-center justify-between gap-4 sm:w-1/2">
         <h1 className="my-4 text-xl font-semibold">Events</h1>
@@ -47,7 +47,7 @@ const EventCalendarContainer = async ({
       </div>
       <div className="flex flex-col gap-4 sm:w-1/2">
       <Filter
-                  filters={DivisionFilters}
+                  filters={EventFilters}
                   otherClasses="min-h-[56px] sm:min-w-[170px]"
                   // containerClasses="hidden max-md:flex"
                 />

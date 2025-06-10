@@ -68,6 +68,7 @@ const Dopform = ({ type, eventDetails }: Props) => {
       ro_corr: parsedEventDetails?.ro_corr || '',
       division_corr: parsedEventDetails?.division_corr || '',
       status: parsedEventDetails?.status || '',
+      reminders: parsedEventDetails?.reminders || '',
       tot_reminder: parsedEventDetails?.tot_reminder || '',
       
     },
@@ -89,6 +90,7 @@ const Dopform = ({ type, eventDetails }: Props) => {
           ro_corr: values.ro_corr,
           division_corr: values.division_corr,
           status: values.status,
+          reminders: values.reminders,
           tot_reminder: values.tot_reminder,
           path: pathname,
         })
@@ -105,6 +107,7 @@ const Dopform = ({ type, eventDetails }: Props) => {
           ro_corr: values.ro_corr,
           division_corr: values.division_corr,
           status: values.status,
+          reminders: values.reminders,
           tot_reminder: values.tot_reminder,
           path: pathname,
           
@@ -251,7 +254,7 @@ const Dopform = ({ type, eventDetails }: Props) => {
       />
       <FormField
         control={form.control}
-        name="tot_reminder"
+        name="reminders"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
             <FormLabel className="paragraph-semibold text-dark400_light800">Reminder Issued Date <span className="text-primary-500">*</span></FormLabel>
@@ -261,7 +264,25 @@ const Dopform = ({ type, eventDetails }: Props) => {
               {...field} />
             </FormControl>
             <FormDescription className="body-regular mt-2.5 text-light-500">
-              Enter All Reminder Issued date (Bldg-1/Bldg-2/Bldg-3/Other).
+              Enter All Reminder Issued date.
+            </FormDescription>
+            <FormMessage className="text-red-500" />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="tot_reminder"
+        render={({ field }) => (
+          <FormItem className="flex w-full flex-col">
+            <FormLabel className="paragraph-semibold text-dark400_light800">Total Reminders <span className="text-primary-500">*</span></FormLabel>
+            <FormControl className="mt-3.5">
+              <Input 
+              className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+              {...field} />
+            </FormControl>
+            <FormDescription className="body-regular mt-2.5 text-light-500">
+              Enter total Reminders Issued..
             </FormDescription>
             <FormMessage className="text-red-500" />
           </FormItem>
@@ -272,31 +293,32 @@ const Dopform = ({ type, eventDetails }: Props) => {
           name="event_date"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Event Date</FormLabel>
+              <FormLabel className="text-dark400_light800">Event Date</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
                       variant={"outline"}
                       className={cn(
-                        "w-[240px] pl-3 text-left font-normal",
+                        "w-[240px] pl-3 text-left font-normal text-dark400_light800",
                         !field.value && "text-muted-foreground"
                       )}
                     >
                       {field.value ? (
-                        format(field.value, "PPP")
+                        format(field.value, "yyyy-MM-dd")
                       ) : (
                         <span>Pick a date</span>
                       )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      <CalendarIcon className="text-dark400_light800 ml-auto h-4 w-4 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent className="text-dark400_light800 w-auto p-0 opacity-100" align="start">
                   <Calendar
                     mode="single"
                     selected={field.value}
                     onSelect={field.onChange}
+                    className="opacity-100"
                     disabled={(date) =>
                       date < new Date("1900-01-01")
                     }
@@ -304,7 +326,7 @@ const Dopform = ({ type, eventDetails }: Props) => {
                   />
                 </PopoverContent>
               </Popover>
-              <FormDescription>
+              <FormDescription className="text-dark400_light800">
                 Enter Your Event Date.
               </FormDescription>
               <FormMessage />

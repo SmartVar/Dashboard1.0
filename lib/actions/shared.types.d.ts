@@ -61,7 +61,7 @@ export interface GetEventsParams {
   filter?: string;
   pagefilter?: string;
   // eslint-disable-next-line no-undef
-  event_date?: date;
+  // event_date?: date;
 }
 export interface GetDopBldgsParams {
   page?: number;
@@ -167,6 +167,7 @@ export interface CreateEventParams {
   ro_corr: string;
   division_corr: string;
   status: string;
+  reminders: string;
   tot_reminder: string;
   path: string;
 }
@@ -397,6 +398,7 @@ export interface EditEventParams {
     ro_corr: string;
   division_corr: string;
   status: string;
+  reminders: string;
   tot_reminder: string;
   path: string;
 }

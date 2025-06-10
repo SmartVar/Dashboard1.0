@@ -51,17 +51,17 @@ const EventList = async ({ dateParam }: { dateParam: string | undefined }) => {
 
 
 
-  const startOfDay = new Date(inputDate);
-  startOfDay.setHours(0, 0, 0, 0);
+  // const startOfDay = new Date(inputDate);
+  // startOfDay.setHours(0, 0, 0, 0);
 
-  const endOfDay = new Date(inputDate);
-  endOfDay.setHours(23, 59, 59, 999);
+  // const endOfDay = new Date(inputDate);
+  // endOfDay.setHours(23, 59, 59, 999);
 
   const events = await getAllEvents({
-    event_date: {
-      $gte: startOfDay,
-      $lte: endOfDay,
-    },
+    // event_date: {
+    //   $gte: startOfDay,
+    //   $lte: endOfDay,
+    // },
   });
 
   if (!events || !events.event || events.event.length === 0) {
@@ -71,8 +71,9 @@ const EventList = async ({ dateParam }: { dateParam: string | undefined }) => {
 
   //  if inputDate === validate_date ? inputDate : "Not correct date";
 
-console.log(events)
+// console.log(events)
 console.log(inputDate)
+
 
 
   return events.event.map((event: any) => (

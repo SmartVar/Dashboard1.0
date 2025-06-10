@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: "Postal Dashboard",
   description: "A Dashboard to assists in the daily activities of an postal administrative task.",
   icons: {
-    icon: '/assets/images/site-logo.svg'
+    icon: '/assets/images/site-logo1.svg'
   }
 }
 export default function RootLayout({

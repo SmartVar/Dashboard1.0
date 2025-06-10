@@ -150,6 +150,7 @@ export const assignBadges = (params: BadgeParam) => {
   return badgeCounts;
 }
 
+
 // const result = await getTemplateById({ templateId: params.id });
 // const [copied, setcopied] = useState(false);
 

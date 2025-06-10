@@ -12,6 +12,7 @@ import { SignedOut } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { sidebarLinks } from '@/constants'
 import { usePathname} from 'next/navigation'
+import GlobalSearch from "../search/GlobalSearch"
 
 const NavContent = () => {
   const pathname = usePathname();
@@ -66,14 +67,15 @@ const MobileNav = () => {
       border-none">
       <Link href="/" className="flex items-center gap-1">
         <Image
-          src="/assets/images/site-logo.svg"
+          src="/assets/images/site-logo1.svg"
           width={30}
           height={30}
-          alt="OfficeSuite"
+          alt="PostalDashboard"
         />
 
-        <p className="h2-bold text-dark100_light900 font-spaceGrotesk">Office <span className="text-primary-500">Suite</span></p>
+        <p className="h2-bold text-dark100_light900 font-spaceGrotesk">Postal <span className="text-primary-500">Dashboard</span></p>
       </Link>
+        <GlobalSearch />
       <div>
         <SheetClose asChild>
           <NavContent />

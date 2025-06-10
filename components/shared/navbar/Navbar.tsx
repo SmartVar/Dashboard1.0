@@ -13,15 +13,15 @@ const Navbar = () => {
     sm:px-12">
       <Link href="/" className="flex items-center gap-1">
         <Image
-          src="/assets/images/site-logo.svg"
+          src="/assets/images/site-logo1.svg"
           width={30}
           height={30}
-          alt="OfficeSuite"
+          alt="PostalDashboard"
         />
 
         <p className="h2-bold font-spaceGrotesk text-dark-100
-         dark:text-light-900 max-sm:hidden">Office <span className="text-primary-500">
-          Suite</span></p>
+         dark:text-light-900 max-sm:hidden">Postal <span className="text-primary-500">
+          Dashboard</span></p>
       </Link>
 
       <GlobalSearch />

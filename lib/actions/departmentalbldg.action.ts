@@ -361,7 +361,7 @@ export async function editDopBldg(params: EditDopBldgParams) {
      // }
 
      // dopbldg.tags = [...dopbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
-   /_ }
+   // }
 if (tags && Array.isArray(tags)) {
       const tagIds: mongoose.Types.ObjectId[] = [];
 

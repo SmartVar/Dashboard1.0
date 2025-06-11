@@ -84,62 +84,6 @@ const Page = async ({ params, searchParams }: URLProps) => {
           />}
       </div>
       </div>
-      {/* <div>
-            <h1 className="h1-bold text-dark100_light900">Rent - {rent.tagTitle}</h1> 
-      <div className="mt-10 flex w-full flex-col gap-6">
-        {rent.rentedbldgs?.length > 0 ?
-          rent.rentedbldgs.map((rentedbldg: any) => (
-            
-             <RentbldgCard
-                          key={rentedbldg._id}
-                          _id={rentedbldg._id}
-                          // clerkId={clerkId}
-                          division={rentedbldg.division}
-                          rent={rentedbldg.rent}
-                          tags={rentedbldg.tags}
-                          class_po={rentedbldg.class_po}
-                          lease_period={rentedbldg.lease_period}
-                          soa={rentedbldg.soa}
-                          area={rentedbldg.area}
-                          author={rentedbldg.author}
-                          po={rentedbldg.po} 
-                          createdAt={rentedbldg.createdAt} />
-                     ))
-          : <NoResult 
-            title="There’s no tag saved to show"
-            description="Enter Record"
-            link="/add-dop"
-            linkTitle="Create Dop Record"
-          />}
-      </div>
-      </div> 
-      <div>
-            <h1 className="h1-bold text-dark100_light900">{plot.tagTitle}</h1> 
-      <div className="mt-10 flex w-full flex-col gap-6">
-        {plot.plots?.length > 0 ?
-          plot.plots.map((plot: any) => (
-            
-      <PlotCard
-          key={plot._id}
-          _id={plot._id}
-          // clerkId={clerkId}
-          division={plot.division}
-          date_purchase={plot.date_purchase}
-          tags={plot.tags}
-          name={plot.name}
-          purchase_from={plot.purchase_from}
-          area={plot.area}
-          author={plot.author}
-          lease_period={plot.lease_period} 
-          createdAt={plot.createdAt} />
-                     ))
-          : <NoResult 
-            title="There’s no tag saved to show"
-            description="Enter Record"
-            link="/add-dop"
-            linkTitle="Create Dop Record"
-          />}
-      </div> */}
   
   )
 }

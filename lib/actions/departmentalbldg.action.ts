@@ -345,38 +345,42 @@ export async function editDopBldg(params: EditDopBldgParams) {
     dopbldg.corr_division = corr_division;
 
     // Handle tags
-   // if (tags && Array.isArray(tags)) {
-   //   const existingTagIds = dopbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
-   //   const newTagIds = [];
-
-     // for (const tagName of tags) {
-      //  let tag = await Tag.findOne({ name: tagName });
-      //  if (!tag) {
-         // tag = await Tag.create({ name: tagName });
-     //   }
-
-      //  if (!existingTagIds.includes(tag._id.toString())) {
-       //   newTagIds.push(tag._id);
-      //  }
-     // }
-
-     // dopbldg.tags = [...dopbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
-   // }
-if (tags && Array.isArray(tags)) {
-      const tagIds: mongoose.Types.ObjectId[] = [];
+    if (tags && Array.isArray(tags)) {
+     const existingTagIds = dopbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
+      const newTagIds = [];
 
       for (const tagName of tags) {
-        let tag = await Tag.findOne({ name: tagName.trim() });
-
+       let tag = await Tag.findOne({ name: tagName });
         if (!tag) {
-          tag = await Tag.create({ name: tagName.trim() });
+          //tag = await Tag.create({ name: tagName });
+      
+        const tagDocuments = [];
+
+ // Create the tags or get them if they already exist
+    // eslint-disable-next-line no-undef
+    for (const tag of tags) {
+      const existingTag = await Tag.findOneAndUpdate(
+        { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+        { $setOnInsert: { name: tag }, $push: { departmentalbldgs: dopbldg._id } },
+        { upsert: true, new: true }
+      )
+
+      tagDocuments.push(existingTag._id);
+    }
+
+    await Departmentalbldg.findByIdAndUpdate(dopbldg._id, {
+      $push: { tags: { $each: tagDocuments }}
+    });
         }
 
-        tagIds.push(tag._id);
+       if (!existingTagIds.includes(tag._id.toString())) {
+          newTagIds.push(tag._id);
+       }
       }
 
-      dopbldg.tags = tagIds;
-  }
+     dopbldg.tags = [...dopbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
+    }
+
     await dopbldg.save();
 
     revalidatePath(path);

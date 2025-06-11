@@ -8,7 +8,7 @@ import NoResult from '@/components/shared/NoResult'
 // import Pagination from '@/components/shared/Pagination'
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { getDopBldgByTagId, getRentBldgByTagId, getPlotByTagId } from '@/lib/actions/tag.action'
-//import { getDopBldgByTagId } from '@/lib/actions/tag.action'
+// import { getDopBldgByTagId } from '@/lib/actions/tag.action'
 import { URLProps } from '@/types'
 
 const Page = async ({ params, searchParams }: URLProps) => {

@@ -29,7 +29,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
   }) */}
 
   return (
-    <>
+    
     <div>
       <h1 className="h1-bold text-dark100_light900">{dop.tagTitle}</h1> 
 
@@ -140,7 +140,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
             linkTitle="Create Dop Record"
           />}
       </div> */}
-    </>
+  
   )
 }
 

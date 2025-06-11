@@ -350,9 +350,9 @@ export async function editDopBldg(params: EditDopBldgParams) {
       const newTagIds = [];
 
       for (const tagName of tags) {
-       let tag = await Tag.findOne({ name: tagName });
+       const tag = await Tag.findOne({ name: tagName });
         if (!tag) {
-          //tag = await Tag.create({ name: tagName });
+          // tag = await Tag.create({ name: tagName });
       
         const tagDocuments = [];
 

@@ -345,24 +345,38 @@ export async function editDopBldg(params: EditDopBldgParams) {
     dopbldg.corr_division = corr_division;
 
     // Handle tags
-    if (tags && Array.isArray(tags)) {
-      const existingTagIds = dopbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
-      const newTagIds = [];
+   // if (tags && Array.isArray(tags)) {
+   //   const existingTagIds = dopbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
+   //   const newTagIds = [];
+
+     // for (const tagName of tags) {
+      //  let tag = await Tag.findOne({ name: tagName });
+      //  if (!tag) {
+         // tag = await Tag.create({ name: tagName });
+     //   }
+
+      //  if (!existingTagIds.includes(tag._id.toString())) {
+       //   newTagIds.push(tag._id);
+      //  }
+     // }
+
+     // dopbldg.tags = [...dopbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
+   /_ }
+if (tags && Array.isArray(tags)) {
+      const tagIds: mongoose.Types.ObjectId[] = [];
 
       for (const tagName of tags) {
-        let tag = await Tag.findOne({ name: tagName });
+        let tag = await Tag.findOne({ name: tagName.trim() });
+
         if (!tag) {
-          tag = await Tag.create({ name: tagName });
+          tag = await Tag.create({ name: tagName.trim() });
         }
 
-        if (!existingTagIds.includes(tag._id.toString())) {
-          newTagIds.push(tag._id);
-        }
+        tagIds.push(tag._id);
       }
 
-      dopbldg.tags = [...dopbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
-    }
-
+      dopbldg.tags = tagIds;
+  }
     await dopbldg.save();
 
     revalidatePath(path);

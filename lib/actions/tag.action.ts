@@ -157,7 +157,7 @@ export async function getRentBldgByTagId(params:GetRentedbldgsByTagIdParams) {
     
     const rentedbldgs = tag.rentedbldgs;
 
-    return { tagTitle: tag.name, departmentalbldgs, isNext };
+    return { tagTitle: tag.name, rentedbldgs, isNext };
    // return { tagTitle: tag.name, rentedbldgs };
 
   } catch (error) {
@@ -200,7 +200,7 @@ export async function getPlotByTagId(params:GetPlotsByTagIdParams) {
     
     const plots = tag.plots;
 
-    return { tagTitle: tag.name, departmentalbldgs, isNext };
+    return { tagTitle: tag.name, plots, isNext };
    // return { tagTitle: tag.name, plots };
 
   } catch (error) {

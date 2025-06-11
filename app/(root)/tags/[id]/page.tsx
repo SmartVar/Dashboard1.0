@@ -16,7 +16,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
     tagId: params.id,
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
-  })
+  });
   {/* const rent = await getRentBldgByTagId({
   tagId: params.id,
   page: searchParams.page ? +searchParams.page : 1,
@@ -140,14 +140,6 @@ const Page = async ({ params, searchParams }: URLProps) => {
             linkTitle="Create Dop Record"
           />}
       </div> */}
-
-      <div className="mt-10">
-        {/* <Pagination 
-          pageNumber={searchParams?.page ? +searchParams.page : 1}
-          isNext={dop.isNext}
-        /> */}
-      </div>
-      </div> 
     </>
   )
 }

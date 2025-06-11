@@ -16,17 +16,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
     tagId: params.id,
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
-  });
-  {/* const rent = await getRentBldgByTagId({
-  tagId: params.id,
-  page: searchParams.page ? +searchParams.page : 1,
-  searchQuery: searchParams.q
   })
-  const plot = await getPlotByTagId({
-  tagId: params.id,
-   page: searchParams.page ? +searchParams.page : 1,
-   searchQuery: searchParams.q
-  }) */}
 
   return (
     

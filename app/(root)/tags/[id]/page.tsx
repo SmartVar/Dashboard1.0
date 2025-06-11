@@ -147,7 +147,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
           isNext={dop.isNext}
         /> */}
       </div>
-      {/* </div> */}
+      </div> 
     </>
   )
 }

@@ -386,6 +386,7 @@ export interface EditDopBldgParams {
   brief_history: string;
   corr_ro: string;
   corr_division: string;
+  tags: string[];
   path: string;
 }
 export interface EditEventParams {
@@ -436,6 +437,7 @@ export interface EditRentBldgParams {
   brief_history: string;
   corr_ro: string;
   corr_division: string;
+  tags: string[];
   path: string;
 }
 export interface EditPendencyParams {

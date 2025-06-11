@@ -252,19 +252,72 @@ export async function getDopBldgById(params: GetDopBldgByIdParams) {
   }
 }
 
+// export async function editDopBldg(params: EditDopBldgParams) {
+//   try {
+//     connectToDatabase();
+
+//     // const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
+//     const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, path } = params;
+//     // const { departmentalbldgId, division, po, classes, soa, area, path } = params;
+
+//     const dopbldg = await Departmentalbldg.findById(departmentalbldgId).populate("tags");
+
+//     if(!dopbldg) {
+//       throw new Error("Record not found");
+//     }
+//     dopbldg.division = division;
+//     dopbldg.po = po;
+//     dopbldg.classes = classes;
+//     dopbldg.location = location;
+//     dopbldg.purchase_year = purchase_year;
+//     dopbldg.soa = soa;
+//     dopbldg.paq = paq;
+//     dopbldg.area = area;
+//    dopbldg.builtup_area = builtup_area;
+//     dopbldg.open_space = open_space;
+//     dopbldg.floors = floors;
+//     dopbldg.value = value;
+//     dopbldg.year =year;
+//     dopbldg.expenditure =expenditure;
+//     dopbldg.mut_doc =mut_doc;
+//     dopbldg.mut_state =mut_state;
+//     dopbldg.fund_type =fund_type;
+//     dopbldg.fund_amount =fund_amount;
+//     dopbldg.cases =cases;
+//     dopbldg.case_description =case_description;
+//     dopbldg.case_action =case_action;
+//     dopbldg.case_divisionaction =case_divisionaction;
+//     dopbldg.brief_history =brief_history;
+//     dopbldg.corr_ro =corr_ro;
+//     dopbldg.corr_division =corr_division;
+    
+//     // if (tags) {
+//     //   dopbldg.tags = tags;
+//     // }
+
+//     await dopbldg.save();
+
+//     revalidatePath(path);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+
+
 export async function editDopBldg(params: EditDopBldgParams) {
   try {
     connectToDatabase();
 
-    // const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, path } = params;
-    // const { departmentalbldgId, division, po, classes, soa, area, path } = params;
+    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, path, tags } = params;
 
     const dopbldg = await Departmentalbldg.findById(departmentalbldgId).populate("tags");
 
-    if(!dopbldg) {
+    if (!dopbldg) {
       throw new Error("Record not found");
     }
+
+    // Update fields
     dopbldg.division = division;
     dopbldg.po = po;
     dopbldg.classes = classes;
@@ -273,24 +326,42 @@ export async function editDopBldg(params: EditDopBldgParams) {
     dopbldg.soa = soa;
     dopbldg.paq = paq;
     dopbldg.area = area;
-   dopbldg.builtup_area = builtup_area;
+    dopbldg.builtup_area = builtup_area;
     dopbldg.open_space = open_space;
     dopbldg.floors = floors;
     dopbldg.value = value;
-    dopbldg.year =year;
-    dopbldg.expenditure =expenditure;
-    dopbldg.mut_doc =mut_doc;
-    dopbldg.mut_state =mut_state;
-    dopbldg.fund_type =fund_type;
-    dopbldg.fund_amount =fund_amount;
-    dopbldg.cases =cases;
-    dopbldg.case_description =case_description;
-    dopbldg.case_action =case_action;
-    dopbldg.case_divisionaction =case_divisionaction;
-    dopbldg.brief_history =brief_history;
-    dopbldg.corr_ro =corr_ro;
-    dopbldg.corr_division =corr_division;
-    
+    dopbldg.year = year;
+    dopbldg.expenditure = expenditure;
+    dopbldg.mut_doc = mut_doc;
+    dopbldg.mut_state = mut_state;
+    dopbldg.fund_type = fund_type;
+    dopbldg.fund_amount = fund_amount;
+    dopbldg.cases = cases;
+    dopbldg.case_description = case_description;
+    dopbldg.case_action = case_action;
+    dopbldg.case_divisionaction = case_divisionaction;
+    dopbldg.brief_history = brief_history;
+    dopbldg.corr_ro = corr_ro;
+    dopbldg.corr_division = corr_division;
+
+    // Handle tags
+    if (tags && Array.isArray(tags)) {
+      const existingTagIds = dopbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
+      const newTagIds = [];
+
+      for (const tagName of tags) {
+        let tag = await Tag.findOne({ name: tagName });
+        if (!tag) {
+          tag = await Tag.create({ name: tagName });
+        }
+
+        if (!existingTagIds.includes(tag._id.toString())) {
+          newTagIds.push(tag._id);
+        }
+      }
+
+      dopbldg.tags = [...dopbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
+    }
 
     await dopbldg.save();
 
@@ -299,6 +370,7 @@ export async function editDopBldg(params: EditDopBldgParams) {
     console.log(error);
   }
 }
+
 
 export async function deleteDopBldg(params: DeleteDopBldgParams) {
   try {

@@ -244,7 +244,7 @@ export async function editRentBldg(params: EditRentBldgParams) {
   try {
     connectToDatabase();
 
-    const { rentbldgId, division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, frac_status, frac_level, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, path  } = params;
+    const { rentbldgId, division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, frac_status, frac_level, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, tags, path  } = params;
 
     const rentbldg = await Rentedbldg.findById(rentbldgId).populate("tags");
 
@@ -274,6 +274,25 @@ export async function editRentBldg(params: EditRentBldgParams) {
     rentbldg.brief_history =brief_history;
     rentbldg.corr_ro =corr_ro;
     rentbldg.corr_division =corr_division;
+
+// Handle tags
+    if (tags && Array.isArray(tags)) {
+      const existingTagIds = rentbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
+      const newTagIds = [];
+
+      for (const tagName of tags) {
+        let tag = await Tag.findOne({ name: tagName });
+        if (!tag) {
+          tag = await Tag.create({ name: tagName });
+        }
+
+        if (!existingTagIds.includes(tag._id.toString())) {
+          newTagIds.push(tag._id);
+        }
+      }
+
+      rentbldg.tags = [...rentbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
+    }
 
     await rentbldg.save();
 

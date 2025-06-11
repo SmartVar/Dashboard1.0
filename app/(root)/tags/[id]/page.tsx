@@ -1,13 +1,14 @@
 // import QuestionCard from '@/components/cards/QuestionCard'
 import DopbldgCard from '@/components/cards/DopbldgCard'
-import PlotCard from '@/components/cards/PlotCard'
-import RentbldgCard from '@/components/cards/RentbldgCard'
+// import PlotCard from '@/components/cards/PlotCard'
+// import RentbldgCard from '@/components/cards/RentbldgCard'
 // import QuestionCard from '@/components/cards/QuestionCard'
 // import DopbldgCard from '@/components/cards/DopbldgCard'
 import NoResult from '@/components/shared/NoResult'
-import Pagination from '@/components/shared/Pagination'
+// import Pagination from '@/components/shared/Pagination'
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
-import { getDopBldgByTagId, getRentBldgByTagId, getPlotByTagId } from '@/lib/actions/tag.action'
+// import { getDopBldgByTagId, getRentBldgByTagId, getPlotByTagId } from '@/lib/actions/tag.action'
+import { getDopBldgByTagId } from '@/lib/actions/tag.action'
 import { URLProps } from '@/types'
 
 const Page = async ({ params, searchParams }: URLProps) => {
@@ -16,16 +17,16 @@ const Page = async ({ params, searchParams }: URLProps) => {
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
   })
-  const rent = await getRentBldgByTagId({
-    tagId: params.id,
-    page: searchParams.page ? +searchParams.page : 1,
-    searchQuery: searchParams.q
-  })
-  const plot = await getPlotByTagId({
-    tagId: params.id,
-    page: searchParams.page ? +searchParams.page : 1,
-    searchQuery: searchParams.q
-  })
+  // const rent = await getRentBldgByTagId({
+  //   tagId: params.id,
+  //   page: searchParams.page ? +searchParams.page : 1,
+  //   searchQuery: searchParams.q
+  // })
+  // const plot = await getPlotByTagId({
+  //   tagId: params.id,
+  //   page: searchParams.page ? +searchParams.page : 1,
+  //   searchQuery: searchParams.q
+  // })
 
   return (
     <>
@@ -83,10 +84,10 @@ const Page = async ({ params, searchParams }: URLProps) => {
           />}
       </div>
       </div>
-      <div>
-            <h1 className="h1-bold text-dark100_light900">{rent.tagTitle}</h1> 
+      {/* <div>
+            <h1 className="h1-bold text-dark100_light900">Rent - {rent.tagTitle}</h1> 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {rent.rentedbldgs.length > 0 ?
+        {rent.rentedbldgs?.length > 0 ?
           rent.rentedbldgs.map((rentedbldg: any) => (
             
              <RentbldgCard
@@ -111,11 +112,11 @@ const Page = async ({ params, searchParams }: URLProps) => {
             linkTitle="Create Dop Record"
           />}
       </div>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
             <h1 className="h1-bold text-dark100_light900">{plot.tagTitle}</h1> 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {plot.plots.length > 0 ?
+        {plot.plots?.length > 0 ?
           plot.plots.map((plot: any) => (
             
       <PlotCard
@@ -138,15 +139,15 @@ const Page = async ({ params, searchParams }: URLProps) => {
             link="/add-dop"
             linkTitle="Create Dop Record"
           />}
-      </div>
+      </div> */}
 
       <div className="mt-10">
-        <Pagination 
+        {/* <Pagination 
           pageNumber={searchParams?.page ? +searchParams.page : 1}
           isNext={dop.isNext}
-        />
+        /> */}
       </div>
-      </div>
+      {/* </div> */}
     </>
   )
 }

@@ -5,6 +5,7 @@ export interface ITag extends Document {
   description: string;
   departmentalbldgs: Schema.Types.ObjectId[];
   rentedbldgs: Schema.Types.ObjectId[];
+  plots: Schema.Types.ObjectId[];
   // followers: Schema.Types.ObjectId[];
   createdOn: Date;
 }
@@ -14,6 +15,7 @@ const TagSchema = new Schema({
   description: { type: String, required: true },
   departmentalbldgs: [{ type: Schema.Types.ObjectId, ref: 'Departmentalbldg' }], 
   rentedlbldgs: [{ type: Schema.Types.ObjectId, ref: 'Rentedbldg' }], 
+  plots: [{ type: Schema.Types.ObjectId, ref: 'Plot' }], 
   // followers: [{ type: Schema.Types.ObjectId, ref: 'User' }], 
   createdOn: { type: Date, default: Date.now },
 });

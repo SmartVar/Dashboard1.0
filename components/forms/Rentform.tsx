@@ -100,6 +100,7 @@ const groupedTags = parsedRentDetails?.tags.map((tag: { name: any; }) => tag.nam
           brief_history: values.brief_history,
           corr_ro: values.corr_ro,
           corr_division: values.corr_division,
+          tags: values.tags,
           path: pathname,
         })
 

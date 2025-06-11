@@ -250,7 +250,7 @@ export async function editPlot(params: EditPlotParams) {
   try {
     connectToDatabase();
 
-    const { plotId, division, name, district, location, local_body, area, moa, date_purchase, purchase_from, amount, purpose, lease_period, enchroached, enchroached_area, boundary_wall, po_constructed, mut_doc, mut_state, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, path  } = params;
+    const { plotId, division, name, district, location, local_body, area, moa, date_purchase, purchase_from, amount, purpose, lease_period, enchroached, enchroached_area, boundary_wall, po_constructed, mut_doc, mut_state, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, tags, path  } = params;
 
     const plot = await Plot.findById(plotId).populate("tags");
 
@@ -285,6 +285,24 @@ export async function editPlot(params: EditPlotParams) {
     plot.corr_ro =corr_ro;
     plot.corr_division =corr_division;
     
+    // Handle tags
+        if (tags && Array.isArray(tags)) {
+          const existingTagIds = plot.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
+          const newTagIds = [];
+    
+          for (const tagName of tags) {
+            let tag = await Tag.findOne({ name: tagName });
+            if (!tag) {
+              tag = await Tag.create({ name: tagName });
+            }
+    
+            if (!existingTagIds.includes(tag._id.toString())) {
+              newTagIds.push(tag._id);
+            }
+          }
+    
+          plot.tags = [...plot.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
+        }
     await plot.save();
 
     revalidatePath(path);

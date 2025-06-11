@@ -91,6 +91,7 @@ export async function getDopBldgByTagId(params:GetDepartmentalbldgsByTagIdParams
     const tag = await Tag.findOne(tagFilter).populate({
       path: 'departmentalbldgs',
       model: Departmentalbldg,
+      strictPopulate: false,
       match: searchQuery
         ? { title: { $regex: searchQuery, $options: 'i' }}
         : {},
@@ -109,12 +110,12 @@ export async function getDopBldgByTagId(params:GetDepartmentalbldgsByTagIdParams
       throw new Error('Tag not found');
     }
 
-    const isNext = tag.departmentalbldgs.length > pageSize;
+    // const isNext = tag.departmentalbldgs.length > pageSize;
     
     const departmentalbldgs = tag.departmentalbldgs;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
-    return { tagTitle: tag.name, departmentalbldgs, isNext };
+    return { tagTitle: tag.name, departmentalbldgs };
 
   } catch (error) {
     console.log(error);
@@ -133,6 +134,7 @@ export async function getRentBldgByTagId(params:GetRentedbldgsByTagIdParams) {
     const tag = await Tag.findOne(tagFilter).populate({
       path: 'rentedbldgs',
       model: Rentedbldg,
+      strictPopulate: false,
       match: searchQuery
         ? { title: { $regex: searchQuery, $options: 'i' }}
         : {},
@@ -151,12 +153,12 @@ export async function getRentBldgByTagId(params:GetRentedbldgsByTagIdParams) {
       throw new Error('Tag not found');
     }
 
-    const isNext = tag.rentedbldgs.length > pageSize;
+    // const isNext = tag.rentedbldgs.length > pageSize;
     
     const rentedbldgs = tag.rentedbldgs;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
-    return { tagTitle: tag.name, rentedbldgs, isNext };
+    return { tagTitle: tag.name, rentedbldgs };
 
   } catch (error) {
     console.log(error);
@@ -175,6 +177,7 @@ export async function getPlotByTagId(params:GetPlotsByTagIdParams) {
     const tag = await Tag.findOne(tagFilter).populate({
       path: 'plots',
       model: Plot,
+      strictPopulate: false,
       match: searchQuery
         ? { title: { $regex: searchQuery, $options: 'i' }}
         : {},
@@ -193,12 +196,12 @@ export async function getPlotByTagId(params:GetPlotsByTagIdParams) {
       throw new Error('Tag not found');
     }
 
-    const isNext = tag.plots.length > pageSize;
+    // const isNext = tag.plots.length > pageSize;
     
     const plots = tag.plots;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
-    return { tagTitle: tag.name, plots, isNext };
+    return { tagTitle: tag.name, plots };
 
   } catch (error) {
     console.log(error);

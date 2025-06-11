@@ -1,7 +1,7 @@
 // import QuestionCard from '@/components/cards/QuestionCard'
 import DopbldgCard from '@/components/cards/DopbldgCard'
-import PlotCard from '@/components/cards/PlotCard'
-import RentbldgCard from '@/components/cards/RentbldgCard'
+// import PlotCard from '@/components/cards/PlotCard'
+// import RentbldgCard from '@/components/cards/RentbldgCard'
 // import QuestionCard from '@/components/cards/QuestionCard'
 // import DopbldgCard from '@/components/cards/DopbldgCard'
 import NoResult from '@/components/shared/NoResult'
@@ -17,7 +17,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
   })
-   const rent = await getRentBldgByTagId({
+  {/* const rent = await getRentBldgByTagId({
   tagId: params.id,
   page: searchParams.page ? +searchParams.page : 1,
   searchQuery: searchParams.q
@@ -26,7 +26,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
   tagId: params.id,
    page: searchParams.page ? +searchParams.page : 1,
    searchQuery: searchParams.q
-  })
+  }) */}
 
   return (
     <>
@@ -84,7 +84,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
           />}
       </div>
       </div>
-      <div>
+      {/* <div>
             <h1 className="h1-bold text-dark100_light900">Rent - {rent.tagTitle}</h1> 
       <div className="mt-10 flex w-full flex-col gap-6">
         {rent.rentedbldgs?.length > 0 ?
@@ -139,7 +139,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
             link="/add-dop"
             linkTitle="Create Dop Record"
           />}
-      </div> 
+      </div> */}
 
       <div className="mt-10">
         {/* <Pagination 
@@ -147,7 +147,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
           isNext={dop.isNext}
         /> */}
       </div>
-      </div> 
+      {/* </div> */}
     </>
   )
 }

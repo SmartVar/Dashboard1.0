@@ -345,11 +345,9 @@ export async function editDopBldg(params: EditDopBldgParams) {
     dopbldg.corr_division = corr_division;
 
     // Handle tags
-<<<<<<< HEAD
-   const tagDocuments = [];
-=======
+
     const tagDocuments = [];
->>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
+
 
  // Create the tags or get them if they already exist
     // eslint-disable-next-line no-undef

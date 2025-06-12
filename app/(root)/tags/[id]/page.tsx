@@ -17,6 +17,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
   })
+<<<<<<< HEAD
   const rent = await getRentBldgByTagId({
     tagId: params.id,
     page: searchParams.page ? +searchParams.page : 1,
@@ -27,9 +28,11 @@ const Page = async ({ params, searchParams }: URLProps) => {
     page: searchParams.page ? +searchParams.page : 1,
     searchQuery: searchParams.q
   })
+=======
+>>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
 
   return (
-    <>
+    
     <div>
       <h1 className="h1-bold text-dark100_light900">{dop.tagTitle}</h1> 
 
@@ -83,6 +86,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
             linkTitle="Create Dop Record"
           />}
       </div>
+<<<<<<< HEAD
       {/* </div> */}
       {/* <div>
             <h1 className="h1-bold text-dark100_light900">Rent - {rent.tagTitle}</h1> 
@@ -149,6 +153,10 @@ const Page = async ({ params, searchParams }: URLProps) => {
       </div> */}
       </div>
     </>
+=======
+      </div>
+  
+>>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
   )
 }
 

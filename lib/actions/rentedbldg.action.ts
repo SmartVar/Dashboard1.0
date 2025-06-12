@@ -276,6 +276,10 @@ export async function editRentBldg(params: EditRentBldgParams) {
     rentbldg.corr_division =corr_division;
 
 // Handle tags
+<<<<<<< HEAD
+=======
+    if (tags && Array.isArray(tags)) {
+>>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
     const tagDocuments = [];
 
  for (const tag of tags) {

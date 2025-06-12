@@ -286,8 +286,12 @@ export async function editPlot(params: EditPlotParams) {
     plot.corr_division =corr_division;
     
     // Handle tags
+<<<<<<< HEAD
         const tagDocuments = [];
 
+=======
+        
+>>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
  for (const tag of tags) {
        const existingTag = await Tag.findOneAndUpdate(
          { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 

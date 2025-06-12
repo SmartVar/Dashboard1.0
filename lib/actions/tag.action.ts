@@ -110,12 +110,21 @@ export async function getDopBldgByTagId(params:GetDepartmentalbldgsByTagIdParams
       throw new Error('Tag not found');
     }
 
+<<<<<<< HEAD
     const isNext = tag.departmentalbldgs?.length > pageSize;
     
     const departmentalbldgs = tag.departmentalbldgs;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
     return { tagTitle: tag.name, departmentalbldgs, isNext };
+=======
+     const isNext = tag.departmentalbldgs.length > pageSize;
+    
+    const departmentalbldgs = tag.departmentalbldgs;
+
+     return { tagTitle: tag.name, departmentalbldgs, isNext };
+    // return { tagTitle: tag.name, departmentalbldgs };
+>>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
 
   } catch (error) {
     console.log(error);
@@ -153,12 +162,21 @@ export async function getRentBldgByTagId(params:GetRentedbldgsByTagIdParams) {
       throw new Error('Tag not found');
     }
 
+<<<<<<< HEAD
     const isNext = tag.rentedbldgs?.length > pageSize;
     
     const rentedbldgs = tag.rentedbldgs;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
     return { tagTitle: tag.name, rentedbldgs, isNext };
+=======
+    const isNext = tag.rentedbldgs.length > pageSize;
+    
+    const rentedbldgs = tag.rentedbldgs;
+
+    return { tagTitle: tag.name, rentedbldgs, isNext };
+   // return { tagTitle: tag.name, rentedbldgs };
+>>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
 
   } catch (error) {
     console.log(error);
@@ -196,12 +214,21 @@ export async function getPlotByTagId(params:GetPlotsByTagIdParams) {
       throw new Error('Tag not found');
     }
 
+<<<<<<< HEAD
     const isNext = tag.plots?.length > pageSize;
     
     const plots = tag.plots;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
     return { tagTitle: tag.name, plots, isNext };
+=======
+     const isNext = tag.plots.length > pageSize;
+    
+    const plots = tag.plots;
+
+    return { tagTitle: tag.name, plots, isNext };
+   // return { tagTitle: tag.name, plots };
+>>>>>>> 7c979bec270280837ad3584d0fdd2bddf5428740
 
   } catch (error) {
     console.log(error);

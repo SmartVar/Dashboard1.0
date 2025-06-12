@@ -712,21 +712,14 @@ const groupedTags = parsedPlotDetails?.tags.map((tag: any) => tag.name)
                           onClick={() => handleTagRemove(tag, field)}
                           >
                            {tag}
-                          {/* {type !== 'Edit' && (<Image 
+                          {type !== 'Edit' && (<Image 
                           src="/assets/icons/close.svg"
                           alt="Close icon"
                           width={12}
                           height={12}
                           className="cursor-pointer object-contain invert-0 dark:invert"
-                          />)} */}
-                          <Image 
-                          src="/assets/icons/close.svg"
-                          alt="Close icon"
-                          width={12}
-                          height={12}
-                          className="cursor-pointer object-contain invert-0 dark:invert"
-                          />
-                          </Badge>
+                          />)}
+                         </Badge>
                         ))}
                       </div>
                     )}

@@ -71,8 +71,8 @@ export async function getPlot(params: GetPlotParams): Promise<PlotDef[]> {
 
     const plot = await Plot.find(query)
     .find(sortOptions)
-    .populate({ path: 'author', model: User });
-    
+    .populate({ path: 'author', model: User })
+    .populate({ path: 'tags', model: Tag }); 
 
 // console.log(plot);
 // @ts-ignore
@@ -286,23 +286,22 @@ export async function editPlot(params: EditPlotParams) {
     plot.corr_division =corr_division;
     
     // Handle tags
-        if (tags && Array.isArray(tags)) {
-          const existingTagIds = plot.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
-          const newTagIds = [];
-    
-          for (const tagName of tags) {
-            let tag = await Tag.findOne({ name: tagName });
-            if (!tag) {
-              tag = await Tag.create({ name: tagName });
-            }
-    
-            if (!existingTagIds.includes(tag._id.toString())) {
-              newTagIds.push(tag._id);
-            }
-          }
-    
-          plot.tags = [...plot.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
-        }
+        const tagDocuments = [];
+
+ for (const tag of tags) {
+       const existingTag = await Tag.findOneAndUpdate(
+         { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+         { $setOnInsert: { name: tag }, $push: { plots: plot._id } },
+         { upsert: true, new: true }
+       )
+ 
+       tagDocuments.push(existingTag._id);
+     }
+ 
+     await Plot.findByIdAndUpdate(plot._id, {
+       $push: { tags: { $each: tagDocuments }}
+     });
+     
     await plot.save();
 
     revalidatePath(path);
@@ -325,4 +324,6 @@ await Tag.updateMany({ plots: plotId }, { $pull: { plots: plotId }});
     console.log(error);
   }
 }
+
+
 

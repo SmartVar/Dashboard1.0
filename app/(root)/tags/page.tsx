@@ -45,7 +45,13 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
                 </div>
 
                 <p className="small-medium text-dark400_light500 mt-3.5">
-                  <span className="body-semibold primary-text-gradient mr-2.5">{tag.departmentalbldgs.length}+</span> DoP Bldg
+                  {/* <span className="body-semibold primary-text-gradient mr-2.5">{tag.departmentalbldgs?.length}+</span> Records
+                  <span className="body-semibold primary-text-gradient mr-2.5">{tag.rentedbldgs?.length}+</span> Records
+                  <span className="body-semibold primary-text-gradient mr-2.5">{tag.plots?.length}+</span> Records */}
+                <span className="body-semibold primary-text-gradient mr-2.5">
+  {(tag.departmentalbldgs?.length || 0) + (tag.rentedbldgs?.length || 0) + (tag.plots?.length || 0)}+ Records
+</span>
+
                 </p>
               </article>
             </Link>

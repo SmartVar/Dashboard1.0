@@ -345,23 +345,23 @@ export async function editDopBldg(params: EditDopBldgParams) {
     dopbldg.corr_division = corr_division;
 
     // Handle tags
-    if (tags && Array.isArray(tags)) {
-      const existingTagIds = dopbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
-      const newTagIds = [];
+   const tagDocuments = [];
 
-      for (const tagName of tags) {
-        let tag = await Tag.findOne({ name: tagName });
-        if (!tag) {
-          tag = await Tag.create({ name: tagName });
-        }
+ // Create the tags or get them if they already exist
+    // eslint-disable-next-line no-undef
+    for (const tag of tags) {
+      const existingTag = await Tag.findOneAndUpdate(
+        { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+        { $setOnInsert: { name: tag }, $push: { departmentalbldgs: dopbldg._id } },
+        { upsert: true, new: true }
+      )
 
-        if (!existingTagIds.includes(tag._id.toString())) {
-          newTagIds.push(tag._id);
-        }
-      }
-
-      dopbldg.tags = [...dopbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
+      tagDocuments.push(existingTag._id);
     }
+
+    await Departmentalbldg.findByIdAndUpdate(dopbldg._id, {
+      $push: { tags: { $each: tagDocuments }}
+    });
 
     await dopbldg.save();
 

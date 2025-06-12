@@ -110,12 +110,12 @@ export async function getDopBldgByTagId(params:GetDepartmentalbldgsByTagIdParams
       throw new Error('Tag not found');
     }
 
-    // const isNext = tag.departmentalbldgs.length > pageSize;
+    const isNext = tag.departmentalbldgs?.length > pageSize;
     
     const departmentalbldgs = tag.departmentalbldgs;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
-    return { tagTitle: tag.name, departmentalbldgs };
+    return { tagTitle: tag.name, departmentalbldgs, isNext };
 
   } catch (error) {
     console.log(error);
@@ -153,12 +153,12 @@ export async function getRentBldgByTagId(params:GetRentedbldgsByTagIdParams) {
       throw new Error('Tag not found');
     }
 
-    // const isNext = tag.rentedbldgs.length > pageSize;
+    const isNext = tag.rentedbldgs?.length > pageSize;
     
     const rentedbldgs = tag.rentedbldgs;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
-    return { tagTitle: tag.name, rentedbldgs };
+    return { tagTitle: tag.name, rentedbldgs, isNext };
 
   } catch (error) {
     console.log(error);
@@ -196,12 +196,12 @@ export async function getPlotByTagId(params:GetPlotsByTagIdParams) {
       throw new Error('Tag not found');
     }
 
-    // const isNext = tag.plots.length > pageSize;
+    const isNext = tag.plots?.length > pageSize;
     
     const plots = tag.plots;
 
     // return { tagTitle: tag.name, departmentalbldgs, isNext };
-    return { tagTitle: tag.name, plots };
+    return { tagTitle: tag.name, plots, isNext };
 
   } catch (error) {
     console.log(error);

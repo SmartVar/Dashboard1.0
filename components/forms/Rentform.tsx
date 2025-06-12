@@ -104,7 +104,7 @@ const groupedTags = parsedRentDetails?.tags.map((tag: { name: any; }) => tag.nam
           path: pathname,
         })
 
-        router.push(`/rentbldg`);
+        router.push(`/rentbldg/${parsedRentDetails._id}`);
       } else {
         await createRentBldg({
             division: values.division,

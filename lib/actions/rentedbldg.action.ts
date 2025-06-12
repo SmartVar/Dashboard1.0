@@ -277,22 +277,21 @@ export async function editRentBldg(params: EditRentBldgParams) {
 
 // Handle tags
     if (tags && Array.isArray(tags)) {
-      const existingTagIds = rentbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
-      const newTagIds = [];
+    const tagDocuments = [];
 
-      for (const tagName of tags) {
-        let tag = await Tag.findOne({ name: tagName });
-        if (!tag) {
-          tag = await Tag.create({ name: tagName });
-        }
-
-        if (!existingTagIds.includes(tag._id.toString())) {
-          newTagIds.push(tag._id);
-        }
-      }
-
-      rentbldg.tags = [...rentbldg.tags.map((t: { _id: any; }) => t._id), ...newTagIds];
-    }
+ for (const tag of tags) {
+       const existingTag = await Tag.findOneAndUpdate(
+         { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+         { $setOnInsert: { name: tag }, $push: { rentedbldgs: rentbldg._id } },
+         { upsert: true, new: true }
+       )
+ 
+       tagDocuments.push(existingTag._id);
+     }
+ 
+     await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
+       $push: { tags: { $each: tagDocuments }}
+     });
 
     await rentbldg.save();
 

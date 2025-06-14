@@ -51,7 +51,10 @@ const EventCalendarContainer = async ({
                   otherClasses="min-h-[56px] sm:min-w-[170px]"
                   // containerClasses="hidden max-md:flex"
                 />
-                        <EventList searchParams={searchParams} dateParam={date} params={{
+                        {/* <EventList searchParams={searchParams} dateParam={date} params={{
+            id: ""
+          }} /> */}
+                        <EventList searchParams={searchParams} params={{
             id: ""
           }} />
               

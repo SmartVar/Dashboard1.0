@@ -9,12 +9,12 @@ import Filter from "@/components/shared/Filter";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 
 const EventCalendarContainer = async ({
-  searchParams,
+  searchParams
 }: {
   searchParams: { [keys: string]: string | undefined };
 }) => {
   // eslint-disable-next-line no-empty-pattern
-  const {searchParams.dateParam} = searchParams;
+  const {dateParam} = searchParams;
 
   console.log(date)
 

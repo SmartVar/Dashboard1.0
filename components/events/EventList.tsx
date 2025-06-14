@@ -100,8 +100,8 @@ console.log(inputDate)
       <div className="text-dark400_light700 flex items-center justify-between">
         
         <h1 className="font-semibold text-primary-500">{event.title}</h1>
-        <span className="ml-2 text-xs text-gray-300">
-          {new Date(event.event_date).toLocaleDateString("en-GB", 
+        <span className="text-xs text-gray-300">
+          {new Date(event.event_date).toLocaleTimeString("en-GB", 
             {
             day: "2-digit",
             month: "2-digit",

@@ -47,8 +47,10 @@ import React from 'react';
 import { getAllEvents } from '@/lib/actions/event.action';
 import Link from 'next/link';
 
-const EventList = async ({ dateParam, searchParams} : URLProps ) => {
-  const inputDate = dateParam ? new Date(dateParam) : new Date();
+// const EventList = async ({ dateParam, searchParams} : URLProps ) => {
+const EventList = async ({ searchParams} : URLProps ) => {
+  // const inputDate = dateParam ? new Date(dateParam) : new Date();
+  const inputDate = searchParams.dateParam ? new Date(searchParams.dateParam) : new Date();
 
 // const DateFormat = 
 

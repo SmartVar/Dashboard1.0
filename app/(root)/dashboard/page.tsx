@@ -21,7 +21,7 @@ import EventCalendarContainer from '@/components/events/EventCalendarContainer'
 // import Stats from '@/components/shared/Stats'
 
 
-const Page = async ({ params, searchParams}: URLProps) => {
+const Page = async ({ searchParams}: URLProps) => {
   // const { userId } = auth();
   // const userInfo = await getUserInfo({ userId});
 // console.log(userInfo);

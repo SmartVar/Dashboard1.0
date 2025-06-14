@@ -239,7 +239,7 @@ const Dopform = ({ type, eventDetails }: Props) => {
         name="status"
         render={({ field }) => (
           <FormItem className="flex w-full flex-col">
-            <FormLabel className="paragraph-semibold text-dark400_light800">Section <span className="text-primary-500">*</span></FormLabel>
+            <FormLabel className="paragraph-semibold text-dark400_light800">Status <span className="text-primary-500">*</span></FormLabel>
             <FormControl className="mt-3.5">
               <Input 
               className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"

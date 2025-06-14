@@ -40,14 +40,14 @@
 
 // export default EventList;
 
-
-
+// import Filter from "@/components/shared                                                                                                                                                                                                                                                                                                                                                                                                        -/Filter";
+import { URLProps } from '@/types'
 import { format } from 'date-fns';
 import React from 'react';
 import { getAllEvents } from '@/lib/actions/event.action';
 import Link from 'next/link';
 
-const EventList = async ({ dateParam }: { dateParam: string | undefined }) => {
+const EventList = async ({ dateParam, searchParams} : URLProps ) => {
   const inputDate = dateParam ? new Date(dateParam) : new Date();
 
 // const DateFormat = 
@@ -65,7 +65,12 @@ const EventList = async ({ dateParam }: { dateParam: string | undefined }) => {
   //   // },
   // });
   
-  const { event} = await getAllEvents({})
+  const { event} = await getAllEvents({
+    searchQuery: searchParams.q,
+  filter: searchParams.filter,
+//   pagefilter : searchParams.pagefilter,
+  page: searchParams.page ? +searchParams.page : 1,
+  })
 
 const events = event.filter(e => {
   const eventDateFormatted = format(new Date(e.event_date), 'yyyy-MM-dd')
@@ -95,13 +100,14 @@ console.log(inputDate)
       <div className="text-dark400_light700 flex items-center justify-between">
         
         <h1 className="font-semibold text-primary-500">{event.title}</h1>
-        <span className="text-xs text-gray-300">
-          {new Date(event.event_date).toLocaleTimeString("en-GB", 
+        <span className="ml-2 text-xs text-gray-300">
+          {new Date(event.event_date).toLocaleDateString("en-GB", 
             {
             day: "2-digit",
             month: "2-digit",
             timeZone: "Asia/Kolkata",
           })}
+          {event.status==='completed' ? '✅' : '⏳'}
         </span>
         
       </div>

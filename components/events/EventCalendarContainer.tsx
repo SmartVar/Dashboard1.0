@@ -16,7 +16,7 @@ const EventCalendarContainer = async ({
   // eslint-disable-next-line no-empty-pattern
   const {date} = searchParams;
 
-  
+  console.log(date)
 
   return (
     <>
@@ -40,7 +40,7 @@ const EventCalendarContainer = async ({
                          
               </div>
     <div className="text-dark200_light900 col-span-4 flex flex-col gap-4 overflow-hidden rounded-md p-4 text-base font-bold sm:flex-row">
-      <EventCalendar />
+     <span><EventCalendar /></span> 
       <div className="flex flex-col items-center justify-between gap-4 sm:w-1/2">
         <h1 className="my-4 text-xl font-semibold">Events</h1>
         {/* <Image src="moreDark" alt="" width={20} height={20} /> */}
@@ -51,7 +51,9 @@ const EventCalendarContainer = async ({
                   otherClasses="min-h-[56px] sm:min-w-[170px]"
                   // containerClasses="hidden max-md:flex"
                 />
-                        <EventList dateParam={date} />
+                        <EventList searchParams={searchParams} dateParam={date} params={{
+            id: ""
+          }} />
               
       </div>
     </div>

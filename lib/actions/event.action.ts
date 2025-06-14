@@ -27,6 +27,7 @@ export async function getAllEvents(params: GetEventsParams) {
         { division: { $regex: new RegExp(searchQuery, "i")}},
         { title: { $regex: new RegExp(searchQuery, "i")}},
         { section: { $regex: new RegExp(searchQuery, "i")}},
+        { status: { $regex: new RegExp(searchQuery, "i")}},
         
       ]
     }
@@ -56,7 +57,7 @@ export async function getAllEvents(params: GetEventsParams) {
   
 
     const event = await Event.find(query)
-    .sort(sortOptions)
+    .find(sortOptions)
     // .populate({ path: 'author', model: User })
     // .populate({ path: 'tags', model: Tag })
     // eslint-disable-next-line no-undef

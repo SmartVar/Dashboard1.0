@@ -16,7 +16,7 @@ const EventCalendarContainer = async ({
   // eslint-disable-next-line no-empty-pattern
   const {dateParam} = searchParams;
 
-  console.log(date)
+  // console.log(date)
 
   return (
     <>

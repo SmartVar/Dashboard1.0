@@ -32,7 +32,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
   return (
     
     <div>
-      <h1 className="h1-bold text-dark100_light900">{dop.tagTitle}</h1> 
+      <h1 className="h1-bold text-dark100_light900">{dop.tagTitle ? dop.tagTitle : rent.tagTitle ? rent.tagTitle : plot.tagTitle }</h1> 
 
       <div className="mt-11 w-full">
         <LocalSearchbar 
@@ -52,29 +52,12 @@ const Page = async ({ params, searchParams }: URLProps) => {
               _id={departmentalbldg._id}
               division={departmentalbldg.division}
               classes={departmentalbldg.classes}
-              // location={departmentalbldg.location}
               purchase_year={departmentalbldg.purchase_year}
               soa={departmentalbldg.soa}
-              // paq={departmentalbldg.paq}
               area={departmentalbldg.area}
-              // builtup_area={departmentalbldg.builtup_area}
-              // open_space={departmentalbldg.open_space}
-              // floors={departmentalbldg.floors}
-              // year={departmentalbldg.year}
-              // expenditure={departmentalbldg.expenditure}
-              // value={departmentalbldg.value}
-              // mut_doc={departmentalbldg.mut_doc}
-              // mut_state={departmentalbldg.mut_state}
-              // fund_type={departmentalbldg.fund_type}
-              // fund_amount={departmentalbldg.fund_amount}
-              // cases={departmentalbldg.cases}
-              // case_description={departmentalbldg.case_description}
-              // brief_history={departmentalbldg.brief_history}
-              tags={departmentalbldg.tags}
+             tags={departmentalbldg.tags}
               author={departmentalbldg.author}
               po={departmentalbldg.po}
-              //   views={question.views}
-              //   answers={question.answers}
               createdAt={departmentalbldg.createdAt}  />
           ))
           : <NoResult 
@@ -95,7 +78,6 @@ const Page = async ({ params, searchParams }: URLProps) => {
              <RentbldgCard
                           key={rentedbldg._id}
                           _id={rentedbldg._id}
-                          // clerkId={clerkId}
                           division={rentedbldg.division}
                           rent={rentedbldg.rent}
                           tags={rentedbldg.tags}
@@ -110,8 +92,8 @@ const Page = async ({ params, searchParams }: URLProps) => {
           : <NoResult 
             title="There’s no tag saved to show"
             description="Enter Record"
-            link="/add-dop"
-            linkTitle="Create Dop Record"
+            link="/add-rent"
+            linkTitle="Create Rent Record"
           />}
       {/* </div>
       </div> 
@@ -138,8 +120,8 @@ const Page = async ({ params, searchParams }: URLProps) => {
           : <NoResult 
             title="There’s no tag saved to show"
             description="Enter Record"
-            link="/add-dop"
-            linkTitle="Create Dop Record"
+            link="/add-plot"
+            linkTitle="Create Plot Record"
           />}
       {/* </div>
 

@@ -103,7 +103,7 @@ console.log(inputDate)
         
         <h1 className="font-semibold text-primary-500">{event.title}</h1>
         <span className="text-xs text-gray-300">
-          {new Date(event.event_date).toLocaleTimeString("en-GB", 
+          {new Date(event.event_date).toLocaleDateString("en-GB", 
             {
             day: "2-digit",
             month: "2-digit",

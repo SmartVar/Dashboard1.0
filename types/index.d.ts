@@ -47,6 +47,7 @@ export interface SearchParamsProps {
 // }
 
 export interface URLProps {
+  params: { id: string };
   searchParams: {
     q?: string;
     filter?: string;

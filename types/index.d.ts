@@ -55,6 +55,7 @@ export interface URLProps {
     dateParam?: string;
     [key: string]: string | undefined;
   };
+  // dateParam: {key: string | undefined};
 }
 
 export interface BadgeCounts {

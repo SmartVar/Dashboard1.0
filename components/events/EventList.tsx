@@ -48,10 +48,11 @@ import { getAllEvents } from '@/lib/actions/event.action';
 import Link from 'next/link';
 
 // const EventList = async ({ dateParam, searchParams} : URLProps ) => {
-const EventList = async ({ searchParams} : URLProps ) => {
+// const EventList = async ({ searchParams} : URLProps, dateParam: {key: string | undefined} ) => {
+const EventList = async ({ searchParams} : URLProps) => {
   // const inputDate = dateParam ? new Date(dateParam) : new Date();
-  const inputDate = searchParams.dateParam ? new Date(searchParams.dateParam) : new Date();
-
+  const inputDate = searchParams.date ? new Date(searchParams.date) : new Date();
+// const inputDate = dateParam?.key ? new Date(dateParam.key) : new Date();
 // const DateFormat = 
 
   // const startOfDay = new Date(inputDate);
@@ -79,6 +80,7 @@ const events = event.filter(e => {
   const inputDateFormatted = format(inputDate, 'yyyy-MM-dd')
   return eventDateFormatted === inputDateFormatted
 })
+
 
   if (!events) {
     return <p className="text-gray-400">No events found for this date.</p>;

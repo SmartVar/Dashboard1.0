@@ -61,7 +61,7 @@ export interface GetEventsParams {
   filter?: string;
   pagefilter?: string;
   // eslint-disable-next-line no-undef
-  // event_date?: date;
+  event_date?: date;
 }
 export interface GetDopBldgsParams {
   page?: number;

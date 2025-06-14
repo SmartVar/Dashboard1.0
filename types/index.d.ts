@@ -40,10 +40,20 @@ export interface SearchParamsProps {
   searchParams: { [key: string]: string | undefined };
 }
 
+// export interface URLProps {
+//   params: { id: string };
+//   searchParams: { [key: string]: string | undefined };
+//   dateParam: {key: string | undefined};
+// }
+
 export interface URLProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | undefined };
-  dateParam: {key: string | undefined};
+  searchParams: {
+    q?: string;
+    filter?: string;
+    page?: string;
+    dateParam?: string;
+    [key: string]: string | undefined;
+  };
 }
 
 export interface BadgeCounts {

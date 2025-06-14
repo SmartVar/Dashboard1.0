@@ -11,6 +11,7 @@ import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 
 const EventCalendarContainer = async ({
   searchParams
+  searchParams
 }: {
   searchParams: { [keys: string]: string | undefined };
   

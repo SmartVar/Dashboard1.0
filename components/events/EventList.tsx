@@ -111,7 +111,7 @@ console.log(inputDate)
             month: "2-digit",
             timeZone: "Asia/Kolkata",
           })}
-          {event.status==='completed' ? '✅' : '⏳'}
+          {event.status==='Completed' ? '✅' : '⏳'}
         </span>
         
       </div>

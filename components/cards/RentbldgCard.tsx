@@ -69,7 +69,7 @@ const RentbldgCard = ({
 
         <SignedIn>
           {showActionButtons && (
-            <EditDeleteAction type="Departmentalbldg" itemId={JSON.stringify(_id)} url={''} />
+            <EditDeleteAction type="Rentedbldg" itemId={JSON.stringify(_id)} url={''} />
           )}
         </SignedIn>
       </div>
@@ -108,32 +108,36 @@ const RentbldgCard = ({
             /> */}
             
             <Metric 
-              imgUrl="/assets/icons/eye.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="Class PO"
               value={class_po}
-              title=" Class"
+              title=""
+              unit=" Class"
               textStyles="small-medium text-dark400_light800"
             />
             <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
             <Metric 
-              imgUrl="/assets/icons/like.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="soa"
               value={soa}
-              title=" Sq.ft"
+              title="SOA -"
+              unit=" Sq.ft"
               textStyles="small-medium text-dark400_light800"
             />
             <Metric 
-              imgUrl="/assets/icons/message.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="area"
               value={area}
-              title=" Sq.mtr"
+              title="Area - "
+              unit=" Sq.mtr"
               textStyles="small-medium text-dark400_light800"
             />
             <Metric 
-              imgUrl="/assets/icons/message.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="rent"
               value={rent}
-              title=" in Rs."
+              title="Rs."
+              unit=""
               textStyles="small-medium text-dark400_light800"
             />
             {/* <Metric 

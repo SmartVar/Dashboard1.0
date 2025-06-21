@@ -106,25 +106,28 @@ const DopbldgCard = ({
             /> */}
             
             <Metric 
-              imgUrl="/assets/icons/eye.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="Class"
               value={classes}
-              title=" Class"
+              title=""
+              unit=" Class"
               textStyles="small-medium text-dark400_light800"
             />
             <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
             <Metric 
-              imgUrl="/assets/icons/like.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="soa"
               value={soa}
-              title=" Sq.ft"
+              title="SOA -"
+              unit=" Sq.ft"
               textStyles="small-medium text-dark400_light800"
             />
             <Metric 
-              imgUrl="/assets/icons/message.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="area"
               value={area}
-              title=" Sq.mtr"
+              title="Area - "
+              unit=" Sq.mtr"
               textStyles="small-medium text-dark400_light800"
             />
             {/* <Metric 

@@ -94,6 +94,7 @@ const PlotCard = ({
               alt="division"
               value={division}
               title=" Dn"
+              unit=""
               textStyles="small-medium text-dark400_light800"
             />
           <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
@@ -106,25 +107,28 @@ const PlotCard = ({
             /> */}
             
             <Metric 
-              imgUrl="/assets/icons/eye.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="Class"
               value={purchase_from}
-              title=" Owner"
+              title="Owner - "
+              unit=""
               textStyles="small-medium text-dark400_light800"
             />
             <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
             <Metric 
-              imgUrl="/assets/icons/like.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="area"
               value={area}
-              title=" Sq.mtr"
+              title="Area - "
+              unit=" Sq.mtr"
               textStyles="small-medium text-dark400_light800"
             />
             <Metric 
-              imgUrl="/assets/icons/message.svg"
+              imgUrl="/assets/icons/rightarrow.svg"
               alt="lease"
               value={lease_period}
-              title=" Lease"
+              title="Lease - "
+              unit=""
               textStyles="small-medium text-dark400_light800"
             />
             {/* <Metric 

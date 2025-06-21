@@ -15,7 +15,7 @@ import Link from "next/link";
 // import { useRouter, useSearchParams } from "next/navigation";
 // import { DataTable }  from '@/components/shared/tables/template/data-table';
 // import {  columns } from './columns'
-import { getAllRentBldg } from '@/lib/actions/rentedbldg.action';
+import { getAllRentBldgs } from '@/lib/actions/rentedbldg.action';
 import { DivisionFilters } from '@/constants/filters';
 import RentbldgCard from '@/components/cards/RentbldgCard';
 // import { Pagination } from '@tanstack/react-table';
@@ -32,13 +32,13 @@ const Page = async ({ searchParams}: URLProps) => {
   // console.log (typeFilter);
   
 
-const data = await getAllRentBldg({
+const rentbldg = await getAllRentBldgs({
   searchQuery: searchParams.q,
   filter: searchParams.filter,
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
-console.log(data)
+console.log(rentbldg)
 
   return (
     <>
@@ -78,21 +78,21 @@ console.log(data)
 
     <div className="mt-10 flex w-full flex-col gap-6 overflow-auto shadow">
     {/* <DataTable columns={columns} data={data} /> */}
-       {data.rentbldg.map((data)=>(
+       {rentbldg.rentbldg.map((rentbldg)=>(
         <RentbldgCard
-              key={data._id}
-              _id={data._id}
+              key={rentbldg._id}
+              _id={rentbldg._id}
               // clerkId={clerkId}
-              division={data.division}
-              rent={data.rent}
-              tags={data.tags}
-              class_po={data.class_po}
-              lease_period={data.lease_period}
-              soa={data.soa}
-              area={data.area}
-              author={data.author}
-              po={data.po} 
-              createdAt={data.createdAt} />
+              division={rentbldg.division}
+              rent={rentbldg.rent}
+              tags={rentbldg.tags}
+              class_po={rentbldg.class_po}
+              lease_period={rentbldg.lease_period}
+              soa={rentbldg.soa}
+              area={rentbldg.area}
+              author={rentbldg.author}
+              po={rentbldg.po} 
+              createdAt={rentbldg.createdAt} />
     
        ))}
       </div>

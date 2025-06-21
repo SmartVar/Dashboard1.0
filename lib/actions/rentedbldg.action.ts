@@ -83,7 +83,7 @@ export async function getRentBldg(params: GetRentBldgParams): Promise<RentBldgDe
     throw error;
   }
 }
-export async function getAllRentBldg(params: GetRentBldgParams) {
+export async function getAllRentBldgs(params: GetRentBldgParams) {
   try {
     connectToDatabase();
     const {searchQuery, filter, page = 1, pageSize = 10 } = params;

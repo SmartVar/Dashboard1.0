@@ -4,7 +4,7 @@ import PlotCard from '@/components/cards/PlotCard'
 import RentbldgCard from '@/components/cards/RentbldgCard'
 // import QuestionCard from '@/components/cards/QuestionCard'
 // import DopbldgCard from '@/components/cards/DopbldgCard'
-import NoResult from '@/components/shared/NoResult'
+// import NoResult from '@/components/shared/NoResult'
 // import Pagination from '@/components/shared/Pagination'
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { getDopBldgByTagId, getRentBldgByTagId, getPlotByTagId } from '@/lib/actions/tag.action'
@@ -60,12 +60,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
               po={departmentalbldg.po}
               createdAt={departmentalbldg.createdAt}  />
           ))
-          : <NoResult 
-            title="There’s no tag saved to show"
-            description="Enter Record"
-            link="/add-dop"
-            linkTitle="Create Dop Record"
-          />}
+          : <div></div>}
       </div>
 
       {/* </div> */}
@@ -89,12 +84,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
                           po={rentedbldg.po} 
                           createdAt={rentedbldg.createdAt} />
                      ))
-          : <NoResult 
-            title="There’s no tag saved to show"
-            description="Enter Record"
-            link="/add-rent"
-            linkTitle="Create Rent Record"
-          />}
+          : <div></div>}
       {/* </div>
       </div> 
        <div>
@@ -117,12 +107,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
           lease_period={plot.lease_period} 
           createdAt={plot.createdAt} />
                      ))
-          : <NoResult 
-            title="There’s no tag saved to show"
-            description="Enter Record"
-            link="/add-plot"
-            linkTitle="Create Plot Record"
-          />}
+          : <div></div>}
       {/* </div>
 
       <div className="mt-10">

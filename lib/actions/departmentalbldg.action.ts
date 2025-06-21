@@ -179,7 +179,7 @@ export async function createDopBldg(params: CreateDopBldgParams) {
     const dopbldg = await Departmentalbldg.create({
       division,
       po,
-      classes : classes,
+      classes,
       location,
       // // eslint-disable-next-line camelcase
       purchase_year,
@@ -309,7 +309,7 @@ export async function editDopBldg(params: EditDopBldgParams) {
   try {
     connectToDatabase();
 
-    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, path, tags } = params;
+    const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, tags, path } = params;
 
     const dopbldg = await Departmentalbldg.findById(departmentalbldgId).populate("tags");
 

@@ -240,65 +240,119 @@ export async function getRentBldgById(params: GetRentBldgByIdParams) {
   }
 }
 
+// export async function editRentBldg(params: EditRentBldgParams) {
+//   try {
+//     connectToDatabase();
+
+//     const { rentbldgId, division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, frac_status, frac_level, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, tags, path  } = params;
+
+//     const rentbldg = await Rentedbldg.findById(rentbldgId).populate("tags");
+
+//     if(!rentbldg) {
+//       throw new Error("Record not found");
+//     }
+    
+//       rentbldg.division = division;
+//       rentbldg.po = po;
+//       rentbldg.class_po = class_po;
+//       rentbldg.date_po_function = date_po_function;
+//       // eslint-disable-next-line camelcase
+//       rentbldg.class_city = class_city;
+//       rentbldg.soa = soa;
+//       rentbldg.area = area;
+//       rentbldg.paq = paq;
+//       rentbldg.lease_period = lease_period;
+//       rentbldg.rent = rent;
+//       rentbldg.frac_status = frac_status;
+//       rentbldg.frac_level = frac_level;
+//           rentbldg.fund_type =fund_type;
+//     rentbldg.fund_amount =fund_amount;
+//     rentbldg.cases =cases;
+//     rentbldg.case_description =case_description;
+//     rentbldg.case_action =case_action;
+//     rentbldg.case_divisionaction =case_divisionaction;
+//     rentbldg.brief_history =brief_history;
+//     rentbldg.corr_ro =corr_ro;
+//     rentbldg.corr_division =corr_division;
+
+// // Handle tags 
+// const tagDocuments = [];
+
+//  for (const tag of tags) {
+//        const existingTag = await Tag.findOneAndUpdate(
+//          { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+//          { $setOnInsert: { name: tag }, $push: { rentedbldgs: rentbldg._id } },
+//          { upsert: true, new: true }
+//        )
+ 
+//        tagDocuments.push(existingTag._id);
+//      }
+ 
+//      await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
+//        $push: { tags: { $each: tagDocuments }}
+//      });
+
+//     await rentbldg.save();
+
+//     revalidatePath(path);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
 export async function editRentBldg(params: EditRentBldgParams) {
   try {
-    connectToDatabase();
+    await connectToDatabase();
 
-    const { rentbldgId, division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, frac_status, frac_level, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, tags, path  } = params;
+    const {
+      rentbldgId, division, po, class_po, date_po_function, class_city, soa,
+      area, paq, lease_period, rent, frac_status, frac_level,
+      fund_type, fund_amount, cases, case_description, case_action,
+      case_divisionaction, brief_history, corr_ro, corr_division,
+      tags, path
+    } = params;
 
     const rentbldg = await Rentedbldg.findById(rentbldgId).populate("tags");
 
-    if(!rentbldg) {
+    if (!rentbldg) {
       throw new Error("Record not found");
     }
-    
-      rentbldg.division = division;
-      rentbldg.po = po;
-      rentbldg.class_po = class_po;
-      rentbldg.date_po_function = date_po_function;
-      // eslint-disable-next-line camelcase
-      rentbldg.class_city = class_city;
-      rentbldg.soa = soa;
-      rentbldg.area = area;
-      rentbldg.paq = paq;
-      rentbldg.lease_period = lease_period;
-      rentbldg.rent = rent;
-      rentbldg.frac_status = frac_status;
-      rentbldg.frac_level = frac_level;
-          rentbldg.fund_type =fund_type;
-    rentbldg.fund_amount =fund_amount;
-    rentbldg.cases =cases;
-    rentbldg.case_description =case_description;
-    rentbldg.case_action =case_action;
-    rentbldg.case_divisionaction =case_divisionaction;
-    rentbldg.brief_history =brief_history;
-    rentbldg.corr_ro =corr_ro;
-    rentbldg.corr_division =corr_division;
 
-// Handle tags 
-const tagDocuments = [];
+    // Update fields
+    Object.assign(rentbldg, {
+      division, po, class_po, date_po_function, class_city, soa, area, paq,
+      lease_period, rent, frac_status, frac_level, fund_type, fund_amount,
+      cases, case_description, case_action, case_divisionaction, brief_history,
+      corr_ro, corr_division
+    });
 
- for (const tag of tags) {
-       const existingTag = await Tag.findOneAndUpdate(
-         { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
-         { $setOnInsert: { name: tag }, $push: { rentedbldgs: rentbldg._id } },
-         { upsert: true, new: true }
-       )
- 
-       tagDocuments.push(existingTag._id);
-     }
- 
-     await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
-       $push: { tags: { $each: tagDocuments }}
-     });
+    // Handle tags
+    const existingTagIds = rentbldg.tags.map(tag => tag._id.toString());
+    const tagDocuments: string[] = [];
+
+    for (const tag of tags) {
+      const tagDoc = await Tag.findOneAndUpdate(
+        { name: { $regex: new RegExp(`^${tag}$`, "i") } },
+        { $setOnInsert: { name: tag }, $addToSet: { rentedbldgs: rentbldg._id } },
+        { upsert: true, new: true }
+      );
+      const tagId = tagDoc._id.toString();
+      if (!existingTagIds.includes(tagId)) {
+        tagDocuments.push(tagId);
+      }
+    }
+
+    // Merge and assign tags
+    rentbldg.tags = Array.from(new Set([...existingTagIds, ...tagDocuments]));
 
     await rentbldg.save();
-
     revalidatePath(path);
   } catch (error) {
-    console.log(error);
+    console.error("Error editing rented building:", error);
+    throw error;
   }
 }
+
 
 export async function deleteRentBldg(params: DeleteRentBldgParams) {
   try {

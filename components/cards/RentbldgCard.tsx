@@ -95,7 +95,8 @@ const RentbldgCard = ({
               imgUrl="/assets/icons/message.svg"
               alt="division"
               value={division}
-              title=" Dn"
+              title=""
+              unit=" Dn"
               textStyles="small-medium text-dark400_light800"
             />
           <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">

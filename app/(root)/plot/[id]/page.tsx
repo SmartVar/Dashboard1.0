@@ -88,7 +88,7 @@ import { Button } from "@/components/ui/button";
   </CardHeader>
 
   <CardContent className="pl-2">
-    <div className="flex flex-col sm:flex-row gap-4">
+    <div className="flex flex-col gap-4 sm:flex-row">
       {/* Left Column */}
       <div className="flex flex-col sm:w-1/2">
         <p><span className="primary-text-gradient">➔ Division : </span>{result.division}</p>

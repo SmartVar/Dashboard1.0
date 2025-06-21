@@ -15,7 +15,7 @@ import Link from "next/link";
 // import { useRouter, useSearchParams } from "next/navigation";
 // import { DataTable }  from '@/components/shared/tables/template/data-table';
 // import {  columns } from './columns'
-import { getAllPlot } from '@/lib/actions/plot.action';
+import { getAllPlots } from '@/lib/actions/plot.action';
 import { DivisionFilters } from '@/constants/filters';
 import PlotCard from '@/components/cards/PlotCard';
 // import { Pagination } from '@tanstack/react-table';
@@ -32,7 +32,7 @@ const Page = async ({ searchParams}: URLProps) => {
   // console.log (typeFilter);
   
 
-const plot = await getAllPlot({
+const plot = await getAllPlots({
   searchQuery: searchParams.q,
   filter: searchParams.filter,
 //   pagefilter : searchParams.pagefilter,

@@ -83,7 +83,7 @@ export async function getPlot(params: GetPlotParams): Promise<PlotDef[]> {
     throw error;
   }
 }
-export async function getAllPlot(params: GetPlotParams) {
+export async function getAllPlots(params: GetPlotParams) {
   try {
     connectToDatabase();
     const { searchQuery, filter, page = 1, pageSize = 10 } = params;
@@ -246,69 +246,131 @@ export async function getPlotById(params: GetPlotByIdParams) {
   }
 }
 
+// export async function editPlot(params: EditPlotParams) {
+//   try {
+//     connectToDatabase();
+
+//     const { plotId, division, name, district, location, local_body, area, moa, date_purchase, purchase_from, amount, purpose, lease_period, enchroached, enchroached_area, boundary_wall, po_constructed, mut_doc, mut_state, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, tags, path  } = params;
+
+//     const plot = await Plot.findById(plotId).populate("tags");
+
+//     if(!plot) {
+//       throw new Error("Record not found");
+//     }
+//       plot.division =division;
+//   plot.name = name;
+//     plot.district = district;
+//   plot.location = location;
+//   plot.local_body = local_body;
+//   plot.area = area;
+//   plot.moa = moa;
+//   plot.date_purchase = date_purchase;
+//   plot.purchase_from = purchase_from;
+//   plot.amount = amount;
+//   plot.purpose = purpose;
+//   plot.lease_period = lease_period;
+//  plot.enchroached = enchroached;
+//  plot.enchroached_area = enchroached_area;
+//  plot.boundary_wall = boundary_wall;
+//  plot.po_constructed = po_constructed;
+//    plot.mut_doc =mut_doc;
+//   plot.mut_state =mut_state;
+//     plot.fund_type =fund_type;
+//     plot.fund_amount =fund_amount;
+//     plot.cases =cases;
+//     plot.case_description =case_description;
+//     plot.case_action =case_action;
+//     plot.case_divisionaction =case_divisionaction;
+//   plot.brief_history =brief_history;
+//     plot.corr_ro =corr_ro;
+//     plot.corr_division =corr_division;
+    
+//     // Handle tags
+ 
+
+//         const tagDocuments = [];
+// for (const tag of tags) {
+//        const existingTag = await Tag.findOneAndUpdate(
+//          { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+//          { $setOnInsert: { name: tag }, $push: { plots: plot._id } },
+//          { upsert: true, new: true }
+//        )
+ 
+//        tagDocuments.push(existingTag._id);
+//      }
+ 
+//      await Plot.findByIdAndUpdate(plot._id, {
+//        $push: { tags: { $each: tagDocuments }}
+//      });
+     
+//     await plot.save();
+
+//     revalidatePath(path);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
 export async function editPlot(params: EditPlotParams) {
   try {
-    connectToDatabase();
+    await connectToDatabase();
 
-    const { plotId, division, name, district, location, local_body, area, moa, date_purchase, purchase_from, amount, purpose, lease_period, enchroached, enchroached_area, boundary_wall, po_constructed, mut_doc, mut_state, fund_type, fund_amount, cases, case_description,case_action, case_divisionaction, brief_history,corr_ro, corr_division, tags, path  } = params;
+    const {
+      plotId, division, name, district, location, local_body, area, moa,
+      date_purchase, purchase_from, amount, purpose, lease_period,
+      enchroached, enchroached_area, boundary_wall, po_constructed, mut_doc,
+      mut_state, fund_type, fund_amount, cases, case_description,
+      case_action, case_divisionaction, brief_history, corr_ro, corr_division,
+      tags, path
+    } = params;
 
     const plot = await Plot.findById(plotId).populate("tags");
-
-    if(!plot) {
+    if (!plot) {
       throw new Error("Record not found");
     }
-      plot.division =division;
-  plot.name = name;
-    plot.district = district;
-  plot.location = location;
-  plot.local_body = local_body;
-  plot.area = area;
-  plot.moa = moa;
-  plot.date_purchase = date_purchase;
-  plot.purchase_from = purchase_from;
-  plot.amount = amount;
-  plot.purpose = purpose;
-  plot.lease_period = lease_period;
- plot.enchroached = enchroached;
- plot.enchroached_area = enchroached_area;
- plot.boundary_wall = boundary_wall;
- plot.po_constructed = po_constructed;
-   plot.mut_doc =mut_doc;
-  plot.mut_state =mut_state;
-    plot.fund_type =fund_type;
-    plot.fund_amount =fund_amount;
-    plot.cases =cases;
-    plot.case_description =case_description;
-    plot.case_action =case_action;
-    plot.case_divisionaction =case_divisionaction;
-  plot.brief_history =brief_history;
-    plot.corr_ro =corr_ro;
-    plot.corr_division =corr_division;
-    
-    // Handle tags
 
-        const tagDocuments = [];
-for (const tag of tags) {
-       const existingTag = await Tag.findOneAndUpdate(
-         { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
-         { $setOnInsert: { name: tag }, $push: { plots: plot._id } },
-         { upsert: true, new: true }
-       )
- 
-       tagDocuments.push(existingTag._id);
-     }
- 
-     await Plot.findByIdAndUpdate(plot._id, {
-       $push: { tags: { $each: tagDocuments }}
-     });
-     
+    // Update basic fields
+    Object.assign(plot, {
+      division, name, district, location, local_body, area, moa,
+      date_purchase, purchase_from, amount, purpose, lease_period,
+      enchroached, enchroached_area, boundary_wall, po_constructed,
+      mut_doc, mut_state, fund_type, fund_amount, cases, case_description,
+      case_action, case_divisionaction, brief_history, corr_ro, corr_division
+    });
+
+    // Step 1: Get current tag IDs on the plot
+    const existingTagIds = plot.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
+
+    // Step 2: Track any new tag IDs to be added
+    const newTagIdsToAdd: string[] = [];
+
+    for (const tagName of tags) {
+      const tagDoc = await Tag.findOneAndUpdate(
+        { name: { $regex: new RegExp(`^${tagName}$`, "i") } },
+        { $setOnInsert: { name: tagName }, $addToSet: { plots: plot._id } },
+        { upsert: true, new: true }
+      );
+
+      const tagIdStr = tagDoc._id.toString();
+
+      // Only add to plot if not already present
+      if (!existingTagIds.includes(tagIdStr)) {
+        newTagIdsToAdd.push(tagIdStr);
+      }
+    }
+
+    // Step 3: Add new tags to the plot (without duplicates)
+    const mergedTags = Array.from(new Set([...existingTagIds, ...newTagIdsToAdd]));
+    plot.tags = mergedTags;
+
     await plot.save();
-
     revalidatePath(path);
   } catch (error) {
-    console.log(error);
+    console.error("Error editing plot:", error);
+    throw error;
   }
 }
+
 
 export async function deletePlot(params: DeletePlotParams) {
   try {

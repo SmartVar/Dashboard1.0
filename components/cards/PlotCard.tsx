@@ -67,7 +67,7 @@ const PlotCard = ({
 
         <SignedIn>
           {showActionButtons && (
-            <EditDeleteAction type="Departmentalbldg" itemId={JSON.stringify(_id)} url={''} />
+            <EditDeleteAction type="Plots" itemId={JSON.stringify(_id)} url={''} />
           )}
         </SignedIn>
       </div>
@@ -93,8 +93,8 @@ const PlotCard = ({
               imgUrl="/assets/icons/message.svg"
               alt="division"
               value={division}
-              title=" Dn"
-              unit=""
+              title=""
+              unit=" Dn"
               textStyles="small-medium text-dark400_light800"
             />
           <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">

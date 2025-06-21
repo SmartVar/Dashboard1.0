@@ -99,7 +99,7 @@ const event = await getAllEvents({
              month: "2-digit",
              timeZone: "Asia/Kolkata",
            })}
-           {event.status==='completed' ? '✅' : '⏳'}
+           {event.status==='Completed' ? '✅' : '⏳'}
        </span>
 
      </div><p className="mt-2 text-sm text-gray-400">{event.description}</p><div className="text-dark400_light700 flex items-center justify-between">

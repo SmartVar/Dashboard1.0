@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-contradicting-classname */
 /* eslint-disable no-template-curly-in-string */
 
 import {
@@ -25,6 +26,8 @@ import {
 import { getDopBldgById } from "@/lib/actions/departmentalbldg.action"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import InfoRow from "@/components/shared/InfoRow";
+
 
 
   const Page = async ({ params }: ParamsProps) => {
@@ -36,13 +39,29 @@ import { Button } from "@/components/ui/button";
     // if(!userId) return null;
   
     // const mongoUser = await getUserById({ userId })
-    const result = await getDopBldgById({ departmentalbldgId: params.id})
+//    const InfoRow = ({ label, value }: InfoRowProps) => (
+//   <div className="flex w-full items-center gap-4">
+//     <span className="primary-text-gradient w-[180px] shrink-0 whitespace-nowrap">{label}</span>
+//     <span
+//       className="text-dark400_light700 truncate text-left"
+//       title={value?.toString() || '—'}
+//     >
+//       {value ?? '—'}
+//     </span>
+//   </div>
+// )
+    
+
+
+const result = await getDopBldgById({ departmentalbldgId: params.id})
       
+    
+
     console.log(result)
 
     return (
       <>
-      <div className="flex w-full flex-col-reverse justify-between gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col-reverse justify-between gap-4 overflow-auto rounded-lg sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">
                 {result.po}</h1> 
                 <Link href={`/dopbldg/edit/${result._id}`}
@@ -88,8 +107,8 @@ import { Button } from "@/components/ui/button";
   </CardHeader>
 
   <CardContent className="pl-2">
-    <div className="flex flex-col sm:flex-row gap-4">
-      {/* Left Column */}
+    {/* <div className="flex flex-col sm:flex-row gap-4">
+      
       <div className="flex flex-col sm:w-1/2">
         <p><span className="primary-text-gradient">➔ Division : </span>{result.division}</p>
         <p><span className="primary-text-gradient">➔ Post Office : </span>{result.po}</p>
@@ -100,7 +119,7 @@ import { Button } from "@/components/ui/button";
         <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
       </div>
 
-      {/* Right Column */}
+    
       <div className="flex flex-col sm:w-1/2">
         <p><span className="primary-text-gradient">➔ Floors : </span>{result.floors}</p>
         <p><span className="primary-text-gradient">➔ Purchase Value : </span>{result.value}</p>
@@ -110,7 +129,32 @@ import { Button } from "@/components/ui/button";
         <p><span className="primary-text-gradient">➔ Last RO Corr : </span>{result.corr_ro}</p>
         <p><span className="primary-text-gradient">➔ Last Division Corr : </span>{result.corr_division}</p>
       </div>
+    </div> */}
+
+<div className="flex flex-col gap-4 sm:flex-row">
+      {/* Left Column */}
+      <div className="flex flex-col gap-2 sm:w-1/2">
+        <InfoRow label="➔ Division :" value={result.division} />
+        <InfoRow label="➔ Post Office :" value={result.po} />
+        <InfoRow label="➔ Purchase Year :" value={result.purchase_year} />
+        <InfoRow label="➔ SOA (Sq. ft) :" value={result.soa} />
+        <InfoRow label="➔ Class :" value={result.classes} />
+        <InfoRow label="➔ PAQ :" value={result.paq} />
+        <InfoRow label="➔ Area (Sq. mtr) :" value={result.area} />
+      </div>
+
+      {/* Right Column */}
+      <div className="flex flex-col gap-2 sm:w-1/2">
+        <InfoRow label="➔ Floors :" value={result.floors} />
+        <InfoRow label="➔ Purchase Value :" value={result.value} />
+        <InfoRow label="➔ Mutation Doc :" value={result.mut_doc} />
+        <InfoRow label="➔ Fund :" value={result.fund_type} />
+        <InfoRow label="➔ Cases :" value={result.cases} />
+        <InfoRow label="➔ Last RO Corr :" value={result.corr_ro} />
+        <InfoRow label="➔ Last Division Corr :" value={result.corr_division} />
+      </div>
     </div>
+
   </CardContent>
 </Card>
 
@@ -120,8 +164,8 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Mutation : </span>{result.mut_state}</p>
-          <p><span className="primary-text-gradient">➔ Mutation Doc : </span>{result.mut_doc}</p>
+            <InfoRow label="➔ Mutation :" value={result.mut_state} />
+            <InfoRow label="➔ Mutation Doc :" value={result.mut_doc} />
           </div>
           </CardContent>
           </Card>
@@ -131,10 +175,11 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Last Expenditure (in Rs.) : </span>{result.expenditure}</p>
-          <p><span className="primary-text-gradient">➔ Year of Last Expenditure : </span>{result.year}</p>
-          <p><span className="primary-text-gradient">➔ Fund Type : </span>{result.fund_type}</p>
-          <p><span className="primary-text-gradient">➔ Fund Allotted (in Rs.) : </span>{result.fund_amount}</p>
+          <InfoRow label="➔ Last Exp (Rs.) :" value={result.expenditure} />
+          <InfoRow label="➔ Year of Last Exp :" value={result.year} />
+          <InfoRow label="➔ Fund Type :" value={result.fund_type} />
+          <InfoRow label="➔ Fund Allot (Rs.) :" value={result.fund_amount} />
+
           </div>
           </CardContent>
           </Card>
@@ -144,10 +189,11 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Case Type : </span>{result.cases}</p>
-          <p><span className="primary-text-gradient">➔ Case Description : </span>{result.case_description}</p>
-          <p><span className="primary-text-gradient">➔ Action Proposed : </span>{result.case_action}</p>
-          <p><span className="primary-text-gradient">➔ Current Progress : </span>{result.case_divisionaction}</p>
+          <InfoRow label="➔ Case Type :" value={result.cases} />
+          <InfoRow label="➔ Case Description :" value={result.case_description} />
+          <InfoRow label="➔ Action Proposed :" value={result.case_action} />
+          <InfoRow label="➔ Current Progress :" value={result.case_divisionaction} />
+
           </div>
           </CardContent>
           </Card>
@@ -156,9 +202,11 @@ import { Button } from "@/components/ui/button";
           <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Brief History</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <div className="flex flex-col">
-          <p>{result.brief_history}</p>
-          </div>
+<div className="flex flex-col gap-2">
+  <span className="primary-text-gradient">➔ Brief History :</span>
+  <p className="text-dark400_light700 whitespace-pre-line">{result.brief_history || '—'}</p>
+</div>
+
           </CardContent>
           </Card>
       </div>

@@ -25,6 +25,7 @@ import {
 import { getRentBldgById } from "@/lib/actions/rentedbldg.action"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import InfoRow from "@/components/shared/InfoRow";
 
 
   const Page = async ({ params }: ParamsProps) => {
@@ -91,26 +92,26 @@ import { Button } from "@/components/ui/button";
     <div className="flex flex-col sm:flex-row gap-4">
       {/* Left Column */}
       <div className="flex flex-col sm:w-1/2">
-        <p><span className="primary-text-gradient">➔ Division : </span>{result.division}</p>
-        <p><span className="primary-text-gradient">➔ Post Office : </span>{result.po}</p>
-        <p><span className="primary-text-gradient">➔ Lease Period : </span>{result.lease_period}</p>
-        <p><span className="primary-text-gradient">➔ SOA (Sq. ft) : </span>{result.soa}</p>
-        <p><span className="primary-text-gradient">➔ Class : </span>{result.class_po}</p>
-        <p><span className="primary-text-gradient">➔ PAQ : </span>{result.paq}</p>
-        <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
-      </div>
+  <InfoRow label="➔ Division :" value={result.division} />
+  <InfoRow label="➔ Post Office :" value={result.po} />
+  <InfoRow label="➔ Lease Period :" value={result.lease_period} />
+  <InfoRow label="➔ SOA (Sq. ft) :" value={result.soa} />
+  <InfoRow label="➔ Class :" value={result.class_po} />
+  <InfoRow label="➔ PAQ :" value={result.paq} />
+  <InfoRow label="➔ Area (Sq. mtr) :" value={result.area} />
+</div>
 
-      {/* Right Column */}
-      <div className="flex flex-col sm:w-1/2">
-        <p><span className="primary-text-gradient">➔ Rent (Rs. per month) : </span>{result.rent}</p>
-        <p><span className="primary-text-gradient">➔ Frac Status : </span>{result.frac_status}</p>
-        <p><span className="primary-text-gradient">➔ Frac Level : </span>{result.frac_level}</p>
-        <p><span className="primary-text-gradient">➔ Fund Type : </span>{result.fund_type}</p>
-        <p><span className="primary-text-gradient">➔ Fund Amound : </span>{result.fund_amount}</p>
-        <p><span className="primary-text-gradient">➔ Cases : </span>{result.cases}</p>
-        <p><span className="primary-text-gradient">➔ Last RO Corr : </span>{result.corr_ro}</p>
-        <p><span className="primary-text-gradient">➔ Last Division Corr : </span>{result.corr_division}</p>
-      </div>
+<div className="flex flex-col sm:w-1/2">
+  <InfoRow label="➔ Rent (Rs. per month) :" value={result.rent} />
+  <InfoRow label="➔ Frac Status :" value={result.frac_status} />
+  <InfoRow label="➔ Frac Level :" value={result.frac_level} />
+  <InfoRow label="➔ Fund Type :" value={result.fund_type} />
+  <InfoRow label="➔ Fund Amount :" value={result.fund_amount} />
+  <InfoRow label="➔ Cases :" value={result.cases} />
+  <InfoRow label="➔ Last RO Corr :" value={result.corr_ro} />
+  <InfoRow label="➔ Last Division Corr :" value={result.corr_division} />
+</div>
+
     </div>
   </CardContent>
 </Card>
@@ -121,10 +122,10 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Lease Period : </span>{result.lease_period}</p>
-          <p><span className="primary-text-gradient">➔ Frac Status : </span>{result.frac_status}</p>
-        <p><span className="primary-text-gradient">➔ Frac Level : </span>{result.frac_level}</p>
-   
+         <InfoRow label="➔ Lease Period :" value={result.lease_period} />
+<InfoRow label="➔ Frac Status :" value={result.frac_status} />
+<InfoRow label="➔ Frac Level :" value={result.frac_level} />
+
           </div>
           </CardContent>
           </Card>
@@ -134,9 +135,9 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Fund Type : </span>{result.fund_type}</p>
-        <p><span className="primary-text-gradient">➔ Fund Amound : </span>{result.fund_amount}</p>
-        </div>
+<InfoRow label="➔ Fund Type :" value={result.fund_type} />
+<InfoRow label="➔ Fund Amount :" value={result.fund_amount} />
+</div>
           </CardContent>
           </Card>
             <Card className="text-dark200_light900 col-span-4 text-base font-bold">
@@ -145,11 +146,11 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Case Type : </span>{result.cases}</p>
-          <p><span className="primary-text-gradient">➔ Case Description : </span>{result.case_description}</p>
-          <p><span className="primary-text-gradient">➔ Action Proposed : </span>{result.case_action}</p>
-          <p><span className="primary-text-gradient">➔ Current Progress : </span>{result.case_divisionaction}</p>
-          </div>
+          <InfoRow label="➔ Case Type :" value={result.cases} />
+<InfoRow label="➔ Case Description :" value={result.case_description} />
+<InfoRow label="➔ Action Proposed :" value={result.case_action} />
+<InfoRow label="➔ Current Progress :" value={result.case_divisionaction} />
+ </div>
           </CardContent>
           </Card>
           <Card className="text-dark200_light900 col-span-4 text-base font-bold">
@@ -157,9 +158,10 @@ import { Button } from "@/components/ui/button";
           <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Brief History</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <div className="flex flex-col">
-          <p>{result.brief_history}</p>
-          </div>
+<div className="flex flex-col gap-2">
+  <span className="primary-text-gradient">➔ Brief History :</span>
+  <p className="text-dark400_light700 whitespace-pre-line">{result.brief_history || '—'}</p>
+</div>
           </CardContent>
           </Card>
       </div>

@@ -25,6 +25,7 @@ import {
 import { getPlotById } from "@/lib/actions/plot.action"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import InfoRow from "@/components/shared/InfoRow";
 
 
   const Page = async ({ params }: ParamsProps) => {
@@ -91,28 +92,27 @@ import { Button } from "@/components/ui/button";
     <div className="flex flex-col gap-4 sm:flex-row">
       {/* Left Column */}
       <div className="flex flex-col sm:w-1/2">
-        <p><span className="primary-text-gradient">➔ Division : </span>{result.division}</p>
-        <p><span className="primary-text-gradient">➔ Plot Name : </span>{result.name}</p>
-        <p><span className="primary-text-gradient">➔ Purchase Year : </span>{result.date_purchase}</p>
-        <p><span className="primary-text-gradient">➔ Location : </span>{result.location}</p>
-        <p><span className="primary-text-gradient">➔ Owner : </span>{result.purchase_from}</p>
-        <p><span className="primary-text-gradient">➔ Amount (in Rs.) : </span>{result.amount}</p>
-        <p><span className="primary-text-gradient">➔ Area (Sq. mtr) : </span>{result.area}</p>
-        <p><span className="primary-text-gradient">➔ Acquisition Mode : </span>{result.moa}</p>
-        </div>
+  <InfoRow label="➔ Division :" value={result.division} />
+  <InfoRow label="➔ Plot Name :" value={result.name} />
+  <InfoRow label="➔ Purchase Year :" value={result.date_purchase} />
+  <InfoRow label="➔ Location :" value={result.location} />
+  <InfoRow label="➔ Owner :" value={result.purchase_from} />
+  <InfoRow label="➔ Amount (in Rs.) :" value={result.amount} />
+  <InfoRow label="➔ Area (Sq. mtr) :" value={result.area} />
+  <InfoRow label="➔ Acquisition Mode :" value={result.moa} />
+</div>
 
-      {/* Right Column */}
-      <div className="flex flex-col sm:w-1/2">
-        <p><span className="primary-text-gradient">➔ Lease Period : </span>{result.lease_period}</p>
-        <p><span className="primary-text-gradient">➔ Enchroached : </span>{result.enchroached}</p>
-        <p><span className="primary-text-gradient">➔ Boundary Wall : </span>{result.boundary_wall}</p>
-        <p><span className="primary-text-gradient">➔ Mutation Doc : </span>{result.mut_doc}</p>
-        <p><span className="primary-text-gradient">➔ Fund : </span>{result.fund_type}</p>
-        <p><span className="primary-text-gradient">➔ Cases : </span>{result.cases}</p>
-        <p><span className="primary-text-gradient">➔ Last RO Corr : </span>{result.corr_ro}</p>
-        <p><span className="primary-text-gradient">➔ Last Division Corr : </span>{result.corr_division}</p>
-      </div>
-    </div>
+<div className="flex flex-col sm:w-1/2">
+  <InfoRow label="➔ Lease Period :" value={result.lease_period} />
+  <InfoRow label="➔ Enchroached :" value={result.enchroached} />
+  <InfoRow label="➔ Boundary Wall :" value={result.boundary_wall} />
+  <InfoRow label="➔ Mutation Doc :" value={result.mut_doc} />
+  <InfoRow label="➔ Fund :" value={result.fund_type} />
+  <InfoRow label="➔ Cases :" value={result.cases} />
+  <InfoRow label="➔ Last RO Corr :" value={result.corr_ro} />
+  <InfoRow label="➔ Last Division Corr :" value={result.corr_division} />
+</div>
+</div>
   </CardContent>
 </Card>
 
@@ -122,8 +122,9 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Mutation : </span>{result.mut_state}</p>
-          <p><span className="primary-text-gradient">➔ Mutation Doc : </span>{result.mut_doc}</p>
+      <InfoRow label="➔ Mutation :" value={result.mut_state} />
+<InfoRow label="➔ Mutation Doc :" value={result.mut_doc} />
+
           </div>
           </CardContent>
           </Card>
@@ -133,9 +134,10 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Proposed Structure : </span>{result.purpose}</p>
-          <p><span className="primary-text-gradient">➔ Fund Type : </span>{result.fund_type}</p>
-          <p><span className="primary-text-gradient">➔ Fund Allotted (in Rs.) : </span>{result.fund_amount}</p>
+<InfoRow label="➔ Proposed Structure :" value={result.purpose} />
+<InfoRow label="➔ Fund Type :" value={result.fund_type} />
+<InfoRow label="➔ Fund Allotted (in Rs.) :" value={result.fund_amount} />
+
           </div>
           </CardContent>
           </Card>
@@ -145,9 +147,9 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Enchroachment : </span>{result.enchroached}</p>
-          <p><span className="primary-text-gradient">➔ Area Enchroached (in sq. mtr) : </span>{result.enchroached_area}</p>
-           </div>
+         <InfoRow label="➔ Enchroachment :" value={result.enchroached} />
+<InfoRow label="➔ Area Enchroached (in sq. mtr) :" value={result.enchroached_area} />
+ </div>
           </CardContent>
           </Card>
             <Card className="text-dark200_light900 col-span-4 text-base font-bold">
@@ -156,10 +158,11 @@ import { Button } from "@/components/ui/button";
         </CardHeader>
         <CardContent className="pl-2">
           <div className="flex flex-col">
-          <p><span className="primary-text-gradient">➔ Case Type : </span>{result.cases}</p>
-          <p><span className="primary-text-gradient">➔ Case Description : </span>{result.case_description}</p>
-          <p><span className="primary-text-gradient">➔ Action Proposed : </span>{result.case_action}</p>
-          <p><span className="primary-text-gradient">➔ Current Progress : </span>{result.case_divisionaction}</p>
+<InfoRow label="➔ Case Type :" value={result.cases} />
+<InfoRow label="➔ Case Description :" value={result.case_description} />
+<InfoRow label="➔ Action Proposed :" value={result.case_action} />
+<InfoRow label="➔ Current Progress :" value={result.case_divisionaction} />
+
           </div>
           </CardContent>
           </Card>
@@ -168,8 +171,10 @@ import { Button } from "@/components/ui/button";
           <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Brief History</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <div className="flex flex-col">
-          <p>{result.brief_history}</p>
+<div className="flex flex-col gap-2">
+  <span className="primary-text-gradient">➔ Brief History :</span>
+  <p className="text-dark400_light700 whitespace-pre-line">{result.brief_history || '—'}</p>
+
           </div>
           </CardContent>
           </Card>

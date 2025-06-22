@@ -327,7 +327,7 @@ export async function editRentBldg(params: EditRentBldgParams) {
     });
 
     // Handle tags
-    const existingTagIds = rentbldg.tags.map(tag => tag._id.toString());
+    const existingTagIds = rentbldg.tags.map((tag: { _id: { toString: () => any; }; }) => tag._id.toString());
     const tagDocuments: string[] = [];
 
     for (const tag of tags) {

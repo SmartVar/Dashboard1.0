@@ -7,15 +7,36 @@ const InfoRow = ({ label, value }: InfoRowProps) => {
   const valueStr = value?.toString() ?? '—';
 
   return (
-    <div className="w-full flex justify-between items-center gap-2 py-1">
+    <div
+      className="
+        w-full max-w-screen-md
+        mx-auto
+        flex items-center
+        py-2
+        px-4
+        sm:px-0
+      "
+      style={{ maxWidth: '100vw' }}
+    >
       {/* Label */}
-      <span className="primary-text-gradient whitespace-nowrap text-sm sm:text-base">
+      <span
+        className="primary-text-gradient w-[180px] text-left whitespace-nowrap pr-4 flex-shrink-0 text-sm sm:text-base"
+        style={{ marginLeft: 0 }}
+      >
         {label}
       </span>
 
       {/* Value */}
       <span
-        className="text-dark400_light700 text-right text-sm sm:text-base truncate max-w-[60%]"
+        className="
+          text-dark400_light700 text-left text-sm sm:text-base flex-grow
+          overflow-hidden
+          whitespace-nowrap
+          sm:whitespace-nowrap
+          sm:text-ellipsis
+          break-words
+          sm:break-normal
+        "
         title={valueStr}
       >
         {valueStr}
@@ -23,5 +44,6 @@ const InfoRow = ({ label, value }: InfoRowProps) => {
     </div>
   );
 };
+
 
 export default InfoRow;

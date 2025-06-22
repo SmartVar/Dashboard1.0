@@ -16,9 +16,19 @@ import {
 } from "../../../components/ui/tabs"
 import Overviewdash from "../../../components/dashboard/Overviewdash"
 import EventCalendarContainer from '@/components/events/EventCalendarContainer'
+import Report from '@/components/reports/Report'
 // import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 // import BarChartsActive from "../../../components/charts/BarChartsActive"
 // import Stats from '@/components/shared/Stats'
+
+  const reports = [
+    'Monthly Report',
+    'Quarterly Summary',
+    'Annual Review',
+    'Special Audit',
+  ];
+
+  const divisions = ['NMD', 'RGD', 'PLG', 'NSK', 'MLG', 'THN'];
 
 
 const Page = async ({ searchParams}: URLProps) => {
@@ -131,6 +141,9 @@ const Page = async ({ searchParams}: URLProps) => {
               <TabsTrigger value="funds" className="tab">
                 Funds
               </TabsTrigger>
+              <TabsTrigger value="reports" className="tab">
+                Reports
+              </TabsTrigger>
               <TabsTrigger value="reminders" className="tab">
                 Reminders
               </TabsTrigger>
@@ -167,6 +180,10 @@ const Page = async ({ searchParams}: URLProps) => {
         badges={userInfo.badgeCounts}
       /> */}
       <Overviewdash />
+              </TabsContent>
+            <TabsContent value="reports" className="text-dark200_light900 space-y-4 text-sm font-medium">
+              <Report reports={reports} divisions={divisions} />
+
               </TabsContent>
             <TabsContent value="reminders" className="text-dark200_light900 space-y-4 text-sm font-medium">
               <EventCalendarContainer searchParams={searchParams}/>

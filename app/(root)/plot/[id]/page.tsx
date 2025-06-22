@@ -159,7 +159,9 @@ import InfoRow from "@/components/shared/InfoRow";
         <CardContent className="pl-2">
           <div className="flex flex-col">
 <InfoRow label="➔ Case Type :" value={result.cases} />
-<InfoRow label="➔ Case Description :" value={result.case_description} />
+{/* <InfoRow label="➔ Case Description :" value={result.case_description} /> */}
+<span className="primary-text-gradient">➔ Case Desc :</span>
+  <p className="text-dark400_light700 whitespace-pre-line">{result.case_description || '—'}</p>
 <InfoRow label="➔ Action Proposed :" value={result.case_action} />
 <InfoRow label="➔ Current Progress :" value={result.case_divisionaction} />
 

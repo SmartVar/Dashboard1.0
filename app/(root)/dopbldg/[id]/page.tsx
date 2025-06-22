@@ -190,7 +190,11 @@ const result = await getDopBldgById({ departmentalbldgId: params.id})
         <CardContent className="pl-2">
           <div className="flex flex-col">
           <InfoRow label="➔ Case Type :" value={result.cases} />
-          <InfoRow label="➔ Case Description :" value={result.case_description} />
+          {/* <InfoRow label="➔ Case Description :" value={result.case_description} /> */}
+          <div className="flex flex-col gap-2">
+  <span className="primary-text-gradient">➔ Case Desc :</span>
+  <p className="text-dark400_light700 whitespace-pre-line">{result.case_description || '—'}</p>
+</div>
           <InfoRow label="➔ Action Proposed :" value={result.case_action} />
           <InfoRow label="➔ Current Progress :" value={result.case_divisionaction} />
 

@@ -5,27 +5,23 @@ interface InfoRowProps {
 
 const InfoRow = ({ label, value }: InfoRowProps) => {
   const valueStr = value?.toString() ?? '—';
-  const isMultiline = valueStr.includes('\n') || valueStr.length > 100;
 
   return (
-    <div className="w-full flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+    <div className="w-full flex justify-between items-center gap-2 py-1">
       {/* Label */}
-      <span className="primary-text-gradient sm:min-w-[160px] font-semibold">
+      <span className="primary-text-gradient whitespace-nowrap text-sm sm:text-base">
         {label}
       </span>
 
       {/* Value */}
-      {isMultiline ? (
-        <p className="text-dark400_light700 whitespace-pre-line">{valueStr}</p>
-      ) : (
-        <span
-          className="text-dark400_light700 truncate"
-          title={valueStr}
-        >
-          {valueStr}
-        </span>
-      )}
+      <span
+        className="text-dark400_light700 text-right text-sm sm:text-base truncate max-w-[60%]"
+        title={valueStr}
+      >
+        {valueStr}
+      </span>
     </div>
   );
 };
+
 export default InfoRow;

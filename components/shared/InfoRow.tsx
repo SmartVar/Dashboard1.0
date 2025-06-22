@@ -8,17 +8,18 @@ const InfoRow = ({ label, value }: InfoRowProps) => {
   const isMultiline = valueStr.includes('\n') || valueStr.length > 100;
 
   return (
-    <div className="w-full relative">
-      {/* Label: min width, no wrap, grows if longer */}
-      <span className="primary-text-gradient inline-block min-w-[280px] whitespace-nowrap">
+    <div className="w-full flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+      {/* Label */}
+      <span className="primary-text-gradient sm:min-w-[160px] font-semibold">
         {label}
       </span>
 
+      {/* Value */}
       {isMultiline ? (
-        <p className="text-dark400_light700 mt-1 ml-[280px] whitespace-pre-line">{valueStr}</p>
+        <p className="text-dark400_light700 whitespace-pre-line">{valueStr}</p>
       ) : (
         <span
-          className="text-dark400_light700 truncate inline-block ml-4 max-w-[calc(100%-280px)] align-top"
+          className="text-dark400_light700 truncate"
           title={valueStr}
         >
           {valueStr}
@@ -27,5 +28,4 @@ const InfoRow = ({ label, value }: InfoRowProps) => {
     </div>
   );
 };
-
 export default InfoRow;

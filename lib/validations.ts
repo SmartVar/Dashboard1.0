@@ -77,6 +77,25 @@ export const EventSchema = z.object({
   tot_reminder: z.string().min(2).max(130),
 
 })
+export const ReportSchema = z.object({
+  title: z.string().min(2).max(130),
+  nmd: z.string().min(2).max(130),
+  thn: z.string().min(2).max(130),
+  nsk: z.string().min(2).max(130),
+  rgd: z.string().min(2).max(130),
+  mld: z.string().min(2).max(130),
+  pld: z.string().min(2).max(130),
+  psd: z.string().min(2).max(130),
+  csd: z.string().min(2).max(130),
+  rtc: z.string().min(2).max(130),
+ c_sion: z.string().min(2).max(130),
+  c_pune: z.string().min(2).max(130),
+  e_sion: z.string().min(2).max(130),
+  remark: z.string().min(2).max(130),
+  status: z.string().min(2).max(130),
+
+
+})
 
 export const RentedbldgSchema = z.object({
   division: z.string().min(2).max(130),

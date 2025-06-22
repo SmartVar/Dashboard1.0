@@ -17,24 +17,29 @@ import {
 import Overviewdash from "../../../components/dashboard/Overviewdash"
 import EventCalendarContainer from '@/components/events/EventCalendarContainer'
 import Report from '@/components/reports/Report'
+// import { getAllReports } from '@/lib/actions/report.action'
 // import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 // import BarChartsActive from "../../../components/charts/BarChartsActive"
 // import Stats from '@/components/shared/Stats'
 
-  const reports = [
-    'Monthly Report',
-    'Quarterly Summary',
-    'Annual Review',
-    'Special Audit',
-  ];
-
-  const divisions = ['NMD', 'RGD', 'PLG', 'NSK', 'MLG', 'THN'];
-
+  // const reports = [
+  //   'Monthly Report',
+  //   'Quarterly Summary',
+  //   'Annual Review',
+  //   'Special Audit',
+  // ];
+ 
 
 const Page = async ({ searchParams}: URLProps) => {
   // const { userId } = auth();
   // const userInfo = await getUserInfo({ userId});
 // console.log(userInfo);
+
+
+  // console.log(reports.report)
+
+  // const divisions = ['NMD', 'THN', 'NSK', 'RGD', 'MLD', 'PLD', 'PSD', 'CSD', 'RTC', 'C_SION', 'C_PUNE', 'E_SION'];
+
   return (
     <>
       <div className="flex flex-col-reverse items-start justify-between sm:flex-row">
@@ -182,7 +187,7 @@ const Page = async ({ searchParams}: URLProps) => {
       <Overviewdash />
               </TabsContent>
             <TabsContent value="reports" className="text-dark200_light900 space-y-4 text-sm font-medium">
-              <Report reports={reports} divisions={divisions} />
+              <Report />
 
               </TabsContent>
             <TabsContent value="reminders" className="text-dark200_light900 space-y-4 text-sm font-medium">

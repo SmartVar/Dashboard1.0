@@ -54,6 +54,13 @@ export interface GetTaskParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetReportParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 export interface GetEventsParams {
   page?: number;
   pageSize?: number;
@@ -126,6 +133,25 @@ export interface CreateTaskParams {
   label: string;
   priority: string;
   remark: string;
+  path: string;
+}
+export interface CreateReportParams {
+  // id: string;
+  title?: string;
+  nmd?: string;
+  thn?: string;
+  nsk?: string;
+  rgd?: string;
+  mld?: string;
+  pld?: string;
+  psd?: string;
+  csd?: string;
+  rtc?: string;
+  c_sion?: string;
+  c_pune?: string;
+  e_sion?: string;
+  remark?: string;
+  status?: string;
   path: string;
 }
 export interface CreateDopBldgParams {
@@ -269,6 +295,9 @@ export interface GetTemplateByIdParams {
 export interface GetTaskByIdParams {
   taskId: string;
 }
+export interface GetReportByIdParams {
+  reportId: string;
+}
 export interface GetDopBldgByIdParams {
   departmentalbldgId: string;
 }
@@ -303,6 +332,10 @@ export interface DeleteQuestionParams {
 // }
 export interface DeleteTaskParams {
   taskId: string;
+  path: string;
+}
+export interface DeleteReportParams {
+  reportId: string;
   path: string;
 }
 export interface DeleteDopBldgParams {
@@ -401,6 +434,25 @@ export interface EditEventParams {
   status: string;
   reminders: string;
   tot_reminder: string;
+  path: string;
+}
+export interface EditReportParams {
+  reportId: string;
+  title?: string;
+  nmd?: string;
+  thn?: string;
+  nsk?: string;
+  rgd?: string;
+  mld?: string;
+  pld?: string;
+  psd?: string;
+  csd?: string;
+  rtc?: string;
+  c_sion?: string;
+  c_pune?: string;
+  e_sion?: string;
+  remark?: string;
+  status?: string;
   path: string;
 }
 export interface EditTicketParams {

@@ -260,10 +260,26 @@
 import React, { useEffect, useState } from 'react';
 import { getAllReports, updateReportStatus } from '@/lib/actions/report.action';
 
-const Report = () => {
-  const [reports, setReports] = useState([]);
-  const [loading, setLoading] = useState(true);
 
+type Report = {
+  _id: string;
+  title: string;
+  nmd: string;
+  thn: string;
+  nsk: string;
+  rgd: string;
+  mld: string;
+  pld: string;
+  psd: string;
+  csd: string;
+  rtc: string;
+  status: string;
+};
+
+const Report = () => {
+  const [reports, setReports] = useState<Report[]>([]);
+  const [loading, setLoading] = useState(true);
+  
   const fields = ['nmd', 'thn', 'nsk', 'rgd', 'mld', 'pld', 'psd', 'csd', 'rtc', 'status'];
 
   useEffect(() => {

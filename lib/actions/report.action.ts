@@ -230,3 +230,26 @@ export async function deleteReport(params: DeleteReportParams) {
     console.log(error);
   }
 }
+
+export async function updateReportStatus(reportId: string, field: string, value: 'Completed' | 'Pending') {
+  try {
+    await connectToDatabase();
+
+    const allowedFields = ['nmd', 'thn', 'nsk', 'rgd', 'mld', 'pld', 'psd', 'csd', 'rtc', 'status'];
+
+    if (!allowedFields.includes(field)) {
+      throw new Error(`Invalid field name: ${field}`);
+    }
+
+    const updateObj: Record<string, string> = {};
+    updateObj[field] = value;
+
+    await Report.findByIdAndUpdate(reportId, updateObj);
+
+    // Optional: you could revalidate a path here if needed
+    // revalidatePath("/your-path"); 
+  } catch (error) {
+    console.error("Failed to update report status:", error);
+    throw error;
+  }
+}

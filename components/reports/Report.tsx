@@ -260,7 +260,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAllReports, updateReportStatus } from '@/lib/actions/report.action';
 
-// 1️⃣ Define type for dynamic fields
+// 1️⃣ Define all report fields as a union type
 type Field =
   | 'nmd'
   | 'thn'
@@ -273,17 +273,16 @@ type Field =
   | 'rtc'
   | 'status';
 
-// 2️⃣ Define Report type with fixed keys + dynamic access
-type Report = {
+// 2️⃣ Define report item type to avoid name conflict with component
+type ReportItem = {
   _id: string;
   title: string;
 } & Record<Field, string>;
 
 const Report = () => {
-  const [reports, setReports] = useState<Report[]>([]);
+  const [reports, setReports] = useState<ReportItem[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 3️⃣ Field list (typed with `Field[]` to match Report)
   const fields: Field[] = ['nmd', 'thn', 'nsk', 'rgd', 'mld', 'pld', 'psd', 'csd', 'rtc', 'status'];
 
   useEffect(() => {
@@ -299,7 +298,7 @@ const Report = () => {
   const handleCheckboxChange = async (reportId: string, field: Field, isChecked: boolean) => {
     const newStatus = isChecked ? 'Completed' : 'Pending';
 
-    // Optimistic UI update
+    // Optimistically update the UI
     setReports(prev =>
       prev.map(report =>
         report._id === reportId ? { ...report, [field]: newStatus } : report
@@ -310,6 +309,7 @@ const Report = () => {
       await updateReportStatus(reportId, field, newStatus);
     } catch (error) {
       console.error('Failed to update status:', error);
+      // Optionally revert the change here if needed
     }
   };
 

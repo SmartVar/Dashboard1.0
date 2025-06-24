@@ -260,27 +260,31 @@
 import React, { useEffect, useState } from 'react';
 import { getAllReports, updateReportStatus } from '@/lib/actions/report.action';
 
+// 1️⃣ Define type for dynamic fields
+type Field =
+  | 'nmd'
+  | 'thn'
+  | 'nsk'
+  | 'rgd'
+  | 'mld'
+  | 'pld'
+  | 'psd'
+  | 'csd'
+  | 'rtc'
+  | 'status';
 
+// 2️⃣ Define Report type with fixed keys + dynamic access
 type Report = {
   _id: string;
   title: string;
-  nmd: string;
-  thn: string;
-  nsk: string;
-  rgd: string;
-  mld: string;
-  pld: string;
-  psd: string;
-  csd: string;
-  rtc: string;
-  status: string;
-};
+} & Record<Field, string>;
 
 const Report = () => {
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
-  
-  const fields = ['nmd', 'thn', 'nsk', 'rgd', 'mld', 'pld', 'psd', 'csd', 'rtc', 'status'];
+
+  // 3️⃣ Field list (typed with `Field[]` to match Report)
+  const fields: Field[] = ['nmd', 'thn', 'nsk', 'rgd', 'mld', 'pld', 'psd', 'csd', 'rtc', 'status'];
 
   useEffect(() => {
     const fetchReports = async () => {
@@ -292,7 +296,7 @@ const Report = () => {
     fetchReports();
   }, []);
 
-  const handleCheckboxChange = async (reportId: string, field: string, isChecked: boolean) => {
+  const handleCheckboxChange = async (reportId: string, field: Field, isChecked: boolean) => {
     const newStatus = isChecked ? 'Completed' : 'Pending';
 
     // Optimistic UI update
@@ -306,7 +310,6 @@ const Report = () => {
       await updateReportStatus(reportId, field, newStatus);
     } catch (error) {
       console.error('Failed to update status:', error);
-      // Revert on error if needed
     }
   };
 

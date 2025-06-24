@@ -255,38 +255,88 @@
 
 // export default EventList;
 
-import { getAllReports } from '@/lib/actions/report.action';
-import React from 'react';
+'use client';
 
-const Report = async () => {
-  const { report } = await getAllReports({});
+import React, { useEffect, useState } from 'react';
+import { getAllReports, updateReportStatus } from '@/lib/actions/report.action';
 
-  if (!report || report.length === 0) {
-    return <p className="text-gray-400">No reports found.</p>;
-  }
+const Report = () => {
+  const [reports, setReports] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  return report.map((report: any) => (
-    <div
-      key={report._id?.toString()}
-      className="odd:border-t-lamaSky even:border-t-lamaPurple rounded-md border-2 border-t-4 border-gray-100 p-5"
-    >
-      <div className="text-dark400_light700 flex items-center justify-between">
-        <h1 className="font-semibold text-primary-500">{report.title}</h1>
-        <span className="text-xs text-gray-300 space-x-1">
-          {report.nmd === 'Completed' ? '✅' : '❌'}
-          {report.thn === 'Completed' ? '✅' : '❌'}
-          {report.nsk === 'Completed' ? '✅' : '❌'}
-          {report.rgd === 'Completed' ? '✅' : '❌'}
-          {report.mld === 'Completed' ? '✅' : '❌'}
-          {report.pld === 'Completed' ? '✅' : '❌'}
-          {report.psd === 'Completed' ? '✅' : '❌'}
-          {report.csd === 'Completed' ? '✅' : '❌'}
-          {report.rtc === 'Completed' ? '✅' : '❌'}
-          {report.status === 'Completed' ? '✅' : '❌'}
-        </span>
-      </div>
+  const fields = ['nmd', 'thn', 'nsk', 'rgd', 'mld', 'pld', 'psd', 'csd', 'rtc', 'status'];
+
+  useEffect(() => {
+    const fetchReports = async () => {
+      const { report } = await getAllReports({});
+      setReports(report || []);
+      setLoading(false);
+    };
+
+    fetchReports();
+  }, []);
+
+  const handleCheckboxChange = async (reportId: string, field: string, isChecked: boolean) => {
+    const newStatus = isChecked ? 'Completed' : 'Pending';
+
+    // Optimistic UI update
+    setReports(prev =>
+      prev.map(report =>
+        report._id === reportId ? { ...report, [field]: newStatus } : report
+      )
+    );
+
+    try {
+      await updateReportStatus(reportId, field, newStatus);
+    } catch (error) {
+      console.error('Failed to update status:', error);
+      // Revert on error if needed
+    }
+  };
+
+  if (loading) return <p className="text-gray-400">Loading reports...</p>;
+  if (reports.length === 0) return <p className="text-gray-400">No reports found.</p>;
+
+  return (
+    <div className="overflow-x-auto mt-5">
+      <table className="min-w-full divide-y divide-gray-300 border border-gray-200">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Title</th>
+            {fields.map(field => (
+              <th key={field} className="px-4 py-2 text-sm text-gray-700 capitalize text-center">
+                {field}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100 bg-white">
+          {reports.map(report => (
+            <tr key={report._id}>
+              <td className="px-4 py-2 font-medium text-primary-600">{report.title}</td>
+              {fields.map(field => {
+                const isCompleted = report[field] === 'Completed';
+                return (
+                  <td key={field} className="px-4 py-2 text-center">
+                    <label className="flex items-center justify-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={isCompleted}
+                        onChange={e =>
+                          handleCheckboxChange(report._id, field, e.target.checked)
+                        }
+                      />
+                      <span>{isCompleted ? '✅' : '❌'}</span>
+                    </label>
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  ));
+  );
 };
 
 export default Report;

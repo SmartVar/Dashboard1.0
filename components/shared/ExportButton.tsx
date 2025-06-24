@@ -1,33 +1,32 @@
 // components/shared/ExportButton.tsx
 "use client";
 
-import React from "react";
 import * as XLSX from "xlsx";
-import { saveAs } from "file-saver";
 import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
+import { ReactNode } from "react";
 
-interface ExportButtonProps {
-  data: any[];
+export interface ExportButtonProps {
+  data: object[];
+  children?: ReactNode; // ✅ Accept children
 }
 
-const ExportButton = ({ data }: ExportButtonProps) => {
-  const exportAllToExcel = () => {
+const ExportButton = ({ data, children }: ExportButtonProps) => {
+  const handleExport = () => {
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Dashboard Data");
-    const wbout = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-    const blob = new Blob([wbout], {
-      type: "application/octet-stream",
-    });
-    saveAs(blob, "dashboard-data.xlsx");
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Data");
+    XLSX.writeFile(workbook, "exported_data.xlsx");
   };
 
   return (
-    <Button
-      onClick={exportAllToExcel}
-      className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
-    >
-      Export All to Excel
+    <Button onClick={handleExport} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white">
+      {children ?? (
+        <>
+          <Download className="w-4 h-4" /> Export
+        </>
+      )}
     </Button>
   );
 };

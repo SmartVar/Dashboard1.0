@@ -233,6 +233,7 @@ import {
   Scale,
   History,
   Copy,
+  Download,
 } from "lucide-react";
 import {
   Card,
@@ -247,6 +248,7 @@ import { ParamsProps } from "@/types";
 // import { LineChart, Line, ResponsiveContainer, XAxis, Tooltip as ChartTooltip } from "recharts";
 // import ReactTooltip from "react-tooltip";
 import Tooltip from "react-tooltip";
+import ExportButton from "@/components/shared/ExportButton";
 
 // Helper: Copy to clipboard
 // const CopyButton = ({ text }: { text: string }) => {
@@ -264,6 +266,9 @@ const CopyButton = ({ text }: { text: string }) => {
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
+
+
+
 
   return (
     <button
@@ -313,6 +318,48 @@ const Page = ({ params }: ParamsProps) => {
   //   { label: "Allotted", value: Number(data.fund_amount || 0) },
   //   { label: "Expended", value: Number(data.expenditure || 0) },
   // ];
+const exportData = [
+  {
+    Section: "At a Glance",
+    "Division": data.division,
+    "Post Office": data.po,
+    "Lease Period": data.lease_period,
+    "SOA (Sq. ft)": data.soa,
+    "Class": data.class_po,
+    "PAQ": data.paq,
+    "Area (Sq. mtr)": data.area,
+    "Rent (Rs. per month)": data.rent,
+    "Frac Status": data.frac_status,
+    "Frac Level": data.frac_level,
+    "Fund Type": data.fund_type,
+    "Fund Amount": data.fund_amount,
+    "Cases": data.cases,
+    "Last RO Corr": data.corr_ro,
+    "Last Division Corr": data.corr_division,
+  },
+  {
+    Section: "Frac Details",
+    "Lease Period": data.lease_period,
+    "Frac Status": data.frac_status,
+    "Frac Level": data.frac_level,
+  },
+  {
+    Section: "Funds Details",
+    "Fund Type": data.fund_type,
+    "Fund Amount": data.fund_amount,
+  },
+  {
+    Section: "Cases Details",
+    "Case Type": data.cases,
+    "Case Desc": data.case_description || "—",
+    "Action Proposed": data.case_action,
+    "Current Progress": data.case_divisionaction,
+  },
+  {
+    Section: "Brief History",
+    "History": data.brief_history || "—",
+  }
+];
 
   const cards = [
     {
@@ -473,8 +520,12 @@ return (
             <PencilLine className="w-4 h-4" /> Edit Records
           </Button>
         </Link>
-      </div>
-    </div>
+        <ExportButton data={exportData}>
+                   <Download className="w-4 h-4" /> Export
+                  </ExportButton>
+                </div>
+              </div>
+      
 
     {/* Cards Grid */}
     <div className="grid gap-6 md:grid-cols-2">

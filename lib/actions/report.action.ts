@@ -252,3 +252,4 @@ export async function updateReportStatus(reportId: string, field: string, value:
     console.error("Failed to update report status:", error);
     throw error;
   }
+}

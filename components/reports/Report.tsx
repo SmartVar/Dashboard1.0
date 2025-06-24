@@ -326,7 +326,7 @@ const Report = () => {
                    <Link href="/add-report" 
                     className="flex justify-end max-sm:w-full">
                      <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-                       New Event
+                       New Report
                      </Button>
                    </Link> 
                  </div> 

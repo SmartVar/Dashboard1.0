@@ -256,6 +256,10 @@
 // export default EventList;
 
 'use client';
+import Link from 'next/link';
+// import React, { useState, useEffect } from 'react';
+import { Button } from '../ui/button';
+import LocalSearchbar from '../shared/search/LocalSearchbar';
 
 import React, { useEffect, useState } from 'react';
 import { getAllReports, updateReportStatus } from '@/lib/actions/report.action';
@@ -318,6 +322,26 @@ const Report = () => {
 
   return (
     <div className="overflow-x-auto mt-5">
+      <div>
+                   <Link href="/add-report" 
+                    className="flex justify-end max-sm:w-full">
+                     <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+                       New Event
+                     </Button>
+                   </Link> 
+                 </div> 
+                   <div className="mt-11 flex justify-between gap-5 
+                       max-sm:flex-col sm:items-center">
+                       <LocalSearchbar 
+                         route="/"
+                         iconPosition="left"
+                      imgSrc="/assets/icons/search.svg"
+                        placeholder="Search for Report title or Status"
+                        otherClasses="flex-1"
+                       />
+                               
+                   </div>
+                        
       <table className="min-w-full divide-y divide-gray-300 border border-gray-200">
         <thead className="bg-gray-100">
           <tr>

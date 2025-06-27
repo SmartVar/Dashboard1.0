@@ -330,7 +330,7 @@ const Page = async ({ params }: ParamsProps) => {
           { key: "history", title: "Brief History", icon: <History className="text-purple-600" /> },
         ].map(({ key, title, icon }) => (
           <Card key={key} className="shadow-lg border border-gray-200 dark:border-gray-700 rounded-lg">
-            <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
+            <CardHeader className="flex flex-between items-center gap-2 border-b p-4 dark:border-gray-600 ">
               {icon}
               <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
                 {title}

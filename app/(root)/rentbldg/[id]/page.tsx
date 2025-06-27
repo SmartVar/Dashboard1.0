@@ -347,7 +347,7 @@ const Page = async ({ params }: ParamsProps) => {
             {key === "cases-details" && (
               <>
                 <InfoRow label="Case Type :" value={result.cases} />
-                <span className="primary-text-gradient">➔ Case Desc :</span>
+                <span className="primary-text-gradient">Case Desc :</span>
                 <p className="text-dark400_light700 whitespace-pre-line">
                   {result.case_description || "—"}
                 </p>

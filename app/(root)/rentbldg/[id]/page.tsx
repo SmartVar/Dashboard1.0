@@ -318,9 +318,9 @@ const Page = async ({ params }: ParamsProps) => {
 
       {/* Other cards */}
       {[
-        { key: "frac-details", title: "Frac Details", icon: <Scale className="text-indigo-600" /> },
+        { key: "frac-details", title: "Frac Details", icon: <FileText className="text-orange-600" /> },
         { key: "funds-details", title: "Funds Details", icon: <Banknote className="text-green-600" /> },
-        { key: "cases-details", title: "Cases Details", icon: <FileText className="text-orange-600" /> },
+        { key: "cases-details", title: "Cases Details", icon: <Scale className="text-indigo-600" /> },
         { key: "brief-history", title: "Brief History", icon: <History className="text-purple-600" /> },
       ].map(({ key, title, icon }) => (
         <Card key={key} className="shadow-lg border border-gray-200 rounded-lg dark:border-gray-700">

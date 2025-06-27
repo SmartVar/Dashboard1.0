@@ -279,18 +279,18 @@ const Page = async ({ params }: ParamsProps) => {
           <CardContent className="p-4 space-y-4">
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col sm:w-1/2 space-y-2">
-                <InfoRow label="→ Location:" value={result.location} />
-                <InfoRow label="→ Purchase Year:" value={result.date_purchase} />
-                <InfoRow label="→ Amount (Rs.):" value={result.amount} />
-                <InfoRow label="→ Area (Sq. mtr):" value={result.area} />
-                <InfoRow label="→ Acquisition Mode:" value={result.moa} />
+                <InfoRow label="Location:" value={result.location} />
+                <InfoRow label="Purchase Year:" value={result.date_purchase} />
+                <InfoRow label="Amount (Rs.):" value={result.amount} />
+                <InfoRow label="Area (Sq. mtr):" value={result.area} />
+                <InfoRow label="Acquisition Mode:" value={result.moa} />
               </div>
               <div className="flex flex-col sm:w-1/2 space-y-2">
-                <InfoRow label="→ Lease Period:" value={result.lease_period} />
-                <InfoRow label="→ Enchroached:" value={result.enchroached} />
-                <InfoRow label="→ Boundary Wall:" value={result.boundary_wall} />
-                <InfoRow label="→ Mutation Doc:" value={result.mut_doc} />
-                <InfoRow label="→ Fund Type:" value={result.fund_type} />
+                <InfoRow label="Lease Period:" value={result.lease_period} />
+                <InfoRow label="Enchroached:" value={result.enchroached} />
+                <InfoRow label="Boundary Wall:" value={result.boundary_wall} />
+                <InfoRow label="Mutation Doc:" value={result.mut_doc} />
+                <InfoRow label="Fund Type:" value={result.fund_type} />
               </div>
             </div>
           </CardContent>
@@ -314,20 +314,20 @@ const Page = async ({ params }: ParamsProps) => {
             <CardContent className="p-4 space-y-2">
               {key === "mutation" && (
                 <>
-                  <InfoRow label="→ Mutation State:" value={result.mut_state} />
-                  <InfoRow label="→ Mutation Doc:" value={result.mut_doc} />
+                  <InfoRow label="Mutation State:" value={result.mut_state} />
+                  <InfoRow label="Mutation Doc:" value={result.mut_doc} />
                 </>
               )}
               {key === "funds" && (
                 <>
-                  <InfoRow label="→ Fund Type:" value={result.fund_type} />
-                  <InfoRow label="→ Fund Allotted (Rs.):" value={result.fund_amount} />
+                  <InfoRow label="Fund Type:" value={result.fund_type} />
+                  <InfoRow label="Fund Allotted (Rs.):" value={result.fund_amount} />
                 </>
               )}
               {key === "encroach" && (
                 <>
-                  <InfoRow label="→ Enchroachment:" value={result.enchroached} />
-                  <InfoRow label="→ Area Enchroached:" value={result.enchroached_area} />
+                  <InfoRow label="Enchroachment:" value={result.enchroached} />
+                  <InfoRow label="Area Enchroached:" value={result.enchroached_area} />
                 </>
               )}
               {key === "cases" && (
@@ -337,8 +337,8 @@ const Page = async ({ params }: ParamsProps) => {
                   <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
                     {result.case_description || "—"}
                   </p>
-                  <InfoRow label="→ Action Proposed:" value={result.case_action} />
-                  <InfoRow label="→ Current Progress:" value={result.case_divisionaction} />
+                  <InfoRow label="Action Proposed:" value={result.case_action} />
+                  <InfoRow label="Current Progress:" value={result.case_divisionaction} />
                 </>
               )}
               {key === "history" && (

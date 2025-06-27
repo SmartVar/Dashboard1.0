@@ -264,7 +264,7 @@ const Page = async ({ params }: ParamsProps) => {
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{result.po}</h1>
 
-      <div className="flex gap-3">
+      <div className="flex justify-end w-full gap-2 sm:w-auto">
         {/* Edit button */}
         <Link href={`/rentbldg/edit/${result._id}`} className="flex-shrink-0">
           <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2">

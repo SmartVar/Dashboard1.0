@@ -249,7 +249,7 @@ const Page = async ({ params }: ParamsProps) => {
   return (
     <>
       {/* Header with Title and Buttons */}
-      <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           {result.name}
         </h1>

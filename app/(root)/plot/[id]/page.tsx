@@ -203,7 +203,7 @@ import { Button } from "@/components/ui/button";
 import InfoRow from "@/components/shared/InfoRow";
 import { ParamsProps } from "@/types";
 import { getPlotById } from "@/lib/actions/plot.action";
-import { PencilLine, Info, FileText, Banknote, Scale, History, Download } from "lucide-react";
+import { PencilLine, Info, FileText, Banknote, Scale, Copy, History, Download } from "lucide-react";
 
 import ExportButton from "@/components/shared/ExportButton";
 

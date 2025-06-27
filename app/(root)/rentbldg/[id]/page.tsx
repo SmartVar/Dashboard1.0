@@ -293,24 +293,24 @@ const Page = async ({ params }: ParamsProps) => {
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Left Column */}
             <div className="flex flex-col sm:w-1/2 space-y-2">
-              <InfoRow label="➔ Division :" value={result.division} />
-              <InfoRow label="➔ Post Office :" value={result.po} />
-              <InfoRow label="➔ Lease Period :" value={result.lease_period} />
-              <InfoRow label="➔ SOA (Sq. ft) :" value={result.soa} />
-              <InfoRow label="➔ Class :" value={result.class_po} />
-              <InfoRow label="➔ PAQ :" value={result.paq} />
-              <InfoRow label="➔ Area (Sq. mtr) :" value={result.area} />
+              <InfoRow label="Division :" value={result.division} />
+              <InfoRow label="Post Office :" value={result.po} />
+              <InfoRow label="Lease Period :" value={result.lease_period} />
+              <InfoRow label="SOA (Sq. ft) :" value={result.soa} />
+              <InfoRow label="Class :" value={result.class_po} />
+              <InfoRow label="PAQ :" value={result.paq} />
+              <InfoRow label="Area (Sq. mtr) :" value={result.area} />
             </div>
 
             <div className="flex flex-col sm:w-1/2 space-y-2">
-              <InfoRow label="➔ Rent (Rs. per month) :" value={result.rent} />
-              <InfoRow label="➔ Frac Status :" value={result.frac_status} />
-              <InfoRow label="➔ Frac Level :" value={result.frac_level} />
-              <InfoRow label="➔ Fund Type :" value={result.fund_type} />
-              <InfoRow label="➔ Fund Amount :" value={result.fund_amount} />
-              <InfoRow label="➔ Cases :" value={result.cases} />
-              <InfoRow label="➔ Last RO Corr :" value={result.corr_ro} />
-              <InfoRow label="➔ Last Division Corr :" value={result.corr_division} />
+              <InfoRow label="Rent (Rs. per month) :" value={result.rent} />
+              <InfoRow label="Frac Status :" value={result.frac_status} />
+              <InfoRow label="Frac Level :" value={result.frac_level} />
+              <InfoRow label="Fund Type :" value={result.fund_type} />
+              <InfoRow label="Fund Amount :" value={result.fund_amount} />
+              <InfoRow label="Cases :" value={result.cases} />
+              <InfoRow label="Last RO Corr :" value={result.corr_ro} />
+              <InfoRow label="Last Division Corr :" value={result.corr_division} />
             </div>
           </div>
         </CardContent>
@@ -333,26 +333,26 @@ const Page = async ({ params }: ParamsProps) => {
           <CardContent className="p-4 space-y-4">
             {key === "frac-details" && (
               <>
-                <InfoRow label="➔ Lease Period :" value={result.lease_period} />
-                <InfoRow label="➔ Frac Status :" value={result.frac_status} />
-                <InfoRow label="➔ Frac Level :" value={result.frac_level} />
+                <InfoRow label="Lease Period :" value={result.lease_period} />
+                <InfoRow label="Frac Status :" value={result.frac_status} />
+                <InfoRow label="Frac Level :" value={result.frac_level} />
               </>
             )}
             {key === "funds-details" && (
               <>
-                <InfoRow label="➔ Fund Type :" value={result.fund_type} />
-                <InfoRow label="➔ Fund Amount :" value={result.fund_amount} />
+                <InfoRow label="Fund Type :" value={result.fund_type} />
+                <InfoRow label="Fund Amount :" value={result.fund_amount} />
               </>
             )}
             {key === "cases-details" && (
               <>
-                <InfoRow label="➔ Case Type :" value={result.cases} />
+                <InfoRow label="Case Type :" value={result.cases} />
                 <span className="primary-text-gradient">➔ Case Desc :</span>
                 <p className="text-dark400_light700 whitespace-pre-line">
                   {result.case_description || "—"}
                 </p>
-                <InfoRow label="➔ Action Proposed :" value={result.case_action} />
-                <InfoRow label="➔ Current Progress :" value={result.case_divisionaction} />
+                <InfoRow label="Action Proposed :" value={result.case_action} />
+                <InfoRow label="Current Progress :" value={result.case_divisionaction} />
               </>
             )}
             {key === "brief-history" && (

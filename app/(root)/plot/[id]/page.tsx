@@ -298,10 +298,10 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Other Sections */}
         {[
-          { key: "mutation", title: "Mutation Details", icon: <Scale className="text-indigo-600" /> },
+          { key: "mutation", title: "Mutation Details", icon: <FileText className="text-red-600" /> },
           { key: "funds", title: "Funds Details", icon: <Banknote className="text-green-600" /> },
           { key: "encroach", title: "Encroachment", icon: <FileText className="text-orange-600" /> },
-          { key: "cases", title: "Cases Details", icon: <FileText className="text-red-600" /> },
+          { key: "cases", title: "Cases Details", icon: <Scale className="text-indigo-600" /> },
           { key: "history", title: "Brief History", icon: <History className="text-purple-600" /> },
         ].map(({ key, title, icon }) => (
           <Card key={key} className="shadow-lg border border-gray-200 dark:border-gray-700 rounded-lg">

@@ -190,7 +190,7 @@
 /* eslint-disable no-template-curly-in-string */
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import {
   Card,

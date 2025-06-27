@@ -19,15 +19,19 @@ const InfoRow = ({ label, value }: InfoRowProps) => {
       style={{ maxWidth: '100vw' }}
     >
       {/* Label */}
-      <div
+      {/*<div
         className="primary-text-gradient w-[180px] text-left whitespace-nowrap pr-4 flex-shrink-0 text-sm sm:text-base"
+        style={{ marginLeft: 0 }}
+      >*/}
+      <div
+        className="primary-text-gradient w-[180px] text-left wordwrap pr-4 flex-shrink-0 text-sm sm:text-base"
         style={{ marginLeft: 0 }}
       >
         {label}
       </div>
 
       {/* Value */}
-      <div
+      {/* <div
         className="
           text-dark400_light700 text-left text-sm sm:text-base flex-grow
           overflow-hidden
@@ -38,7 +42,20 @@ const InfoRow = ({ label, value }: InfoRowProps) => {
           sm:break-normal
         "
         title={valueStr}
+      > */}
+        <div
+        className="
+          text-dark400_light700 text-left text-sm sm:text-base flex-grow
+          overflow-hidden
+          wordwrap
+          sm:wordwrap
+          sm:text-ellipsis
+          break-words
+          sm:break-normal
+        "
+        title={valueStr}
       >
+
         {valueStr}
       </div>
     </div>

@@ -20,9 +20,7 @@ const InfoRow = ({ label, value }: InfoRowProps) => {
     >
       {/* Label */}
       <div
-        className=
-"primary-text-gradient w-[180px] text-left whitespace-nowrap 
-pr-4 flex-shrink-0 text-sm sm:text-base"
+        className="primary-text-gradient w-[180px] text-left whitespace-nowrap pr-4 flex-shrink-0 text-sm sm:text-base"
         style={{ marginLeft: 0 }}
       >
         {label}

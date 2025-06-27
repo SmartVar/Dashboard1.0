@@ -278,7 +278,7 @@ const Page = async ({ params }: ParamsProps) => {
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           {result.name}
         </h1>
-        <div className="flex gap-3">
+      <div className="flex justify-end w-full gap-2 sm:w-auto">
           <Link href={`/plot/edit/${result._id}`}>
             <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2">
               <PencilLine className="w-4 h-4" /> Edit Records

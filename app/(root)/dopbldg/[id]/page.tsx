@@ -372,7 +372,6 @@ const exportData = [
             <InfoRow label="Division" value={data.division} />
             <div className="flex items-center">
               <InfoRow label="Post Office" value={data.po} />
-              <CopyButton text={data.po} />
             </div>
             <InfoRow label="Purchase Year" value={data.purchase_year} />
             <InfoRow label="SOA (Sq. ft)" value={data.soa} />
@@ -401,7 +400,6 @@ const exportData = [
           <InfoRow label="Mutation State" value={data.mut_state} />
           <div className="flex items-center">
             <InfoRow label="Mutation Doc" value={data.mut_doc} />
-            <CopyButton text={data.mut_doc} />
           </div>
         </>
       ),

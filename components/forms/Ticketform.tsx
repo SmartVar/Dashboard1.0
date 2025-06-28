@@ -40,6 +40,7 @@ const Ticketform = ({ type, mongoUserId, ticketDetails }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+const [imageFile, setImageFile] = useState<File | null>(null);
 
   const parsedTicketDetails =  ticketDetails && JSON.parse(ticketDetails || '');
 
@@ -62,47 +63,96 @@ const Ticketform = ({ type, mongoUserId, ticketDetails }: Props) => {
   })
   
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof TicketSchema>) {
-    setIsSubmitting(true);
+  // async function onSubmit(values: z.infer<typeof TicketSchema>) {
+  //   setIsSubmitting(true);
     
-    try {
-      if(type === 'Edit') {
-        await editTicket({
-          ticketId: parsedTicketDetails._id,
-          division: values.division,
-          po: values.po,
-          tkttitle: values.tkttitle,
-          tktdescription: values.tktdescription,
-          tktpriority: values.tktpriority,
-          tktstatus: values.tktstatus,
-          path: pathname,
-        })
+  //   try {
+  //     if(type === 'Edit') {
+  //       await editTicket({
+  //         ticketId: parsedTicketDetails._id,
+  //         division: values.division,
+  //         po: values.po,
+  //         tkttitle: values.tkttitle,
+  //         tktdescription: values.tktdescription,
+  //         tktpriority: values.tktpriority,
+  //         tktstatus: values.tktstatus,
+  //         path: pathname,
+  //       })
 
-        router.push(`/ticket`);
+  //       router.push(`/ticket`);
 
-      } else {
-        await createTicket({
-          division: values.division,
-          po: values.po,
-          tkttitle: values.tkttitle,
-          tktdescription: values.tktdescription,
-          tktpriority: values.tktpriority,
-          tktstatus: values.tktstatus,
-          path: pathname,
-        //   tags: values.tags,
-          author: JSON.parse(mongoUserId),
+  //     } else {
+  //       await createTicket({
+  //         division: values.division,
+  //         po: values.po,
+  //         tkttitle: values.tkttitle,
+  //         tktdescription: values.tktdescription,
+  //         tktpriority: values.tktpriority,
+  //         tktstatus: values.tktstatus,
+  //         path: pathname,
+  //       //   tags: values.tags,
+  //         author: JSON.parse(mongoUserId),
           
-        });
+  //       });
 
-        router.push('/ticket');
-      }
+  //       router.push('/ticket');
+  //     }
 
-    } catch (error) {
+  //   } catch (error) {
       
-    } finally {
-      setIsSubmitting(false);
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // }
+
+  async function onSubmit(values: z.infer<typeof TicketSchema>) {
+  setIsSubmitting(true);
+
+  try {
+    let base64Image: string | undefined;
+
+    if (imageFile) {
+      const reader = new FileReader();
+      base64Image = await new Promise((resolve, reject) => {
+        reader.readAsDataURL(imageFile);
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = (error) => reject(error);
+      });
     }
+
+    if (type === 'Edit') {
+      await editTicket({
+        ticketId: parsedTicketDetails._id,
+        division: values.division,
+        po: values.po,
+        tkttitle: values.tkttitle,
+        tktdescription: values.tktdescription,
+        tktpriority: values.tktpriority,
+        tktstatus: values.tktstatus,
+        tktimage: base64Image, // optional
+        path: pathname,
+      });
+    } else {
+      await createTicket({
+        division: values.division,
+        po: values.po,
+        tkttitle: values.tkttitle,
+        tktdescription: values.tktdescription,
+        tktpriority: values.tktpriority,
+        tktstatus: values.tktstatus,
+        tktimage: base64Image, // optional
+        path: pathname,
+        author: JSON.parse(mongoUserId),
+      });
+    }
+
+    router.push('/ticket');
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setIsSubmitting(false);
   }
+}
 
 //    const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
 //     if (e.key === 'Enter' && field.name === 'tags') {
@@ -261,7 +311,26 @@ const Ticketform = ({ type, mongoUserId, ticketDetails }: Props) => {
             </FormItem>
           )}
         />
-      
+      <FormItem className="flex w-full flex-col">
+  <FormLabel className="paragraph-semibold text-dark400_light800">
+    Upload Ticket Image
+  </FormLabel>
+  <FormControl>
+    <Input
+      type="file"
+      accept="image/*"
+      className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px] border"
+      onChange={(e) => {
+        if (e.target.files && e.target.files[0]) {
+          setImageFile(e.target.files[0]);
+        }
+      }}
+    />
+  </FormControl>
+  <FormDescription className="body-regular mt-2.5 text-light-500">
+    Upload relevant image for the ticket (if any).
+  </FormDescription>
+</FormItem>
                       
             <Button type="submit" className="primary-gradient w-fit !text-light-900" disabled={isSubmitting}>
         {isSubmitting ? (

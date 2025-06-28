@@ -205,6 +205,7 @@ tkttitle: string;
   tktdescription: string;
   tktstatus: string;
   tktpriority: string;
+  tktimage?: string;
  author: Schema.Types.ObjectId | IUser;
   path: string;
 }
@@ -463,6 +464,7 @@ tkttitle: string;
   tktdescription: string;
   tktstatus: string;
   tktpriority: string;
+  tktimage?: string;
   path: string;
 }
 

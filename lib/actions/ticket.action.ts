@@ -11,6 +11,8 @@ import { revalidatePath } from "next/cache";
 // import { DopBldgDef } from "@/app/(root)/dopbldg/columns";
 import { TicketDef } from "@/app/(root)/ticket/columns";
 import { FilterQuery } from "mongoose";
+import cloudinary from "@/lib/cloudinary";
+
 
 export async function getTickets(params: GetTicketsParams): Promise<TicketDef[]> {
   try {
@@ -96,16 +98,27 @@ export async function createTicket(params: CreateTicketParams) {
 
     // eslint-disable-next-line camelcase
     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, po, tkttitle, tktdescription, tktpriority, tktstatus, path } = params;
+    const { division, po, tkttitle, tktdescription, tktpriority, tktstatus, tktimage, path } = params;
+
+  let uploadedImageUrl = "";
+
+    if (tktimage) {
+      const result = await cloudinary.uploader.upload(tktimage, {
+        folder: "tickets",
+      });
+
+      uploadedImageUrl = result.secure_url;
+    }
 
     // Create the ticket
     const ticket = await Ticket.create({
       division,
       po,
-tkttitle,
-tktdescription,
-tktpriority,
-tktstatus
+      tkttitle,
+      tktdescription,
+      tktpriority,
+      tktstatus,
+      tktimage: uploadedImageUrl,
     });
 //  const tagDocuments = [];
 
@@ -133,7 +146,8 @@ tktstatus
     return ticket ;
 
   } catch (error) {
-    
+      console.log(error);
+    throw error;
   }
 }
 
@@ -159,7 +173,7 @@ export async function editTicket(params: EditTicketParams) {
     connectToDatabase();
 
     // const { departmentalbldgId, division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { ticketId, division, po, tkttitle, tktdescription, tktpriority, tktstatus, path } = params;
+    const { ticketId, division, po, tkttitle, tktdescription, tktpriority, tktstatus, tktimage, path } = params;
 
     const ticket = await Ticket.findById(ticketId);
 
@@ -172,7 +186,14 @@ export async function editTicket(params: EditTicketParams) {
       ticket.tktdescription = tktdescription;
       ticket.tktpriority = tktpriority;
       ticket.tktstatus = tktstatus;
-  
+      ticket.tktimage = tktimage;
+   
+      if (tktimage) {
+      const result = await cloudinary.uploader.upload(tktimage, {
+        folder: "tickets",
+      });
+      ticket.tktimage = result.secure_url;
+    }
 
     await ticket.save();
 

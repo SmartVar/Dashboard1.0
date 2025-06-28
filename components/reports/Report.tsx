@@ -356,7 +356,7 @@ const Report = () => {
         <tbody className="divide-y divide-gray-100 bg-white">
           {reports.map(report => (
             <tr key={report._id}>
-              <td className="px-4 py-2 font-medium text-primary-600">{report.title}</td>
+              <td className="px-4 py-2 font-medium text-primary-600 text-gray-700">{report.title}</td>
               {fields.map(field => {
                 const isCompleted = report[field] === 'Completed';
                 return (

@@ -7,6 +7,7 @@ export interface ITicket extends Document {
   tktdescription: string;
   tktstatus: string;
   tktpriority: string;
+  tktimage: string;
   author: Schema.Types.ObjectId;
   createdOn: Date;
 }
@@ -19,6 +20,7 @@ const TicketSchema = new Schema({
     tktdescription: { type: String, required: true },
     tktstatus: { type: String, required: true },
     tktpriority: { type: String, required: true },
+    tktimage: { type: String },
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   createdOn: { type: Date, default: Date.now },
 });

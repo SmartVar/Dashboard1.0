@@ -162,10 +162,11 @@ export const ProfileSchema = z.object({
 })
 
 export const TicketSchema = z.object({
-  division: z.string().min(2).max(130),
-  po: z.string().min(2).max(100),
-  tkttitle: z.string().min(2).max(100),
-  tktdescription: z.string().min(2).max(150),
-  tktstatus: z.string().min(2).max(100),
-  tktpriority: z.string().min(2).max(100),
- })
+  division: z.string().min(1),
+  po: z.string().min(1),
+  tkttitle: z.string().min(1),
+  tktdescription: z.string().min(1),
+  tktpriority: z.string().min(1),
+  tktstatus: z.string().min(1),
+  tktimage: z.any().optional(), // <- important
+});

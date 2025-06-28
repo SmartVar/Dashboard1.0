@@ -164,6 +164,36 @@ export const columns: ColumnDef<TicketDef>[] = [
       )
     },
   },
+  {
+  accessorKey: "tktimage",
+  header: ({ column }) => {
+    return (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Image
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    );
+  },
+  cell: ({ row }) => {
+    const imageUrl = row.getValue("tktimage") as string;
+
+    if (!imageUrl) return <span className="text-gray-400">No Image</span>;
+
+    return (
+      <a href={imageUrl} target="_blank" rel="noopener noreferrer">
+        <img
+          src={imageUrl}
+          alt="Ticket Image"
+          className="h-10 w-10 rounded object-cover"
+        />
+      </a>
+    );
+  },
+},
+
   // {
   //   accessorKey: "class",
   //   // header: "Class",

@@ -150,7 +150,7 @@ const Fundform = ({ type, mongoUserId, fundDetails }: Props) => {
       });
     }
 
-    router.push('/fund');
+    router.push('/dashboard');
   } catch (error) {
     console.error(error);
   } finally {

@@ -129,7 +129,7 @@ const Fundform = ({ type, mongoUserId, fundDetails }: Props) => {
           progress: values.progress,
           balance: values.balance,
           path: pathname,
-          author: ''
+          
       });
     } else {
       await createFund({

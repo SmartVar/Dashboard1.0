@@ -5,11 +5,11 @@ export interface IFund extends Document {
   division: string;
   po: string;
   work: string;
-  pe_amount: string;
+  pe_amount?: string;
   be_allot?: string;
   re_allot?: string;
   add_allot?: string;
-  tot_allot: string;
+  tot_allot?: string;
   tender_amount?: string;
   progress?: string;
   balance?: string;

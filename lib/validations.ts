@@ -184,5 +184,4 @@ export const FundSchema = z.object({
   tender_amount: z.string().optional(),
   progress: z.string().optional(),
   balance: z.string().optional(),
-  author: z.string().min(1, "Author is required"),
 });

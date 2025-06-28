@@ -17,6 +17,7 @@ import {
 import Overviewdash from "../../../components/dashboard/Overviewdash"
 import EventCalendarContainer from '@/components/events/EventCalendarContainer'
 import Report from '@/components/reports/Report'
+import Fund from '@/components/fund/fund'
 // import { getAllReports } from '@/lib/actions/report.action'
 // import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 // import BarChartsActive from "../../../components/charts/BarChartsActive"
@@ -184,7 +185,8 @@ const Page = async ({ searchParams}: URLProps) => {
         totalUsCorr={userInfo.totalUsCorr}
         badges={userInfo.badgeCounts}
       /> */}
-      <Overviewdash />
+      {/* <Overviewdash /> */}
+      <Fund />
               </TabsContent>
             <TabsContent value="reports" className="text-dark200_light900 space-y-4 text-sm font-medium">
               <Report />

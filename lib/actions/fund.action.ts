@@ -3,7 +3,8 @@
 "use server"
 
 import User from "@/database/user.model";
-import Fund, { IFund } from "@/database/fund.model";
+import Fund from "@/database/fund.model";
+import { FundDef } from "@/app/(root)/fund/columns";
 import { connectToDatabase } from "../mongoose";
 import {
   GetFundsParams,
@@ -14,14 +15,14 @@ import {
 } from "./shared.types";
 import { revalidatePath } from "next/cache";
 
-import { FilterQuery } from "mongoose";
+// import { FilterQuery } from "mongoose";
 
-export async function getFunds(params: GetFundsParams): Promise<IFund[]> {
+export async function getFunds(params: GetFundsParams): Promise<FundDef[]> {
   try {
     connectToDatabase();
-    const { searchQuery } = params;
 
-    const query: FilterQuery<typeof Fund> = {};
+    const { searchQuery } = params;
+    const query: Record<string, any> = {};
 
     if (searchQuery) {
       query.$or = [
@@ -31,24 +32,28 @@ export async function getFunds(params: GetFundsParams): Promise<IFund[]> {
       ];
     }
 
-const funds = await Fund.find(query)
-  .sort({ createdOn: -1 })
-  .populate({ path: "author", model: User }) as unknown as IFund[];
+    const funds = await Fund.find(query)
+      .sort({ createdOn: -1 })
+      .populate({ path: 'author', model: User }) // this returns nested author object
+      .lean() as unknown as Promise<FundDef[]>; // 👈 Cast result here to FundDef[]
 
     return funds;
+
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 }
 
-export async function getFundById(params: GetFundByIdParams): Promise<IFund | null> {
+
+
+export async function getFundById(params: GetFundByIdParams) {
   try {
     connectToDatabase();
     const { fundId } = params;
 
     return await Fund.findById(fundId)
-      .populate({ path: "author", model: User }) as unknown as IFund | null;
+      .populate({ path: 'author', model: User, select: '_id clerkId name picture'})
 
   } catch (error) {
     console.log(error);
@@ -57,7 +62,7 @@ export async function getFundById(params: GetFundByIdParams): Promise<IFund | nu
 }
 
 
-export async function createFund(params: CreateFundParams): Promise<IFund> {
+export async function createFund(params: CreateFundParams) {
   try {
     connectToDatabase();
     const {
@@ -73,7 +78,6 @@ export async function createFund(params: CreateFundParams): Promise<IFund> {
       tender_amount,
       progress,
       balance,
-      author,
       path,
  
     } = params;
@@ -93,9 +97,11 @@ export async function createFund(params: CreateFundParams): Promise<IFund> {
       tender_amount,
       progress,
       balance,
-      author,
+      
     
     });
+
+
 
     revalidatePath(path);
     return newFund;
@@ -105,7 +111,7 @@ export async function createFund(params: CreateFundParams): Promise<IFund> {
   }
 }
 
-export async function editFund(params: EditFundParams): Promise<void> {
+export async function editFund(params: EditFundParams) {
   try {
     connectToDatabase();
     const {
@@ -127,6 +133,7 @@ export async function editFund(params: EditFundParams): Promise<void> {
     } = params;
 
     const fund = await Fund.findById(fundId);
+    
     if (!fund) throw new Error("Fund record not found");
 
     fund.fund_type = fund_type;
@@ -152,7 +159,7 @@ export async function editFund(params: EditFundParams): Promise<void> {
   }
 }
 
-export async function deleteFund(params: DeleteFundParams): Promise<void> {
+export async function deleteFund(params: DeleteFundParams) {
   try {
     connectToDatabase();
     const { fundId, path } = params;

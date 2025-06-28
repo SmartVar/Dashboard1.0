@@ -186,7 +186,14 @@ const Page = async ({ searchParams}: URLProps) => {
         badges={userInfo.badgeCounts}
       /> */}
       {/* <Overviewdash /> */}
-      <Fund />
+      <Fund params={{
+            id: ''
+          }} searchParams={{
+            q: undefined,
+            filter: undefined,
+            page: undefined,
+            dateParam: undefined
+          }} />
               </TabsContent>
             <TabsContent value="reports" className="text-dark200_light900 space-y-4 text-sm font-medium">
               <Report />

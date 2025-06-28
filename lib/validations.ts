@@ -170,3 +170,19 @@ export const TicketSchema = z.object({
   tktstatus: z.string().min(1),
   tktimage: z.any().optional(), // <- important
 });
+
+export const FundSchema = z.object({
+  fund_type: z.string().min(1, "Fund type is required"),
+  division: z.string().min(1, "Division is required"),
+  po: z.string().min(1, "Post Office is required"),
+  work: z.string().min(1, "Work description is required"),
+  pe_amount: z.string().min(1, "PE amount is required"),
+  be_allot: z.string().optional(),
+  re_allot: z.string().optional(),
+  add_allot: z.string().optional(),
+  tot_allot: z.string().min(1, "Total allotment is required"),
+  tender_amount: z.string().optional(),
+  progress: z.string().optional(),
+  balance: z.string().optional(),
+  author: z.string().min(1, "Author is required"),
+});

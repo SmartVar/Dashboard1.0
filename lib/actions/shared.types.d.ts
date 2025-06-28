@@ -54,6 +54,13 @@ export interface GetTaskParams {
   filter?: string;
   pagefilter?: string;
 }
+export interface GetFundParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
 export interface GetReportParams {
   page?: number;
   pageSize?: number;
@@ -78,6 +85,13 @@ export interface GetDopBldgsParams {
   pagefilter?: string;
 }
 export interface GetTicketsParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+  pagefilter?: string;
+}
+export interface GetFundsParams {
   page?: number;
   pageSize?: number;
   searchQuery?: string;
@@ -209,6 +223,23 @@ tkttitle: string;
  author: Schema.Types.ObjectId | IUser;
   path: string;
 }
+export interface CreateFundParams {
+  fund_type: string;
+  division: string;
+  po: string;
+  work: string;
+  pe_amount: string;
+  be_allot?: string;
+  re_allot?: string;
+  add_allot?: string;
+  tot_allot: string;
+  tender_amount?: string;
+  progress?: string;
+  balance?: string;
+  author: Schema.Types.ObjectId | IUser;  // author can be ObjectId or IUser type
+  path: string;                          // for navigation or revalidation
+}
+
 export interface CreateRentBldgParams {
   division: string;
   po: string;
@@ -296,6 +327,9 @@ export interface GetTemplateByIdParams {
 export interface GetTaskByIdParams {
   taskId: string;
 }
+export interface GetFundByIdParams {
+  fundId: string;
+}
 export interface GetReportByIdParams {
   reportId: string;
 }
@@ -333,6 +367,10 @@ export interface DeleteQuestionParams {
 // }
 export interface DeleteTaskParams {
   taskId: string;
+  path: string;
+}
+export interface DeleteFundParams {
+  fundId: string;
   path: string;
 }
 export interface DeleteReportParams {
@@ -467,6 +505,25 @@ tkttitle: string;
   tktimage?: string;
   path: string;
 }
+
+export interface EditFundParams {
+  fundId: string;         // ID of the fund record to edit
+  fund_type: string;
+  division: string;
+  po: string;
+  work: string;
+  pe_amount: string;
+  be_allot?: string;
+  re_allot?: string;
+  add_allot?: string;
+  tot_allot: string;
+  tender_amount?: string;
+  progress?: string;
+  balance?: string;
+  author: string;         // Mongo user ID as string
+  path: string;           // For revalidation path or navigation
+}
+
 
 export interface EditRentBldgParams {
   rentbldgId: string;

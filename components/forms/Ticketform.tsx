@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-undef */
+
 "use client"
 import React, { useState } from 'react';
 // import { Editor } from '@tinymce/tinymce-react';

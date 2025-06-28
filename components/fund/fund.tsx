@@ -48,7 +48,7 @@ console.log(data)
       
       <h1 className="h1-bold text-dark100_light900">
           Funds</h1> 
-          <Link href="/add-ticket" 
+          <Link href="/add-fund" 
           className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
             New Records

@@ -12,7 +12,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import InfoRow from "@/components/shared/InfoRow";
 import { ParamsProps } from "@/types";
-import { getDepartmentalBldgById } from "@/lib/actions/departmentalbldg.action";
+import { getDopBldgById } from "@/lib/actions/departmentalbldg.action";
 import {
   PencilLine,
   Info,
@@ -26,7 +26,7 @@ import {
 import ExportButton from "@/components/shared/ExportButton";
 
 const Page = async ({ params }: ParamsProps) => {
-  const result = await getDepartmentalBldgById({ id: params.id });
+  const result = await getDopBldgById({ id: params.id });
 
   const CopyButton = ({ text }: { text: string }) => {
     const [copied, setCopied] = useState(false);

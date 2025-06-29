@@ -39,7 +39,7 @@ const dopbldg = await getAllDopBldgs({
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
-console.log(dopbldg)
+//console.log(dopbldg)
 // console.log(division)
 
 // const dopdata = {... dobbldg}

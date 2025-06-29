@@ -38,7 +38,7 @@ const plot = await getAllPlots({
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
-console.log(plot)
+//console.log(plot)
 
   return (
     <>

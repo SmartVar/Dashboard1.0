@@ -89,8 +89,8 @@ const events = event.filter(e => {
 
   //  if inputDate === validate_date ? inputDate : "Not correct date";
 
-console.log(events)
-console.log(inputDate)
+//console.log(events)
+//console.log(inputDate)
 
 
 

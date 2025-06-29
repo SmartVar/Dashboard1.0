@@ -38,7 +38,7 @@ const rentbldg = await getAllRentBldgs({
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
-console.log(rentbldg)
+//console.log(rentbldg)
 
   return (
     <>

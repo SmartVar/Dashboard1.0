@@ -216,4 +216,4 @@ const Page = async ({ params }: ParamsProps) => {
   );
 };
 
-export
+export default page;

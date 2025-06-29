@@ -64,9 +64,15 @@ const GlobalResultMobile: React.FC<GlobalResultProps> = ({ showOnlyResults }) =>
       )}
 
       <div className="space-y-5">
-        <p className="text-dark400_light900 paragraph-semibold px-5">
+        {/* <p className="text-dark400_light900 paragraph-semibold px-5">
           Top Match
-        </p>
+        </p> */}
+        {global && (
+  <p className="text-dark400_light900 paragraph-semibold px-5">
+    Top Match
+  </p>
+)}
+
 
         {isLoading ? (
           <div className="flex-center flex-col px-5">

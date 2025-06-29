@@ -4,7 +4,7 @@
 import React from "react"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
-import GlobalResult from "./GlobalResult"
+import GlobalResultMobile from "./GlobalResultMobile"
 import { useGlobalSearch } from "@/components/shared/hooks/useGlobalSearch"
 
 const GlobalSearchMobile = () => {
@@ -33,7 +33,7 @@ const GlobalSearchMobile = () => {
           className="paragraph-regular no-focus border-none bg-transparent shadow-none outline-none"
         />
       </div>
-      {isOpen && <GlobalResult />}
+      {isOpen && <GlobalResultMobile showOnlyResults />}
     </div>
   )
 }

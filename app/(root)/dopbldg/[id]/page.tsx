@@ -26,7 +26,7 @@ import {
 import ExportButton from "@/components/shared/ExportButton";
 
 const Page = async ({ params }: ParamsProps) => {
-  const result = await getDopBldgById({ id: params.id });
+  const result = await getDopBldgById({ departmentalbldgId : params.id });
 
   const CopyButton = ({ text }: { text: string }) => {
     const [copied, setCopied] = useState(false);

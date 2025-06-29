@@ -103,7 +103,7 @@ const GlobalResultMobile: React.FC<GlobalResultProps> = ({ showOnlyResults }) =>
               ))
             ) : (
               <div className="flex-center flex-col px-5">
-                <p className="text-dark200_light800 body-regular px-5 py-2.5">Oops, no results found</p>
+                {global && (<p className="text-dark200_light800 body-regular px-5 py-2.5">Oops, no results found</p>)}
               </div>
             )}
           </div>

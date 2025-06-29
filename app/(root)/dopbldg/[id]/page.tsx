@@ -53,7 +53,7 @@ const Page = async ({ params }: ParamsProps) => {
   const exportData = [
     {
       Section: "At a Glance",
-      Division: result.division,
+      Division: result?.division,
       PO: result.po,
       Class: result.class,
       Location: result.location,
@@ -99,7 +99,7 @@ const Page = async ({ params }: ParamsProps) => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          {result.po} – {result.division}
+          {result.po}
         </h1>
         <div className="flex justify-end w-full gap-2 sm:w-auto">
           <Link href={`/departmentalbldg/edit/${result._id}`}>

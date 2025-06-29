@@ -117,7 +117,7 @@ const Page = async ({ params }: ParamsProps) => {
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
         {/* At a Glance */}
         <Card className="col-span-1 lg:col-span-2 shadow-lg border border-gray-200 dark:border-gray-700 rounded-lg">
-          <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
+          <CardHeader className="flex flex-between items-center gap-2 border-b p-4 dark:border-gray-600">
             <Info className="text-blue-600 dark:text-blue-400" />
             <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
               At a Glance
@@ -129,13 +129,17 @@ const Page = async ({ params }: ParamsProps) => {
             <div className="grid sm:grid-cols-2 gap-4">
 
               <div>
-                <InfoRow label="Division:" value={result.division} />
+                <InfoRow label="Division:" value={result?.division} />
                 <InfoRow label="PO:" value={result.po} />
                 <InfoRow label="Class:" value={result.class} />
                 <InfoRow label="Location:" value={result.location} />
                 <InfoRow label="Purchase Year:" value={result.purchase_year} />
+              <InfoRow label="Floors:" value={result.floors} />
+              <InfoRow label="Fund Type:" value={result.fund_type} />
               </div>
               <div>
+                <InfoRow label="Case Type:" value={result.cases} />
+                <InfoRow label="Mutation State:" value={result.mut_state} />
                 <InfoRow label="SOA:" value={result.soa} />
                 <InfoRow label="PAQ:" value={result.paq} />
                 <InfoRow label="Area:" value={result.area} />

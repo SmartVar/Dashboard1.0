@@ -20,6 +20,7 @@ const GlobalResult = () => {
     { type: 'tags', id: 1, title: 'tags'},
     { type: 'events', id: 1, title: 'events'},
     { type: 'tkts', id: 1, title: 'tkts'},
+    { type: 'funds', id: 1, title: 'funds'},
   ]);
 
   const global = searchParams.get('global');
@@ -61,6 +62,8 @@ const GlobalResult = () => {
           return `/event/${id}`;
       case 'tkts':
           return `/ticket/${id}`;
+      case 'funds':
+          return `/fund/${id}`;
       default:
         return '/'
     }

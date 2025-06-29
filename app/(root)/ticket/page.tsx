@@ -39,7 +39,7 @@ const data = await getTickets({
 //   pagefilter : searchParams.pagefilter,
   page: searchParams.page ? +searchParams.page : 1,
 });
-//console.log(data)
+// console.log(data)
 
   return (
     <>

@@ -38,7 +38,7 @@ import { Button } from "@/components/ui/button";
     // const mongoUser = await getUserById({ userId })
     const result = await getEventById({ eventId: params.id})
       
-    //console.log(result)
+    // console.log(result)
 
     return (
       <>

@@ -18,6 +18,7 @@ import { PencilLine, Info, FileText, Banknote, Scale, Copy, History, Download } 
 
 import ExportButton from "@/components/shared/ExportButton";
 
+// eslint-disable-next-line @next/next/no-async-client-component
 const Page = async ({ params }: ParamsProps) => {
   const result = await getPlotById({ plotId: params.id });
 

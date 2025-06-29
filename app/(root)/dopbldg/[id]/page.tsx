@@ -125,11 +125,9 @@ const Page = async ({ params }: ParamsProps) => {
             <CopyButton text={result.po} />
           </CardHeader>
           <CardContent className="p-4 space-y-4">
-<<<<<<< HEAD
-            <div className="grid gap-4 sm:grid-cols-2">
-=======
+
             <div className="grid sm:grid-cols-2 gap-4">
->>>>>>> 4fdc671df01fb90e35c94224f9106db28c2b30f8
+
               <div>
                 <InfoRow label="Division:" value={result.division} />
                 <InfoRow label="PO:" value={result.po} />
@@ -152,15 +150,11 @@ const Page = async ({ params }: ParamsProps) => {
         <Card>
           <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
             <FileText className="text-green-600" />
-<<<<<<< HEAD
+
             <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Building Info</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 p-4">
-=======
-            <CardTitle className="text-lg font-semibold">Building Info</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4 space-y-2">
->>>>>>> 4fdc671df01fb90e35c94224f9106db28c2b30f8
+
             <InfoRow label="Floors:" value={result.floors} />
             <InfoRow label="Value:" value={result.value} />
             <InfoRow label="Year:" value={result.year} />
@@ -172,15 +166,11 @@ const Page = async ({ params }: ParamsProps) => {
         <Card>
           <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
             <FileText className="text-red-600" />
-<<<<<<< HEAD
+
             <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Mutation</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 p-4">
-=======
-            <CardTitle className="text-lg font-semibold">Mutation</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4 space-y-2">
->>>>>>> 4fdc671df01fb90e35c94224f9106db28c2b30f8
+
             <InfoRow label="Mutation Doc:" value={result.mut_doc} />
             <InfoRow label="Mutation State:" value={result.mut_state} />
           </CardContent>
@@ -190,15 +180,11 @@ const Page = async ({ params }: ParamsProps) => {
         <Card>
           <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
             <Banknote className="text-yellow-600" />
-<<<<<<< HEAD
+
             <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Funds</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 p-4">
-=======
-            <CardTitle className="text-lg font-semibold">Funds</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4 space-y-2">
->>>>>>> 4fdc671df01fb90e35c94224f9106db28c2b30f8
+
             <InfoRow label="Fund Type:" value={result.fund_type} />
             <InfoRow label="Fund Amount:" value={result.fund_amount} />
           </CardContent>
@@ -208,15 +194,11 @@ const Page = async ({ params }: ParamsProps) => {
         <Card className="lg:col-span-2">
           <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
             <Scale className="text-indigo-600" />
-<<<<<<< HEAD
+
             <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Case Details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 p-4">
-=======
-            <CardTitle className="text-lg font-semibold">Case Details</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4 space-y-2">
->>>>>>> 4fdc671df01fb90e35c94224f9106db28c2b30f8
+
             <InfoRow label="Case Type:" value={result.cases} />
             <p className="text-sm text-gray-600 dark:text-gray-300">
               <strong>Description:</strong><br />
@@ -231,17 +213,12 @@ const Page = async ({ params }: ParamsProps) => {
         <Card className="lg:col-span-2">
           <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
             <History className="text-purple-600" />
-<<<<<<< HEAD
+
             <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Brief History</CardTitle>
           </CardHeader>
           <CardContent className="p-4">
             <p className="whitespace-pre-line text-gray-700 dark:text-gray-300">
-=======
-            <CardTitle className="text-lg font-semibold">Brief History</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4">
-            <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
->>>>>>> 4fdc671df01fb90e35c94224f9106db28c2b30f8
+
               {result.brief_history || "—"}
             </p>
           </CardContent>
@@ -251,8 +228,5 @@ const Page = async ({ params }: ParamsProps) => {
   );
 };
 
-<<<<<<< HEAD
+
 export default Page;
-=======
-export default Page;
->>>>>>> 4fdc671df01fb90e35c94224f9106db28c2b30f8

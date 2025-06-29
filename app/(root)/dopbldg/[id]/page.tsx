@@ -117,7 +117,7 @@ const Page = async ({ params }: ParamsProps) => {
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
         {/* At a Glance */}
         <Card className="col-span-1 lg:col-span-2 shadow-lg border border-gray-200 dark:border-gray-700 rounded-lg">
-          <CardHeader className="flex flex-between items-center gap-2 border-b p-4 dark:border-gray-600">
+          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
             <Info className="text-blue-600 dark:text-blue-400" />
             <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
               At a Glance
@@ -152,7 +152,7 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Building Info */}
         <Card>
-          <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
+          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
             <FileText className="text-green-600" />
 
             <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Building Info</CardTitle>
@@ -168,10 +168,11 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Mutation */}
         <Card>
-          <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
+          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
             <FileText className="text-red-600" />
 
             <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Mutation</CardTitle>
+          <CopyButton text={result.po} />
           </CardHeader>
           <CardContent className="space-y-2 p-4">
 
@@ -182,10 +183,11 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Fiscal Info */}
         <Card>
-          <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
+          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
             <Banknote className="text-yellow-600" />
 
             <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Funds</CardTitle>
+          <CopyButton text={result.po} />
           </CardHeader>
           <CardContent className="space-y-2 p-4">
 
@@ -196,10 +198,11 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Cases */}
         <Card className="lg:col-span-2">
-          <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
+          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
             <Scale className="text-indigo-600" />
 
             <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Case Details</CardTitle>
+          <CopyButton text={result.po} />
           </CardHeader>
           <CardContent className="space-y-2 p-4">
 

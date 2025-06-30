@@ -5,7 +5,7 @@ import React from 'react'
 import Theme from './Theme'
 import MobileNav from './MobileNav'
 import GlobalSearch from '../search/GlobalSearch'
-import MobileGlobalSearch from '../search/MobileGlobalSearch'
+import GlobalSearchMobile from '../search/GlobalSearchMobile'
 
 const Navbar = () => {
   return (
@@ -31,7 +31,7 @@ const Navbar = () => {
 
       {/* Mobile Global Search */}
       <div className="block md:hidden w-full max-w-xs">
-        <MobileGlobalSearch />
+        <GlobalSearchMobile />
       </div>
       
 

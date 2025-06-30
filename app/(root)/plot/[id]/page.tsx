@@ -1,8 +1,8 @@
 
 /* eslint-disable no-template-curly-in-string */
-"use client";
 
-import React, { useState } from "react";
+
+import React from "react";
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import InfoRow from "@/components/shared/InfoRow";
 import { ParamsProps } from "@/types";
 import { getPlotById } from "@/lib/actions/plot.action";
-import { PencilLine, Info, FileText, Banknote, Scale, Copy, History, Download } from "lucide-react";
+import { PencilLine, Info, FileText, Banknote, Scale, History, Download } from "lucide-react";
 
 import ExportButton from "@/components/shared/ExportButton";
 
@@ -22,28 +22,28 @@ import ExportButton from "@/components/shared/ExportButton";
 const Page = async ({ params }: ParamsProps) => {
   const result = await getPlotById({ plotId: params.id });
 
-  const CopyButton = ({ text }: { text: string }) => {
-  const [copied, setCopied] = useState(false);
-  const handleCopy = () => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  };
+//   const CopyButton = ({ text }: { text: string }) => {
+//   const [copied, setCopied] = useState(false);
+//   const handleCopy = () => {
+//     navigator.clipboard.writeText(text);
+//     setCopied(true);
+//     setTimeout(() => setCopied(false), 1500);
+//   };
 
 
 
 
-  return (
-    <button
-      onClick={handleCopy}
-      className="ml-2 p-1 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
-      title="Copy to clipboard"
-    >
-      <Copy size={16} />
-      {copied && <span className="ml-1 text-xs text-green-500">Copied!</span>}
-    </button>
-  );
-};
+//   return (
+//     <button
+//       onClick={handleCopy}
+//       className="ml-2 p-1 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+//       title="Copy to clipboard"
+//     >
+//       <Copy size={16} />
+//       {copied && <span className="ml-1 text-xs text-green-500">Copied!</span>}
+//     </button>
+//   );
+// };
   
   // Prepare export data
   const exportData = [

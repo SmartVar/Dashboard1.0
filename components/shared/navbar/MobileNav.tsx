@@ -75,9 +75,6 @@ const MobileNav = () => {
           </p>
         </Link>
 
-        {/* 🔍 Global Search logic or UI if needed */}
-        <GlobalSearchMobile />
-
         <div>
           <NavContent />
 

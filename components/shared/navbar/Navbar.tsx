@@ -5,6 +5,7 @@ import React from 'react'
 import Theme from './Theme'
 import MobileNav from './MobileNav'
 import GlobalSearch from '../search/GlobalSearch'
+import MobileGlobalSearch from '../search/MobileGlobalSearch'
 
 const Navbar = () => {
   return (
@@ -23,8 +24,16 @@ const Navbar = () => {
          dark:text-light-900 max-sm:hidden">Postal <span className="text-primary-500">
           Dashboard</span></p>
       </Link>
+{/* Desktop/Tablet Global Search */}
+      <div className="hidden md:block w-full max-w-xl">
+        <GlobalSearch />
+      </div>
 
-      <GlobalSearch />
+      {/* Mobile Global Search */}
+      <div className="block md:hidden w-full max-w-xs">
+        <MobileGlobalSearch />
+      </div>
+      
 
       <div className="flex-between gap-5">
         <Theme />

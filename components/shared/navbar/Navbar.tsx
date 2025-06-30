@@ -5,7 +5,7 @@ import React from 'react'
 import Theme from './Theme'
 import MobileNav from './MobileNav'
 import GlobalSearch from '../search/GlobalSearch'
-import GlobalSearchMobile from '../search/GlobalSearchMobile'
+import GlobalSearchMobile from '../search/GlobalSerachMobile'
 
 const Navbar = () => {
   return (

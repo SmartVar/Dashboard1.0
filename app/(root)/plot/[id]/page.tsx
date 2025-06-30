@@ -15,7 +15,7 @@ import InfoRow from "@/components/shared/InfoRow";
 import { ParamsProps } from "@/types";
 import { getPlotById } from "@/lib/actions/plot.action";
 import { PencilLine, Info, FileText, Banknote, Scale, History, Download } from "lucide-react";
-
+import CopyButton from "@/components/shared/CopyButton";
 import ExportButton from "@/components/shared/ExportButton";
 
 // eslint-disable-next-line @next/next/no-async-client-component

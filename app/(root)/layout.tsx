@@ -1,4 +1,4 @@
-{ /*import LeftSidebar from '@/components/shared/LeftSidebar'
+{ /* import LeftSidebar from '@/components/shared/LeftSidebar'
 // import RightSidebar from '@/components/shared/RightSidebar'
 import Navbar from '@/components/shared/navbar/Navbar'
 import { Toaster } from '@/components/ui/toaster'
@@ -26,7 +26,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 }
 
 export default Layout 
-*/}
+*/ }
 import React from 'react'
 import LeftSidebar from '@/components/shared/LeftSidebar'
 // import RightSidebar from '@/components/shared/RightSidebar'

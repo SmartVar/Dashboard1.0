@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export const CopyButton = ({ text }: { text: string }) => {
+const CopyButton = ({ text }: { text: string }) => {
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
       navigator.clipboard.writeText(text);
@@ -23,3 +23,5 @@ export const CopyButton = ({ text }: { text: string }) => {
       </button>
     );
   };
+
+export default CopyButton;

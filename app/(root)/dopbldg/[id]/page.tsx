@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import InfoRow from "@/components/shared/InfoRow";
 import { ParamsProps } from "@/types";
 import { getDopBldgById } from "@/lib/actions/departmentalbldg.action";
+import CopyButton from "@/components/shared/CopyButton";
 import {
   PencilLine,
   Info,

@@ -20,7 +20,6 @@ import {
   FileText,
   Banknote,
   Scale,
-  Copy,
   History,
   Download,
 } from "lucide-react";

@@ -1,4 +1,6 @@
+"use client";
 
+import { useState } from "react";
 
 export const CopyButton = ({ text }: { text: string }) => {
     const [copied, setCopied] = useState(false);

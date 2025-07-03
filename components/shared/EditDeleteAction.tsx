@@ -64,7 +64,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
   )
 : url === '/fund'
   ? await deleteFund({ 
-    plotId: JSON.parse(itemId), 
+    fundId: JSON.parse(itemId), 
     path: pathname 
   }
   )

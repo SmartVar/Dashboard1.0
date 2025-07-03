@@ -5,7 +5,7 @@
 
 import { deletePlot } from "@/lib/actions/plot.action";
 import { deleteRentBldg } from "@/lib/actions/rentedbldg.action";
-// import { deleteTemplate} from "@/lib/actions/template.action";
+import { deleteFund} from "@/lib/actions/fund.action";
 import { deleteDopBldg} from "@/lib/actions/departmentalbldg.action";
 // import { deletePendency} from "@/lib/actions/pendency.action";
 import Image from "next/image";
@@ -58,6 +58,12 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
   )
   : url === '/plot'
   ? await deletePlot({ 
+    plotId: JSON.parse(itemId), 
+    path: pathname 
+  }
+  )
+: url === '/fund'
+  ? await deleteFund({ 
     plotId: JSON.parse(itemId), 
     path: pathname 
   }

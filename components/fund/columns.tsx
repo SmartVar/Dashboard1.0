@@ -123,7 +123,7 @@ export const columns: ColumnDef<FundDef>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const value = row.getValue("pe_amount") as number;
+      const value = row.getValue("be_allot") as number;
       return `₹ ${value.toLocaleString("en-IN")}`;
     },
   },
@@ -136,7 +136,7 @@ export const columns: ColumnDef<FundDef>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const value = row.getValue("pe_amount") as number;
+      const value = row.getValue("re_allot") as number;
       return `₹ ${value.toLocaleString("en-IN")}`;
     },
   },
@@ -149,7 +149,7 @@ export const columns: ColumnDef<FundDef>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const value = row.getValue("pe_amount") as number;
+      const value = row.getValue("add_allot") as number;
       return `₹ ${value.toLocaleString("en-IN")}`;
     },
   },
@@ -175,7 +175,7 @@ export const columns: ColumnDef<FundDef>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const value = row.getValue("tot_allot") as number;
+      const value = row.getValue("tender_amount") as number;
       return `₹ ${value.toLocaleString("en-IN")}`;
     },
   },
@@ -197,7 +197,7 @@ export const columns: ColumnDef<FundDef>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const value = row.getValue("tot_allot") as number;
+      const value = row.getValue("balance") as number;
       return `₹ ${value.toLocaleString("en-IN")}`;
     },
   },

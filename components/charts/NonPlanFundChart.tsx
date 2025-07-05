@@ -1,17 +1,25 @@
-// FundChart.js
 'use client'
 
-import React, { useState } from "react";
-import { PolarArea } from "react-chartjs-2";
+import React, { useState } from "react"
+import { PolarArea } from "react-chartjs-2"
 import {
   Chart as ChartJS,
   RadialLinearScale,
   ArcElement,
   Tooltip,
   Legend
-} from "chart.js";
+} from "chart.js"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend)
 
 const divisionData = {
   "C-Sion": { allotment: 80, utilization: 60 },
@@ -26,14 +34,13 @@ const divisionData = {
   RGD: { allotment: 55, utilization: 50 },
   PSD: { allotment: 90, utilization: 88 },
   CSD: { allotment: 65, utilization: 60 }
-};
+}
 
 const NonPlanFundChart = () => {
-  const [selectedDivision, setSelectedDivision] = useState("C-Sion");
+  const [selectedDivision, setSelectedDivision] = useState("C-Sion")
+  const { allotment, utilization } = divisionData[selectedDivision]
 
-  const { allotment, utilization } = divisionData[selectedDivision];
-
-  const data = {
+  const chartData = {
     labels: ["Allotment", "Utilization"],
     datasets: [
       {
@@ -43,25 +50,39 @@ const NonPlanFundChart = () => {
         borderWidth: 1
       }
     ]
-  };
+  }
 
   return (
-    <div style={{ width: "400px", margin: "auto" }}>
-      <h3>Select Division</h3>
-      <select
-        onChange={(e) => setSelectedDivision(e.target.value)}
-        value={selectedDivision}
-      >
-        {Object.keys(divisionData).map((division) => (
-          <option key={division} value={division}>
-            {division}
-          </option>
-        ))}
-      </select>
+    <Card className="max-w-md mx-auto">
+      <CardHeader>
+        <CardTitle>Division Fund Chart</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="division">Select Division</Label>
+          <Select
+            value={selectedDivision}
+            onValueChange={(value) => setSelectedDivision(value)}
+          >
+            <SelectTrigger id="division">
+              <SelectValue placeholder="Select division" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.keys(divisionData).map((division) => (
+                <SelectItem key={division} value={division}>
+                  {division}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-      <PolarArea data={data} />
-    </div>
-  );
-};
+        <div className="w-full">
+          <PolarArea data={chartData} />
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
 
-export default NonPlanFundChart;
+export default NonPlanFundChart

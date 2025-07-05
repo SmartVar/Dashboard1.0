@@ -34,8 +34,8 @@ const divisionData = {
     { division: "MLD", dop: 7, rent: 31 },
   ],
   Plot: [
-    { division: "NMD", vacant: 3, reserved: 45 },
-    { division: "THN", vacant: 8, reserved: 5 },
+    { division: "NMD", vacant: 3, reserved: 5 },
+    { division: "THN", vacant: 8, reserved: 45 },
     { division: "NSK", vacant: 4, reserved: 0 },
     { division: "PLD", vacant: 0, reserved: 0 },
     { division: "RGD", vacant: 2, reserved: 0 },

@@ -17,7 +17,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </section>
 
-        {/* <RightSidebar /> */}
+        {/*  <RightSidebar /> */}
       </div>
 
       <Toaster />
@@ -26,3 +26,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 }
 
 export default Layout
+

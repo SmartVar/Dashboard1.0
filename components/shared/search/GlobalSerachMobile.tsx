@@ -30,7 +30,7 @@ const GlobalSearchMobile = () => {
             if (e.target.value === "" && isOpen) setIsOpen(false);
           }}
           onFocus={() => setIsOpen(true)}
-          className="paragraph-regular no-focus border-none bg-transparent shadow-none outline-none"
+        className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none"
         />
       </div>
       {isOpen && <GlobalResultMobile showOnlyResults />}

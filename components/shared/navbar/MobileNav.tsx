@@ -12,7 +12,6 @@ import { SignedOut } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { sidebarLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
-import GlobalSearchMobile from "@/components/shared/search/GlobalSerachMobile"
 
 const NavContent = () => {
   const pathname = usePathname()
@@ -74,9 +73,6 @@ const MobileNav = () => {
             Postal <span className="text-primary-500">Dashboard</span>
           </p>
         </Link>
-
-        {/* 🔍 Global Search logic or UI if needed */}
-        <GlobalSearchMobile />
 
         <div>
           <NavContent />

@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
-"use client";
 
-import React, { useState } from "react";
+
+import React from "react";
 import {
   Card,
   CardContent,
@@ -13,13 +13,13 @@ import { Button } from "@/components/ui/button";
 import InfoRow from "@/components/shared/InfoRow";
 import { ParamsProps } from "@/types";
 import { getDopBldgById } from "@/lib/actions/departmentalbldg.action";
+import CopyButton from "@/components/shared/CopyButton";
 import {
   PencilLine,
   Info,
   FileText,
   Banknote,
   Scale,
-  Copy,
   History,
   Download,
 } from "lucide-react";
@@ -28,32 +28,32 @@ import ExportButton from "@/components/shared/ExportButton";
 const Page = async ({ params }: ParamsProps) => {
   const result = await getDopBldgById({ departmentalbldgId : params.id });
 
-  const CopyButton = ({ text }: { text: string }) => {
-    const [copied, setCopied] = useState(false);
-    const handleCopy = () => {
-      navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    };
+  // const CopyButton = ({ text }: { text: string }) => {
+  //   const [copied, setCopied] = useState(false);
+  //   const handleCopy = () => {
+  //     navigator.clipboard.writeText(text);
+  //     setCopied(true);
+  //     setTimeout(() => setCopied(false), 1500);
+  //   };
 
-    return (
-      <button
-        onClick={handleCopy}
-        className="ml-2 p-1 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
-        title="Copy to clipboard"
-      >
-        <Copy size={16} />
-        {copied && (
-          <span className="ml-1 text-xs text-green-500">Copied!</span>
-        )}
-      </button>
-    );
-  };
+  //   return (
+  //     <button
+  //       onClick={handleCopy}
+  //       className="ml-2 p-1 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+  //       title="Copy to clipboard"
+  //     >
+  //       <Copy size={16} />
+  //       {copied && (
+  //         <span className="ml-1 text-xs text-green-500">Copied!</span>
+  //       )}
+  //     </button>
+  //   );
+  // };
 
   const exportData = [
     {
       Section: "At a Glance",
-      Division: result.division,
+      Division: result?.division,
       PO: result.po,
       Class: result.class,
       Location: result.location,
@@ -99,7 +99,7 @@ const Page = async ({ params }: ParamsProps) => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          {result.po} – {result.division}
+          {result.po}
         </h1>
         <div className="flex justify-end w-full gap-2 sm:w-auto">
           <Link href={`/departmentalbldg/edit/${result._id}`}>

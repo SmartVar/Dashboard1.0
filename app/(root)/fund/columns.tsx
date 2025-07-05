@@ -187,10 +187,6 @@ export const columns: ColumnDef<FundDef>[] = [
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
-    cell: ({ row }) => {
-      const value = row.getValue("tot_allot") as number;
-      return `₹ ${value.toLocaleString("en-IN")}`;
-    },
   },
   {
     accessorKey: "balance",

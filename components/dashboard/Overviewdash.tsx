@@ -22,7 +22,9 @@ import BarChartsCases from "../charts/BarChartsCases"
 import DonutCharts from "../charts/DonutCharts"
 import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
 // import EventCalendarContainer from "../events/EventCalendarContainer"
-  
+ import  NonPlanFundChart from "../charts/NonPlanFundChart"
+
+
   const Overviewdash = async () => {
       const { userId } = auth();
     const userInfo = await getUserInfo({ userId});
@@ -200,7 +202,8 @@ import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <DonutCharts />
+            {/* <DonutCharts /> */}
+            <NonPlanFundChart />
         </CardContent>
       </Card>
       {/* <Card className="text-dark200_light900 col-span-3">

@@ -392,7 +392,6 @@ const Fundform = ({ type, mongoUserId, fundDetails }: Props) => {
             <FormLabel className="paragraph-semibold text-dark400_light800">Progress</FormLabel>
             <FormControl>
               <Input 
-                type="text"
                 className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                 {...field} 
               />

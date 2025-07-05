@@ -16,10 +16,11 @@ import {
   import Link from "next/link"
 // import {Piechartdata} from "./Piechartdata"
 // import BarChartsActive from "../charts/BarChartsActive"
-import BarChartsMultiple from "../charts/BarChartsMultiple"
+// import BarChartsMultiple from "../charts/BarChartsMultiple"
 import PieChartsActive from "../charts/PieChartsActive"
 import BarChartsCases from "../charts/BarChartsCases"
 import DonutCharts from "../charts/DonutCharts"
+import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
 // import EventCalendarContainer from "../events/EventCalendarContainer"
   
   const Overviewdash = async () => {
@@ -153,7 +154,8 @@ import DonutCharts from "../charts/DonutCharts"
           <CardTitle>Bldgs Info</CardTitle>
         </CardHeader>
         <CardContent className="pl-2">
-          <BarChartsMultiple />
+          {/* <BarChartsMultiple /> */}
+          <BldgPlotsCharts />
         {/* <BarChartsActive /> */}
           {/* <Piechartdata /> */}
         </CardContent>

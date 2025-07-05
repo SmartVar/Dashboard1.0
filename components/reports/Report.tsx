@@ -1,3 +1,4 @@
+
 // 'use client';
 
 // import Link from 'next/link';
@@ -369,7 +370,7 @@ const Report = () => {
                           handleCheckboxChange(report._id, field, e.target.checked)
                         }
                       />
-                      <span>{isCompleted ? '✅' : '❌'}</span>
+                      { /* <span>{isCompleted ? '✅' : '❌'}</span> */}
                     </label>
                   </td>
                 );

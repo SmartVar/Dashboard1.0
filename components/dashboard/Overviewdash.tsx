@@ -17,7 +17,7 @@ import {
 // import {Piechartdata} from "./Piechartdata"
 // import BarChartsActive from "../charts/BarChartsActive"
 // import BarChartsMultiple from "../charts/BarChartsMultiple"
-import PieChartsActive from "../charts/PieChartsActive"
+import { PlanFundPieCharts } from "../charts/PlanFundPieCharts"
 import BarChartsCases from "../charts/BarChartsCases"
 import DonutCharts from "../charts/DonutCharts"
 import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
@@ -176,7 +176,8 @@ import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
         </CardHeader>
         <CardContent>
           {/* <RecentSales /> */}
-          <PieChartsActive />
+          {/* <PieChartsActive /> */}
+          <PlanFundPieCharts />
         </CardContent>
       </Card>
       </div>

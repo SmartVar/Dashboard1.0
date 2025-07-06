@@ -19,7 +19,6 @@ import {
 // import BarChartsMultiple from "../charts/BarChartsMultiple"
 import { PlanFundPieCharts } from "../charts/PlanFundPieCharts"
 import BarChartsCases from "../charts/BarChartsCases"
-import DonutCharts from "../charts/DonutCharts"
 import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
 // import EventCalendarContainer from "../events/EventCalendarContainer"
  import  NonPlanFundChart from "../charts/NonPlanFundChart"
@@ -172,7 +171,7 @@ import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
       </Card> */}
       <Card className="text-dark200_light900 col-span-3">
         <CardHeader>
-          <CardTitle>Funds</CardTitle>
+          <CardTitle>Plan Funds</CardTitle>
           <CardDescription>
                       </CardDescription>
         </CardHeader>
@@ -198,7 +197,7 @@ import { BldgPlotsCharts } from "../charts/BldgPlotsCharts"
         <CardHeader>
           <CardTitle>Non Plan Funds</CardTitle>
           <CardDescription>
-            Non Plan Allotment
+            
           </CardDescription>
         </CardHeader>
         <CardContent>

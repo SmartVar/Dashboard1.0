@@ -17,8 +17,15 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-//   CardTitle,
 } from "@/components/ui/card"
+
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select"
 
 type BldgKey = "dop" | "rent"
 type PlotKey = "vacant" | "reserved"
@@ -74,17 +81,19 @@ export function BldgPlotsCharts() {
               {/* Compare {selection === "Bldg" ? "building" : "plot"} types across divisions. */}
             </CardDescription>
           </div>
-          <div className="flex justify-end w-full mb-4">
-            <select
+          <div className="flex justify-end w-full sm:w-auto">
+            <Select
               value={selection}
-              onChange={(e) => setSelection(e.target.value as "Bldg" | "Plot")}
-            //   className="border rounded px-3 py-1 text-sm bg-background text-foreground border-muted focus:outline-none"
-              className="border rounded px-3 py-1 text-sm bg-background text-foreground border-muted dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-
+              onValueChange={(value) => setSelection(value as "Bldg" | "Plot")}
             >
-              <option value="Bldg">Bldg</option>
-              <option value="Plot">Plot</option>
-            </select>
+              <SelectTrigger className="w-40 bg-background text-foreground border-muted dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-900 text-black dark:text-white border border-gray-200 dark:border-gray-700">
+                <SelectItem value="Bldg">Bldg</SelectItem>
+                <SelectItem value="Plot">Plot</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </CardHeader>
@@ -93,8 +102,9 @@ export function BldgPlotsCharts() {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={chartData}
-            barCategoryGap="30%" // Gap between bars in group
-            barGap={8} // Gap between groups
+            barCategoryGap="30%"
+            barGap={8}
+            margin={{ left: 0, right: 0, top: 20, bottom: 20 }}
           >
             <XAxis
               dataKey="division"
@@ -103,15 +113,10 @@ export function BldgPlotsCharts() {
               axisLine={false}
               tickLine={false}
             />
-            <YAxis
-              stroke="currentColor"
-              tick={{ fontSize: 12, fontWeight: 400, fill: "currentColor" }}
-              axisLine={false}
-              tickLine={false}
-            />
+            <YAxis hide /> {/* Hides Y axis */}
             <Tooltip
               contentStyle={{
-                backgroundColor: "rgba(0,0,0,0.65)", // elegant dark transparent
+                backgroundColor: "rgba(0,0,0,0.65)",
                 color: "#fff",
                 borderRadius: "6px",
                 border: "1px solid rgba(255,255,255,0.1)",

@@ -22,18 +22,18 @@ import { Label } from "@/components/ui/label"
 ChartJS.register(ArcElement, Tooltip, Legend, Title)
 
 const divisionData = {
-  "C-Sion": { allotment: 80, utilization: 60 },
-  "E-Sion": { allotment: 100, utilization: 90 },
-  "C-Pune": { allotment: 70, utilization: 50 },
-  RO: { allotment: 95, utilization: 85 },
-  NMD: { allotment: 60, utilization: 30 },
-  THN: { allotment: 50, utilization: 45 },
-  PLG: { allotment: 75, utilization: 70 },
-  NSK: { allotment: 85, utilization: 80 },
-  MLD: { allotment: 40, utilization: 35 },
-  RGD: { allotment: 55, utilization: 50 },
-  PSD: { allotment: 90, utilization: 88 },
-  CSD: { allotment: 65, utilization: 60 }
+  "C-Sion": { allotment: 37.53, utilization: 32 },
+  "E-Sion": { allotment: 30, utilization: 15 },
+  "C-Pune": { allotment: 16, utilization: 1 },
+  RO: { allotment: 10, utilization: 0.5 },
+  NMD: { allotment: 1, utilization: 30 },
+  THN: { allotment: 1, utilization: 45 },
+  PLG: { allotment: 1, utilization: 70 },
+  NSK: { allotment: 1, utilization: 80 },
+  MLD: { allotment: 1, utilization: 35 },
+  RGD: { allotment: 1, utilization: 50 },
+  // PSD: { allotment: 90, utilization: 88 },
+  // CSD: { allotment: 65, utilization: 60 }
 }
 
 type Division = keyof typeof divisionData

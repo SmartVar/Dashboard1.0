@@ -26,12 +26,12 @@ const divisionData = {
   "E-Sion": { allotment: 30, utilization: 15 },
   "C-Pune": { allotment: 16, utilization: 1 },
   RO: { allotment: 10, utilization: 0.5 },
-  NMD: { allotment: 1, utilization: 30 },
-  THN: { allotment: 1, utilization: 45 },
-  PLG: { allotment: 1, utilization: 70 },
-  NSK: { allotment: 1, utilization: 80 },
-  MLD: { allotment: 1, utilization: 35 },
-  RGD: { allotment: 1, utilization: 50 },
+  NMD: { allotment: 1, utilization: 0 },
+  THN: { allotment: 1, utilization: 0 },
+  PLG: { allotment: 1, utilization: 0 },
+  NSK: { allotment: 1, utilization: 0 },
+  MLD: { allotment: 1, utilization: 0 },
+  RGD: { allotment: 1, utilization: 0 },
   // PSD: { allotment: 90, utilization: 88 },
   // CSD: { allotment: 65, utilization: 60 }
 }

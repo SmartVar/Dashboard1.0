@@ -15,8 +15,8 @@ const Navbar = () => {
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/assets/images/site-logo1.svg"
-          width={30}
-          height={30}
+          width={15}
+          height={15}
           alt="PostalDashboard"
         />
 

@@ -18,12 +18,12 @@ const Navbar = () => {
           width={15}
           height={15}
           alt="PostalDashboard"
-        /> */ }
+        /> 
 
         <p className="h2-bold font-spaceGrotesk text-dark-100
          dark:text-light-900 max-sm:hidden">Postal <span className="text-primary-500">
           Dashboard</span></p>
-      </Link>
+      </Link> */}
 {/* Desktop/Tablet Global Search */}
       <div className="hidden md:block w-full max-w-xl">
         <GlobalSearch />

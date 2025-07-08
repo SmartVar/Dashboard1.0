@@ -36,7 +36,8 @@ const Report = () => {
 
   useEffect(() => {
     const fetchReports = async () => {
-      const { report } = await getAllReports({});
+    //  const { report } = await getAllReports({});
+     const report = (await getAllReports({})).report.filter(r => r.status === 'Pending');
       setReports(report || []);
       setLoading(false);
     };

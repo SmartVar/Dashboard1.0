@@ -27,11 +27,11 @@ const divisionData = {
   "C-Pune": { allotment: 16, utilization: 1 },
   RO: { allotment: 10, utilization: 0.5 },
   NMD: { allotment: 1, utilization: 0 },
-  THN: { allotment: 1, utilization: 0 },
-  PLG: { allotment: 1, utilization: 0 },
+  THN: { allotment: 1, utilization: 0.24699 },
+  PLG: { allotment: 1, utilization: 0.06076 },
   NSK: { allotment: 1, utilization: 0 },
   MLD: { allotment: 1, utilization: 0 },
-  RGD: { allotment: 1, utilization: 0 },
+  RGD: { allotment: 1, utilization: 0.05 },
   // PSD: { allotment: 90, utilization: 88 },
   // CSD: { allotment: 65, utilization: 60 }
 }

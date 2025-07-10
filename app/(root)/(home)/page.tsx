@@ -4,7 +4,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 const page = () => (
-  <section className="w-full font-sans">
+  <section className="w-full font-sans bg-gray-50">
     {/* Header with India Post Logo */}
     <header className="flex items-center px-6 py-4 bg-white/50 backdrop-blur-lg shadow-bottom">
       <Image
@@ -20,7 +20,7 @@ const page = () => (
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative h-[75vh] flex flex-col justify-center items-center bg-indigo-900/10 overflow-hidden"
+      className="relative h-[75vh] flex flex-col justify-center items-center bg-indigo-100/20 overflow-hidden"
     >
       <Image
         src="https://cdn-iconscout.com/3d-illustration/dashboard-template-1-4587225-3782165.png"
@@ -36,15 +36,16 @@ const page = () => (
         <p className="text-lg sm:text-xl text-gray-700/90 max-w-2xl mx-auto">
           Monitor Funds • Assets • Reminders • Analytics — Powered by real‑time 3D dashboards.
         </p>
-    {/* 3D Postman Illustration */}
-      <div className="mt-8">
-        <Image
-          src="https://www.vecteezy.com/png/thumbnail/18971645-postman-puts-envelope-in-postal-service-mailbox-3d-character-illustration.png"
-          alt="3D postman delivering mail"
-          width={300}
-          height={200}
-        />
-      </div>
+
+        {/* 3D Postman Illustration */}
+        <div className="mt-8">
+          <Image
+            src="https://png.pngtree.com/png-clipart/20230911/original/pngtree-3d-cartoon-postman-delivering-a-letter-to-a-red-mailbox-png-image_12121088.png"
+            alt="3D postman delivering mail"
+            width={300}
+            height={200}
+          />
+        </div>
       </div>
     </motion.div>
 
@@ -76,8 +77,12 @@ const page = () => (
         ].map((f, i) => (
           <motion.div
             key={i}
-            whileHover={{ translateY: -5, shadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-            className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-md text-center transition"
+            whileHover={{
+              y: -5,
+              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
+            }}
+            transition={{ duration: 0.3 }}
+            className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-md text-center"
           >
             <Image src={f.icon} alt={f.title} width={72} height={72} className="mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-2">{f.title}</h3>
@@ -93,7 +98,7 @@ const page = () => (
       <p className="mb-6 text-lg max-w-xl mx-auto">
         Secure, transparent and built for scale — bring the future of postal services to your team.
       </p>
-      {/* CTA Button */}
+      {/* Optional CTA button can be added here */}
     </div>
   </section>
 )

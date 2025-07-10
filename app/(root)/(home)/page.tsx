@@ -49,11 +49,11 @@ const page = () => {
       <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-12 text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to Dive In?</h2>
         <p className="mb-6">Access your Dashboard now and streamline your postal operations.</p>
-        {/* <Link href="/dashboard">
+        <Link href="/dashboard">
           <Button className="primary-gradient px-6 py-3 text-lg !text-light-900 rounded-md">
             Go to Dashboard
           </Button>
-        </Link> */}
+        </Link> 
       </div>
     </section>
   )

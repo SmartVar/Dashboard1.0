@@ -75,6 +75,12 @@ const Report = () => {
                        New Report
                      </Button>
                    </Link> 
+        <Link href="/report" 
+                    className="flex justify-end max-sm:w-full">
+                     <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+                       All Report
+                     </Button>
+                   </Link> 
                  </div> 
                    <div className="mt-11 flex justify-between gap-5 
                        max-sm:flex-col sm:items-center">

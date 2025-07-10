@@ -83,10 +83,12 @@ const NonPlanFundChart = () => {
   return (
     <Card className="max-w-md mx-auto">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
-        <CardTitle>Fund Utilization</CardTitle>
-        <CardDescription className="text-sm text-muted-foreground">
+        <div>
+          <CardTitle className="text-lg font-semibold">Fund Utilization</CardTitle>
+          <CardDescription className="text-sm text-muted-foreground">
             Select division to view utilization %
           </CardDescription>
+          </div>
         <div className="w-48">
           <Label htmlFor="division" className="sr-only">Select Division</Label>
           <Select

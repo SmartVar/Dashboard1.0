@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title)

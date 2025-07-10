@@ -68,7 +68,7 @@ const Report = () => {
 
   return (
     <div className="overflow-x-auto mt-5">
-      <div>
+      <div className="flex justify-between">
                    <Link href="/add-report" 
                     className="flex justify-end max-sm:w-full">
                      <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">

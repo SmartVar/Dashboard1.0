@@ -64,7 +64,7 @@ const Report = () => {
   };
 
   if (loading) return <p className="text-gray-400">Loading reports...</p>;
-  if (reports.length === 0) return <p className="text-gray-400">No reports found.</p>;
+ // if (reports.length === 0) return <p className="text-gray-400">No reports found.</p>;
 
   return (
     <div className="overflow-x-auto mt-5">

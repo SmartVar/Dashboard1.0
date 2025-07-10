@@ -3,8 +3,8 @@
 'use client';
 import Link from 'next/link';
 // import React, { useState, useEffect } from 'react';
-import { Button } from '../ui/button';
-import LocalSearchbar from '../shared/search/LocalSearchbar';
+import { Button } from '../../ui/button';
+import LocalSearchbar from '../../component/shared/search/LocalSearchbar';
 
 import React, { useEffect, useState } from 'react';
 import { getAllReports, updateReportStatus } from '@/lib/actions/report.action';

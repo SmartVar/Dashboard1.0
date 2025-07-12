@@ -163,20 +163,104 @@ export async function getAllRentBldgs(params: GetRentBldgParams) {
   }
 }
   
+// export async function createRentBldg(params: CreateRentBldgParams) {
+//   try {
+//     connectToDatabase();
+
+//     // eslint-disable-next-line camelcase
+//     const { division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, frac_status, frac_level, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, tags, path } = params;
+
+//     // Create the question
+//     const rentbldg = await Rentedbldg.create({
+//       division,
+//       po,
+//       class_po,
+//       date_po_function,
+//       // eslint-disable-next-line camelcase
+//       class_city,
+//       soa,
+//       area,
+//       paq,
+//       lease_period,
+//       rent,
+//       frac_status,
+//       frac_level,
+//       fund_type,
+//       fund_amount,
+//       cases,
+//       case_description,
+//       case_action,
+//       case_divisionaction,
+//       brief_history,
+//       corr_ro,
+//       corr_division,
+//     });
+//  const tagDocuments = [];
+
+//  for (const tag of tags) {
+//        const existingTag = await Tag.findOneAndUpdate(
+//          { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+//          { $setOnInsert: { name: tag }, $push: { rentedbldgs: rentbldg._id } },
+//          { upsert: true, new: true }
+//        )
+ 
+//        tagDocuments.push(existingTag._id);
+//      }
+ 
+//      await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
+//        $push: { tags: { $each: tagDocuments }}
+//      });
+
+//        // Create an interaction record for the user's ask_question action
+    
+//     // Increment author's reputation by +5 for creating a question
+
+//     // revalidate path inorder to display question wihtout reloading
+       
+//     revalidatePath(path)
+//     return rentbldg ;
+
+//   } catch (error) {
+    
+//   }
+// }
+
 export async function createRentBldg(params: CreateRentBldgParams) {
   try {
-    connectToDatabase();
+    await connectToDatabase();
 
-    // eslint-disable-next-line camelcase
-    const { division, po, class_po, date_po_function, class_city, soa, area, paq, lease_period, rent, frac_status, frac_level, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, tags, path } = params;
+    const {
+      division,
+      po,
+      class_po,
+      date_po_function,
+      class_city,
+      soa,
+      area,
+      paq,
+      lease_period,
+      rent,
+      frac_status,
+      frac_level,
+      fund_type,
+      fund_amount,
+      cases,
+      case_description,
+      case_action,
+      case_divisionaction,
+      brief_history,
+      corr_ro,
+      corr_division,
+      tags,
+      path
+    } = params;
 
-    // Create the question
+    // 1. Create the rented building
     const rentbldg = await Rentedbldg.create({
       division,
       po,
       class_po,
       date_po_function,
-      // eslint-disable-next-line camelcase
       class_city,
       soa,
       area,
@@ -195,35 +279,43 @@ export async function createRentBldg(params: CreateRentBldgParams) {
       corr_ro,
       corr_division,
     });
- const tagDocuments = [];
 
- for (const tag of tags) {
-       const existingTag = await Tag.findOneAndUpdate(
-         { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
-         { $setOnInsert: { name: tag }, $push: { rentedbldgs: rentbldg._id } },
-         { upsert: true, new: true }
-       )
- 
-       tagDocuments.push(existingTag._id);
-     }
- 
-     await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
-       $push: { tags: { $each: tagDocuments }}
-     });
+    // 2. Attach tags properly
+    const tagDocuments = [];
 
-       // Create an interaction record for the user's ask_question action
-    
-    // Increment author's reputation by +5 for creating a question
+    for (const tag of tags) {
+      const existingTag = await Tag.findOne({ name: new RegExp(`^${tag}$`, 'i') });
 
-    // revalidate path inorder to display question wihtout reloading
-       
-    revalidatePath(path)
-    return rentbldg ;
+      if (existingTag) {
+        await Tag.findByIdAndUpdate(existingTag._id, {
+          $addToSet: { rentedbldgs: rentbldg._id }
+        });
+        tagDocuments.push(existingTag._id);
+      } else {
+        const newTag = await Tag.create({
+          name: tag,
+          rentedbldgs: [rentbldg._id]
+        });
+        tagDocuments.push(newTag._id);
+      }
+    }
+
+    // 3. Update the rented building with tag IDs
+    await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
+      $addToSet: { tags: { $each: tagDocuments } }
+    });
+
+    // 4. Revalidate the path for cache busting
+    revalidatePath(path);
+
+    return rentbldg;
 
   } catch (error) {
-    
+    console.error("Error creating rented building:", error);
+    throw error;
   }
 }
+
 
 export async function getRentBldgById(params: GetRentBldgByIdParams) {
   try {

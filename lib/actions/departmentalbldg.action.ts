@@ -273,23 +273,7 @@ export async function createDopBldg(params: CreateDopBldgParams) {
 }
 
 
-    // 3. Update the rented building with tag IDs
-    await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
-      $addToSet: { tags: { $each: tagDocuments } }
-    });
-
-    // 4. Revalidate the path for cache busting
-    revalidatePath(path);
-
-    return rentbldg;
-
-  } catch (error) {
-    console.error("Error creating rented building:", error);
-    throw error;
-  }
-}
-
-
+  
 export async function getDopBldgById(params: GetDopBldgByIdParams) {
   try {
     connectToDatabase();

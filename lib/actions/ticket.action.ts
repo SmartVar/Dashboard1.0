@@ -35,7 +35,7 @@ export async function getTickets(params: GetTicketsParams): Promise<TicketDef[]>
     if (filter) {
       query.division = new RegExp(`^${filter}$`, "i"); // ✅ filter by division
     }
-     let sortOptions = {};
+     const sortOptions = {};
     
     // switch (filter) 
     // {

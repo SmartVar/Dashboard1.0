@@ -93,7 +93,7 @@ const DopbldgCard = ({
               imgUrl="/assets/icons/message.svg"
               alt="division"
               value={division}
-              title=" Dn"
+              title=""
               textStyles="small-medium text-dark400_light800"
             />
           <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">

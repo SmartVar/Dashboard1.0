@@ -125,52 +125,90 @@ export async function getDopBldgByTagId(params:GetDepartmentalbldgsByTagIdParams
     throw error;
   }
 }
-export async function getRentBldgByTagId(params:GetRentedbldgsByTagIdParams) {
+// export async function getRentBldgByTagId(params:GetRentedbldgsByTagIdParams) {
+//   try {
+//     connectToDatabase();
+
+//     const { tagId, page = 1, pageSize = 10, searchQuery } = params;
+//     const skipAmount = (page - 1) * pageSize;
+
+//     const tagFilter: FilterQuery<ITag> = { _id: tagId};
+
+//     const tag = await Tag.findOne(tagFilter).populate({
+//       path: 'rentedbldgs',
+//       model: Rentedbldg,
+//       strictPopulate: false,
+//       match: searchQuery
+//         ? { title: { $regex: searchQuery, $options: 'i' }}
+//         : {},
+//       options: {
+//         sort: { createdAt: -1 },
+//         skip: skipAmount,
+//         limit: pageSize + 1 // +1 to check if there is next page
+//       },
+//       populate: [
+//         { path: 'tags', model: Tag, select: "_id name" },
+//         { path: 'author', model: User, select: '_id clerkId name picture'}
+//       ]
+//     })
+
+//     if(!tag) {
+//       throw new Error('Tag not found');
+//     }
+
+
+//     const isNext = tag.rentedbldgs?.length > pageSize;
+    
+   
+    
+//     const rentedbldgs = tag.rentedbldgs;
+
+//     return { tagTitle: tag.name, rentedbldgs, isNext };
+//    // return { tagTitle: tag.name, rentedbldgs };
+
+//   } catch (error) {
+//     console.log(error);
+//     throw error;
+//   }
+// }
+
+export async function getRentBldgByTagId(params: GetRentedbldgsByTagIdParams) {
   try {
     connectToDatabase();
 
     const { tagId, page = 1, pageSize = 10, searchQuery } = params;
-    const skipAmount = (page - 1) * pageSize;
+    const skip = (page - 1) * pageSize;
 
-    const tagFilter: FilterQuery<ITag> = { _id: tagId};
+    const tag = await Tag.findById(tagId);
+    if (!tag) throw new Error('Tag not found');
 
-    const tag = await Tag.findOne(tagFilter).populate({
-      path: 'rentedbldgs',
-      model: Rentedbldg,
-      strictPopulate: false,
-      match: searchQuery
-        ? { title: { $regex: searchQuery, $options: 'i' }}
-        : {},
-      options: {
-        sort: { createdAt: -1 },
-        skip: skipAmount,
-        limit: pageSize + 1 // +1 to check if there is next page
-      },
-      populate: [
-        { path: 'tags', model: Tag, select: "_id name" },
-        { path: 'author', model: User, select: '_id clerkId name picture'}
-      ]
-    })
+    const query: FilterQuery<typeof Rentedbldg> = { tags: tagId };
 
-    if(!tag) {
-      throw new Error('Tag not found');
+    if (searchQuery) {
+      query.division = { $regex: searchQuery, $options: 'i' };
     }
 
+    const rentedbldgs = await Rentedbldg.find(query)
+      .populate('tags', '_id name')
+      .populate('author', '_id clerkId name picture')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(pageSize + 1);
 
-    const isNext = tag.rentedbldgs?.length > pageSize;
-    
-   
-    
-    const rentedbldgs = tag.rentedbldgs;
+    const isNext = rentedbldgs.length > pageSize;
 
-    return { tagTitle: tag.name, rentedbldgs, isNext };
-   // return { tagTitle: tag.name, rentedbldgs };
-
+    return {
+      tagTitle: tag.name,
+      rentedbldgs: rentedbldgs.slice(0, pageSize),
+      isNext,
+    };
   } catch (error) {
-    console.log(error);
+    console.error('getRentBldgByTagId error:', error);
     throw error;
   }
 }
+
+
 export async function getPlotByTagId(params:GetPlotsByTagIdParams) {
   try {
     connectToDatabase();

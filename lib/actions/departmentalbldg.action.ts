@@ -87,84 +87,122 @@ export async function getDopBldgs(params: GetDopBldgsParams): Promise<DopBldgDef
     throw error;
   }
 }
+// export async function getAllDopBldgs(params: GetDopBldgsParams) {
+//   try {
+//     connectToDatabase();
+//     const { searchQuery, filter, page = 1, pageSize = 10 } = params;
+
+//     // Calculcate the number of posts to skip based on the page number and page size
+//     const skipAmount = (page - 1) * pageSize;
+
+//     const query: FilterQuery<typeof Departmentalbldg> = {};
+
+//     if(searchQuery) {
+//       query.$or = [
+//         { division: { $regex: new RegExp(searchQuery, "i")}},
+//         { po: { $regex: new RegExp(searchQuery, "i")}},
+//         { location: { $regex: new RegExp(searchQuery, "i")}},
+//       ]
+//     }
+    
+//     let sortOptions = {};
+    
+//     switch (filter) 
+//     {
+//         case "ro":
+//           sortOptions = { division: 'ro' }
+//           break;
+//         case "navi mumbai":
+//           sortOptions = { division: 'navi Mumbai' }
+//           break;
+//         case "thane":
+//           sortOptions = { division: 'thane' }
+//           break;
+//         case "nashik":
+//           sortOptions = { division: 'nashik' }
+//           break;
+//         case "malegaon":
+//           sortOptions = { division: 'malegaon' }
+//           break;
+//         case "palghar":
+//           sortOptions = { division: 'palgahar' }
+//           break;
+//         case "raigad":
+//           sortOptions = { division: 'raigad' }
+//           break;
+//         case "psd":
+//           sortOptions = { division: 'psd' }
+//           break;
+//         case "csd":
+//           sortOptions = { division: 'csd' }
+//           break;
+//         case "rtc":
+//           sortOptions = { division: 'rtc' }
+//           break;
+      
+//         default:
+//           break;
+//       }
+  
+
+//     const dopbldg = await Departmentalbldg.find(query)
+//     .sort(sortOptions)
+//     .populate({ path: 'author', model: User })
+//     .populate({ path: 'tags', model: Tag })
+//     // eslint-disable-next-line no-undef
+//     .skip(skipAmount);
+//     // eslint-disable-next-line no-unused-vars
+//     const totalDepartmentalbldgs = await Departmentalbldg.countDocuments(query);
+// const isNext = totalDepartmentalbldgs > skipAmount + dopbldg.length;
+
+// // console.log(dopbldg);
+// // @ts-ignore
+//     return {dopbldg,isNext};
+
+//   } catch (error) {
+//     console.log(error)
+//     throw error;
+//   }
+// }
+
+
 export async function getAllDopBldgs(params: GetDopBldgsParams) {
   try {
     connectToDatabase();
     const { searchQuery, filter, page = 1, pageSize = 10 } = params;
-
-    // Calculcate the number of posts to skip based on the page number and page size
     const skipAmount = (page - 1) * pageSize;
 
     const query: FilterQuery<typeof Departmentalbldg> = {};
 
-    if(searchQuery) {
+    if (searchQuery) {
       query.$or = [
-        { division: { $regex: new RegExp(searchQuery, "i")}},
-        { po: { $regex: new RegExp(searchQuery, "i")}},
-        { location: { $regex: new RegExp(searchQuery, "i")}},
-      ]
+        { division: { $regex: new RegExp(searchQuery, "i") } },
+        { po: { $regex: new RegExp(searchQuery, "i") } },
+        { location: { $regex: new RegExp(searchQuery, "i") } },
+      ];
     }
-    
-    let sortOptions = {};
-    
-    switch (filter) 
-    {
-        case "ro":
-          sortOptions = { division: 'ro' }
-          break;
-        case "navi mumbai":
-          sortOptions = { division: 'navi Mumbai' }
-          break;
-        case "thane":
-          sortOptions = { division: 'thane' }
-          break;
-        case "nashik":
-          sortOptions = { division: 'nashik' }
-          break;
-        case "malegaon":
-          sortOptions = { division: 'malegaon' }
-          break;
-        case "palghar":
-          sortOptions = { division: 'palgahar' }
-          break;
-        case "raigad":
-          sortOptions = { division: 'raigad' }
-          break;
-        case "psd":
-          sortOptions = { division: 'psd' }
-          break;
-        case "csd":
-          sortOptions = { division: 'csd' }
-          break;
-        case "rtc":
-          sortOptions = { division: 'rtc' }
-          break;
-      
-        default:
-          break;
-      }
-  
+
+    if (filter) {
+      query.division = new RegExp(`^${filter}$`, "i"); // ✅ filter by division
+    }
 
     const dopbldg = await Departmentalbldg.find(query)
-    .sort(sortOptions)
-    .populate({ path: 'author', model: User })
-    .populate({ path: 'tags', model: Tag })
-    // eslint-disable-next-line no-undef
-    .skip(skipAmount);
-    // eslint-disable-next-line no-unused-vars
+      .sort({ createdAt: -1 }) // ✅ valid sort direction
+      .populate({ path: 'author', model: User })
+      .populate({ path: 'tags', model: Tag })
+      .skip(skipAmount);
+
     const totalDepartmentalbldgs = await Departmentalbldg.countDocuments(query);
-const isNext = totalDepartmentalbldgs > skipAmount + dopbldg.length;
+    const isNext = totalDepartmentalbldgs > skipAmount + dopbldg.length;
 
-// console.log(dopbldg);
-// @ts-ignore
-    return {dopbldg,isNext};
-
+    return { dopbldg, isNext };
   } catch (error) {
-    console.log(error)
+    console.error("getAllDopBldgs error:", error);
     throw error;
   }
 }
-  
+
+
 export async function createDopBldg(params: CreateDopBldgParams) {
   try {
     connectToDatabase();

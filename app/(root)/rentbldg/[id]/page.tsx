@@ -195,7 +195,7 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import InfoRow from "@/components/shared/InfoRow";
-
+import CopyButton from "@/components/shared/CopyButton";
 import { ParamsProps } from "@/types";
 import { getRentBldgById } from "@/lib/actions/rentedbldg.action";
 
@@ -282,13 +282,18 @@ const Page = async ({ params }: ParamsProps) => {
       {/* At a Glance card spans full width on desktop */}
       <Card className="col-span-1 lg:col-span-2 shadow-lg border border-gray-200 rounded-lg dark:border-gray-700">
         <CardHeader className="flex items-center justify-between border-b p-4 dark:border-gray-600">
-          <div className="flex items-center gap-2">
-            <Info className="text-blue-600 dark:text-blue-400" />
-            <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
-              At a Glance
-            </CardTitle>
-          </div>
-        </CardHeader>
+  {/* Left side: icon + title */}
+  <div className="flex items-center gap-2">
+    <Info className="text-blue-600 dark:text-blue-400" />
+    <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+      At a Glance
+    </CardTitle>
+  </div>
+
+  {/* Right side: CopyButton */}
+  <CopyButton text={result.po} />
+</CardHeader>
+
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Left Column */}
@@ -324,12 +329,21 @@ const Page = async ({ params }: ParamsProps) => {
         { key: "brief-history", title: "Brief History", icon: <History className="text-purple-600" /> },
       ].map(({ key, title, icon }) => (
         <Card key={key} className="shadow-lg border border-gray-200 rounded-lg dark:border-gray-700">
-          <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
-            {icon}
-            <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
-              {title}
-            </CardTitle>
-          </CardHeader>
+<CardHeader className="w-full p-4 border-b dark:border-gray-600">
+  <div className="flex items-center justify-between w-full">
+    {/* Left: Icon + Title */}
+    <div className="flex items-center gap-2">
+      {icon}
+      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+        {title}
+      </CardTitle>
+    </div>
+
+    {/* Right: Copy Button */}
+    <CopyButton text={result.po} />
+  </div>
+</CardHeader>
+
           <CardContent className="p-4 space-y-4">
             {key === "frac-details" && (
               <>

@@ -265,11 +265,17 @@ const Page = async ({ params }: ParamsProps) => {
         {/* History */}
         <Card>
 <CardHeader className="w-full p-4 border-b dark:border-gray-600">
-  <div className="flex items-center gap-2">
-    <History className="text-purple-600" />
-    <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
-      Brief History
-    </CardTitle>
+  <div className="flex items-center justify-between w-full">
+    {/* Left side: Icon + Title */}
+    <div className="flex items-center gap-2">
+      <History className="text-purple-600" />
+      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+        Brief History
+      </CardTitle>
+    </div>
+
+    {/* Right side: Copy Button */}
+    <CopyButton text={result.po} />
   </div>
 </CardHeader>
 

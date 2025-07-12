@@ -281,18 +281,21 @@ const Page = async ({ params }: ParamsProps) => {
     <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
       {/* At a Glance card spans full width on desktop */}
       <Card className="col-span-1 lg:col-span-2 shadow-lg border border-gray-200 rounded-lg dark:border-gray-700">
-        <CardHeader className="flex items-center justify-between border-b p-4 dark:border-gray-600">
-  {/* Left side: icon + title */}
-  <div className="flex items-center gap-2">
-    <Info className="text-blue-600 dark:text-blue-400" />
-    <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
-      At a Glance
-    </CardTitle>
-  </div>
+       <CardHeader className="border-b p-4 dark:border-gray-600">
+  <div className="flex items-center justify-between w-full">
+    {/* Left side: Icon + Title */}
+    <div className="flex items-center gap-2">
+      <Info className="text-blue-600 dark:text-blue-400" />
+      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white m-0">
+        At a Glance
+      </CardTitle>
+    </div>
 
-  {/* Right side: CopyButton */}
-  <CopyButton text={result.po} />
+    {/* Right side: Copy Button */}
+    <CopyButton text={result.po} />
+  </div>
 </CardHeader>
+
 
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-col sm:flex-row gap-4">

@@ -161,12 +161,21 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Building Info */}
         <Card>
-          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
-            <FileText className="text-green-600" />
+<CardHeader className="w-full p-4 border-b dark:border-gray-600">
+  <div className="flex items-center justify-between w-full">
+    {/* Left: Icon + Title */}
+    <div className="flex items-center gap-2">
+      <FileText className="text-green-600" />
+      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+        Building Info
+      </CardTitle>
+    </div>
 
-            <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Building Info</CardTitle>
-            <CopyButton text={result.po} />
-          </CardHeader>
+    {/* Right: Copy Button */}
+    <CopyButton text={result.po} />
+  </div>
+</CardHeader>
+
           <CardContent className="space-y-2 p-4">
 
             <InfoRow label="Floors:" value={result.floors} />
@@ -178,12 +187,21 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Mutation */}
         <Card>
-          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
-            <FileText className="text-red-600" />
+<CardHeader className="w-full p-4 border-b dark:border-gray-600">
+  <div className="flex items-center justify-between w-full">
+    {/* Left: Icon + Title */}
+    <div className="flex items-center gap-2">
+      <FileText className="text-red-600" />
+      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+        Mutation
+      </CardTitle>
+    </div>
 
-            <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Mutation</CardTitle>
-          <CopyButton text={result.po} />
-          </CardHeader>
+    {/* Right: Copy Button */}
+    <CopyButton text={result.po} />
+  </div>
+</CardHeader>
+
           <CardContent className="space-y-2 p-4">
 
             <InfoRow label="Mutation Doc:" value={result.mut_doc} />
@@ -193,12 +211,21 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Fiscal Info */}
         <Card>
-          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
-            <Banknote className="text-yellow-600" />
+<CardHeader className="w-full p-4 border-b dark:border-gray-600">
+  <div className="flex items-center justify-between w-full">
+    {/* Left: Icon + Title */}
+    <div className="flex items-center gap-2">
+      <Banknote className="text-yellow-600" />
+      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+        Funds
+      </CardTitle>
+    </div>
 
-            <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Funds</CardTitle>
-          <CopyButton text={result.po} />
-          </CardHeader>
+    {/* Right: Copy Button */}
+    <CopyButton text={result.po} />
+  </div>
+</CardHeader>
+
           <CardContent className="space-y-2 p-4">
 
             <InfoRow label="Fund Type:" value={result.fund_type} />
@@ -208,12 +235,21 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Cases */}
         <Card>
-          <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
-            <Scale className="text-indigo-600" />
+<CardHeader className="w-full p-4 border-b dark:border-gray-600">
+  <div className="flex items-center justify-between w-full">
+    {/* Left: Icon + Title */}
+    <div className="flex items-center gap-2">
+      <Scale className="text-indigo-600" />
+      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+        Case Details
+      </CardTitle>
+    </div>
 
-            <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Case Details</CardTitle>
-          <CopyButton text={result.po} />
-          </CardHeader>
+    {/* Right: Copy Button */}
+    <CopyButton text={result.po} />
+  </div>
+</CardHeader>
+
           <CardContent className="space-y-2 p-4">
 
             <InfoRow label="Case Type:" value={result.cases} />
@@ -228,11 +264,15 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* History */}
         <Card>
-          <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
-            <History className="text-purple-600" />
+<CardHeader className="w-full p-4 border-b dark:border-gray-600">
+  <div className="flex items-center gap-2">
+    <History className="text-purple-600" />
+    <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+      Brief History
+    </CardTitle>
+  </div>
+</CardHeader>
 
-            <CardTitle className="text-lg font-semibold  text-gray-900 dark:text-white">Brief History</CardTitle>
-          </CardHeader>
           <CardContent className="p-4">
             <p className="whitespace-pre-line text-gray-700 dark:text-gray-300">
 

@@ -203,34 +203,127 @@ export async function getAllDopBldgs(params: GetDopBldgsParams) {
 }
 
 
-export async function createDopBldg(params: CreateDopBldgParams) {
+// export async function createDopBldg(params: CreateDopBldgParams) {
+//   try {
+//     connectToDatabase();
+
+//     // eslint-disable-next-line camelcase
+//     // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
+//     const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, tags, path } = params;
+//     // const { division, po, tags, classes, soa, area, path } = params;
+
+//     // Create the question
+//     const dopbldg = await Departmentalbldg.create({
+//       division,
+//       po,
+//       classes,
+//       location,
+//       // // eslint-disable-next-line camelcase
+//       purchase_year,
+//       soa,
+//       paq,
+//       area,
+//       builtup_area,
+//       open_space,
+//       floors,
+//       value,
+//       year,
+//       expenditure,
+//       mut_doc,
+//       mut_state,
+//       fund_type,
+//       fund_amount,
+//       cases,
+//       case_description,
+//       case_action,
+//       case_divisionaction,
+//       brief_history,
+//       corr_ro,
+//       corr_division,
+//     });
+//  const tagDocuments = [];
+
+//  // Create the tags or get them if they already exist
+//     // eslint-disable-next-line no-undef
+//     for (const tag of tags) {
+//       const existingTag = await Tag.findOneAndUpdate(
+//         { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
+//         { $setOnInsert: { name: tag }, $push: { departmentalbldgs: dopbldg._id } },
+//         { upsert: true, new: true }
+//       )
+
+//       tagDocuments.push(existingTag._id);
+//     }
+
+//     await Departmentalbldg.findByIdAndUpdate(dopbldg._id, {
+//       $push: { tags: { $each: tagDocuments }}
+//     });
+//        // Create an interaction record for the user's ask_question action
+    
+//     // Increment author's reputation by +5 for creating a question
+
+//     // revalidate path inorder to display question wihtout reloading
+       
+//     revalidatePath(path)
+//     return dopbldg ;
+
+//   } catch (error) {
+    
+//   }
+// }
+
+"use server"
+
+import { revalidatePath } from "next/cache";
+import { connectToDatabase } from "../mongoose";
+import Rentedbldg from "@/database/rentedbldg.model";
+import Tag from "@/database/tag.model";
+import { CreateRentBldgParams } from "../types";
+
+export async function createRentBldg(params: CreateRentBldgParams) {
   try {
-    connectToDatabase();
+    await connectToDatabase();
 
-    // eslint-disable-next-line camelcase
-    // const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, brief_history, path } = params;
-    const { division, po, classes, location, purchase_year, soa, paq, area, builtup_area, open_space, floors, value, year, expenditure, mut_doc, mut_state, fund_type, fund_amount, cases, case_description, case_action, case_divisionaction, brief_history, corr_ro, corr_division, tags, path } = params;
-    // const { division, po, tags, classes, soa, area, path } = params;
-
-    // Create the question
-    const dopbldg = await Departmentalbldg.create({
+    const {
       division,
       po,
-      classes,
-      location,
-      // // eslint-disable-next-line camelcase
-      purchase_year,
+      class_po,
+      date_po_function,
+      class_city,
       soa,
-      paq,
       area,
-      builtup_area,
-      open_space,
-      floors,
-      value,
-      year,
-      expenditure,
-      mut_doc,
-      mut_state,
+      paq,
+      lease_period,
+      rent,
+      frac_status,
+      frac_level,
+      fund_type,
+      fund_amount,
+      cases,
+      case_description,
+      case_action,
+      case_divisionaction,
+      brief_history,
+      corr_ro,
+      corr_division,
+      tags,
+      path
+    } = params;
+
+    // 1. Create the rented building
+    const rentbldg = await Rentedbldg.create({
+      division,
+      po,
+      class_po,
+      date_po_function,
+      class_city,
+      soa,
+      area,
+      paq,
+      lease_period,
+      rent,
+      frac_status,
+      frac_level,
       fund_type,
       fund_amount,
       cases,
@@ -241,36 +334,43 @@ export async function createDopBldg(params: CreateDopBldgParams) {
       corr_ro,
       corr_division,
     });
- const tagDocuments = [];
 
- // Create the tags or get them if they already exist
-    // eslint-disable-next-line no-undef
+    // 2. Attach tags properly
+    const tagDocuments = [];
+
     for (const tag of tags) {
-      const existingTag = await Tag.findOneAndUpdate(
-        { name: { $regex: new RegExp(`^${tag}$`, "i") } }, 
-        { $setOnInsert: { name: tag }, $push: { departmentalbldgs: dopbldg._id } },
-        { upsert: true, new: true }
-      )
+      const existingTag = await Tag.findOne({ name: new RegExp(`^${tag}$`, 'i') });
 
-      tagDocuments.push(existingTag._id);
+      if (existingTag) {
+        await Tag.findByIdAndUpdate(existingTag._id, {
+          $addToSet: { rentedbldgs: rentbldg._id }
+        });
+        tagDocuments.push(existingTag._id);
+      } else {
+        const newTag = await Tag.create({
+          name: tag,
+          rentedbldgs: [rentbldg._id]
+        });
+        tagDocuments.push(newTag._id);
+      }
     }
 
-    await Departmentalbldg.findByIdAndUpdate(dopbldg._id, {
-      $push: { tags: { $each: tagDocuments }}
+    // 3. Update the rented building with tag IDs
+    await Rentedbldg.findByIdAndUpdate(rentbldg._id, {
+      $addToSet: { tags: { $each: tagDocuments } }
     });
-       // Create an interaction record for the user's ask_question action
-    
-    // Increment author's reputation by +5 for creating a question
 
-    // revalidate path inorder to display question wihtout reloading
-       
-    revalidatePath(path)
-    return dopbldg ;
+    // 4. Revalidate the path for cache busting
+    revalidatePath(path);
+
+    return rentbldg;
 
   } catch (error) {
-    
+    console.error("Error creating rented building:", error);
+    throw error;
   }
 }
+
 
 export async function getDopBldgById(params: GetDopBldgByIdParams) {
   try {

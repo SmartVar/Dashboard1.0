@@ -102,7 +102,7 @@ const Page = async ({ params }: ParamsProps) => {
           {result.po}
         </h1>
         <div className="flex justify-end w-full gap-2 sm:w-auto">
-          <Link href={`/departmentalbldg/edit/${result._id}`}>
+          <Link href={`/dopbldg/edit/${result._id}`}>
             <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2">
               <PencilLine className="w-4 h-4" /> Edit Records
             </Button>

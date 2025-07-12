@@ -102,7 +102,6 @@ export async function getAllDopBldgs(params: GetDopBldgsParams) {
         { division: { $regex: new RegExp(searchQuery, "i")}},
         { po: { $regex: new RegExp(searchQuery, "i")}},
         { location: { $regex: new RegExp(searchQuery, "i")}},
-        
       ]
     }
     
@@ -110,26 +109,26 @@ export async function getAllDopBldgs(params: GetDopBldgsParams) {
     
     switch (filter) 
     {
-        case "RO":
+        case "ro":
           sortOptions = { division: 'RO' }
           break;
-        case "nmd":
+        case "navi mumbai":
           sortOptions = { division: 'Navi Mumbai' }
           break;
-        case "thn":
-          sortOptions = { division: 'Thane Dn' }
+        case "thane":
+          sortOptions = { division: 'Thane' }
           break;
-        case "nsk":
-          sortOptions = { division: 'Nashik Dn' }
+        case "nashik":
+          sortOptions = { division: 'Nashik' }
           break;
-        case "mld":
+        case "malegaon":
           sortOptions = { division: 'Malegaon' }
           break;
-        case "plg":
-          sortOptions = { division: 'Palgahar Dn' }
+        case "palghar":
+          sortOptions = { division: 'Palgahar' }
           break;
-        case "rgd":
-          sortOptions = { division: 'Raigad Dn' }
+        case "raigad":
+          sortOptions = { division: 'Raigad' }
           break;
         case "psd":
           sortOptions = { division: 'PSD' }

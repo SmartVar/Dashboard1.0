@@ -101,45 +101,47 @@ export async function getAllRentBldgs(params: GetRentBldgParams) {
         
       ]
     }
-    
-    let sortOptions = {};
-    
-  switch (filter) 
-  {
-      case "ro":
-        sortOptions = { division: 'RO' }
-        break;
-      case "nmd":
-        sortOptions = { division: 'Navi Mumbai' }
-        break;
-      case "thn":
-        sortOptions = { division: 'Thane' }
-        break;
-      case "nsk":
-        sortOptions = { division: 'Nashik' }
-        break;
-      case "mld":
-        sortOptions = { division: 'Malegaon' }
-        break;
-      case "plg":
-        sortOptions = { division: 'Palgahar' }
-        break;
-      case "rgd":
-        sortOptions = { division: 'Raigad' }
-        break;
-      case "psd":
-        sortOptions = { division: 'PSD' }
-        break;
-      case "csd":
-        sortOptions = { division: 'CSD' }
-        break;
-      case "rtc":
-        sortOptions = { division: 'RTC' }
-        break;
-    
-      default:
-        break;
+    if (filter) {
+      query.division = new RegExp(`^${filter}$`, "i"); // ✅ filter by division
     }
+  //   let sortOptions = {};
+    
+  // switch (filter) 
+  // {
+  //     case "ro":
+  //       sortOptions = { division: 'RO' }
+  //       break;
+  //     case "nmd":
+  //       sortOptions = { division: 'Navi Mumbai' }
+  //       break;
+  //     case "thn":
+  //       sortOptions = { division: 'Thane' }
+  //       break;
+  //     case "nsk":
+  //       sortOptions = { division: 'Nashik' }
+  //       break;
+  //     case "mld":
+  //       sortOptions = { division: 'Malegaon' }
+  //       break;
+  //     case "plg":
+  //       sortOptions = { division: 'Palgahar' }
+  //       break;
+  //     case "rgd":
+  //       sortOptions = { division: 'Raigad' }
+  //       break;
+  //     case "psd":
+  //       sortOptions = { division: 'PSD' }
+  //       break;
+  //     case "csd":
+  //       sortOptions = { division: 'CSD' }
+  //       break;
+  //     case "rtc":
+  //       sortOptions = { division: 'RTC' }
+  //       break;
+    
+  //     default:
+  //       break;
+  //   }
 
     const rentbldg = await Rentedbldg.find(query)
     .find(sortOptions)

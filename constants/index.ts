@@ -17,11 +17,11 @@ export const sidebarLinks: SidebarLink[] = [
     route: "/dashboard",
     label: "Dashboard",
   },
-  {
-    imgURL: "/assets/icons/users.svg",
-    route: "/rulings",
-    label: "Rulings",
-  },
+  // {
+  //   imgURL: "/assets/icons/users.svg",
+  //   route: "/rulings",
+  //   label: "Rulings",
+  // },
   {
     imgURL: "/assets/icons/star.svg",
     route: "/tags",
@@ -42,11 +42,11 @@ export const sidebarLinks: SidebarLink[] = [
   //   route: "/profile",
   //   label: "Profile",
   // },
-  {
-    imgURL: "/assets/icons/user.svg",
-    route: "/kanban",
-    label: "Kanban",
-  },
+  // {
+  //   imgURL: "/assets/icons/user.svg",
+  //   route: "/kanban",
+  //   label: "Kanban",
+  // },
   // {
   //   imgURL: "/assets/icons/suitcase.svg",
   //   route: "/dashboard",

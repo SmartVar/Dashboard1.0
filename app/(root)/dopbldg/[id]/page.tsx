@@ -197,7 +197,7 @@ const Page = async ({ params }: ParamsProps) => {
         </Card>
 
         {/* Cases */}
-        <Card className="lg:col-span-2">
+        <Card>
           <CardHeader className="flex justify-between items-center gap-2 border-b p-4 dark:border-gray-600">
             <Scale className="text-indigo-600" />
 
@@ -217,7 +217,7 @@ const Page = async ({ params }: ParamsProps) => {
         </Card>
 
         {/* History */}
-        <Card className="lg:col-span-2">
+        <Card>
           <CardHeader className="flex items-center gap-2 border-b p-4 dark:border-gray-600">
             <History className="text-purple-600" />
 

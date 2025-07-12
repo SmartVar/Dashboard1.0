@@ -104,7 +104,7 @@ export async function getAllRentBldgs(params: GetRentBldgParams) {
     if (filter) {
       query.division = new RegExp(`^${filter}$`, "i"); // ✅ filter by division
     }
-  //   let sortOptions = {};
+    let sortOptions = {};
     
   // switch (filter) 
   // {

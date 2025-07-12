@@ -126,84 +126,80 @@ import RentbldgCard from '@/components/cards/RentbldgCard'
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { getDopBldgByTagId, getRentBldgByTagId, getPlotByTagId } from '@/lib/actions/tag.action'
 import { URLProps } from '@/types'
-// import NoResult from '@/components/shared/NoResult'
 
 const Page = async ({ params, searchParams }: URLProps) => {
-  const page = searchParams.page ? +searchParams.page : 1;
-  const query = searchParams.q;
+  const dop = await getDopBldgByTagId({
+    tagId: params.id,
+    page: searchParams.page ? +searchParams.page : 1,
+    searchQuery: searchParams.q
+  }) || { departmentalbldgs: [] };
 
-  const [dop, rent, plot] = await Promise.all([
-    getDopBldgByTagId({ tagId: params.id, page, searchQuery: query }),
-    getRentBldgByTagId({ tagId: params.id, page, searchQuery: query }),
-    getPlotByTagId({ tagId: params.id, page, searchQuery: query })
-  ]);
+  const rent = await getRentBldgByTagId({
+    tagId: params.id,
+    page: searchParams.page ? +searchParams.page : 1,
+    searchQuery: searchParams.q
+  }) || { rentedbldgs: [] };
 
-  const tagTitle = dop.tagTitle || rent.tagTitle || plot.tagTitle;
+  const plot = await getPlotByTagId({
+    tagId: params.id,
+    page: searchParams.page ? +searchParams.page : 1,
+    searchQuery: searchParams.q
+  }) || { plots: [] };
 
   return (
     <div>
-      <h1 className="h1-bold text-dark100_light900">{tagTitle}</h1>
+      <h1 className="h1-bold text-dark100_light900">
+        {dop.tagTitle || rent.tagTitle || plot.tagTitle || "Tagged Data"}
+      </h1>
 
       <div className="mt-11 w-full">
-        <LocalSearchbar
+        <LocalSearchbar 
           route={`/tags/${params.id}`}
           iconPosition="left"
           imgSrc="/assets/icons/search.svg"
-          placeholder="Search tagged entries"
+          placeholder="Search tag questions"
           otherClasses="flex-1"
         />
       </div>
 
-      {/* Departmental Buildings */}
-      {dop.departmentalbldgs.length > 0 && (
-        <div className="mt-10 flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-dark100_light900">Departmental Buildings</h2>
-          {dop.departmentalbldgs.map((item: any) => (
-            <DopbldgCard
-              key={item._id}
-              _id={item._id}
-              division={item.division}
-              classes={item.classes}
-              purchase_year={item.purchase_year}
-              soa={item.soa}
-              area={item.area}
-              tags={item.tags}
-              author={item.author}
-              po={item.po}
-              createdAt={item.createdAt}
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {dop?.departmentalbldgs?.length > 0 &&
+          dop.departmentalbldgs.map((building: any) => (
+            <DopbldgCard 
+              key={building._id}
+              _id={building._id}
+              division={building.division}
+              classes={building.classes}
+              purchase_year={building.purchase_year}
+              soa={building.soa}
+              area={building.area}
+              tags={building.tags}
+              author={building.author}
+              po={building.po}
+              createdAt={building.createdAt}
             />
           ))}
-        </div>
-      )}
 
-      {/* Rented Buildings */}
-      {rent.rentedbldgs.length > 0 && (
-        <div className="mt-16 flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-dark100_light900">Rented Buildings</h2>
-          {rent.rentedbldgs.map((item: any) => (
+        {rent?.rentedbldgs?.length > 0 &&
+          rent.rentedbldgs.map((rented: any) => (
             <RentbldgCard
-              key={item._id}
-              _id={item._id}
-              division={item.division}
-              rent={item.rent}
-              tags={item.tags}
-              class_po={item.class_po}
-              lease_period={item.lease_period}
-              soa={item.soa}
-              area={item.area}
-              author={item.author}
-              po={item.po}
-              createdAt={item.createdAt}
+              key={rented._id}
+              _id={rented._id}
+              division={rented.division}
+              rent={rented.rent}
+              tags={rented.tags}
+              class_po={rented.class_po}
+              lease_period={rented.lease_period}
+              soa={rented.soa}
+              area={rented.area}
+              author={rented.author}
+              po={rented.po}
+              createdAt={rented.createdAt}
             />
           ))}
-        </div>
-      )}
 
-      {/* Plot Buildings */}
-      {plot.plots.length > 0 && (
-        <div className="mt-16 flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-dark100_light900">Plot Details</h2>
-          {plot.plots.map((item: any) => (
+        {plot?.plots?.length > 0 &&
+          plot.plots.map((item: any) => (
             <PlotCard
               key={item._id}
               _id={item._id}
@@ -218,19 +214,17 @@ const Page = async ({ params, searchParams }: URLProps) => {
               createdAt={item.createdAt}
             />
           ))}
-        </div>
-      )}
 
-      {/* Optional: Show message if no data in any */}
-      {dop.departmentalbldgs.length === 0 &&
-        rent.rentedbldgs.length === 0 &&
-        plot.plots.length === 0 && (
-          <div className="mt-20 text-center text-gray-400">
-            No records found for this tag.
-          </div>
+        {!dop?.departmentalbldgs?.length &&
+         !rent?.rentedbldgs?.length &&
+         !plot?.plots?.length && (
+           <div className="text-center text-gray-500 py-20">
+             No data available for this tag.
+           </div>
         )}
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

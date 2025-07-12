@@ -29,6 +29,55 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
   }
 }
 
+// export async function getAllTags(params: GetAllTagsParams) {
+//   try {
+//     connectToDatabase();
+
+//     const { searchQuery, filter, page = 1, pageSize = 10 } = params;
+//     const skipAmount = (page - 1) * pageSize;
+
+//     const query: FilterQuery<typeof Tag> = {};
+
+//     if(searchQuery) {
+//       query.$or = [{name: { $regex: new RegExp(searchQuery, 'i')}}]
+//     }
+
+//     let sortOptions = {};
+
+//     switch (filter) {
+//       case "popular":
+//         sortOptions = { questions: -1 }
+//         break;
+//       case "recent":
+//         sortOptions = { createdAt: -1 }
+//         break;
+//       case "name":
+//         sortOptions = { name: 1 }
+//         break;
+//       case "old":
+//         sortOptions = { createdAt: 1 }
+//         break;
+    
+//       default:
+//         break;
+//     }
+
+//     const totalTags = await Tag.countDocuments(query);
+
+//     const tags = await Tag.find(query)
+//       .sort(sortOptions)
+//       .skip(skipAmount)
+//       .limit(pageSize);
+
+//       const isNext = totalTags > skipAmount + tags.length;
+
+//     return { tags, isNext }
+//   } catch (error) {
+//     console.log(error);
+//     throw error;
+//   }
+// }
+
 export async function getAllTags(params: GetAllTagsParams) {
   try {
     connectToDatabase();
@@ -36,48 +85,95 @@ export async function getAllTags(params: GetAllTagsParams) {
     const { searchQuery, filter, page = 1, pageSize = 10 } = params;
     const skipAmount = (page - 1) * pageSize;
 
-    const query: FilterQuery<typeof Tag> = {};
-
-    if(searchQuery) {
-      query.$or = [{name: { $regex: new RegExp(searchQuery, 'i')}}]
+    const matchStage: any = {};
+    if (searchQuery) {
+      matchStage.name = { $regex: new RegExp(searchQuery, "i") };
     }
 
-    let sortOptions = {};
-
+    // Map your filter to aggregation sort stage fields — adjust as needed
+    let sortStage: any = {};
     switch (filter) {
       case "popular":
-        sortOptions = { questions: -1 }
+        // Assuming 'questions' field exists; else adjust or remove
+        sortStage = { questions: -1 };
         break;
       case "recent":
-        sortOptions = { createdAt: -1 }
+        sortStage = { createdAt: -1 };
         break;
       case "name":
-        sortOptions = { name: 1 }
+        sortStage = { name: 1 };
         break;
       case "old":
-        sortOptions = { createdAt: 1 }
+        sortStage = { createdAt: 1 };
         break;
-    
       default:
+        sortStage = { name: 1 };
         break;
     }
 
-    const totalTags = await Tag.countDocuments(query);
+    // Count total tags for pagination
+    const totalTags = await Tag.countDocuments(matchStage);
+    
+    // Aggregation pipeline to get tags with related counts
+    const tags = await Tag.aggregate([
+      { $match: matchStage },
 
-    const tags = await Tag.find(query)
-      .sort(sortOptions)
-      .skip(skipAmount)
-      .limit(pageSize);
+      // Lookup departmentalbldgs that reference this tag
+      {
+        $lookup: {
+          from: "departmentalbldgs",
+          localField: "_id",
+          foreignField: "tags",
+          as: "departmentalbldgs",
+        },
+      },
 
-      const isNext = totalTags > skipAmount + tags.length;
+      // Lookup rentedbldgs that reference this tag
+      {
+        $lookup: {
+          from: "rentedbldgs",
+          localField: "_id",
+          foreignField: "tags",
+          as: "rentedbldgs",
+        },
+      },
 
-    return { tags, isNext }
+      // Lookup plots that reference this tag
+      {
+        $lookup: {
+          from: "plots",
+          localField: "_id",
+          foreignField: "tags",
+          as: "plots",
+        },
+      },
+
+      // Project only needed fields and counts
+      {
+        $project: {
+          name: 1,
+          createdAt: 1,
+          departmentalbldgsCount: { $size: "$departmentalbldgs" },
+          rentedbldgsCount: { $size: "$rentedbldgs" },
+          plotsCount: { $size: "$plots" },
+        },
+      },
+
+      { $sort: sortStage },
+
+      { $skip: skipAmount },
+
+      { $limit: pageSize },
+    ]);
+
+    const isNext = totalTags > skipAmount + tags.length;
+
+    return { tags, isNext };
   } catch (error) {
     console.log(error);
     throw error;
   }
 }
-
 
 export async function getDopBldgByTagId(params:GetDepartmentalbldgsByTagIdParams) {
   try {

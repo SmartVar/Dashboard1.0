@@ -117,16 +117,17 @@ const Page = async ({ params }: ParamsProps) => {
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
         {/* At a Glance */}
         <Card className="col-span-1 lg:col-span-2 shadow-lg border border-gray-200 dark:border-gray-700 rounded-lg">
-<CardHeader className="flex items-center justify-between gap-2 border-b p-4 dark:border-gray-600">
-  <div className="flex items-center justify-start gap-2">
+<CardHeader className="flex items-center justify-between border-b p-4 dark:border-gray-600">
+  {/* Left side: Icon + Title */}
+  <div className="flex items-center gap-2">
     <Info className="text-blue-600 dark:text-blue-400" />
     <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
       At a Glance
     </CardTitle>
   </div>
-  <div className="flex items-center justify-end gap-2">
+
+  {/* Right side: Copy Button */}
   <CopyButton text={result.po} />
-    </div>
 </CardHeader>
 
           <CardContent className="p-4 space-y-4">

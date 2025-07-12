@@ -36,22 +36,22 @@ export async function getDopBldgs(params: GetDopBldgsParams): Promise<DopBldgDef
         case "ro":
           sortOptions = { division: 'RO' }
           break;
-        case "navi mumbai":
+        case "Navi Mumbai":
           sortOptions = { division: 'Navi Mumbai' }
           break;
-        case "thane":
+        case "Thane":
           sortOptions = { division: 'Thane' }
           break;
-        case "nashik":
+        case "Nashik":
           sortOptions = { division: 'Nashik' }
           break;
-        case "malegaon":
+        case "Malegaon":
           sortOptions = { division: 'Malegaon' }
           break;
-        case "palghar":
+        case "Palghar":
           sortOptions = { division: 'Palgahar' }
           break;
-        case "raigad":
+        case "Raigad":
           sortOptions = { division: 'Raigad' }
           break;
         case "psd":

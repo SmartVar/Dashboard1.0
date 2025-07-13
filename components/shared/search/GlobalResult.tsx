@@ -57,7 +57,7 @@ const GlobalResult = () => {
       case 'plots':
           return `/plot/${id}`;
       case 'tags':
-          return `/tag/${id}`;
+          return `/tags/${id}`;
       case 'events':
           return `/event/${id}`;
       case 'tkts':

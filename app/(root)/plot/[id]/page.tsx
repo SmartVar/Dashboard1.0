@@ -17,7 +17,7 @@ import { getPlotById } from "@/lib/actions/plot.action";
 import { PencilLine, Info, FileText, Banknote, Scale, History, Download } from "lucide-react";
 import CopyButton from "@/components/shared/CopyButton";
 import ExportButton from "@/components/shared/ExportButton";
-
+import EditDeleteAction from "@/components/shared/EditDeleteAction";
 // eslint-disable-next-line @next/next/no-async-client-component
 const Page = async ({ params }: ParamsProps) => {
   const result = await getPlotById({ plotId: params.id });

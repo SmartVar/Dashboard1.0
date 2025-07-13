@@ -78,7 +78,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
     path: pathname 
   }
   )
-: url === '/tag'
+: url === '/tags'
   ? await deleteTag({ 
     tagId: JSON.parse(itemId), 
     path: pathname 

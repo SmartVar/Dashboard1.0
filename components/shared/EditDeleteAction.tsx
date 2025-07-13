@@ -73,6 +73,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
      path: pathname 
   })
         }
+    router.push(`${url}`)
     };
   // };
 

@@ -186,11 +186,21 @@ const Dopform = ({ type, mongoUserId, dopDetails }: Props) => {
     }
   }
 
-  const handleTagRemove = (tag: string, field: any) => {
-    const newTags = field.value.filter((t: string) => t !== tag);
+//  const handleTagRemove = (tag: string, field: any) => {
+ //   const newTags = field.value.filter((t: string) => t !== tag);
 
-    form.setValue('tags', newTags);
-  }
+ //   form.setValue('tags', newTags);
+//  }
+
+const handleTagRemove = (tag: string, field: any) => {
+  const newTags = field.value.filter((t: string) => t !== tag);
+  form.setValue('tags', newTags, {
+    shouldValidate: true,
+    shouldDirty: true,
+    shouldTouch: true,
+  });
+};
+
   
   return (
     <Form {...form}>

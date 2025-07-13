@@ -46,7 +46,7 @@ const GlobalResultMobile: React.FC<GlobalResultProps> = ({ showOnlyResults }) =>
       case 'dopbldgs': return `/dopbldg/${id}`;
       case 'rentedbldgs': return `/rentbldg/${id}`;
       case 'plots': return `/plot/${id}`;
-      case 'tags': return `/tag/${id}`;
+      case 'tags': return `/tags/${id}`;
       case 'events': return `/event/${id}`;
       case 'tkts': return `/ticket/${id}`;
       case 'funds': return `/fund/${id}`;

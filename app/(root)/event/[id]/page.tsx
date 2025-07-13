@@ -25,7 +25,7 @@ import {
 import { getEventById } from "@/lib/actions/event.action"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
+import EditDeleteAction from "@/components/shared/EditDeleteAction";
 
   const Page = async ({ params }: ParamsProps) => {
     // const { userId } = auth();
@@ -51,6 +51,7 @@ import { Button } from "@/components/ui/button";
                   Edit Records
                 </Button>
               </Link> 
+          <EditDeleteAction type='Delete' itemId={JSON.stringify(result?._id)} url="/event" />
               </div>
               
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

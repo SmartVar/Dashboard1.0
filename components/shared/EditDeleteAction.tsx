@@ -13,7 +13,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { deleteEvent } from "@/lib/actions/event.action";
 import { deleteTicket } from "@/lib/actions/ticket.action";
 // import { auth } from '@clerk/nextjs'
-import { getUserInfo } from "@/lib/actions/user.action";
+// import { getUserInfo } from "@/lib/actions/user.action";
 
 interface Props {
   type: string;
@@ -38,13 +38,13 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
 
   const handleDelete = async () => {
   //   const { userId } = auth();
- const { user } = await getUserInfo ({});
-  // if (userId !== 'user_2bYFxpFNNNEJclp29nFXHzrnJCh') return <h1 className="h1-bold text-dark100_light900">"You are not authorized to view the content"</h1>;
+// const { user } = await getUserInfo ({});
+  if (userId !== 'user_2xE0rOdHAhwFougKDM5i3LWAzUn') return <h1 className="h1-bold text-dark100_light900">"You are not authorized to perform the action"</h1>;
   // if(!userId) return null;
-if (!user || user.role !== 'Admin') {
-    alert("You are not authorized to perform this action.");
-    return;
-}
+// if (!user || user.role !== 'Admin') {
+  //  alert("You are not authorized to perform this action.");
+   // return;
+// }
       // Delete template
 
 { url === '/rentbldg'

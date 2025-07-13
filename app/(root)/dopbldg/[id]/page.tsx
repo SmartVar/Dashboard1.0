@@ -24,6 +24,7 @@ import {
   Download,
 } from "lucide-react";
 import ExportButton from "@/components/shared/ExportButton";
+import EditDeleteAction from "@/components/shared/EditDeleteAction";
 
 const Page = async ({ params }: ParamsProps) => {
   const result = await getDopBldgById({ departmentalbldgId : params.id });
@@ -110,6 +111,7 @@ const Page = async ({ params }: ParamsProps) => {
           <ExportButton data={exportData}>
             <Download className="w-4 h-4" /> Export
           </ExportButton>
+          <EditDeleteAction type='Delete' itemId={JSON.stringify(departmentalbldg._id)} url="/dopbldg" />
         </div>
       </div>
 

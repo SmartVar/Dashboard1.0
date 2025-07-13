@@ -38,7 +38,7 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
 
   const handleDelete = async () => {
   //   const { userId } = auth();
- const { user } = await getUserInfo {()};
+ const { user } = await getUserInfo ();
   // if (userId !== 'user_2bYFxpFNNNEJclp29nFXHzrnJCh') return <h1 className="h1-bold text-dark100_light900">"You are not authorized to view the content"</h1>; 
 if (user.role !== 'Admin' ) return <h1 className="h1-bold text-dark100_light900">"You are not authorized to perform the action"</h1>
   // if(!userId) return null;

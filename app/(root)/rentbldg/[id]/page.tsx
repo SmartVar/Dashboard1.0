@@ -142,36 +142,7 @@
 //           </Card>
 //             <Card className="text-dark200_light900 col-span-4 text-base font-bold">
 //         <CardHeader>
-//           <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Cases Details</CardTitle>
-//         </CardHeader>
-//         <CardContent className="pl-2">
-//           <div className="flex flex-col">
-//           <InfoRow label="➔ Case Type :" value={result.cases} />
-// {/* <InfoRow label="➔ Case Description :" value={result.case_description} /> */}
-//   <span className="primary-text-gradient">➔ Case Desc :</span>
-//   <p className="text-dark400_light700 whitespace-pre-line">{result.case_description || '—'}</p>
-// <InfoRow label="➔ Action Proposed :" value={result.case_action} />
-// <InfoRow label="➔ Current Progress :" value={result.case_divisionaction} />
-//  </div>
-//           </CardContent>
-//           </Card>
-//           <Card className="text-dark200_light900 col-span-4 text-base font-bold">
-//         <CardHeader>
-//           <CardTitle className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none">Brief History</CardTitle>
-//         </CardHeader>
-//         <CardContent className="pl-2">
-// <div className="flex flex-col gap-2">
-//   <span className="primary-text-gradient">➔ Brief History :</span>
-//   <p className="text-dark400_light700 whitespace-pre-line">{result.brief_history || '—'}</p>
-// </div>
-//           </CardContent>
-//           </Card>
-//       </div>
-//       </>
-//     )
-//   }
-  
-//   export default Page
+
 
 /* eslint-disable no-template-curly-in-string */
 
@@ -203,7 +174,7 @@ import { getRentBldgById } from "@/lib/actions/rentedbldg.action";
 // import { saveAs } from "file-saver";
 
 import ExportButton from "@/components/shared/ExportButton";
-
+import EditDeleteAction from "@/components/shared/EditDeleteAction";
 
 
 const Page = async ({ params }: ParamsProps) => {
@@ -274,6 +245,7 @@ const Page = async ({ params }: ParamsProps) => {
 
         {/* Export button */}
         <ExportButton data={exportData} />
+        <EditDeleteAction type='Delete' itemId={JSON.stringify(result?._id)} url="/rentbldg" />
       </div>
     </div>
 

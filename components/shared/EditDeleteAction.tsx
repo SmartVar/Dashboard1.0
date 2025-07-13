@@ -14,7 +14,7 @@ import { deleteEvent } from "@/lib/actions/event.action";
 import { deleteTicket } from "@/lib/actions/ticket.action";
 import { auth } from '@clerk/nextjs'
 // import { getUserInfo } from "@/lib/actions/user.action";
-
+import { deleteTag } from "@/lib/actions/tag.action";
 interface Props {
   type: string;
   itemId: string;
@@ -75,6 +75,12 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
   : url === '/event'
   ? await deleteEvent({ 
     eventId: JSON.parse(itemId), 
+    path: pathname 
+  }
+  )
+: url === '/tag'
+  ? await deleteTag({ 
+    tagId: JSON.parse(itemId), 
     path: pathname 
   }
   )

@@ -10,7 +10,7 @@ import { deleteDopBldg} from "@/lib/actions/departmentalbldg.action";
 // import { deletePendency} from "@/lib/actions/pendency.action";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-// import { deleteTask } from "@/lib/actions/task.action";
+import { deleteEvent } from "@/lib/actions/event.action";
 import { deleteTicket } from "@/lib/actions/ticket.action";
 // import { auth } from '@clerk/nextjs'
 
@@ -65,6 +65,13 @@ const EditDeleteAction = ({ type, itemId, url }: Props) => {
 : url === '/fund'
   ? await deleteFund({ 
     fundId: JSON.parse(itemId), 
+    path: pathname 
+  }
+  )
+
+  : url === '/event'
+  ? await deleteEvent({ 
+    eventId: JSON.parse(itemId), 
     path: pathname 
   }
   )

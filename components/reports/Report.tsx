@@ -186,18 +186,21 @@ const Report = () => {
       </h1>
 
       {/* Top Buttons */}
-      <div className="flex justify-between flex-wrap gap-4 mb-4">
-        <Link href="/add-report" className="max-sm:w-full">
-          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 w-full sm:w-auto">
-            New Report
-          </Button>
-        </Link>
-        <Link href="/report" className="max-sm:w-full">
-          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 w-full sm:w-auto">
-            All Report
-          </Button>
-        </Link>
-      </div>
+      <div className="flex justify-end flex-wrap gap-4 mb-4">
+  <div className="flex flex-wrap gap-4 w-full sm:w-auto justify-end">
+    <Link href="/add-report" className="w-full sm:w-auto">
+      <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 w-full sm:w-auto">
+        New Report
+      </Button>
+    </Link>
+    <Link href="/report" className="w-full sm:w-auto">
+      <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 w-full sm:w-auto">
+        All Report
+      </Button>
+    </Link>
+  </div>
+</div>
+
 
       {/* Search Bar */}
       <div className="mb-6 flex justify-between gap-5 max-sm:flex-col sm:items-center">

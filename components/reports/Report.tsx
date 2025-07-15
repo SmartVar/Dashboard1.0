@@ -253,7 +253,7 @@ const Report = () => {
                         }
                         className="sr-only" // hide checkbox but keep it accessible
                       />
-                      <span className="text-xl">{isCompleted ? '✅' : '❌'}</span>
+                      <span className="text-sm">{isCompleted ? '✅' : '❌'}</span>
                     </label>
                   </td>
                 );

@@ -262,7 +262,7 @@ const Report = () => {
                           }
                           className="sr-only"
                         />
-                        <span className="text-xl">{isCompleted ? '✅' : '❌'}</span>
+                        <span className="text-sm">{isCompleted ? '✅' : '❌'}</span>
                       </label>
                     </td>
                   );

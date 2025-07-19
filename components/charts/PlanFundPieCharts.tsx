@@ -272,7 +272,8 @@ const chartData = [
                 <td className="px-4 py-2">{item.division}</td>
                 <td className="px-4 py-2">{item.allotment}</td>
                 <td className="px-4 py-2">
-                  {((item.utilization * item.allotment) / 100).toFixed(2)}
+                  { /* {((item.utilization * item.allotment) / 100).toFixed(2)} */}
+                  {item.utilization}
                 </td>
               </tr>
             ))}

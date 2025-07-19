@@ -198,7 +198,6 @@ export function PlanFundPieCharts() {
   const subdivisions = sampleData[selected]
 
   const totalUtil = subdivisions.reduce((acc, curr) => acc + curr.utilization, 0)
-  { /* (acc, curr) => acc + (curr.utilization * curr.allotment) / 100, */}
     
 
   const totalAllot = subdivisions.reduce((acc, curr) => acc + curr.allotment, 0)

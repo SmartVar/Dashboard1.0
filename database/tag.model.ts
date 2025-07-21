@@ -14,7 +14,7 @@ const TagSchema = new Schema({
   name: { type: String, required: true, unique: true },
   description: { type: String, required: true },
   departmentalbldgs: [{ type: Schema.Types.ObjectId, ref: 'Departmentalbldg' }], 
-  rentedlbldgs: [{ type: Schema.Types.ObjectId, ref: 'Rentedbldg' }], 
+  rentedbldgs: [{ type: Schema.Types.ObjectId, ref: 'Rentedbldg' }], 
   plots: [{ type: Schema.Types.ObjectId, ref: 'Plot' }], 
   // followers: [{ type: Schema.Types.ObjectId, ref: 'User' }], 
   createdOn: { type: Date, default: Date.now },

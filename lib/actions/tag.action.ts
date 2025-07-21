@@ -67,9 +67,12 @@ export async function getAllTags(params: GetAllTagsParams) {
     const tags = await Tag.find(query)
       .sort(sortOptions)
       .skip(skipAmount)
-      .limit(pageSize);
-
-      const isNext = totalTags > skipAmount + tags.length;
+      .limit(pageSize)
+      .populate('departmentalbldgs')
+      .populate('rentedbldgs')
+      .populate('plots');
+     
+    const isNext = totalTags > skipAmount + tags.length;
 
     return { tags, isNext }
   } catch (error) {

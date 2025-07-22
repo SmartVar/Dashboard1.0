@@ -77,7 +77,7 @@ const page = () => {
     <section className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-950 to-black font-sans text-gray-100">
       {/* Header */}
       {/* <header className="flex items-center justify-between px-8 py-5 bg-black/30 backdrop-blur-md shadow-lg sticky top-0 z-50"> */}
-        <header className="flex items-center justify-between px-8 py-5 bg-black/30 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <header className="flex items-center justify-between px-8 py-5 bg-black/30 backdrop-blur-md shadow-lg ">
         <h1 className="text-3xl font-extrabold text-[#FF7000] tracking-wide">📮 Postal Dashboard</h1>
         <nav className="space-x-8 text-gray-300 text-lg hidden md:flex">
           <a href="#features" className="hover:text-[#FF7000] transition-colors">Features</a>

@@ -185,3 +185,5 @@ export const FundSchema = z.object({
   progress: z.string().optional(),
   balance: z.string().optional(),
 });
+
+

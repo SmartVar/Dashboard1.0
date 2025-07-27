@@ -46,7 +46,7 @@ export async function getAllTags(params: GetAllTagsParams) {
 
     switch (filter) {
       case "popular":
-        sortOptions = { questions: -1 }
+        sortOptions = { tags: -1 }
         break;
       case "recent":
         sortOptions = { createdAt: -1 }

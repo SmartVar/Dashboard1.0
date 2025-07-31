@@ -22,7 +22,7 @@ import { Label } from "@/components/ui/label"
 ChartJS.register(ArcElement, Tooltip, Legend, Title)
 
 const divisionData = {
-  "Total": { allotment: 100.5, utilization: 56.65709 },
+  "Total": { allotment: 100.5, utilization: 47.90761 },
   "C-Sion": { allotment: 43.30518, utilization: 32 },
   "E-Sion": { allotment: 30, utilization: 15 },
   "C-Pune": { allotment: 18, utilization: 0 },

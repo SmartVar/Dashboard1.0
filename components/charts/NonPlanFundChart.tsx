@@ -31,7 +31,7 @@ const divisionData = {
   THN: { allotment: 1.5, utilization: 0.24699 },
   PLG: { allotment: 1, utilization: 0.06076 },
   NSK: { allotment: 1, utilization: 0 },
-  MLD: { allotment: 1, utilization: 0 },
+  MLD: { allotment: 1, utilization: 0.19834 },
   RGD: { allotment: 1, utilization: 0.12550 },
   PSD: { allotment: 0.35, utilization: 0 },
   // CSD: { allotment: 65, utilization: 60 }

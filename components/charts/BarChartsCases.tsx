@@ -82,16 +82,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Text,
-} from "recharts"
+import { Bar, BarChart, CartesianGrid, Legend, XAxis } from "recharts"
 
 import {
   Card,
@@ -101,6 +92,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
 
 const chartData = [
   { division: "NMD", legal: 1, dispute: 2 },
@@ -120,9 +117,9 @@ const chartConfig = {
     label: "Dispute",
     color: "#EF4444", // Red
   },
-}
+} satisfies ChartConfig
 
-// Totals
+// Helper to calculate totals
 const totalCases = chartData.reduce(
   (acc, curr) => {
     acc.legal += curr.legal
@@ -132,25 +129,18 @@ const totalCases = chartData.reduce(
   { legal: 0, dispute: 0 }
 )
 
-// ✅ Safe label renderer
-const renderCustomLabel = (props: {
-  x?: number
-  y?: number
-  value?: number
-  width?: number
-}) => {
-  const { x = 0, y = 0, value = 0, width = 0 } = props
-
+// Optional: Custom label component (more control than default)
+const renderCustomLabel = ({ x, y, value }: any) => {
   return (
-    <Text
-      x={x + width / 2}
+    <text
+      x={x}
       y={y - 6}
-      textAnchor="middle"
-      fill="#000"
+      fill="#333"
       fontSize={12}
+      textAnchor="middle"
     >
       {value}
-    </Text>
+    </text>
   )
 }
 
@@ -165,35 +155,35 @@ export function BarChartsCases() {
       </CardHeader>
 
       <CardContent>
-        <BarChart
-          width={600}
-          height={300}
-          data={chartData}
-          margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis
-            dataKey="division"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-          />
-          <YAxis allowDecimals={false} />
-          <Tooltip />
-          <Legend />
-          <Bar
-            dataKey="legal"
-            fill={chartConfig.legal.color}
-            radius={4}
-            label={renderCustomLabel}
-          />
-          <Bar
-            dataKey="dispute"
-            fill={chartConfig.dispute.color}
-            radius={4}
-            label={renderCustomLabel}
-          />
-        </BarChart>
+        <ChartContainer config={chartConfig}>
+          <BarChart data={chartData}>
+            <CartesianGrid vertical={false} strokeDasharray="3 3" />
+            <XAxis
+              dataKey="division"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator="dashed" />}
+            />
+            <Legend />
+            <Bar
+              dataKey="legal"
+              fill={chartConfig.legal.color}
+              radius={4}
+              label={renderCustomLabel}
+            />
+            <Bar
+              dataKey="dispute"
+              fill={chartConfig.dispute.color}
+              radius={4}
+              label={renderCustomLabel}
+            />
+          </BarChart>
+        </ChartContainer>
       </CardContent>
 
       <CardFooter className="flex-col items-start gap-2 text-sm">
@@ -212,5 +202,3 @@ export function BarChartsCases() {
 }
 
 export default BarChartsCases
-
-

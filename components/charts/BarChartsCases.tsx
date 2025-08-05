@@ -130,6 +130,21 @@ const totalCases = chartData.reduce(
   { legal: 0, dispute: 0 }
 )
 
+// Optional: Custom label component (more control than default)
+const renderCustomLabel = ({ x, y, value }: any) => {
+  return (
+    <text
+      x={x}
+      y={y - 6}
+      fill="#333"
+      fontSize={12}
+      textAnchor="middle"
+    >
+      {value}
+    </text>
+  )
+}
+
 export function BarChartsCases() {
   return (
     <Card>
@@ -156,8 +171,18 @@ export function BarChartsCases() {
               content={<ChartTooltipContent indicator="dashed" />}
             />
             <Legend />
-            <Bar dataKey="legal" fill={chartConfig.legal.color} radius={4} />
-            <Bar dataKey="dispute" fill={chartConfig.dispute.color} radius={4} />
+            <Bar
+              dataKey="legal"
+              fill={chartConfig.legal.color}
+              radius={4}
+              label={renderCustomLabel}
+            />
+            <Bar
+              dataKey="dispute"
+              fill={chartConfig.dispute.color}
+              radius={4}
+              label={renderCustomLabel}
+            />
           </BarChart>
         </ChartContainer>
       </CardContent>
@@ -178,4 +203,3 @@ export function BarChartsCases() {
 }
 
 export default BarChartsCases
-

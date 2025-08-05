@@ -79,7 +79,6 @@
 
 // export default BarChartsCases;
 
-
 "use client"
 
 import { TrendingUp } from "lucide-react"
@@ -133,10 +132,15 @@ const totalCases = chartData.reduce(
   { legal: 0, dispute: 0 }
 )
 
-// ✅ Label renderer
-const renderCustomLabel = (props: any) => {
-  const { x, y, value, width } = props
-  if (value === 0) return null
+// ✅ Safe label renderer
+const renderCustomLabel = (props: {
+  x?: number
+  y?: number
+  value?: number
+  width?: number
+}) => {
+  const { x = 0, y = 0, value = 0, width = 0 } = props
+
   return (
     <Text
       x={x + width / 2}
@@ -208,4 +212,5 @@ export function BarChartsCases() {
 }
 
 export default BarChartsCases
+
 

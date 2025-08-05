@@ -29,12 +29,12 @@ const chartData = [
 const chartConfig = {
   legal: {
     label: "Legal",
-    {/* color: "hsl(var(--chart-1))", */}
+    { /* color: "hsl(var(--chart-1))", */ }
     color: "#F59E0B",
   },
   dispute: {
     label: "dispute",
-   {/* color: "hsl(var(--chart-2))", */}
+   { /* color: "hsl(var(--chart-2))", */ }
     color: "#F59E0B",
   },
 } satisfies ChartConfig

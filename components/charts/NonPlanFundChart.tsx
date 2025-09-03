@@ -25,7 +25,7 @@ const divisionData = {
   "Total": { allotment: 100.5, utilization: 48.88922 },
   "C-Sion": { allotment: 43.30518, utilization: 32.78327 },
   "E-Sion": { allotment: 30, utilization: 15 },
-  "C-Pune": { allotment: 18, utilization: 0 },
+  "C-Pune": { allotment: 18, utilization: 4.86982 },
   RO: { allotment: 2.34482, utilization: 0.47436 },
   NMD: { allotment: 1, utilization: 0 },
   THN: { allotment: 1.5, utilization: 0.24699 },

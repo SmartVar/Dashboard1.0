@@ -180,15 +180,15 @@ const sampleData: Record<Division, SubdivisionData[]> = {
     { division: "Kalyan HO", utilization: 20.16104, allotment: 50 }
   ],
   Toilet: [
-    { division: "Industrial Estate SO", utilization: 0, allotment: 2 }
+    { division: "Devlali MDG SO", utilization: 0, allotment: 2 }
 
   ],
   Braille: [
-    { division: "Chandwad SO", utilization: 0, allotment: 0.1 },
-    { division: "Igatpuri SO", utilization: 0, allotment: 0.1 },
-    { division: "Murbad SO", utilization: 0, allotment: 0.1 },
-    { division: "Ulhasnagar-5 SO", utilization: 0, allotment: 0.1 },
-    { division: "Taloja AV SO", utilization: 0, allotment: 0.1 }
+    { division: "Chandwad SO", utilization: 0.1, allotment: 0.1 },
+    { division: "Igatpuri SO", utilization: 0.1, allotment: 0.1 },
+    { division: "Murbad SO", utilization: 0.1, allotment: 0.1 },
+    { division: "Ulhasnagar-5 SO", utilization: 0.1, allotment: 0.1 },
+    { division: "Taloja AV SO", utilization: 0.1, allotment: 0.1 }
   ],
 }
 

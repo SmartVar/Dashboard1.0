@@ -177,7 +177,7 @@ const sampleData: Record<Division, SubdivisionData[]> = {
     { division: "Manmad SO", utilization: 0, allotment: 3 },
   ],
   Renov: [
-    { division: "Kalyan HO", utilization: 20.16104, allotment: 50 }
+    { division: "Kalyan HO", utilization: 48.95103, allotment: 50 }
   ],
   Toilet: [
     { division: "Devlali MDG SO", utilization: 0, allotment: 2 }

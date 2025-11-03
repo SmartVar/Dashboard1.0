@@ -279,6 +279,7 @@ const chartData = [
               <tr className="font-semibold border-t border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900">
                 <td className="px-4 py-2">Total</td>
                 <td className="px-4 py-2">{totalAllot}</td>
+                { /*<td className="px-4 py-2">{totalUtil.toFixed(2)}</td> */}
                 <td className="px-4 py-2">{totalUtil.toFixed(2)}</td>
               </tr>
             )}

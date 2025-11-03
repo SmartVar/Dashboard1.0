@@ -102,7 +102,7 @@ export const userSidebarLinks: SidebarLink[] = [
   // },
 ];
 
-export const SidebarLinks: SidebarLink[] = [
+export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/tag.svg",
     route: "/",

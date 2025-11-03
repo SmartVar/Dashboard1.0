@@ -29,7 +29,7 @@ const divisionData = {
   RO: { allotment: 2.34482, utilization: 0.71736 },
   NMD: { allotment: 1, utilization: 0.22600 },
   THN: { allotment: 1.5, utilization: 0.27699 },
-  PLG: { allotment: 1, utilization: 0.8379 },
+  PLG: { allotment: 1, utilization: 0.08379 },
   NSK: { allotment: 1, utilization: 0.52320 },
   MLD: { allotment: 1, utilization: 0.72734 },
   RGD: { allotment: 1, utilization: 0.21900 },

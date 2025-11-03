@@ -280,7 +280,7 @@ const chartData = [
                 <td className="px-4 py-2">Total</td>
                 <td className="px-4 py-2">{totalAllot}</td>
                 { /*<td className="px-4 py-2">{totalUtil.toFixed(2)}</td> */}
-                <td className="px-4 py-2">{totalUtil.toFixed(2)}</td>
+                <td className="px-4 py-2">{totalUtil}</td>
               </tr>
             )}
           </tbody>

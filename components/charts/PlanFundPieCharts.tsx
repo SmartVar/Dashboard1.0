@@ -186,9 +186,9 @@ const sampleData: Record<Division, SubdivisionData[]> = {
   Braille: [
     { division: "Chandwad SO", utilization: 0.1, allotment: 0.1 },
     { division: "Igatpuri SO", utilization: 0.1, allotment: 0.1 },
-    { division: "Murbad SO", utilization: 0.1, allotment: 0.1 },
-    { division: "Ulhasnagar-5 SO", utilization: 0.1, allotment: 0.1 },
-    { division: "Taloja AV SO", utilization: 0.1, allotment: 0.1 }
+    { division: "Murbad SO", utilization: 0.9912, allotment: 0.9912 },
+    { division: "Ulhasnagar-5 SO", utilization: 0.9912, allotment: 0.9912 },
+    { division: "Taloja AV SO", utilization: 0.9912, allotment: 0.9912 }
   ],
 }
 

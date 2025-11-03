@@ -6,7 +6,7 @@ export const themes = [
   { value: "system", label: "System", icon: "/assets/icons/computer.svg" },
 ];
 
-export const sidebarLinks: SidebarLink[] = [
+export const adminSidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/tag.svg",
     route: "/",
@@ -53,6 +53,55 @@ export const sidebarLinks: SidebarLink[] = [
   //   label: "Dashboard",
   // },
 ];
+
+export const userSidebarLinks: SidebarLink[] = [
+  // {
+  //  imgURL: "/assets/icons/tag.svg",
+  //  route: "/",
+  //  label: "Home",
+  // },
+  // {
+  // imgURL: "/assets/icons/home.svg",
+  //  route: "/dashboard",
+  //  label: "Dashboard",
+  // },
+  // {
+  //   imgURL: "/assets/icons/users.svg",
+  //   route: "/rulings",
+  //   label: "Rulings",
+  // },
+  // {
+  //  imgURL: "/assets/icons/star.svg",
+  //  route: "/tags",
+  //  label: "Tags",
+  // },
+  // {
+  //   imgURL: "/assets/icons/suitcase.svg",
+  //   route: "/pendency",
+  //   label: "Pendency",
+  // },
+  {
+    imgURL: "/assets/icons/suitcase.svg",
+    route: "/ticket",
+    label: "Tickets",
+  },
+  // {
+  //   imgURL: "/assets/icons/user.svg",
+  //   route: "/profile",
+  //   label: "Profile",
+  // },
+  // {
+  //   imgURL: "/assets/icons/user.svg",
+  //   route: "/kanban",
+  //   label: "Kanban",
+  // },
+  // {
+  //   imgURL: "/assets/icons/suitcase.svg",
+  //   route: "/dashboard",
+  //   label: "Dashboard",
+  // },
+];
+
 
 export const BADGE_CRITERIA = {
   QUESTION_COUNT: {
